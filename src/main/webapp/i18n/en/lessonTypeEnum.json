@@ -1,0 +1,11 @@
+{
+  "lmsapp27062024App": {
+    "LessonTypeEnum": {
+      "null": "",
+      "Lecture": "Lecture",
+      "Practice": "Practice",
+      "Seminar": "Seminar",
+      "Lab": "Lab"
+    }
+  }
+}

@@ -1,0 +1,180 @@
+<div>
+  <h2 id="page-heading" data-cy="WikiPageHeading">
+    <span jhiTranslate="lmsapp27062024App.wikiPage.home.title">Wiki Pages</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.wikiPage.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-wiki-page"
+        [routerLink]="['/wiki-page/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.wikiPage.home.createLabel">Create a new Wiki Page</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (wikiPages?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="lmsapp27062024App.wikiPage.home.notFound">No Wiki Pages found</span>
+    </div>
+  }
+
+  @if (wikiPages && wikiPages.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="title">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.wikiPage.title">Title</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="content">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.wikiPage.content">Content</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="whoAllowed">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.wikiPage.whoAllowed">Who Allowed</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="addToStudents">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.wikiPage.addToStudents">Add To Students</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="addToStudentsDate">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.wikiPage.addToStudentsDate">Add To Students Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="publishedAt">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.wikiPage.publishedAt">Published At</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="published">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.wikiPage.published">Published</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="notifyUsersChanges">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.wikiPage.notifyUsersChanges">Notify Users Changes</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="course.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.wikiPage.course">Course</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (wikiPage of wikiPages; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/wiki-page', wikiPage.id, 'view']">{{ wikiPage.id }}</a>
+              </td>
+              <td>{{ wikiPage.title }}</td>
+              <td>{{ wikiPage.content }}</td>
+              <td [jhiTranslate]="'lmsapp27062024App.WhoAllowed.' + (wikiPage.whoAllowed ?? 'null')">
+                {{
+                  { null: '', ONLY_TEACHERS: 'ONLY_TEACHERS', TEACHER_AND_STUDENTS: 'TEACHER_AND_STUDENTS', ANYONE: 'ANYONE' }[
+                    wikiPage.whoAllowed ?? 'null'
+                  ]
+                }}
+              </td>
+              <td>{{ wikiPage.addToStudents }}</td>
+              <td>{{ wikiPage.addToStudentsDate | formatMediumDatetime }}</td>
+              <td>{{ wikiPage.publishedAt | formatMediumDatetime }}</td>
+              <td>{{ wikiPage.published }}</td>
+              <td>{{ wikiPage.notifyUsersChanges }}</td>
+              <td>
+                @if (wikiPage.course) {
+                  <div>
+                    <a [routerLink]="['/course', wikiPage.course.id, 'view']">{{ wikiPage.course.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/wiki-page', wikiPage.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/wiki-page', wikiPage.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(wikiPage)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (wikiPages && wikiPages.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

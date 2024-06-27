@@ -1,0 +1,9 @@
+{
+  "lmsapp27062024App": {
+    "SubmissionTypeEnum": {
+      "null": "",
+      "ONLINE": "ONLINE",
+      "PAPER": "PAPER"
+    }
+  }
+}

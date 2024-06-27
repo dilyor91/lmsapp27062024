@@ -1,0 +1,31 @@
+{
+  "annotations": {
+    "changelogDate": "20240627062125"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "questionCount",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "QuizQuestionGroup",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "quiz",
+      "relationshipName": "quiz",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "questionGroup",
+      "relationshipName": "questionGroup",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

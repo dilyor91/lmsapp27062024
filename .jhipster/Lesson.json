@@ -1,0 +1,45 @@
+{
+  "annotations": {
+    "changelogDate": "20240627062132"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "lessonTitle",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "startPlanDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "actualLessonDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lessonType",
+      "fieldType": "LessonTypeEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Lecture,Practice,Seminar,Lab"
+    },
+    {
+      "fieldName": "videoUrl",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Lesson",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "course",
+      "relationshipName": "course",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

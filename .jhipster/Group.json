@@ -1,0 +1,26 @@
+{
+  "annotations": {
+    "changelogDate": "20240627062119"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "entityTableName": "jhi_group",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Group",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "speciality",
+      "relationshipName": "speciality",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,27 @@
+{
+  "lmsapp27062024App": {
+    "studentAnswerQuestion": {
+      "home": {
+        "title": "Student Answer Questions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Student Answer Question",
+        "createOrEditLabel": "Create or edit a Student Answer Question",
+        "notFound": "No Student Answer Questions found"
+      },
+      "created": "A new Student Answer Question is created with identifier {{ param }}",
+      "updated": "A Student Answer Question is updated with identifier {{ param }}",
+      "deleted": "A Student Answer Question is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Student Answer Question {{ id }}?"
+      },
+      "detail": {
+        "title": "Student Answer Question"
+      },
+      "id": "ID",
+      "isCorrect": "Is Correct",
+      "question": "Question",
+      "option": "Option",
+      "quizSession": "Quiz Session"
+    }
+  }
+}

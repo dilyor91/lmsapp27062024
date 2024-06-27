@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (quizSession()) {
+      <div>
+        <h2 data-cy="quizSessionDetailsHeading"><span jhiTranslate="lmsapp27062024App.quizSession.detail.title">Quiz Session</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ quizSession()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizSession.startTime">Start Time</span></dt>
+          <dd>
+            <span>{{ quizSession()!.startTime | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizSession.endTime">End Time</span></dt>
+          <dd>
+            <span>{{ quizSession()!.endTime | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizSession.quizSessionEnum">Quiz Session Enum</span></dt>
+          <dd>
+            <span [jhiTranslate]="'lmsapp27062024App.QuizSessionEnum.' + (quizSession()!.quizSessionEnum ?? 'null')">{{
+              { null: '', IN_PROGRESS: 'IN_PROGRESS', FINISHED: 'FINISHED' }[quizSession()!.quizSessionEnum ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizSession.student">Student</span></dt>
+          <dd>
+            @if (quizSession()!.student) {
+              <div>
+                <a [routerLink]="['/student', quizSession()!.student?.id, 'view']">{{ quizSession()!.student?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizSession.quiz">Quiz</span></dt>
+          <dd>
+            @if (quizSession()!.quiz) {
+              <div>
+                <a [routerLink]="['/quiz', quizSession()!.quiz?.id, 'view']">{{ quizSession()!.quiz?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/quiz-session', quizSession()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

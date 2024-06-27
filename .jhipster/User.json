@@ -1,0 +1,13 @@
+{
+  "annotations": {
+    "changelogDate": "20240627062107"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "entityTableName": "jhi_user",
+  "fields": [],
+  "name": "User",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

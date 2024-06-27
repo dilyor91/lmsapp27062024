@@ -1,0 +1,32 @@
+{
+  "annotations": {
+    "changelogDate": "20240627062113"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "attendanceEnum",
+      "fieldType": "AttendanceEnum",
+      "fieldValues": "PRESENT,LATE,ABSENT"
+    }
+  ],
+  "name": "AttendanceDetail",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "attendance",
+      "relationshipName": "attendance",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "relationshipName": "student",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

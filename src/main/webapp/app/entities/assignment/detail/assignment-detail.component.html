@@ -1,0 +1,85 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (assignment()) {
+      <div>
+        <h2 data-cy="assignmentDetailsHeading"><span jhiTranslate="lmsapp27062024App.assignment.detail.title">Assignment</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ assignment()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.assignment.name">Name</span></dt>
+          <dd>
+            <span>{{ assignment()!.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.assignment.content">Content</span></dt>
+          <dd>
+            <span>{{ assignment()!.content }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.assignment.points">Points</span></dt>
+          <dd>
+            <span>{{ assignment()!.points }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.assignment.submissionType">Submission Type</span></dt>
+          <dd>
+            <span [jhiTranslate]="'lmsapp27062024App.SubmissionTypeEnum.' + (assignment()!.submissionType ?? 'null')">{{
+              { null: '', ONLINE: 'ONLINE', PAPER: 'PAPER' }[assignment()!.submissionType ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.assignment.allowedAttempts">Allowed Attempts</span></dt>
+          <dd>
+            <span>{{ assignment()!.allowedAttempts }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.assignment.startDate">Start Date</span></dt>
+          <dd>
+            <span>{{ assignment()!.startDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.assignment.endDate">End Date</span></dt>
+          <dd>
+            <span>{{ assignment()!.endDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.assignment.dueDate">Due Date</span></dt>
+          <dd>
+            <span>{{ assignment()!.dueDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.assignment.published">Published</span></dt>
+          <dd>
+            <span>{{ assignment()!.published }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.assignment.course">Course</span></dt>
+          <dd>
+            @if (assignment()!.course) {
+              <div>
+                <a [routerLink]="['/course', assignment()!.course?.id, 'view']">{{ assignment()!.course?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.assignment.courseSection">Course Section</span></dt>
+          <dd>
+            @for (courseSection of assignment()!.courseSections; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/course-section', courseSection.id, 'view']">{{ courseSection?.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/assignment', assignment()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

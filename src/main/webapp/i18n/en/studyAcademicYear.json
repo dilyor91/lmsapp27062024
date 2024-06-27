@@ -1,0 +1,26 @@
+{
+  "lmsapp27062024App": {
+    "studyAcademicYear": {
+      "home": {
+        "title": "Study Academic Years",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Study Academic Year",
+        "createOrEditLabel": "Create or edit a Study Academic Year",
+        "notFound": "No Study Academic Years found"
+      },
+      "created": "A new Study Academic Year is created with identifier {{ param }}",
+      "updated": "A Study Academic Year is updated with identifier {{ param }}",
+      "deleted": "A Study Academic Year is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Study Academic Year {{ id }}?"
+      },
+      "detail": {
+        "title": "Study Academic Year"
+      },
+      "id": "ID",
+      "fromDate": "From Date",
+      "endDate": "End Date",
+      "student": "Student"
+    }
+  }
+}

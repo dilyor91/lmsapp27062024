@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (quizCourseSection()) {
+      <div>
+        <h2 data-cy="quizCourseSectionDetailsHeading">
+          <span jhiTranslate="lmsapp27062024App.quizCourseSection.detail.title">Quiz Course Section</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ quizCourseSection()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizCourseSection.startDate">Start Date</span></dt>
+          <dd>
+            <span>{{ quizCourseSection()!.startDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizCourseSection.endDate">End Date</span></dt>
+          <dd>
+            <span>{{ quizCourseSection()!.endDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizCourseSection.course">Course</span></dt>
+          <dd>
+            @if (quizCourseSection()!.course) {
+              <div>
+                <a [routerLink]="['/course', quizCourseSection()!.course?.id, 'view']">{{ quizCourseSection()!.course?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizCourseSection.courseSection">Course Section</span></dt>
+          <dd>
+            @if (quizCourseSection()!.courseSection) {
+              <div>
+                <a [routerLink]="['/course-section', quizCourseSection()!.courseSection?.id, 'view']">{{
+                  quizCourseSection()!.courseSection?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizCourseSection.quiz">Quiz</span></dt>
+          <dd>
+            @if (quizCourseSection()!.quiz) {
+              <div>
+                <a [routerLink]="['/quiz', quizCourseSection()!.quiz?.id, 'view']">{{ quizCourseSection()!.quiz?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/quiz-course-section', quizCourseSection()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

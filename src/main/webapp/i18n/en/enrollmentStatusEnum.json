@@ -1,0 +1,10 @@
+{
+  "lmsapp27062024App": {
+    "EnrollmentStatusEnum": {
+      "null": "",
+      "ACTIVE": "ACTIVE",
+      "REJECTED": "REJECTED",
+      "PENDING": "PENDING"
+    }
+  }
+}

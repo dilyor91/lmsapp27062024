@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (enrollment()) {
+      <div>
+        <h2 data-cy="enrollmentDetailsHeading"><span jhiTranslate="lmsapp27062024App.enrollment.detail.title">Enrollment</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ enrollment()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.enrollment.enrollmentStatus">Enrollment Status</span></dt>
+          <dd>
+            <span [jhiTranslate]="'lmsapp27062024App.EnrollmentStatusEnum.' + (enrollment()!.enrollmentStatus ?? 'null')">{{
+              { null: '', ACTIVE: 'ACTIVE', REJECTED: 'REJECTED', PENDING: 'PENDING' }[enrollment()!.enrollmentStatus ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.enrollment.lastActivityAt">Last Activity At</span></dt>
+          <dd>
+            <span>{{ enrollment()!.lastActivityAt | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.enrollment.enrollmentDate">Enrollment Date</span></dt>
+          <dd>
+            <span>{{ enrollment()!.enrollmentDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.enrollment.student">Student</span></dt>
+          <dd>
+            @if (enrollment()!.student) {
+              <div>
+                <a [routerLink]="['/student', enrollment()!.student?.id, 'view']">{{ enrollment()!.student?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.enrollment.courseSection">Course Section</span></dt>
+          <dd>
+            @if (enrollment()!.courseSection) {
+              <div>
+                <a [routerLink]="['/course-section', enrollment()!.courseSection?.id, 'view']">{{ enrollment()!.courseSection?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.enrollment.course">Course</span></dt>
+          <dd>
+            @if (enrollment()!.course) {
+              <div>
+                <a [routerLink]="['/course', enrollment()!.course?.id, 'view']">{{ enrollment()!.course?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/enrollment', enrollment()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

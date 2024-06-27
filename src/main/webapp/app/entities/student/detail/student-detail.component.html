@@ -1,0 +1,164 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (student()) {
+      <div>
+        <h2 data-cy="studentDetailsHeading"><span jhiTranslate="lmsapp27062024App.student.detail.title">Student</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ student()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.firstName">First Name</span></dt>
+          <dd>
+            <span>{{ student()!.firstName }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.lastName">Last Name</span></dt>
+          <dd>
+            <span>{{ student()!.lastName }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.middleName">Middle Name</span></dt>
+          <dd>
+            <span>{{ student()!.middleName }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.gender">Gender</span></dt>
+          <dd>
+            <span>{{ student()!.gender }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.birthdate">Birthdate</span></dt>
+          <dd>
+            <span>{{ student()!.birthdate }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.phoneNumber">Phone Number</span></dt>
+          <dd>
+            <span>{{ student()!.phoneNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.email">Email</span></dt>
+          <dd>
+            <span>{{ student()!.email }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.hemisId">Hemis Id</span></dt>
+          <dd>
+            <span>{{ student()!.hemisId }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.passportNumber">Passport Number</span></dt>
+          <dd>
+            <span>{{ student()!.passportNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.jshshir">Jshshir</span></dt>
+          <dd>
+            <span>{{ student()!.jshshir }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.isActive">Is Active</span></dt>
+          <dd>
+            <span>{{ student()!.isActive }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.tutionType">Tution Type</span></dt>
+          <dd>
+            <span [jhiTranslate]="'lmsapp27062024App.TutionTypeEnum.' + (student()!.tutionType ?? 'null')">{{
+              { null: '', GRANT: 'GRANT', KONTRAKT: 'KONTRAKT' }[student()!.tutionType ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.nationality">Nationality</span></dt>
+          <dd>
+            <span>{{ student()!.nationality }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.country">Country</span></dt>
+          <dd>
+            <span>{{ student()!.country }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.city">City</span></dt>
+          <dd>
+            <span>{{ student()!.city }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.region">Region</span></dt>
+          <dd>
+            <span>{{ student()!.region }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.addressLine">Address Line</span></dt>
+          <dd>
+            <span>{{ student()!.addressLine }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.course">Course</span></dt>
+          <dd>
+            <span>{{ student()!.course }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.semester">Semester</span></dt>
+          <dd>
+            <span>{{ student()!.semester }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.educationLanguage">Education Language</span></dt>
+          <dd>
+            <span [jhiTranslate]="'lmsapp27062024App.EducationLanguage.' + (student()!.educationLanguage ?? 'null')">{{
+              { null: '', UZBEK: 'UZBEK', RUSSIAN: 'RUSSIAN', ENGLISH: 'ENGLISH' }[student()!.educationLanguage ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.educationType">Education Type</span></dt>
+          <dd>
+            <span [jhiTranslate]="'lmsapp27062024App.EducationType.' + (student()!.educationType ?? 'null')">{{
+              { null: '', KUNDUZGI: 'KUNDUZGI', KECHKI: 'KECHKI', SIRTQI: 'SIRTQI' }[student()!.educationType ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.educationForm">Education Form</span></dt>
+          <dd>
+            <span [jhiTranslate]="'lmsapp27062024App.EducationForm.' + (student()!.educationForm ?? 'null')">{{
+              { null: '', BAKALAVR: 'BAKALAVR', MAGISTR: 'MAGISTR' }[student()!.educationForm ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.studyAcademicYear">Study Academic Year</span></dt>
+          <dd>
+            @if (student()!.studyAcademicYear) {
+              <div>
+                <a [routerLink]="['/study-academic-year', student()!.studyAcademicYear?.id, 'view']">{{
+                  student()!.studyAcademicYear?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.user">User</span></dt>
+          <dd>
+            <span>{{ student()!.user?.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.faculty">Faculty</span></dt>
+          <dd>
+            @if (student()!.faculty) {
+              <div>
+                <a [routerLink]="['/faculty', student()!.faculty?.id, 'view']">{{ student()!.faculty?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.speciality">Speciality</span></dt>
+          <dd>
+            @if (student()!.speciality) {
+              <div>
+                <a [routerLink]="['/speciality', student()!.speciality?.id, 'view']">{{ student()!.speciality?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.student.group">Group</span></dt>
+          <dd>
+            @if (student()!.group) {
+              <div>
+                <a [routerLink]="['/group', student()!.group?.id, 'view']">{{ student()!.group?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/student', student()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

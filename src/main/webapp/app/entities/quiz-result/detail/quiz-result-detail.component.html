@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (quizResult()) {
+      <div>
+        <h2 data-cy="quizResultDetailsHeading"><span jhiTranslate="lmsapp27062024App.quizResult.detail.title">Quiz Result</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ quizResult()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizResult.point">Point</span></dt>
+          <dd>
+            <span>{{ quizResult()!.point }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizResult.totalQuestionCnt">Total Question Cnt</span></dt>
+          <dd>
+            <span>{{ quizResult()!.totalQuestionCnt }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizResult.correctAnswerCnt">Correct Answer Cnt</span></dt>
+          <dd>
+            <span>{{ quizResult()!.correctAnswerCnt }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizResult.wrongAnswerCnt">Wrong Answer Cnt</span></dt>
+          <dd>
+            <span>{{ quizResult()!.wrongAnswerCnt }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizResult.quiz">Quiz</span></dt>
+          <dd>
+            @if (quizResult()!.quiz) {
+              <div>
+                <a [routerLink]="['/quiz', quizResult()!.quiz?.id, 'view']">{{ quizResult()!.quiz?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizResult.student">Student</span></dt>
+          <dd>
+            @if (quizResult()!.student) {
+              <div>
+                <a [routerLink]="['/student', quizResult()!.student?.id, 'view']">{{ quizResult()!.student?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizResult.quizSession">Quiz Session</span></dt>
+          <dd>
+            @if (quizResult()!.quizSession) {
+              <div>
+                <a [routerLink]="['/quiz-session', quizResult()!.quizSession?.id, 'view']">{{ quizResult()!.quizSession?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/quiz-result', quizResult()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

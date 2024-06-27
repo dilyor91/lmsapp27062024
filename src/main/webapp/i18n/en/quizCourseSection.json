@@ -1,0 +1,28 @@
+{
+  "lmsapp27062024App": {
+    "quizCourseSection": {
+      "home": {
+        "title": "Quiz Course Sections",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Quiz Course Section",
+        "createOrEditLabel": "Create or edit a Quiz Course Section",
+        "notFound": "No Quiz Course Sections found"
+      },
+      "created": "A new Quiz Course Section is created with identifier {{ param }}",
+      "updated": "A Quiz Course Section is updated with identifier {{ param }}",
+      "deleted": "A Quiz Course Section is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Quiz Course Section {{ id }}?"
+      },
+      "detail": {
+        "title": "Quiz Course Section"
+      },
+      "id": "ID",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "course": "Course",
+      "courseSection": "Course Section",
+      "quiz": "Quiz"
+    }
+  }
+}

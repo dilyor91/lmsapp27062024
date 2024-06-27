@@ -1,0 +1,30 @@
+{
+  "lmsapp27062024App": {
+    "quizResult": {
+      "home": {
+        "title": "Quiz Results",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Quiz Result",
+        "createOrEditLabel": "Create or edit a Quiz Result",
+        "notFound": "No Quiz Results found"
+      },
+      "created": "A new Quiz Result is created with identifier {{ param }}",
+      "updated": "A Quiz Result is updated with identifier {{ param }}",
+      "deleted": "A Quiz Result is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Quiz Result {{ id }}?"
+      },
+      "detail": {
+        "title": "Quiz Result"
+      },
+      "id": "ID",
+      "point": "Point",
+      "totalQuestionCnt": "Total Question Cnt",
+      "correctAnswerCnt": "Correct Answer Cnt",
+      "wrongAnswerCnt": "Wrong Answer Cnt",
+      "quiz": "Quiz",
+      "student": "Student",
+      "quizSession": "Quiz Session"
+    }
+  }
+}

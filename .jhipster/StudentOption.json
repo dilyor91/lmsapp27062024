@@ -1,0 +1,31 @@
+{
+  "annotations": {
+    "changelogDate": "20240627062128"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "ordNum",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "StudentOption",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "studentQuestion",
+      "relationshipName": "studentQuestion",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "option",
+      "relationshipName": "option",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

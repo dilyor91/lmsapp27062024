@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (lesson()) {
+      <div>
+        <h2 data-cy="lessonDetailsHeading"><span jhiTranslate="lmsapp27062024App.lesson.detail.title">Lesson</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ lesson()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.lesson.lessonTitle">Lesson Title</span></dt>
+          <dd>
+            <span>{{ lesson()!.lessonTitle }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.lesson.startPlanDate">Start Plan Date</span></dt>
+          <dd>
+            <span>{{ lesson()!.startPlanDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.lesson.actualLessonDate">Actual Lesson Date</span></dt>
+          <dd>
+            <span>{{ lesson()!.actualLessonDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.lesson.lessonType">Lesson Type</span></dt>
+          <dd>
+            <span [jhiTranslate]="'lmsapp27062024App.LessonTypeEnum.' + (lesson()!.lessonType ?? 'null')">{{
+              { null: '', Lecture: 'Lecture', Practice: 'Practice', Seminar: 'Seminar', Lab: 'Lab' }[lesson()!.lessonType ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.lesson.videoUrl">Video Url</span></dt>
+          <dd>
+            <span>{{ lesson()!.videoUrl }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.lesson.course">Course</span></dt>
+          <dd>
+            @if (lesson()!.course) {
+              <div>
+                <a [routerLink]="['/course', lesson()!.course?.id, 'view']">{{ lesson()!.course?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/lesson', lesson()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

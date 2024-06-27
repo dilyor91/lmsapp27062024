@@ -1,0 +1,9 @@
+{
+  "lmsapp27062024App": {
+    "TutionTypeEnum": {
+      "null": "",
+      "GRANT": "GRANT",
+      "KONTRAKT": "KONTRAKT"
+    }
+  }
+}

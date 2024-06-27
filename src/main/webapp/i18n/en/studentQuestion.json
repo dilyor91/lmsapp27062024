@@ -1,0 +1,26 @@
+{
+  "lmsapp27062024App": {
+    "studentQuestion": {
+      "home": {
+        "title": "Student Questions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Student Question",
+        "createOrEditLabel": "Create or edit a Student Question",
+        "notFound": "No Student Questions found"
+      },
+      "created": "A new Student Question is created with identifier {{ param }}",
+      "updated": "A Student Question is updated with identifier {{ param }}",
+      "deleted": "A Student Question is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Student Question {{ id }}?"
+      },
+      "detail": {
+        "title": "Student Question"
+      },
+      "id": "ID",
+      "ordNum": "Ord Num",
+      "quizSession": "Quiz Session",
+      "question": "Question"
+    }
+  }
+}

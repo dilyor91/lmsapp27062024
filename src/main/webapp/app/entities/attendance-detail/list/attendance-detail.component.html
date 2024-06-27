@@ -1,0 +1,137 @@
+<div>
+  <h2 id="page-heading" data-cy="AttendanceDetailHeading">
+    <span jhiTranslate="lmsapp27062024App.attendanceDetail.home.title">Attendance Details</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.attendanceDetail.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-attendance-detail"
+        [routerLink]="['/attendance-detail/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.attendanceDetail.home.createLabel">Create a new Attendance Detail</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (attendanceDetails?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="lmsapp27062024App.attendanceDetail.home.notFound">No Attendance Details found</span>
+    </div>
+  }
+
+  @if (attendanceDetails && attendanceDetails.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="attendanceEnum">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.attendanceDetail.attendanceEnum">Attendance Enum</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="attendance.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.attendanceDetail.attendance">Attendance</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="student.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.attendanceDetail.student">Student</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (attendanceDetail of attendanceDetails; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/attendance-detail', attendanceDetail.id, 'view']">{{ attendanceDetail.id }}</a>
+              </td>
+              <td [jhiTranslate]="'lmsapp27062024App.AttendanceEnum.' + (attendanceDetail.attendanceEnum ?? 'null')">
+                {{ { null: '', PRESENT: 'PRESENT', LATE: 'LATE', ABSENT: 'ABSENT' }[attendanceDetail.attendanceEnum ?? 'null'] }}
+              </td>
+              <td>
+                @if (attendanceDetail.attendance) {
+                  <div>
+                    <a [routerLink]="['/attendance', attendanceDetail.attendance.id, 'view']">{{ attendanceDetail.attendance.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                {{ attendanceDetail.student?.id }}
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/attendance-detail', attendanceDetail.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/attendance-detail', attendanceDetail.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(attendanceDetail)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (attendanceDetails && attendanceDetails.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>
