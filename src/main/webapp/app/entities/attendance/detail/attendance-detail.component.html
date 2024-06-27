@@ -37,26 +37,6 @@
               </div>
             }
           </dd>
-          <dt><span jhiTranslate="lmsapp27062024App.attendance.course">Course</span></dt>
-          <dd>
-            @if (attendance()!.course) {
-              <div>
-                <a [routerLink]="['/course', attendance()!.course?.id, 'view']">{{ attendance()!.course?.id }}</a>
-              </div>
-            }
-          </dd>
-          <dt><span jhiTranslate="lmsapp27062024App.attendance.courseSection">Course Section</span></dt>
-          <dd>
-            @if (attendance()!.courseSection) {
-              <div>
-                <a [routerLink]="['/course-section', attendance()!.courseSection?.id, 'view']">{{ attendance()!.courseSection?.id }}</a>
-              </div>
-            }
-          </dd>
-          <dt><span jhiTranslate="lmsapp27062024App.attendance.teacher">Teacher</span></dt>
-          <dd>
-            <span>{{ attendance()!.teacher?.id }}</span>
-          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

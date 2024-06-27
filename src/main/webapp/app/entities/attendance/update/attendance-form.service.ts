@@ -21,9 +21,6 @@ type AttendanceFormGroupContent = {
   attendanceEnum: FormControl<IAttendance['attendanceEnum']>;
   student: FormControl<IAttendance['student']>;
   lesson: FormControl<IAttendance['lesson']>;
-  course: FormControl<IAttendance['course']>;
-  courseSection: FormControl<IAttendance['courseSection']>;
-  teacher: FormControl<IAttendance['teacher']>;
 };
 
 export type AttendanceFormGroup = FormGroup<AttendanceFormGroupContent>;
@@ -46,9 +43,6 @@ export class AttendanceFormService {
       attendanceEnum: new FormControl(attendanceRawValue.attendanceEnum),
       student: new FormControl(attendanceRawValue.student),
       lesson: new FormControl(attendanceRawValue.lesson),
-      course: new FormControl(attendanceRawValue.course),
-      courseSection: new FormControl(attendanceRawValue.courseSection),
-      teacher: new FormControl(attendanceRawValue.teacher),
     });
   }
 

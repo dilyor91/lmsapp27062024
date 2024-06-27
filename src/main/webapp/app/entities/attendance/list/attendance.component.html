@@ -61,24 +61,6 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="course.id">
-              <div class="d-flex">
-                <span jhiTranslate="lmsapp27062024App.attendance.course">Course</span>
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="courseSection.id">
-              <div class="d-flex">
-                <span jhiTranslate="lmsapp27062024App.attendance.courseSection">Course Section</span>
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="teacher.id">
-              <div class="d-flex">
-                <span jhiTranslate="lmsapp27062024App.attendance.teacher">Teacher</span>
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -104,23 +86,6 @@
                     <a [routerLink]="['/lesson', attendance.lesson.id, 'view']">{{ attendance.lesson.id }}</a>
                   </div>
                 }
-              </td>
-              <td>
-                @if (attendance.course) {
-                  <div>
-                    <a [routerLink]="['/course', attendance.course.id, 'view']">{{ attendance.course.id }}</a>
-                  </div>
-                }
-              </td>
-              <td>
-                @if (attendance.courseSection) {
-                  <div>
-                    <a [routerLink]="['/course-section', attendance.courseSection.id, 'view']">{{ attendance.courseSection.id }}</a>
-                  </div>
-                }
-              </td>
-              <td>
-                {{ attendance.teacher?.id }}
               </td>
               <td class="text-end">
                 <div class="btn-group">
