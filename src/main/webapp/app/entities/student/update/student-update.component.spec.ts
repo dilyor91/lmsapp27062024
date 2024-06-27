@@ -86,10 +86,10 @@ describe('Student Management Update Component', () => {
 
     it('Should call User query and add missing value', () => {
       const student: IStudent = { id: 456 };
-      const user: IUser = { id: 5244 };
+      const user: IUser = { id: 15485 };
       student.user = user;
 
-      const userCollection: IUser[] = [{ id: 5154 }];
+      const userCollection: IUser[] = [{ id: 23906 }];
       jest.spyOn(userService, 'query').mockReturnValue(of(new HttpResponse({ body: userCollection })));
       const additionalUsers = [user];
       const expectedCollection: IUser[] = [...additionalUsers, ...userCollection];
@@ -176,7 +176,7 @@ describe('Student Management Update Component', () => {
       const student: IStudent = { id: 456 };
       const studyAcademicYear: IStudyAcademicYear = { id: 29268 };
       student.studyAcademicYear = studyAcademicYear;
-      const user: IUser = { id: 8660 };
+      const user: IUser = { id: 26992 };
       student.user = user;
       const faculty: IFaculty = { id: 24368 };
       student.faculty = faculty;

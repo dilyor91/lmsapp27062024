@@ -8,12 +8,6 @@ import { IStudent } from 'app/entities/student/student.model';
 import { StudentService } from 'app/entities/student/service/student.service';
 import { ILesson } from 'app/entities/lesson/lesson.model';
 import { LessonService } from 'app/entities/lesson/service/lesson.service';
-import { ICourse } from 'app/entities/course/course.model';
-import { CourseService } from 'app/entities/course/service/course.service';
-import { ICourseSection } from 'app/entities/course-section/course-section.model';
-import { CourseSectionService } from 'app/entities/course-section/service/course-section.service';
-import { IUser } from 'app/entities/user/user.model';
-import { UserService } from 'app/entities/user/service/user.service';
 import { IAttendance } from '../attendance.model';
 import { AttendanceService } from '../service/attendance.service';
 import { AttendanceFormService } from './attendance-form.service';
@@ -28,9 +22,6 @@ describe('Attendance Management Update Component', () => {
   let attendanceService: AttendanceService;
   let studentService: StudentService;
   let lessonService: LessonService;
-  let courseService: CourseService;
-  let courseSectionService: CourseSectionService;
-  let userService: UserService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -55,9 +46,6 @@ describe('Attendance Management Update Component', () => {
     attendanceService = TestBed.inject(AttendanceService);
     studentService = TestBed.inject(StudentService);
     lessonService = TestBed.inject(LessonService);
-    courseService = TestBed.inject(CourseService);
-    courseSectionService = TestBed.inject(CourseSectionService);
-    userService = TestBed.inject(UserService);
 
     comp = fixture.componentInstance;
   });
@@ -107,93 +95,18 @@ describe('Attendance Management Update Component', () => {
       expect(comp.lessonsSharedCollection).toEqual(expectedCollection);
     });
 
-    it('Should call Course query and add missing value', () => {
-      const attendance: IAttendance = { id: 456 };
-      const course: ICourse = { id: 23096 };
-      attendance.course = course;
-
-      const courseCollection: ICourse[] = [{ id: 5830 }];
-      jest.spyOn(courseService, 'query').mockReturnValue(of(new HttpResponse({ body: courseCollection })));
-      const additionalCourses = [course];
-      const expectedCollection: ICourse[] = [...additionalCourses, ...courseCollection];
-      jest.spyOn(courseService, 'addCourseToCollectionIfMissing').mockReturnValue(expectedCollection);
-
-      activatedRoute.data = of({ attendance });
-      comp.ngOnInit();
-
-      expect(courseService.query).toHaveBeenCalled();
-      expect(courseService.addCourseToCollectionIfMissing).toHaveBeenCalledWith(
-        courseCollection,
-        ...additionalCourses.map(expect.objectContaining),
-      );
-      expect(comp.coursesSharedCollection).toEqual(expectedCollection);
-    });
-
-    it('Should call CourseSection query and add missing value', () => {
-      const attendance: IAttendance = { id: 456 };
-      const courseSection: ICourseSection = { id: 18037 };
-      attendance.courseSection = courseSection;
-
-      const courseSectionCollection: ICourseSection[] = [{ id: 10385 }];
-      jest.spyOn(courseSectionService, 'query').mockReturnValue(of(new HttpResponse({ body: courseSectionCollection })));
-      const additionalCourseSections = [courseSection];
-      const expectedCollection: ICourseSection[] = [...additionalCourseSections, ...courseSectionCollection];
-      jest.spyOn(courseSectionService, 'addCourseSectionToCollectionIfMissing').mockReturnValue(expectedCollection);
-
-      activatedRoute.data = of({ attendance });
-      comp.ngOnInit();
-
-      expect(courseSectionService.query).toHaveBeenCalled();
-      expect(courseSectionService.addCourseSectionToCollectionIfMissing).toHaveBeenCalledWith(
-        courseSectionCollection,
-        ...additionalCourseSections.map(expect.objectContaining),
-      );
-      expect(comp.courseSectionsSharedCollection).toEqual(expectedCollection);
-    });
-
-    it('Should call User query and add missing value', () => {
-      const attendance: IAttendance = { id: 456 };
-      const teacher: IUser = { id: 15485 };
-      attendance.teacher = teacher;
-
-      const userCollection: IUser[] = [{ id: 23906 }];
-      jest.spyOn(userService, 'query').mockReturnValue(of(new HttpResponse({ body: userCollection })));
-      const additionalUsers = [teacher];
-      const expectedCollection: IUser[] = [...additionalUsers, ...userCollection];
-      jest.spyOn(userService, 'addUserToCollectionIfMissing').mockReturnValue(expectedCollection);
-
-      activatedRoute.data = of({ attendance });
-      comp.ngOnInit();
-
-      expect(userService.query).toHaveBeenCalled();
-      expect(userService.addUserToCollectionIfMissing).toHaveBeenCalledWith(
-        userCollection,
-        ...additionalUsers.map(expect.objectContaining),
-      );
-      expect(comp.usersSharedCollection).toEqual(expectedCollection);
-    });
-
     it('Should update editForm', () => {
       const attendance: IAttendance = { id: 456 };
       const student: IStudent = { id: 21342 };
       attendance.student = student;
       const lesson: ILesson = { id: 9575 };
       attendance.lesson = lesson;
-      const course: ICourse = { id: 24477 };
-      attendance.course = course;
-      const courseSection: ICourseSection = { id: 8291 };
-      attendance.courseSection = courseSection;
-      const teacher: IUser = { id: 26992 };
-      attendance.teacher = teacher;
 
       activatedRoute.data = of({ attendance });
       comp.ngOnInit();
 
       expect(comp.studentsSharedCollection).toContain(student);
       expect(comp.lessonsSharedCollection).toContain(lesson);
-      expect(comp.coursesSharedCollection).toContain(course);
-      expect(comp.courseSectionsSharedCollection).toContain(courseSection);
-      expect(comp.usersSharedCollection).toContain(teacher);
       expect(comp.attendance).toEqual(attendance);
     });
   });
@@ -284,36 +197,6 @@ describe('Attendance Management Update Component', () => {
         jest.spyOn(lessonService, 'compareLesson');
         comp.compareLesson(entity, entity2);
         expect(lessonService.compareLesson).toHaveBeenCalledWith(entity, entity2);
-      });
-    });
-
-    describe('compareCourse', () => {
-      it('Should forward to courseService', () => {
-        const entity = { id: 123 };
-        const entity2 = { id: 456 };
-        jest.spyOn(courseService, 'compareCourse');
-        comp.compareCourse(entity, entity2);
-        expect(courseService.compareCourse).toHaveBeenCalledWith(entity, entity2);
-      });
-    });
-
-    describe('compareCourseSection', () => {
-      it('Should forward to courseSectionService', () => {
-        const entity = { id: 123 };
-        const entity2 = { id: 456 };
-        jest.spyOn(courseSectionService, 'compareCourseSection');
-        comp.compareCourseSection(entity, entity2);
-        expect(courseSectionService.compareCourseSection).toHaveBeenCalledWith(entity, entity2);
-      });
-    });
-
-    describe('compareUser', () => {
-      it('Should forward to userService', () => {
-        const entity = { id: 123 };
-        const entity2 = { id: 456 };
-        jest.spyOn(userService, 'compareUser');
-        comp.compareUser(entity, entity2);
-        expect(userService.compareUser).toHaveBeenCalledWith(entity, entity2);
       });
     });
   });

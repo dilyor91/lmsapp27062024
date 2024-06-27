@@ -23,26 +23,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="lesson"
                                  />
-
-        <addForeignKeyConstraint baseColumnNames="course_id"
-                                 baseTableName="attendance"
-                                 constraintName="fk_attendance__course_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="course"
-                                 />
-
-        <addForeignKeyConstraint baseColumnNames="course_section_id"
-                                 baseTableName="attendance"
-                                 constraintName="fk_attendance__course_section_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="course_section"
-                                 />
-
-        <addForeignKeyConstraint baseColumnNames="teacher_id"
-                                 baseTableName="attendance"
-                                 constraintName="fk_attendance__teacher_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="jhi_user"
-                                 />
     </changeSet>
 </databaseChangeLog>

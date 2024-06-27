@@ -60,8 +60,6 @@ public class AttendanceAsserts {
         assertThat(expected)
             .as("Verify Attendance relationships")
             .satisfies(e -> assertThat(e.getStudent()).as("check student").isEqualTo(actual.getStudent()))
-            .satisfies(e -> assertThat(e.getLesson()).as("check lesson").isEqualTo(actual.getLesson()))
-            .satisfies(e -> assertThat(e.getCourse()).as("check course").isEqualTo(actual.getCourse()))
-            .satisfies(e -> assertThat(e.getCourseSection()).as("check courseSection").isEqualTo(actual.getCourseSection()));
+            .satisfies(e -> assertThat(e.getLesson()).as("check lesson").isEqualTo(actual.getLesson()));
     }
 }
