@@ -1,0 +1,54 @@
+{
+  "annotations": {
+    "changelogDate": "20240627062111"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "content",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "whoAllowed",
+      "fieldType": "WhoAllowed",
+      "fieldValues": "ONLY_TEACHERS,TEACHER_AND_STUDENTS,ANYONE"
+    },
+    {
+      "fieldName": "addToStudents",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "addToStudentsDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "publishedAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "published",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "notifyUsersChanges",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "WikiPage",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "course",
+      "relationshipName": "course",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

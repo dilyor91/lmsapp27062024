@@ -1,0 +1,139 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-lesson-heading" data-cy="LessonCreateUpdateHeading" jhiTranslate="lmsapp27062024App.lesson.home.createOrEditLabel">
+        Create or edit a Lesson
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="lmsapp27062024App.lesson.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_lessonTitle" jhiTranslate="lmsapp27062024App.lesson.lessonTitle">Lesson Title</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lessonTitle"
+            id="field_lessonTitle"
+            data-cy="lessonTitle"
+            formControlName="lessonTitle"
+          />
+          @if (editForm.get('lessonTitle')!.invalid && (editForm.get('lessonTitle')!.dirty || editForm.get('lessonTitle')!.touched)) {
+            <div>
+              @if (editForm.get('lessonTitle')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_startPlanDate" jhiTranslate="lmsapp27062024App.lesson.startPlanDate">Start Plan Date</label>
+          <div class="d-flex">
+            <input
+              id="field_startPlanDate"
+              data-cy="startPlanDate"
+              type="datetime-local"
+              class="form-control"
+              name="startPlanDate"
+              formControlName="startPlanDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (editForm.get('startPlanDate')!.invalid && (editForm.get('startPlanDate')!.dirty || editForm.get('startPlanDate')!.touched)) {
+            <div>
+              @if (editForm.get('startPlanDate')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('startPlanDate')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >This field should be a date and time.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_actualLessonDate" jhiTranslate="lmsapp27062024App.lesson.actualLessonDate"
+            >Actual Lesson Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_actualLessonDate"
+              data-cy="actualLessonDate"
+              type="datetime-local"
+              class="form-control"
+              name="actualLessonDate"
+              formControlName="actualLessonDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_lessonType" jhiTranslate="lmsapp27062024App.lesson.lessonType">Lesson Type</label>
+          <select class="form-control" name="lessonType" formControlName="lessonType" id="field_lessonType" data-cy="lessonType">
+            <option [ngValue]="null">{{ 'lmsapp27062024App.LessonTypeEnum.null' | translate }}</option>
+            @for (lessonTypeEnum of lessonTypeEnumValues; track $index) {
+              <option [value]="lessonTypeEnum">{{ 'lmsapp27062024App.LessonTypeEnum.' + lessonTypeEnum | translate }}</option>
+            }
+          </select>
+          @if (editForm.get('lessonType')!.invalid && (editForm.get('lessonType')!.dirty || editForm.get('lessonType')!.touched)) {
+            <div>
+              @if (editForm.get('lessonType')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_videoUrl" jhiTranslate="lmsapp27062024App.lesson.videoUrl">Video Url</label>
+          <input type="text" class="form-control" name="videoUrl" id="field_videoUrl" data-cy="videoUrl" formControlName="videoUrl" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_course" jhiTranslate="lmsapp27062024App.lesson.course">Course</label>
+          <select
+            class="form-control"
+            id="field_course"
+            data-cy="course"
+            name="course"
+            formControlName="course"
+            [compareWith]="compareCourse"
+          >
+            <option [ngValue]="null"></option>
+            @for (courseOption of coursesSharedCollection; track $index) {
+              <option [ngValue]="courseOption">{{ courseOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+{
+  "lmsapp27062024App": {
+    "PositionEnum": {
+      "null": "",
+      "ASSISTENT": "ASSISTENT",
+      "KATTA_OQITUVCHI": "KATTA_OQITUVCHI",
+      "DOTSENT": "DOTSENT",
+      "PROFESSOR": "PROFESSOR",
+      "KAFEDRA_MUDIRI": "KAFEDRA_MUDIRI"
+    }
+  }
+}

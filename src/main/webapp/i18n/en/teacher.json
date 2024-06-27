@@ -1,0 +1,44 @@
+{
+  "lmsapp27062024App": {
+    "teacher": {
+      "home": {
+        "title": "Teachers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Teacher",
+        "createOrEditLabel": "Create or edit a Teacher",
+        "notFound": "No Teachers found"
+      },
+      "created": "A new Teacher is created with identifier {{ param }}",
+      "updated": "A Teacher is updated with identifier {{ param }}",
+      "deleted": "A Teacher is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Teacher {{ id }}?"
+      },
+      "detail": {
+        "title": "Teacher"
+      },
+      "id": "ID",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "middleName": "Middle Name",
+      "gender": "Gender",
+      "birthdate": "Birthdate",
+      "phoneNumber": "Phone Number",
+      "email": "Email",
+      "passportNumber": "Passport Number",
+      "jshshir": "Jshshir",
+      "isActive": "Is Active",
+      "nationality": "Nationality",
+      "country": "Country",
+      "city": "City",
+      "region": "Region",
+      "addressLine": "Address Line",
+      "position": "Position",
+      "academicDegree": "Academic Degree",
+      "academicTitle": "Academic Title",
+      "user": "User",
+      "faculty": "Faculty",
+      "department": "Department"
+    }
+  }
+}

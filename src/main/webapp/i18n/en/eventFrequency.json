@@ -1,0 +1,10 @@
+{
+  "lmsapp27062024App": {
+    "EventFrequency": {
+      "null": "",
+      "NOREPEAT": "NOREPEAT",
+      "DAILY": "DAILY",
+      "WEEKLY": "WEEKLY"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "lmsapp27062024App": {
+    "AcademicTitleEnum": {
+      "null": "",
+      "ILMIY_UNVONSIZ": "ILMIY_UNVONSIZ",
+      "DOTSENT": "DOTSENT",
+      "PROFESSOR": "PROFESSOR"
+    }
+  }
+}

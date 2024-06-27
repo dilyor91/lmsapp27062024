@@ -1,0 +1,49 @@
+{
+  "annotations": {
+    "changelogDate": "20240627062131"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "point",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "totalQuestionCnt",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "correctAnswerCnt",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "wrongAnswerCnt",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "QuizResult",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "quiz",
+      "relationshipName": "quiz",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "student",
+      "relationshipName": "student",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "quizSession",
+      "relationshipName": "quizSession",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

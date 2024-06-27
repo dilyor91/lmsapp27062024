@@ -1,0 +1,26 @@
+{
+  "lmsapp27062024App": {
+    "quizQuestionGroup": {
+      "home": {
+        "title": "Quiz Question Groups",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Quiz Question Group",
+        "createOrEditLabel": "Create or edit a Quiz Question Group",
+        "notFound": "No Quiz Question Groups found"
+      },
+      "created": "A new Quiz Question Group is created with identifier {{ param }}",
+      "updated": "A Quiz Question Group is updated with identifier {{ param }}",
+      "deleted": "A Quiz Question Group is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Quiz Question Group {{ id }}?"
+      },
+      "detail": {
+        "title": "Quiz Question Group"
+      },
+      "id": "ID",
+      "questionCount": "Question Count",
+      "quiz": "Quiz",
+      "questionGroup": "Question Group"
+    }
+  }
+}

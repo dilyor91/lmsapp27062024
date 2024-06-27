@@ -1,0 +1,299 @@
+<div>
+  <h2 id="page-heading" data-cy="TeacherHeading">
+    <span jhiTranslate="lmsapp27062024App.teacher.home.title">Teachers</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.teacher.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-teacher"
+        [routerLink]="['/teacher/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.teacher.home.createLabel">Create a new Teacher</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (teachers?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="lmsapp27062024App.teacher.home.notFound">No Teachers found</span>
+    </div>
+  }
+
+  @if (teachers && teachers.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="firstName">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.firstName">First Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="lastName">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.lastName">Last Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="middleName">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.middleName">Middle Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="gender">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.gender">Gender</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="birthdate">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.birthdate">Birthdate</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="phoneNumber">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.phoneNumber">Phone Number</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="email">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.email">Email</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="passportNumber">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.passportNumber">Passport Number</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="jshshir">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.jshshir">Jshshir</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="isActive">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.isActive">Is Active</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nationality">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.nationality">Nationality</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="country">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.country">Country</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="city">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.city">City</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="region">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.region">Region</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="addressLine">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.addressLine">Address Line</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="position">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.position">Position</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="academicDegree">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.academicDegree">Academic Degree</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="academicTitle">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.academicTitle">Academic Title</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="user.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.user">User</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="faculty.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.faculty">Faculty</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="department.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.teacher.department">Department</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (teacher of teachers; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/teacher', teacher.id, 'view']">{{ teacher.id }}</a>
+              </td>
+              <td>{{ teacher.firstName }}</td>
+              <td>{{ teacher.lastName }}</td>
+              <td>{{ teacher.middleName }}</td>
+              <td [jhiTranslate]="'lmsapp27062024App.GenderEnum.' + (teacher.gender ?? 'null')">
+                {{ { null: '', MALE: 'MALE', FEMALE: 'FEMALE' }[teacher.gender ?? 'null'] }}
+              </td>
+              <td>{{ teacher.birthdate }}</td>
+              <td>{{ teacher.phoneNumber }}</td>
+              <td>{{ teacher.email }}</td>
+              <td>{{ teacher.passportNumber }}</td>
+              <td>{{ teacher.jshshir }}</td>
+              <td>{{ teacher.isActive }}</td>
+              <td>{{ teacher.nationality }}</td>
+              <td>{{ teacher.country }}</td>
+              <td>{{ teacher.city }}</td>
+              <td>{{ teacher.region }}</td>
+              <td>{{ teacher.addressLine }}</td>
+              <td [jhiTranslate]="'lmsapp27062024App.PositionEnum.' + (teacher.position ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    ASSISTENT: 'ASSISTENT',
+                    KATTA_OQITUVCHI: 'KATTA_OQITUVCHI',
+                    DOTSENT: 'DOTSENT',
+                    PROFESSOR: 'PROFESSOR',
+                    KAFEDRA_MUDIRI: 'KAFEDRA_MUDIRI',
+                  }[teacher.position ?? 'null']
+                }}
+              </td>
+              <td [jhiTranslate]="'lmsapp27062024App.AcademicDegreeEnum.' + (teacher.academicDegree ?? 'null')">
+                {{
+                  { null: '', ILMIY_DARAJASIZ: 'ILMIY_DARAJASIZ', PHD: 'PHD', FAN_DOCTORI: 'FAN_DOCTORI' }[teacher.academicDegree ?? 'null']
+                }}
+              </td>
+              <td [jhiTranslate]="'lmsapp27062024App.AcademicTitleEnum.' + (teacher.academicTitle ?? 'null')">
+                {{
+                  { null: '', ILMIY_UNVONSIZ: 'ILMIY_UNVONSIZ', DOTSENT: 'DOTSENT', PROFESSOR: 'PROFESSOR' }[
+                    teacher.academicTitle ?? 'null'
+                  ]
+                }}
+              </td>
+              <td>
+                {{ teacher.user?.id }}
+              </td>
+              <td>
+                @if (teacher.faculty) {
+                  <div>
+                    <a [routerLink]="['/faculty', teacher.faculty.id, 'view']">{{ teacher.faculty.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (teacher.department) {
+                  <div>
+                    <a [routerLink]="['/department', teacher.department.id, 'view']">{{ teacher.department.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/teacher', teacher.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/teacher', teacher.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(teacher)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (teachers && teachers.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

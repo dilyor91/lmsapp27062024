@@ -1,0 +1,292 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-teacher-heading" data-cy="TeacherCreateUpdateHeading" jhiTranslate="lmsapp27062024App.teacher.home.createOrEditLabel">
+        Create or edit a Teacher
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="lmsapp27062024App.teacher.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_firstName" jhiTranslate="lmsapp27062024App.teacher.firstName">First Name</label>
+          <input type="text" class="form-control" name="firstName" id="field_firstName" data-cy="firstName" formControlName="firstName" />
+          @if (editForm.get('firstName')!.invalid && (editForm.get('firstName')!.dirty || editForm.get('firstName')!.touched)) {
+            <div>
+              @if (editForm.get('firstName')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_lastName" jhiTranslate="lmsapp27062024App.teacher.lastName">Last Name</label>
+          <input type="text" class="form-control" name="lastName" id="field_lastName" data-cy="lastName" formControlName="lastName" />
+          @if (editForm.get('lastName')!.invalid && (editForm.get('lastName')!.dirty || editForm.get('lastName')!.touched)) {
+            <div>
+              @if (editForm.get('lastName')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_middleName" jhiTranslate="lmsapp27062024App.teacher.middleName">Middle Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="middleName"
+            id="field_middleName"
+            data-cy="middleName"
+            formControlName="middleName"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_gender" jhiTranslate="lmsapp27062024App.teacher.gender">Gender</label>
+          <select class="form-control" name="gender" formControlName="gender" id="field_gender" data-cy="gender">
+            <option [ngValue]="null">{{ 'lmsapp27062024App.GenderEnum.null' | translate }}</option>
+            @for (genderEnum of genderEnumValues; track $index) {
+              <option [value]="genderEnum">{{ 'lmsapp27062024App.GenderEnum.' + genderEnum | translate }}</option>
+            }
+          </select>
+          @if (editForm.get('gender')!.invalid && (editForm.get('gender')!.dirty || editForm.get('gender')!.touched)) {
+            <div>
+              @if (editForm.get('gender')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_birthdate" jhiTranslate="lmsapp27062024App.teacher.birthdate">Birthdate</label>
+          <input type="text" class="form-control" name="birthdate" id="field_birthdate" data-cy="birthdate" formControlName="birthdate" />
+          @if (editForm.get('birthdate')!.invalid && (editForm.get('birthdate')!.dirty || editForm.get('birthdate')!.touched)) {
+            <div>
+              @if (editForm.get('birthdate')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_phoneNumber" jhiTranslate="lmsapp27062024App.teacher.phoneNumber">Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="phoneNumber"
+            id="field_phoneNumber"
+            data-cy="phoneNumber"
+            formControlName="phoneNumber"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_email" jhiTranslate="lmsapp27062024App.teacher.email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+          @if (editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)) {
+            <div>
+              @if (editForm.get('email')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_passportNumber" jhiTranslate="lmsapp27062024App.teacher.passportNumber"
+            >Passport Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="passportNumber"
+            id="field_passportNumber"
+            data-cy="passportNumber"
+            formControlName="passportNumber"
+          />
+          @if (
+            editForm.get('passportNumber')!.invalid && (editForm.get('passportNumber')!.dirty || editForm.get('passportNumber')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('passportNumber')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_jshshir" jhiTranslate="lmsapp27062024App.teacher.jshshir">Jshshir</label>
+          <input type="text" class="form-control" name="jshshir" id="field_jshshir" data-cy="jshshir" formControlName="jshshir" />
+          @if (editForm.get('jshshir')!.invalid && (editForm.get('jshshir')!.dirty || editForm.get('jshshir')!.touched)) {
+            <div>
+              @if (editForm.get('jshshir')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_isActive" jhiTranslate="lmsapp27062024App.teacher.isActive">Is Active</label>
+          <input type="checkbox" class="form-check" name="isActive" id="field_isActive" data-cy="isActive" formControlName="isActive" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nationality" jhiTranslate="lmsapp27062024App.teacher.nationality">Nationality</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nationality"
+            id="field_nationality"
+            data-cy="nationality"
+            formControlName="nationality"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_country" jhiTranslate="lmsapp27062024App.teacher.country">Country</label>
+          <input type="text" class="form-control" name="country" id="field_country" data-cy="country" formControlName="country" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_city" jhiTranslate="lmsapp27062024App.teacher.city">City</label>
+          <input type="text" class="form-control" name="city" id="field_city" data-cy="city" formControlName="city" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_region" jhiTranslate="lmsapp27062024App.teacher.region">Region</label>
+          <input type="text" class="form-control" name="region" id="field_region" data-cy="region" formControlName="region" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_addressLine" jhiTranslate="lmsapp27062024App.teacher.addressLine">Address Line</label>
+          <input
+            type="text"
+            class="form-control"
+            name="addressLine"
+            id="field_addressLine"
+            data-cy="addressLine"
+            formControlName="addressLine"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_position" jhiTranslate="lmsapp27062024App.teacher.position">Position</label>
+          <select class="form-control" name="position" formControlName="position" id="field_position" data-cy="position">
+            <option [ngValue]="null">{{ 'lmsapp27062024App.PositionEnum.null' | translate }}</option>
+            @for (positionEnum of positionEnumValues; track $index) {
+              <option [value]="positionEnum">{{ 'lmsapp27062024App.PositionEnum.' + positionEnum | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_academicDegree" jhiTranslate="lmsapp27062024App.teacher.academicDegree"
+            >Academic Degree</label
+          >
+          <select
+            class="form-control"
+            name="academicDegree"
+            formControlName="academicDegree"
+            id="field_academicDegree"
+            data-cy="academicDegree"
+          >
+            <option [ngValue]="null">{{ 'lmsapp27062024App.AcademicDegreeEnum.null' | translate }}</option>
+            @for (academicDegreeEnum of academicDegreeEnumValues; track $index) {
+              <option [value]="academicDegreeEnum">{{ 'lmsapp27062024App.AcademicDegreeEnum.' + academicDegreeEnum | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_academicTitle" jhiTranslate="lmsapp27062024App.teacher.academicTitle">Academic Title</label>
+          <select
+            class="form-control"
+            name="academicTitle"
+            formControlName="academicTitle"
+            id="field_academicTitle"
+            data-cy="academicTitle"
+          >
+            <option [ngValue]="null">{{ 'lmsapp27062024App.AcademicTitleEnum.null' | translate }}</option>
+            @for (academicTitleEnum of academicTitleEnumValues; track $index) {
+              <option [value]="academicTitleEnum">{{ 'lmsapp27062024App.AcademicTitleEnum.' + academicTitleEnum | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_user" jhiTranslate="lmsapp27062024App.teacher.user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user" [compareWith]="compareUser">
+            <option [ngValue]="null"></option>
+            @for (userOption of usersSharedCollection; track $index) {
+              <option [ngValue]="userOption">{{ userOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_faculty" jhiTranslate="lmsapp27062024App.teacher.faculty">Faculty</label>
+          <select
+            class="form-control"
+            id="field_faculty"
+            data-cy="faculty"
+            name="faculty"
+            formControlName="faculty"
+            [compareWith]="compareFaculty"
+          >
+            <option [ngValue]="null"></option>
+            @for (facultyOption of facultiesSharedCollection; track $index) {
+              <option [ngValue]="facultyOption">{{ facultyOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_department" jhiTranslate="lmsapp27062024App.teacher.department">Department</label>
+          <select
+            class="form-control"
+            id="field_department"
+            data-cy="department"
+            name="department"
+            formControlName="department"
+            [compareWith]="compareDepartment"
+          >
+            <option [ngValue]="null"></option>
+            @for (departmentOption of departmentsSharedCollection; track $index) {
+              <option [ngValue]="departmentOption">{{ departmentOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

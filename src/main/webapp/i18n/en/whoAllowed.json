@@ -1,0 +1,10 @@
+{
+  "lmsapp27062024App": {
+    "WhoAllowed": {
+      "null": "",
+      "ONLY_TEACHERS": "ONLY_TEACHERS",
+      "TEACHER_AND_STUDENTS": "TEACHER_AND_STUDENTS",
+      "ANYONE": "ANYONE"
+    }
+  }
+}

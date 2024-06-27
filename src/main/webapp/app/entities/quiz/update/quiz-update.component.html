@@ -1,0 +1,95 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-quiz-heading" data-cy="QuizCreateUpdateHeading" jhiTranslate="lmsapp27062024App.quiz.home.createOrEditLabel">
+        Create or edit a Quiz
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="lmsapp27062024App.quiz.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_quizName" jhiTranslate="lmsapp27062024App.quiz.quizName">Quiz Name</label>
+          <input type="text" class="form-control" name="quizName" id="field_quizName" data-cy="quizName" formControlName="quizName" />
+          @if (editForm.get('quizName')!.invalid && (editForm.get('quizName')!.dirty || editForm.get('quizName')!.touched)) {
+            <div>
+              @if (editForm.get('quizName')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_timeInMinute" jhiTranslate="lmsapp27062024App.quiz.timeInMinute">Time In Minute</label>
+          <input
+            type="number"
+            class="form-control"
+            name="timeInMinute"
+            id="field_timeInMinute"
+            data-cy="timeInMinute"
+            formControlName="timeInMinute"
+          />
+          @if (editForm.get('timeInMinute')!.invalid && (editForm.get('timeInMinute')!.dirty || editForm.get('timeInMinute')!.touched)) {
+            <div>
+              @if (editForm.get('timeInMinute')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('timeInMinute')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_published" jhiTranslate="lmsapp27062024App.quiz.published">Published</label>
+          <input type="checkbox" class="form-check" name="published" id="field_published" data-cy="published" formControlName="published" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_course" jhiTranslate="lmsapp27062024App.quiz.course">Course</label>
+          <select
+            class="form-control"
+            id="field_course"
+            data-cy="course"
+            name="course"
+            formControlName="course"
+            [compareWith]="compareCourse"
+          >
+            <option [ngValue]="null"></option>
+            @for (courseOption of coursesSharedCollection; track $index) {
+              <option [ngValue]="courseOption">{{ courseOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

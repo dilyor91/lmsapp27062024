@@ -1,0 +1,10 @@
+{
+  "lmsapp27062024App": {
+    "AttendanceEnum": {
+      "null": "",
+      "PRESENT": "PRESENT",
+      "LATE": "LATE",
+      "ABSENT": "ABSENT"
+    }
+  }
+}

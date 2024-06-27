@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (calendarEvent()) {
+      <div>
+        <h2 data-cy="calendarEventDetailsHeading">
+          <span jhiTranslate="lmsapp27062024App.calendarEvent.detail.title">Calendar Event</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ calendarEvent()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.calendarEvent.title">Title</span></dt>
+          <dd>
+            <span>{{ calendarEvent()!.title }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.calendarEvent.content">Content</span></dt>
+          <dd>
+            <span>{{ calendarEvent()!.content }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.calendarEvent.date">Date</span></dt>
+          <dd>
+            <span>{{ calendarEvent()!.date | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.calendarEvent.startTime">Start Time</span></dt>
+          <dd>
+            <span>{{ calendarEvent()!.startTime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.calendarEvent.endTime">End Time</span></dt>
+          <dd>
+            <span>{{ calendarEvent()!.endTime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.calendarEvent.location">Location</span></dt>
+          <dd>
+            <span>{{ calendarEvent()!.location }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.calendarEvent.address">Address</span></dt>
+          <dd>
+            <span>{{ calendarEvent()!.address }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.calendarEvent.eventFrequency">Event Frequency</span></dt>
+          <dd>
+            <span [jhiTranslate]="'lmsapp27062024App.EventFrequency.' + (calendarEvent()!.eventFrequency ?? 'null')">{{
+              { null: '', NOREPEAT: 'NOREPEAT', DAILY: 'DAILY', WEEKLY: 'WEEKLY' }[calendarEvent()!.eventFrequency ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.calendarEvent.user">User</span></dt>
+          <dd>
+            <span>{{ calendarEvent()!.user?.id }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/calendar-event', calendarEvent()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

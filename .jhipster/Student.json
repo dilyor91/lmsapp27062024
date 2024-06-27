@@ -1,0 +1,145 @@
+{
+  "annotations": {
+    "changelogDate": "20240627062114"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "firstName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "middleName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "gender",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "birthdate",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "hemisId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "passportNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "jshshir",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "isActive",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "tutionType",
+      "fieldType": "TutionTypeEnum",
+      "fieldValues": "GRANT,KONTRAKT"
+    },
+    {
+      "fieldName": "nationality",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "country",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "region",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "addressLine",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "course",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "semester",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "educationLanguage",
+      "fieldType": "EducationLanguage",
+      "fieldValues": "UZBEK,RUSSIAN,ENGLISH"
+    },
+    {
+      "fieldName": "educationType",
+      "fieldType": "EducationType",
+      "fieldValues": "KUNDUZGI,KECHKI,SIRTQI"
+    },
+    {
+      "fieldName": "educationForm",
+      "fieldType": "EducationForm",
+      "fieldValues": "BAKALAVR,MAGISTR"
+    }
+  ],
+  "name": "Student",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "studyAcademicYear",
+      "relationshipName": "studyAcademicYear",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "faculty",
+      "relationshipName": "faculty",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "speciality",
+      "relationshipName": "speciality",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "group",
+      "relationshipName": "group",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

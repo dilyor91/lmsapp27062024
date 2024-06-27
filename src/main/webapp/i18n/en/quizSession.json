@@ -1,0 +1,28 @@
+{
+  "lmsapp27062024App": {
+    "quizSession": {
+      "home": {
+        "title": "Quiz Sessions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Quiz Session",
+        "createOrEditLabel": "Create or edit a Quiz Session",
+        "notFound": "No Quiz Sessions found"
+      },
+      "created": "A new Quiz Session is created with identifier {{ param }}",
+      "updated": "A Quiz Session is updated with identifier {{ param }}",
+      "deleted": "A Quiz Session is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Quiz Session {{ id }}?"
+      },
+      "detail": {
+        "title": "Quiz Session"
+      },
+      "id": "ID",
+      "startTime": "Start Time",
+      "endTime": "End Time",
+      "quizSessionEnum": "Quiz Session Enum",
+      "student": "Student",
+      "quiz": "Quiz"
+    }
+  }
+}

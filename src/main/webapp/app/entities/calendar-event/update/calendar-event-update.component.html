@@ -1,0 +1,113 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-calendar-event-heading"
+        data-cy="CalendarEventCreateUpdateHeading"
+        jhiTranslate="lmsapp27062024App.calendarEvent.home.createOrEditLabel"
+      >
+        Create or edit a Calendar Event
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="lmsapp27062024App.calendarEvent.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_title" jhiTranslate="lmsapp27062024App.calendarEvent.title">Title</label>
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_content" jhiTranslate="lmsapp27062024App.calendarEvent.content">Content</label>
+          <input type="text" class="form-control" name="content" id="field_content" data-cy="content" formControlName="content" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_date" jhiTranslate="lmsapp27062024App.calendarEvent.date">Date</label>
+          <div class="d-flex">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="datetime-local"
+              class="form-control"
+              name="date"
+              formControlName="date"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_startTime" jhiTranslate="lmsapp27062024App.calendarEvent.startTime">Start Time</label>
+          <input type="number" class="form-control" name="startTime" id="field_startTime" data-cy="startTime" formControlName="startTime" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_endTime" jhiTranslate="lmsapp27062024App.calendarEvent.endTime">End Time</label>
+          <input type="number" class="form-control" name="endTime" id="field_endTime" data-cy="endTime" formControlName="endTime" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_location" jhiTranslate="lmsapp27062024App.calendarEvent.location">Location</label>
+          <input type="text" class="form-control" name="location" id="field_location" data-cy="location" formControlName="location" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_address" jhiTranslate="lmsapp27062024App.calendarEvent.address">Address</label>
+          <input type="text" class="form-control" name="address" id="field_address" data-cy="address" formControlName="address" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_eventFrequency" jhiTranslate="lmsapp27062024App.calendarEvent.eventFrequency"
+            >Event Frequency</label
+          >
+          <select
+            class="form-control"
+            name="eventFrequency"
+            formControlName="eventFrequency"
+            id="field_eventFrequency"
+            data-cy="eventFrequency"
+          >
+            <option [ngValue]="null">{{ 'lmsapp27062024App.EventFrequency.null' | translate }}</option>
+            @for (eventFrequency of eventFrequencyValues; track $index) {
+              <option [value]="eventFrequency">{{ 'lmsapp27062024App.EventFrequency.' + eventFrequency | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_user" jhiTranslate="lmsapp27062024App.calendarEvent.user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user" [compareWith]="compareUser">
+            <option [ngValue]="null"></option>
+            @for (userOption of usersSharedCollection; track $index) {
+              <option [ngValue]="userOption">{{ userOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

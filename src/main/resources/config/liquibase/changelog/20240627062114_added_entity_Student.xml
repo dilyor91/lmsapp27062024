@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Student.
+    -->
+    <changeSet id="20240627062114-1" author="jhipster">
+        <createTable tableName="student">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="middle_name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="gender" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="birthdate" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="phone_number" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="hemis_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="passport_number" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="jshshir" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="is_active" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="tution_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="nationality" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="country" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="city" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="region" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="address_line" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="course" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="semester" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="education_language" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="education_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="education_form" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="study_academic_year_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_student__study_academic_year_id" />
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="faculty_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="speciality_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="group_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20240627062114-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/student.csv"
+                  separator=";"
+                  tableName="student"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="first_name" type="string"/>
+            <column name="last_name" type="string"/>
+            <column name="middle_name" type="string"/>
+            <column name="gender" type="string"/>
+            <column name="birthdate" type="string"/>
+            <column name="phone_number" type="string"/>
+            <column name="email" type="string"/>
+            <column name="hemis_id" type="numeric"/>
+            <column name="passport_number" type="string"/>
+            <column name="jshshir" type="string"/>
+            <column name="is_active" type="boolean"/>
+            <column name="tution_type" type="string"/>
+            <column name="nationality" type="string"/>
+            <column name="country" type="string"/>
+            <column name="city" type="string"/>
+            <column name="region" type="string"/>
+            <column name="address_line" type="string"/>
+            <column name="course" type="numeric"/>
+            <column name="semester" type="numeric"/>
+            <column name="education_language" type="string"/>
+            <column name="education_type" type="string"/>
+            <column name="education_form" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

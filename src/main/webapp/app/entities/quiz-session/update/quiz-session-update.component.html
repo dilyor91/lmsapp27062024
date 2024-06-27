@@ -1,0 +1,115 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-quiz-session-heading"
+        data-cy="QuizSessionCreateUpdateHeading"
+        jhiTranslate="lmsapp27062024App.quizSession.home.createOrEditLabel"
+      >
+        Create or edit a Quiz Session
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="lmsapp27062024App.quizSession.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_startTime" jhiTranslate="lmsapp27062024App.quizSession.startTime">Start Time</label>
+          <div class="d-flex">
+            <input
+              id="field_startTime"
+              data-cy="startTime"
+              type="datetime-local"
+              class="form-control"
+              name="startTime"
+              formControlName="startTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_endTime" jhiTranslate="lmsapp27062024App.quizSession.endTime">End Time</label>
+          <div class="d-flex">
+            <input
+              id="field_endTime"
+              data-cy="endTime"
+              type="datetime-local"
+              class="form-control"
+              name="endTime"
+              formControlName="endTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_quizSessionEnum" jhiTranslate="lmsapp27062024App.quizSession.quizSessionEnum"
+            >Quiz Session Enum</label
+          >
+          <select
+            class="form-control"
+            name="quizSessionEnum"
+            formControlName="quizSessionEnum"
+            id="field_quizSessionEnum"
+            data-cy="quizSessionEnum"
+          >
+            <option [ngValue]="null">{{ 'lmsapp27062024App.QuizSessionEnum.null' | translate }}</option>
+            @for (quizSessionEnum of quizSessionEnumValues; track $index) {
+              <option [value]="quizSessionEnum">{{ 'lmsapp27062024App.QuizSessionEnum.' + quizSessionEnum | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_student" jhiTranslate="lmsapp27062024App.quizSession.student">Student</label>
+          <select
+            class="form-control"
+            id="field_student"
+            data-cy="student"
+            name="student"
+            formControlName="student"
+            [compareWith]="compareStudent"
+          >
+            <option [ngValue]="null"></option>
+            @for (studentOption of studentsSharedCollection; track $index) {
+              <option [ngValue]="studentOption">{{ studentOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_quiz" jhiTranslate="lmsapp27062024App.quizSession.quiz">Quiz</label>
+          <select class="form-control" id="field_quiz" data-cy="quiz" name="quiz" formControlName="quiz" [compareWith]="compareQuiz">
+            <option [ngValue]="null"></option>
+            @for (quizOption of quizzesSharedCollection; track $index) {
+              <option [ngValue]="quizOption">{{ quizOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

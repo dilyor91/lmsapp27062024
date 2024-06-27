@@ -1,0 +1,32 @@
+{
+  "lmsapp27062024App": {
+    "wikiPage": {
+      "home": {
+        "title": "Wiki Pages",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Wiki Page",
+        "createOrEditLabel": "Create or edit a Wiki Page",
+        "notFound": "No Wiki Pages found"
+      },
+      "created": "A new Wiki Page is created with identifier {{ param }}",
+      "updated": "A Wiki Page is updated with identifier {{ param }}",
+      "deleted": "A Wiki Page is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Wiki Page {{ id }}?"
+      },
+      "detail": {
+        "title": "Wiki Page"
+      },
+      "id": "ID",
+      "title": "Title",
+      "content": "Content",
+      "whoAllowed": "Who Allowed",
+      "addToStudents": "Add To Students",
+      "addToStudentsDate": "Add To Students Date",
+      "publishedAt": "Published At",
+      "published": "Published",
+      "notifyUsersChanges": "Notify Users Changes",
+      "course": "Course"
+    }
+  }
+}

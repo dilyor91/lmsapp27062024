@@ -1,0 +1,9 @@
+{
+  "lmsapp27062024App": {
+    "GenderEnum": {
+      "null": "",
+      "MALE": "MALE",
+      "FEMALE": "FEMALE"
+    }
+  }
+}

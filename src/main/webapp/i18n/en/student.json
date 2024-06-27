@@ -1,0 +1,50 @@
+{
+  "lmsapp27062024App": {
+    "student": {
+      "home": {
+        "title": "Students",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Student",
+        "createOrEditLabel": "Create or edit a Student",
+        "notFound": "No Students found"
+      },
+      "created": "A new Student is created with identifier {{ param }}",
+      "updated": "A Student is updated with identifier {{ param }}",
+      "deleted": "A Student is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Student {{ id }}?"
+      },
+      "detail": {
+        "title": "Student"
+      },
+      "id": "ID",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "middleName": "Middle Name",
+      "gender": "Gender",
+      "birthdate": "Birthdate",
+      "phoneNumber": "Phone Number",
+      "email": "Email",
+      "hemisId": "Hemis Id",
+      "passportNumber": "Passport Number",
+      "jshshir": "Jshshir",
+      "isActive": "Is Active",
+      "tutionType": "Tution Type",
+      "nationality": "Nationality",
+      "country": "Country",
+      "city": "City",
+      "region": "Region",
+      "addressLine": "Address Line",
+      "course": "Course",
+      "semester": "Semester",
+      "educationLanguage": "Education Language",
+      "educationType": "Education Type",
+      "educationForm": "Education Form",
+      "studyAcademicYear": "Study Academic Year",
+      "user": "User",
+      "faculty": "Faculty",
+      "speciality": "Speciality",
+      "group": "Group"
+    }
+  }
+}

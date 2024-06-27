@@ -1,0 +1,342 @@
+<div>
+  <h2 id="page-heading" data-cy="StudentHeading">
+    <span jhiTranslate="lmsapp27062024App.student.home.title">Students</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.student.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-student"
+        [routerLink]="['/student/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.student.home.createLabel">Create a new Student</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (students?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="lmsapp27062024App.student.home.notFound">No Students found</span>
+    </div>
+  }
+
+  @if (students && students.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="firstName">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.firstName">First Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="lastName">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.lastName">Last Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="middleName">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.middleName">Middle Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="gender">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.gender">Gender</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="birthdate">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.birthdate">Birthdate</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="phoneNumber">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.phoneNumber">Phone Number</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="email">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.email">Email</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="hemisId">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.hemisId">Hemis Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="passportNumber">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.passportNumber">Passport Number</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="jshshir">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.jshshir">Jshshir</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="isActive">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.isActive">Is Active</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="tutionType">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.tutionType">Tution Type</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nationality">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.nationality">Nationality</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="country">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.country">Country</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="city">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.city">City</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="region">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.region">Region</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="addressLine">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.addressLine">Address Line</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="course">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.course">Course</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="semester">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.semester">Semester</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="educationLanguage">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.educationLanguage">Education Language</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="educationType">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.educationType">Education Type</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="educationForm">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.educationForm">Education Form</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="studyAcademicYear.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.studyAcademicYear">Study Academic Year</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="user.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.user">User</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="faculty.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.faculty">Faculty</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="speciality.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.speciality">Speciality</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="group.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.student.group">Group</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (student of students; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/student', student.id, 'view']">{{ student.id }}</a>
+              </td>
+              <td>{{ student.firstName }}</td>
+              <td>{{ student.lastName }}</td>
+              <td>{{ student.middleName }}</td>
+              <td>{{ student.gender }}</td>
+              <td>{{ student.birthdate }}</td>
+              <td>{{ student.phoneNumber }}</td>
+              <td>{{ student.email }}</td>
+              <td>{{ student.hemisId }}</td>
+              <td>{{ student.passportNumber }}</td>
+              <td>{{ student.jshshir }}</td>
+              <td>{{ student.isActive }}</td>
+              <td [jhiTranslate]="'lmsapp27062024App.TutionTypeEnum.' + (student.tutionType ?? 'null')">
+                {{ { null: '', GRANT: 'GRANT', KONTRAKT: 'KONTRAKT' }[student.tutionType ?? 'null'] }}
+              </td>
+              <td>{{ student.nationality }}</td>
+              <td>{{ student.country }}</td>
+              <td>{{ student.city }}</td>
+              <td>{{ student.region }}</td>
+              <td>{{ student.addressLine }}</td>
+              <td>{{ student.course }}</td>
+              <td>{{ student.semester }}</td>
+              <td [jhiTranslate]="'lmsapp27062024App.EducationLanguage.' + (student.educationLanguage ?? 'null')">
+                {{ { null: '', UZBEK: 'UZBEK', RUSSIAN: 'RUSSIAN', ENGLISH: 'ENGLISH' }[student.educationLanguage ?? 'null'] }}
+              </td>
+              <td [jhiTranslate]="'lmsapp27062024App.EducationType.' + (student.educationType ?? 'null')">
+                {{ { null: '', KUNDUZGI: 'KUNDUZGI', KECHKI: 'KECHKI', SIRTQI: 'SIRTQI' }[student.educationType ?? 'null'] }}
+              </td>
+              <td [jhiTranslate]="'lmsapp27062024App.EducationForm.' + (student.educationForm ?? 'null')">
+                {{ { null: '', BAKALAVR: 'BAKALAVR', MAGISTR: 'MAGISTR' }[student.educationForm ?? 'null'] }}
+              </td>
+              <td>
+                @if (student.studyAcademicYear) {
+                  <div>
+                    <a [routerLink]="['/study-academic-year', student.studyAcademicYear.id, 'view']">{{ student.studyAcademicYear.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                {{ student.user?.id }}
+              </td>
+              <td>
+                @if (student.faculty) {
+                  <div>
+                    <a [routerLink]="['/faculty', student.faculty.id, 'view']">{{ student.faculty.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (student.speciality) {
+                  <div>
+                    <a [routerLink]="['/speciality', student.speciality.id, 'view']">{{ student.speciality.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (student.group) {
+                  <div>
+                    <a [routerLink]="['/group', student.group.id, 'view']">{{ student.group.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/student', student.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/student', student.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(student)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (students && students.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

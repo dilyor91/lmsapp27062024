@@ -1,0 +1,10 @@
+{
+  "lmsapp27062024App": {
+    "UserStatus": {
+      "null": "",
+      "ACTIVE": "ACTIVE",
+      "PENDING": "PENDING",
+      "BLOCKED": "BLOCKED"
+    }
+  }
+}

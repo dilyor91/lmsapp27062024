@@ -1,0 +1,131 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-quiz-result-heading"
+        data-cy="QuizResultCreateUpdateHeading"
+        jhiTranslate="lmsapp27062024App.quizResult.home.createOrEditLabel"
+      >
+        Create or edit a Quiz Result
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="lmsapp27062024App.quizResult.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_point" jhiTranslate="lmsapp27062024App.quizResult.point">Point</label>
+          <input type="number" class="form-control" name="point" id="field_point" data-cy="point" formControlName="point" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_totalQuestionCnt" jhiTranslate="lmsapp27062024App.quizResult.totalQuestionCnt"
+            >Total Question Cnt</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="totalQuestionCnt"
+            id="field_totalQuestionCnt"
+            data-cy="totalQuestionCnt"
+            formControlName="totalQuestionCnt"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_correctAnswerCnt" jhiTranslate="lmsapp27062024App.quizResult.correctAnswerCnt"
+            >Correct Answer Cnt</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="correctAnswerCnt"
+            id="field_correctAnswerCnt"
+            data-cy="correctAnswerCnt"
+            formControlName="correctAnswerCnt"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_wrongAnswerCnt" jhiTranslate="lmsapp27062024App.quizResult.wrongAnswerCnt"
+            >Wrong Answer Cnt</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="wrongAnswerCnt"
+            id="field_wrongAnswerCnt"
+            data-cy="wrongAnswerCnt"
+            formControlName="wrongAnswerCnt"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_quiz" jhiTranslate="lmsapp27062024App.quizResult.quiz">Quiz</label>
+          <select class="form-control" id="field_quiz" data-cy="quiz" name="quiz" formControlName="quiz" [compareWith]="compareQuiz">
+            <option [ngValue]="null"></option>
+            @for (quizOption of quizzesSharedCollection; track $index) {
+              <option [ngValue]="quizOption">{{ quizOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_student" jhiTranslate="lmsapp27062024App.quizResult.student">Student</label>
+          <select
+            class="form-control"
+            id="field_student"
+            data-cy="student"
+            name="student"
+            formControlName="student"
+            [compareWith]="compareStudent"
+          >
+            <option [ngValue]="null"></option>
+            @for (studentOption of studentsSharedCollection; track $index) {
+              <option [ngValue]="studentOption">{{ studentOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_quizSession" jhiTranslate="lmsapp27062024App.quizResult.quizSession">Quiz Session</label>
+          <select
+            class="form-control"
+            id="field_quizSession"
+            data-cy="quizSession"
+            name="quizSession"
+            formControlName="quizSession"
+            [compareWith]="compareQuizSession"
+          >
+            <option [ngValue]="null"></option>
+            @for (quizSessionOption of quizSessionsSharedCollection; track $index) {
+              <option [ngValue]="quizSessionOption">{{ quizSessionOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

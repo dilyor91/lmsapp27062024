@@ -1,0 +1,162 @@
+<div>
+  <h2 id="page-heading" data-cy="QuizCourseSectionHeading">
+    <span jhiTranslate="lmsapp27062024App.quizCourseSection.home.title">Quiz Course Sections</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.quizCourseSection.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-quiz-course-section"
+        [routerLink]="['/quiz-course-section/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.quizCourseSection.home.createLabel">Create a new Quiz Course Section</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (quizCourseSections?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="lmsapp27062024App.quizCourseSection.home.notFound">No Quiz Course Sections found</span>
+    </div>
+  }
+
+  @if (quizCourseSections && quizCourseSections.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="startDate">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.quizCourseSection.startDate">Start Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="endDate">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.quizCourseSection.endDate">End Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="course.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.quizCourseSection.course">Course</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="courseSection.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.quizCourseSection.courseSection">Course Section</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="quiz.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.quizCourseSection.quiz">Quiz</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (quizCourseSection of quizCourseSections; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/quiz-course-section', quizCourseSection.id, 'view']">{{ quizCourseSection.id }}</a>
+              </td>
+              <td>{{ quizCourseSection.startDate | formatMediumDatetime }}</td>
+              <td>{{ quizCourseSection.endDate | formatMediumDatetime }}</td>
+              <td>
+                @if (quizCourseSection.course) {
+                  <div>
+                    <a [routerLink]="['/course', quizCourseSection.course.id, 'view']">{{ quizCourseSection.course.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (quizCourseSection.courseSection) {
+                  <div>
+                    <a [routerLink]="['/course-section', quizCourseSection.courseSection.id, 'view']">{{
+                      quizCourseSection.courseSection.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (quizCourseSection.quiz) {
+                  <div>
+                    <a [routerLink]="['/quiz', quizCourseSection.quiz.id, 'view']">{{ quizCourseSection.quiz.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/quiz-course-section', quizCourseSection.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/quiz-course-section', quizCourseSection.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(quizCourseSection)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (quizCourseSections && quizCourseSections.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

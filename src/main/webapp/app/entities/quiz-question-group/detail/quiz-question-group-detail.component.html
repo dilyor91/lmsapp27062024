@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (quizQuestionGroup()) {
+      <div>
+        <h2 data-cy="quizQuestionGroupDetailsHeading">
+          <span jhiTranslate="lmsapp27062024App.quizQuestionGroup.detail.title">Quiz Question Group</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ quizQuestionGroup()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizQuestionGroup.questionCount">Question Count</span></dt>
+          <dd>
+            <span>{{ quizQuestionGroup()!.questionCount }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizQuestionGroup.quiz">Quiz</span></dt>
+          <dd>
+            @if (quizQuestionGroup()!.quiz) {
+              <div>
+                <a [routerLink]="['/quiz', quizQuestionGroup()!.quiz?.id, 'view']">{{ quizQuestionGroup()!.quiz?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.quizQuestionGroup.questionGroup">Question Group</span></dt>
+          <dd>
+            @if (quizQuestionGroup()!.questionGroup) {
+              <div>
+                <a [routerLink]="['/question-group', quizQuestionGroup()!.questionGroup?.id, 'view']">{{
+                  quizQuestionGroup()!.questionGroup?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/quiz-question-group', quizQuestionGroup()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

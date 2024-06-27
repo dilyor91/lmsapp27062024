@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (studentAnswerQuestion()) {
+      <div>
+        <h2 data-cy="studentAnswerQuestionDetailsHeading">
+          <span jhiTranslate="lmsapp27062024App.studentAnswerQuestion.detail.title">Student Answer Question</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ studentAnswerQuestion()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.studentAnswerQuestion.isCorrect">Is Correct</span></dt>
+          <dd>
+            <span>{{ studentAnswerQuestion()!.isCorrect }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.studentAnswerQuestion.question">Question</span></dt>
+          <dd>
+            @if (studentAnswerQuestion()!.question) {
+              <div>
+                <a [routerLink]="['/question', studentAnswerQuestion()!.question?.id, 'view']">{{
+                  studentAnswerQuestion()!.question?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.studentAnswerQuestion.option">Option</span></dt>
+          <dd>
+            @if (studentAnswerQuestion()!.option) {
+              <div>
+                <a [routerLink]="['/option', studentAnswerQuestion()!.option?.id, 'view']">{{ studentAnswerQuestion()!.option?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.studentAnswerQuestion.quizSession">Quiz Session</span></dt>
+          <dd>
+            @if (studentAnswerQuestion()!.quizSession) {
+              <div>
+                <a [routerLink]="['/quiz-session', studentAnswerQuestion()!.quizSession?.id, 'view']">{{
+                  studentAnswerQuestion()!.quizSession?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/student-answer-question', studentAnswerQuestion()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

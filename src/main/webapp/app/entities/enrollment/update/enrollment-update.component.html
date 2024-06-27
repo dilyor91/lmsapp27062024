@@ -1,0 +1,157 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-enrollment-heading"
+        data-cy="EnrollmentCreateUpdateHeading"
+        jhiTranslate="lmsapp27062024App.enrollment.home.createOrEditLabel"
+      >
+        Create or edit a Enrollment
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="lmsapp27062024App.enrollment.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_enrollmentStatus" jhiTranslate="lmsapp27062024App.enrollment.enrollmentStatus"
+            >Enrollment Status</label
+          >
+          <select
+            class="form-control"
+            name="enrollmentStatus"
+            formControlName="enrollmentStatus"
+            id="field_enrollmentStatus"
+            data-cy="enrollmentStatus"
+          >
+            <option [ngValue]="null">{{ 'lmsapp27062024App.EnrollmentStatusEnum.null' | translate }}</option>
+            @for (enrollmentStatusEnum of enrollmentStatusEnumValues; track $index) {
+              <option [value]="enrollmentStatusEnum">
+                {{ 'lmsapp27062024App.EnrollmentStatusEnum.' + enrollmentStatusEnum | translate }}
+              </option>
+            }
+          </select>
+          @if (
+            editForm.get('enrollmentStatus')!.invalid &&
+            (editForm.get('enrollmentStatus')!.dirty || editForm.get('enrollmentStatus')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('enrollmentStatus')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_lastActivityAt" jhiTranslate="lmsapp27062024App.enrollment.lastActivityAt"
+            >Last Activity At</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_lastActivityAt"
+              data-cy="lastActivityAt"
+              type="datetime-local"
+              class="form-control"
+              name="lastActivityAt"
+              formControlName="lastActivityAt"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_enrollmentDate" jhiTranslate="lmsapp27062024App.enrollment.enrollmentDate"
+            >Enrollment Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_enrollmentDate"
+              data-cy="enrollmentDate"
+              type="datetime-local"
+              class="form-control"
+              name="enrollmentDate"
+              formControlName="enrollmentDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_student" jhiTranslate="lmsapp27062024App.enrollment.student">Student</label>
+          <select
+            class="form-control"
+            id="field_student"
+            data-cy="student"
+            name="student"
+            formControlName="student"
+            [compareWith]="compareStudent"
+          >
+            <option [ngValue]="null"></option>
+            @for (studentOption of studentsSharedCollection; track $index) {
+              <option [ngValue]="studentOption">{{ studentOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_courseSection" jhiTranslate="lmsapp27062024App.enrollment.courseSection"
+            >Course Section</label
+          >
+          <select
+            class="form-control"
+            id="field_courseSection"
+            data-cy="courseSection"
+            name="courseSection"
+            formControlName="courseSection"
+            [compareWith]="compareCourseSection"
+          >
+            <option [ngValue]="null"></option>
+            @for (courseSectionOption of courseSectionsSharedCollection; track $index) {
+              <option [ngValue]="courseSectionOption">{{ courseSectionOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_course" jhiTranslate="lmsapp27062024App.enrollment.course">Course</label>
+          <select
+            class="form-control"
+            id="field_course"
+            data-cy="course"
+            name="course"
+            formControlName="course"
+            [compareWith]="compareCourse"
+          >
+            <option [ngValue]="null"></option>
+            @for (courseOption of coursesSharedCollection; track $index) {
+              <option [ngValue]="courseOption">{{ courseOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

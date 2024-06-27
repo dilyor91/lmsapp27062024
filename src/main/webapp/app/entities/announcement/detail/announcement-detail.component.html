@@ -1,0 +1,71 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (announcement()) {
+      <div>
+        <h2 data-cy="announcementDetailsHeading"><span jhiTranslate="lmsapp27062024App.announcement.detail.title">Announcement</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ announcement()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.announcement.title">Title</span></dt>
+          <dd>
+            <span>{{ announcement()!.title }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.announcement.content">Content</span></dt>
+          <dd>
+            <span>{{ announcement()!.content }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.announcement.attachmentId">Attachment Id</span></dt>
+          <dd>
+            <span>{{ announcement()!.attachmentId }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.announcement.delayPost">Delay Post</span></dt>
+          <dd>
+            <span>{{ announcement()!.delayPost }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.announcement.postAt">Post At</span></dt>
+          <dd>
+            <span>{{ announcement()!.postAt | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.announcement.published">Published</span></dt>
+          <dd>
+            <span>{{ announcement()!.published }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.announcement.course">Course</span></dt>
+          <dd>
+            @if (announcement()!.course) {
+              <div>
+                <a [routerLink]="['/course', announcement()!.course?.id, 'view']">{{ announcement()!.course?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.announcement.courseSection">Course Section</span></dt>
+          <dd>
+            @for (courseSection of announcement()!.courseSections; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/course-section', courseSection.id, 'view']">{{ courseSection?.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/announcement', announcement()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

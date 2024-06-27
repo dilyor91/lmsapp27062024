@@ -1,0 +1,40 @@
+{
+  "annotations": {
+    "changelogDate": "20240627062127"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "startTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "endTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "quizSessionEnum",
+      "fieldType": "QuizSessionEnum",
+      "fieldValues": "IN_PROGRESS,FINISHED"
+    }
+  ],
+  "name": "QuizSession",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "student",
+      "relationshipName": "student",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "quiz",
+      "relationshipName": "quiz",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

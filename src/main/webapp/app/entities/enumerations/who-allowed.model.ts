@@ -1,0 +1,7 @@
+export enum WhoAllowed {
+  ONLY_TEACHERS = 'ONLY_TEACHERS',
+
+  TEACHER_AND_STUDENTS = 'TEACHER_AND_STUDENTS',
+
+  ANYONE = 'ANYONE',
+}
