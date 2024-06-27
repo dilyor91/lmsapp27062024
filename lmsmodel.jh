@@ -1,0 +1,393 @@
+entity Course {
+    courseName String required
+    courseCode String required
+    courseImagePath String 
+    courseStartDate Instant required
+    courseEndDate Instant required
+    courseFormat String required
+    published Boolean required
+    selfEnrollment Boolean
+    selfEnrollmentCode String
+    storageQuota Integer required
+    status Boolean required
+}
+
+entity CourseSection {
+    sectionName String required
+}
+
+entity Accounts {
+    username String required
+    fullName String required
+    sortableName String required
+    avatarImageUrl String
+    phone String required
+    locale String
+    gender String required
+    userType UserType required
+    userStatus UserStatus required
+}
+
+entity Enrollment {
+   enrollmentStatus EnrollmentStatusEnum required
+   lastActivityAt Instant
+   enrollmentDate Instant
+}
+
+entity User{
+
+}
+
+entity Announcement {
+   title String required
+   content String required
+   attachmentId Long
+   delayPost Boolean
+   postAt Instant
+   published Boolean
+}
+
+entity Assignment {
+    name String required
+    content String
+    points Float
+    submissionType SubmissionTypeEnum
+    allowedAttempts Integer
+    startDate Instant
+    endDate Instant
+    dueDate Instant
+    published Boolean
+}
+
+entity CalendarEvent {
+    title String
+    content String
+    date Instant
+    startTime Integer
+    endTime Integer
+    location String
+    address String
+    eventFrequency EventFrequency 
+}
+
+entity WikiPage {
+    title String 
+    content String
+    whoAllowed WhoAllowed
+    addToStudents Boolean
+    addToStudentsDate Instant
+    publishedAt Instant
+    published Boolean
+    notifyUsersChanges Boolean
+}
+
+entity Attendance {
+    attendanceDate Instant
+}
+
+entity AttendanceDetail {
+    attendanceEnum AttendanceEnum
+}
+
+entity Student {
+   firstName String required
+   lastName String required
+   middleName String required
+   gender String required
+   birthdate String required
+   phoneNumber String
+   email String required
+   hemisId Long 
+   passportNumber String required
+   jshshir String required
+   isActive Boolean
+   tutionType TutionTypeEnum
+   nationality String
+   country String
+   city String
+   region String
+   addressLine String
+   course Integer
+   semester Integer
+   educationLanguage EducationLanguage
+   educationType EducationType
+   educationForm EducationForm
+}
+
+entity Teacher {
+   firstName String required
+   lastName String required
+   middleName String
+   gender GenderEnum required
+   birthdate String required
+   phoneNumber String
+   email String required
+   passportNumber String required
+   jshshir String required
+   isActive Boolean
+   nationality String
+   country String
+   city String
+   region String
+   addressLine String
+   position PositionEnum
+   academicDegree AcademicDegreeEnum
+   academicTitle AcademicTitleEnum
+}
+
+entity StudyAcademicYear {
+   fromDate Instant
+   endDate Instant
+}
+
+enum PositionEnum {
+  ASSISTENT,
+  KATTA_OQITUVCHI,
+  DOTSENT,
+  PROFESSOR,
+  KAFEDRA_MUDIRI
+}
+
+enum AcademicDegreeEnum {
+   ILMIY_DARAJASIZ,
+   PHD,
+   FAN_DOCTORI
+}
+
+enum AcademicTitleEnum {
+   ILMIY_UNVONSIZ,
+   DOTSENT,
+   PROFESSOR
+}
+
+enum GenderEnum {
+   MALE, FEMALE
+}
+
+enum TutionTypeEnum {
+   GRANT, KONTRAKT
+}
+
+enum EducationLanguage {
+   UZBEK, RUSSIAN, ENGLISH
+}
+
+enum EducationType {
+   KUNDUZGI, KECHKI, SIRTQI
+}
+
+enum EducationForm {
+   BAKALAVR, MAGISTR 
+}
+
+
+enum AttendanceEnum {
+    PRESENT, ABSENT, LATE, UNMARKED
+}
+
+enum WhoAllowed{
+   ONLY_TEACHERS, TEACHER_AND_STUDENTS, ANYONE
+}
+
+enum EventFrequency {
+    NOREPEAT, DAILY, WEEKLY
+}
+
+enum SubmissionTypeEnum {
+    ONLINE, PAPER
+}
+enum EnrollmentStatusEnum {
+   ACTIVE, REJECTED, PENDING
+}
+
+enum UserType {
+  STUDENT, TEACHER
+}
+
+enum UserStatus {
+  ACTIVE, PENDING, BLOCKED
+}
+
+relationship OneToOne {
+  Teacher{user} to User
+  Course{user} to User
+  Student{studyAcademicYear} to StudyAcademicYear
+}
+
+entity Faculty {
+   name String
+}
+
+entity Speciality {
+   name String
+}
+
+entity Group {
+   name String 
+}
+
+entity Department {
+   name String
+}
+
+entity QuestionGroup {
+   name String required
+}
+
+entity Question {
+   questionText String required
+   point Integer 
+}
+
+entity Option {
+   optionText String required
+   isCorrect Boolean required
+}
+
+entity Quiz {
+   quizName String required
+   timeInMinute Integer required
+   published Boolean
+}
+
+entity QuizQuestionGroup {
+   questionCount Integer
+}
+
+entity QuizCourseSection {
+   startDate Instant required
+   endDate Instant required
+}
+
+enum QuizSessionEnum {
+   IN_PROGRESS, FINISHED
+}
+
+entity QuizSession {
+   startTime Instant 
+   endTime Instant
+   quizSessionEnum QuizSessionEnum 
+}
+
+entity StudentOption {
+    ordNum Integer
+}
+
+entity StudentQuestion {
+    ordNum Integer 
+}
+
+entity StudentAnswerQuestion {
+    isCorrect Boolean
+}
+
+entity QuizResult {
+    point Integer
+    totalQuestionCnt Integer 
+    correctAnswerCnt Integer 
+    wrongAnswerCnt Integer 
+}
+
+enum LessonTypeEnum {
+    Lecture, Practice, Seminar, Lab
+}
+
+entity Lesson {
+  lessonTitle String required
+  startPlanDate Instant required
+  actualLessonDate Instant
+  lessonType LessonTypeEnum required
+  videoUrl String
+}
+
+enum AttendanceEnum {
+   PRESENT, LATE, ABSENT
+}
+
+entity Attendance {
+   attendanceEnum AttendanceEnum
+}
+
+relationship ManyToOne {
+   Attendance{student} to Student
+   Attendance{lesson} to Lesson
+   Lesson{course} to Course
+}
+
+relationship ManyToOne {
+   QuizSession{student} to Student
+   QuizSession{quiz} to Quiz
+   StudentQuestion{quizSession} to QuizSession
+   StudentQuestion{question} to Question
+   StudentOption{studentQuestion} to StudentQuestion
+   StudentOption{option} to Option
+   StudentAnswerQuestion{question} to Question
+   StudentAnswerQuestion{option} to Option
+   StudentAnswerQuestion{quizSession} to QuizSession
+   QuizResult{quiz} to Quiz
+   QuizResult{student} to Student
+   QuizResult{quizSession} to QuizSession
+}
+
+
+relationship ManyToOne {
+   QuestionGroup{course} to Course
+   Question{questionGroup} to QuestionGroup
+   Option{question} to Question
+   Quiz{course} to Course
+   QuizQuestionGroup{quiz} to Quiz
+   QuizQuestionGroup{questionGroup} to QuestionGroup
+   QuizCourseSection{course} to Course
+   QuizCourseSection{courseSection} to CourseSection
+   QuizCourseSection{quiz} to Quiz
+}
+
+relationship ManyToOne {
+    Enrollment{student} to Student
+    CourseSection{course} to Course
+    Enrollment{courseSection} to CourseSection
+    Enrollment{course} to Course
+    Announcement{course} to Course
+    Assignment{course} to Course
+    CalendarEvent{user} to User
+    WikiPage{course} to Course
+    Attendance{course} to Course
+    Attendance{courseSection} to CourseSection
+    Attendance{teacher} to User
+    AttendanceDetail{attendance} to Attendance
+    AttendanceDetail{student} to User
+    Student{user} to User
+    Student{faculty} to Faculty
+    Student{speciality} to Speciality
+    Student{group} to Group
+    Speciality{faculty} to Faculty
+    Group{speciality} to Speciality
+    Teacher{faculty} to Faculty
+    Teacher{department} to Department
+}
+
+relationship ManyToMany {
+    Announcement{courseSection} to CourseSection{announcement}
+    Assignment{courseSection} to CourseSection{assignment}
+}
+
+// Set pagination options
+paginate  Course, CourseSection, Enrollment, Accounts, 
+Assignment, Announcement, CalendarEvent, WikiPage,
+Attendance, AttendanceDetail, Student,
+Faculty, Speciality, Group, StudyAcademicYear,
+Teacher, Department,
+QuestionGroup, Question, Option,
+Quiz, QuizQuestionGroup, QuizCourseSection,
+QuizSession, StudentOption, StudentQuestion,
+StudentAnswerQuestion, QuizResult, Lesson, Attendance
+with pagination
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
