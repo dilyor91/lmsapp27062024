@@ -21,12 +21,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import uz.momoit.lms_canvas.IntegrationTest;
-import uz.momoit.lms_canvas.domain.AttendanceDetail;
-import uz.momoit.lms_canvas.domain.enumeration.AttendanceEnum;
-import uz.momoit.lms_canvas.repository.AttendanceDetailRepository;
 import uz.momoit.lms_canvas.repository.UserRepository;
-import uz.momoit.lms_canvas.service.dto.AttendanceDetailDTO;
-import uz.momoit.lms_canvas.service.mapper.AttendanceDetailMapper;
 
 /**
  * Integration tests for the {@link AttendanceDetailResource} REST controller.
