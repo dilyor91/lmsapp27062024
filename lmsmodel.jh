@@ -81,14 +81,6 @@ entity WikiPage {
     notifyUsersChanges Boolean
 }
 
-entity Attendance {
-    attendanceDate Instant
-}
-
-entity AttendanceDetail {
-    attendanceEnum AttendanceEnum
-}
-
 entity Student {
    firstName String required
    lastName String required
@@ -178,11 +170,6 @@ enum EducationType {
 
 enum EducationForm {
    BAKALAVR, MAGISTR 
-}
-
-
-enum AttendanceEnum {
-    PRESENT, ABSENT, LATE, UNMARKED
 }
 
 enum WhoAllowed{
@@ -351,11 +338,6 @@ relationship ManyToOne {
     Assignment{course} to Course
     CalendarEvent{user} to User
     WikiPage{course} to Course
-    Attendance{course} to Course
-    Attendance{courseSection} to CourseSection
-    Attendance{teacher} to User
-    AttendanceDetail{attendance} to Attendance
-    AttendanceDetail{student} to User
     Student{user} to User
     Student{faculty} to Faculty
     Student{speciality} to Speciality
@@ -374,7 +356,7 @@ relationship ManyToMany {
 // Set pagination options
 paginate  Course, CourseSection, Enrollment, Accounts, 
 Assignment, Announcement, CalendarEvent, WikiPage,
-Attendance, AttendanceDetail, Student,
+Student,
 Faculty, Speciality, Group, StudyAcademicYear,
 Teacher, Department,
 QuestionGroup, Question, Option,
