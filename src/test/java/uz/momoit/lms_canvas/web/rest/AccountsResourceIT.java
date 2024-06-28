@@ -467,11 +467,11 @@ class AccountsResourceIT {
         partialUpdatedAccounts.setId(accounts.getId());
 
         partialUpdatedAccounts
-            .fullName(UPDATED_FULL_NAME)
+            .sortableName(UPDATED_SORTABLE_NAME)
             .avatarImageUrl(UPDATED_AVATAR_IMAGE_URL)
+            .phone(UPDATED_PHONE)
             .locale(UPDATED_LOCALE)
-            .gender(UPDATED_GENDER)
-            .userStatus(UPDATED_USER_STATUS);
+            .gender(UPDATED_GENDER);
 
         restAccountsMockMvc
             .perform(

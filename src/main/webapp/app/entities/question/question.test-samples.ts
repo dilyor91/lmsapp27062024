@@ -1,23 +1,23 @@
 import { IQuestion, NewQuestion } from './question.model';
 
 export const sampleWithRequiredData: IQuestion = {
-  id: 7008,
-  questionText: 'even',
+  id: 28546,
+  questionText: 'amongst',
 };
 
 export const sampleWithPartialData: IQuestion = {
-  id: 22439,
-  questionText: 'naming frankly',
+  id: 20755,
+  questionText: 'snicker',
 };
 
 export const sampleWithFullData: IQuestion = {
-  id: 1596,
-  questionText: 'why',
-  point: 4642,
+  id: 3560,
+  questionText: 'muddy',
+  point: 27282,
 };
 
 export const sampleWithNewData: NewQuestion = {
-  questionText: 'needy who besides',
+  questionText: 'unlike aw calculating',
   id: null,
 };
 

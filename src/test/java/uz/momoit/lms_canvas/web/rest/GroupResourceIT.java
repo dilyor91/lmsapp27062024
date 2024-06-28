@@ -274,6 +274,8 @@ class GroupResourceIT {
         Group partialUpdatedGroup = new Group();
         partialUpdatedGroup.setId(group.getId());
 
+        partialUpdatedGroup.name(UPDATED_NAME);
+
         restGroupMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedGroup.getId())

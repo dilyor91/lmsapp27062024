@@ -1,0 +1,28 @@
+{
+  "lmsapp27062024App": {
+    "studyTerm": {
+      "home": {
+        "title": "Study Terms",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Study Term",
+        "createOrEditLabel": "Create or edit a Study Term",
+        "notFound": "No Study Terms found"
+      },
+      "created": "A new Study Term is created with identifier {{ param }}",
+      "updated": "A Study Term is updated with identifier {{ param }}",
+      "deleted": "A Study Term is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Study Term {{ id }}?"
+      },
+      "detail": {
+        "title": "Study Term"
+      },
+      "id": "ID",
+      "termName": "Term Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "status": "Status",
+      "studyAcademicYear": "Study Academic Year"
+    }
+  }
+}
