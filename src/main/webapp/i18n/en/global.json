@@ -35,7 +35,8 @@
         "studentQuestion": "Student Question",
         "studentAnswerQuestion": "Student Answer Question",
         "quizResult": "Quiz Result",
-        "lesson": "Lesson"
+        "lesson": "Lesson",
+        "studyTerm": "Study Term"
       },
       "account": {
         "main": "Account",

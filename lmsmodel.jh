@@ -295,6 +295,17 @@ entity Attendance {
    attendanceEnum AttendanceEnum
 }
 
+entity StudyTerm {
+   termName String required
+   startDate Instant required
+   endDate Instant required
+   status Boolean required
+}
+
+relationship ManyToOne {
+   StudyTerm{studyAcademicYear} to StudyAcademicYear
+}
+
 relationship ManyToOne {
    Attendance{student} to Student
    Attendance{lesson} to Lesson

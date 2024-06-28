@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (studyTerm()) {
+      <div>
+        <h2 data-cy="studyTermDetailsHeading"><span jhiTranslate="lmsapp27062024App.studyTerm.detail.title">Study Term</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ studyTerm()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.studyTerm.termName">Term Name</span></dt>
+          <dd>
+            <span>{{ studyTerm()!.termName }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.studyTerm.startDate">Start Date</span></dt>
+          <dd>
+            <span>{{ studyTerm()!.startDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.studyTerm.endDate">End Date</span></dt>
+          <dd>
+            <span>{{ studyTerm()!.endDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.studyTerm.status">Status</span></dt>
+          <dd>
+            <span>{{ studyTerm()!.status }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.studyTerm.studyAcademicYear">Study Academic Year</span></dt>
+          <dd>
+            @if (studyTerm()!.studyAcademicYear) {
+              <div>
+                <a [routerLink]="['/study-academic-year', studyTerm()!.studyAcademicYear?.id, 'view']">{{
+                  studyTerm()!.studyAcademicYear?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/study-term', studyTerm()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

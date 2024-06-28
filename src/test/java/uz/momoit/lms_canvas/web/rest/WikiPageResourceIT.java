@@ -341,11 +341,10 @@ class WikiPageResourceIT {
         partialUpdatedWikiPage.setId(wikiPage.getId());
 
         partialUpdatedWikiPage
+            .content(UPDATED_CONTENT)
             .whoAllowed(UPDATED_WHO_ALLOWED)
             .addToStudents(UPDATED_ADD_TO_STUDENTS)
-            .addToStudentsDate(UPDATED_ADD_TO_STUDENTS_DATE)
-            .publishedAt(UPDATED_PUBLISHED_AT)
-            .notifyUsersChanges(UPDATED_NOTIFY_USERS_CHANGES);
+            .publishedAt(UPDATED_PUBLISHED_AT);
 
         restWikiPageMockMvc
             .perform(

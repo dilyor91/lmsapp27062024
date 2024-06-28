@@ -1,47 +1,47 @@
 import { IAccounts, NewAccounts } from './accounts.model';
 
 export const sampleWithRequiredData: IAccounts = {
-  id: 26925,
-  username: 'intimidate',
-  fullName: 'renounce though',
-  sortableName: 'cheque per',
-  phone: '544.784.7282 x527',
-  gender: 'package frantically an',
+  id: 4959,
+  username: 'despite',
+  fullName: 'fooey',
+  sortableName: 'absolute',
+  phone: '526-206-7635 x05446',
+  gender: 'as',
   userType: 'STUDENT',
-  userStatus: 'ACTIVE',
+  userStatus: 'PENDING',
 };
 
 export const sampleWithPartialData: IAccounts = {
-  id: 32605,
-  username: 'fast',
-  fullName: 'lest ack',
-  sortableName: 'beside manhunt upwardly',
-  phone: '1-620-779-9302 x6816',
-  locale: 'certainly release physically',
-  gender: 'casket',
+  id: 32548,
+  username: 'hmph broadcast',
+  fullName: 'if footstool',
+  sortableName: 'pharmacopoeia white',
+  phone: '574.383.1252 x6797',
+  locale: 'sharply versus',
+  gender: 'which once mmm',
+  userType: 'TEACHER',
+  userStatus: 'BLOCKED',
+};
+
+export const sampleWithFullData: IAccounts = {
+  id: 21684,
+  username: 'playfully barring',
+  fullName: 'though',
+  sortableName: 'anxious to incidentally',
+  avatarImageUrl: 'under',
+  phone: '927.279.7794 x47752',
+  locale: 'tedious suspiciously madly',
+  gender: 'gee oof wait',
   userType: 'TEACHER',
   userStatus: 'PENDING',
 };
 
-export const sampleWithFullData: IAccounts = {
-  id: 5662,
-  username: 'summit why',
-  fullName: 'limit squeegee instead',
-  sortableName: 'as so',
-  avatarImageUrl: 'excluding pish pfft',
-  phone: '(802) 331-5999 x1631',
-  locale: 'yahoo buy',
-  gender: 'yet defragment pish',
-  userType: 'STUDENT',
-  userStatus: 'PENDING',
-};
-
 export const sampleWithNewData: NewAccounts = {
-  username: 'phew doubtfully for',
-  fullName: 'stiff',
-  sortableName: 'toward jut that',
-  phone: '1-721-407-4790 x452',
-  gender: 'unexpectedly',
+  username: 'evil however',
+  fullName: 'hence writhing',
+  sortableName: 'ack yippee',
+  phone: '(658) 997-6000',
+  gender: 'hug circa cautiously',
   userType: 'TEACHER',
   userStatus: 'PENDING',
   id: null,
