@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (assignmentCourseSection()) {
+      <div>
+        <h2 data-cy="assignmentCourseSectionDetailsHeading">
+          <span jhiTranslate="lmsapp27062024App.assignmentCourseSection.detail.title">Assignment Course Section</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ assignmentCourseSection()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.assignmentCourseSection.startDate">Start Date</span></dt>
+          <dd>
+            <span>{{ assignmentCourseSection()!.startDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.assignmentCourseSection.endDate">End Date</span></dt>
+          <dd>
+            <span>{{ assignmentCourseSection()!.endDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.assignmentCourseSection.assignment">Assignment</span></dt>
+          <dd>
+            @if (assignmentCourseSection()!.assignment) {
+              <div>
+                <a [routerLink]="['/assignment', assignmentCourseSection()!.assignment?.id, 'view']">{{
+                  assignmentCourseSection()!.assignment?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.assignmentCourseSection.course">Course</span></dt>
+          <dd>
+            @if (assignmentCourseSection()!.course) {
+              <div>
+                <a [routerLink]="['/course', assignmentCourseSection()!.course?.id, 'view']">{{ assignmentCourseSection()!.course?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.assignmentCourseSection.courseSection">Course Section</span></dt>
+          <dd>
+            @if (assignmentCourseSection()!.courseSection) {
+              <div>
+                <a [routerLink]="['/course-section', assignmentCourseSection()!.courseSection?.id, 'view']">{{
+                  assignmentCourseSection()!.courseSection?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/assignment-course-section', assignmentCourseSection()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

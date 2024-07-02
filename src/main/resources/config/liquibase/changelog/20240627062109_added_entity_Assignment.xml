@@ -29,40 +29,11 @@
             <column name="allowed_attempts" type="integer">
                 <constraints nullable="true" />
             </column>
-            <column name="start_date" type="${datetimeType}">
-                <constraints nullable="true" />
-            </column>
-            <column name="end_date" type="${datetimeType}">
-                <constraints nullable="true" />
-            </column>
-            <column name="due_date" type="${datetimeType}">
-                <constraints nullable="true" />
-            </column>
             <column name="published" type="boolean">
-                <constraints nullable="true" />
-            </column>
-            <column name="course_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
-        <dropDefaultValue tableName="assignment" columnName="start_date" columnDataType="${datetimeType}"/>
-        <dropDefaultValue tableName="assignment" columnName="end_date" columnDataType="${datetimeType}"/>
-        <dropDefaultValue tableName="assignment" columnName="due_date" columnDataType="${datetimeType}"/>
-    </changeSet>
-
-    <changeSet id="20240627062109-1-relations" author="jhipster">
-
-        <createTable tableName="rel_assignment__course_section">
-            <column name="course_section_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="assignment_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="assignment_id, course_section_id" tableName="rel_assignment__course_section"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
@@ -87,9 +58,6 @@
             <column name="points" type="numeric"/>
             <column name="submission_type" type="string"/>
             <column name="allowed_attempts" type="numeric"/>
-            <column name="start_date" type="date"/>
-            <column name="end_date" type="date"/>
-            <column name="due_date" type="date"/>
             <column name="published" type="boolean"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>

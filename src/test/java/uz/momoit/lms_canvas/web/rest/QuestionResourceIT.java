@@ -300,7 +300,7 @@ class QuestionResourceIT {
         Question partialUpdatedQuestion = new Question();
         partialUpdatedQuestion.setId(question.getId());
 
-        partialUpdatedQuestion.questionText(UPDATED_QUESTION_TEXT);
+        partialUpdatedQuestion.point(UPDATED_POINT);
 
         restQuestionMockMvc
             .perform(

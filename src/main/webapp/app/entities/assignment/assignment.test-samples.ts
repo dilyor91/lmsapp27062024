@@ -1,38 +1,28 @@
-import dayjs from 'dayjs/esm';
-
 import { IAssignment, NewAssignment } from './assignment.model';
 
 export const sampleWithRequiredData: IAssignment = {
-  id: 28677,
-  name: 'smoothly ginseng contract',
+  id: 24414,
+  name: 'truthfully following',
 };
 
 export const sampleWithPartialData: IAssignment = {
-  id: 20364,
-  name: 'mulch for drat',
-  content: 'amongst ouch wisely',
-  submissionType: 'PAPER',
-  startDate: dayjs('2024-06-27T03:44'),
-  endDate: dayjs('2024-06-26T23:50'),
-  dueDate: dayjs('2024-06-26T08:29'),
-  published: true,
+  id: 1761,
+  name: 'balance killer gelding',
+  points: 15492.45,
 };
 
 export const sampleWithFullData: IAssignment = {
-  id: 28443,
-  name: 'oregano',
-  content: 'drag merge',
-  points: 25743.57,
+  id: 3470,
+  name: 'dimpled overact student',
+  content: 'qua spiteful despite',
+  points: 15037.61,
   submissionType: 'ONLINE',
-  allowedAttempts: 6195,
-  startDate: dayjs('2024-06-26T18:15'),
-  endDate: dayjs('2024-06-27T01:10'),
-  dueDate: dayjs('2024-06-26T07:16'),
+  allowedAttempts: 17384,
   published: false,
 };
 
 export const sampleWithNewData: NewAssignment = {
-  name: 'yearly',
+  name: 'tightly',
   id: null,
 };
 

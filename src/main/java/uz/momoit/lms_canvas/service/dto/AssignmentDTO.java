@@ -2,10 +2,7 @@ package uz.momoit.lms_canvas.service.dto;
 
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
-import java.time.Instant;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 import uz.momoit.lms_canvas.domain.enumeration.SubmissionTypeEnum;
 
 /**
@@ -27,17 +24,7 @@ public class AssignmentDTO implements Serializable {
 
     private Integer allowedAttempts;
 
-    private Instant startDate;
-
-    private Instant endDate;
-
-    private Instant dueDate;
-
     private Boolean published;
-
-    private CourseDTO course;
-
-    private Set<CourseSectionDTO> courseSections = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -87,52 +74,12 @@ public class AssignmentDTO implements Serializable {
         this.allowedAttempts = allowedAttempts;
     }
 
-    public Instant getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Instant startDate) {
-        this.startDate = startDate;
-    }
-
-    public Instant getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Instant endDate) {
-        this.endDate = endDate;
-    }
-
-    public Instant getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(Instant dueDate) {
-        this.dueDate = dueDate;
-    }
-
     public Boolean getPublished() {
         return published;
     }
 
     public void setPublished(Boolean published) {
         this.published = published;
-    }
-
-    public CourseDTO getCourse() {
-        return course;
-    }
-
-    public void setCourse(CourseDTO course) {
-        this.course = course;
-    }
-
-    public Set<CourseSectionDTO> getCourseSections() {
-        return courseSections;
-    }
-
-    public void setCourseSections(Set<CourseSectionDTO> courseSections) {
-        this.courseSections = courseSections;
     }
 
     @Override
@@ -166,12 +113,7 @@ public class AssignmentDTO implements Serializable {
             ", points=" + getPoints() +
             ", submissionType='" + getSubmissionType() + "'" +
             ", allowedAttempts=" + getAllowedAttempts() +
-            ", startDate='" + getStartDate() + "'" +
-            ", endDate='" + getEndDate() + "'" +
-            ", dueDate='" + getDueDate() + "'" +
             ", published='" + getPublished() + "'" +
-            ", course=" + getCourse() +
-            ", courseSections=" + getCourseSections() +
             "}";
     }
 }

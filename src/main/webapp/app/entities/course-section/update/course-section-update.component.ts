@@ -11,8 +11,6 @@ import { ICourse } from 'app/entities/course/course.model';
 import { CourseService } from 'app/entities/course/service/course.service';
 import { IAnnouncement } from 'app/entities/announcement/announcement.model';
 import { AnnouncementService } from 'app/entities/announcement/service/announcement.service';
-import { IAssignment } from 'app/entities/assignment/assignment.model';
-import { AssignmentService } from 'app/entities/assignment/service/assignment.service';
 import { CourseSectionService } from '../service/course-section.service';
 import { ICourseSection } from '../course-section.model';
 import { CourseSectionFormService, CourseSectionFormGroup } from './course-section-form.service';
@@ -29,13 +27,11 @@ export class CourseSectionUpdateComponent implements OnInit {
 
   coursesSharedCollection: ICourse[] = [];
   announcementsSharedCollection: IAnnouncement[] = [];
-  assignmentsSharedCollection: IAssignment[] = [];
 
   protected courseSectionService = inject(CourseSectionService);
   protected courseSectionFormService = inject(CourseSectionFormService);
   protected courseService = inject(CourseService);
   protected announcementService = inject(AnnouncementService);
-  protected assignmentService = inject(AssignmentService);
   protected activatedRoute = inject(ActivatedRoute);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
@@ -45,8 +41,6 @@ export class CourseSectionUpdateComponent implements OnInit {
 
   compareAnnouncement = (o1: IAnnouncement | null, o2: IAnnouncement | null): boolean =>
     this.announcementService.compareAnnouncement(o1, o2);
-
-  compareAssignment = (o1: IAssignment | null, o2: IAssignment | null): boolean => this.assignmentService.compareAssignment(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ courseSection }) => {
@@ -104,10 +98,6 @@ export class CourseSectionUpdateComponent implements OnInit {
       this.announcementsSharedCollection,
       ...(courseSection.announcements ?? []),
     );
-    this.assignmentsSharedCollection = this.assignmentService.addAssignmentToCollectionIfMissing<IAssignment>(
-      this.assignmentsSharedCollection,
-      ...(courseSection.assignments ?? []),
-    );
   }
 
   protected loadRelationshipsOptions(): void {
@@ -129,15 +119,5 @@ export class CourseSectionUpdateComponent implements OnInit {
         ),
       )
       .subscribe((announcements: IAnnouncement[]) => (this.announcementsSharedCollection = announcements));
-
-    this.assignmentService
-      .query()
-      .pipe(map((res: HttpResponse<IAssignment[]>) => res.body ?? []))
-      .pipe(
-        map((assignments: IAssignment[]) =>
-          this.assignmentService.addAssignmentToCollectionIfMissing<IAssignment>(assignments, ...(this.courseSection?.assignments ?? [])),
-        ),
-      )
-      .subscribe((assignments: IAssignment[]) => (this.assignmentsSharedCollection = assignments));
   }
 }

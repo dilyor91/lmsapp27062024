@@ -1,0 +1,28 @@
+{
+  "lmsapp27062024App": {
+    "assignmentCourseSection": {
+      "home": {
+        "title": "Assignment Course Sections",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Assignment Course Section",
+        "createOrEditLabel": "Create or edit a Assignment Course Section",
+        "notFound": "No Assignment Course Sections found"
+      },
+      "created": "A new Assignment Course Section is created with identifier {{ param }}",
+      "updated": "A Assignment Course Section is updated with identifier {{ param }}",
+      "deleted": "A Assignment Course Section is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Assignment Course Section {{ id }}?"
+      },
+      "detail": {
+        "title": "Assignment Course Section"
+      },
+      "id": "ID",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "assignment": "Assignment",
+      "course": "Course",
+      "courseSection": "Course Section"
+    }
+  }
+}

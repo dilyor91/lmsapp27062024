@@ -28,39 +28,13 @@
       "fieldType": "Integer"
     },
     {
-      "fieldName": "startDate",
-      "fieldType": "Instant"
-    },
-    {
-      "fieldName": "endDate",
-      "fieldType": "Instant"
-    },
-    {
-      "fieldName": "dueDate",
-      "fieldType": "Instant"
-    },
-    {
       "fieldName": "published",
       "fieldType": "Boolean"
     }
   ],
   "name": "Assignment",
   "pagination": "pagination",
-  "relationships": [
-    {
-      "otherEntityName": "course",
-      "relationshipName": "course",
-      "relationshipSide": "left",
-      "relationshipType": "many-to-one"
-    },
-    {
-      "otherEntityName": "courseSection",
-      "otherEntityRelationshipName": "assignment",
-      "relationshipName": "courseSection",
-      "relationshipSide": "left",
-      "relationshipType": "many-to-many"
-    }
-  ],
+  "relationships": [],
   "searchEngine": "no",
   "service": "serviceImpl"
 }

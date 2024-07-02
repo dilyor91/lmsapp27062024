@@ -69,15 +69,11 @@ public class AssignmentServiceImpl implements AssignmentService {
         return assignmentRepository.findAll(pageable).map(assignmentMapper::toDto);
     }
 
-    public Page<AssignmentDTO> findAllWithEagerRelationships(Pageable pageable) {
-        return assignmentRepository.findAllWithEagerRelationships(pageable).map(assignmentMapper::toDto);
-    }
-
     @Override
     @Transactional(readOnly = true)
     public Optional<AssignmentDTO> findOne(Long id) {
         log.debug("Request to get Assignment : {}", id);
-        return assignmentRepository.findOneWithEagerRelationships(id).map(assignmentMapper::toDto);
+        return assignmentRepository.findById(id).map(assignmentMapper::toDto);
     }
 
     @Override

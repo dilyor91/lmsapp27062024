@@ -2,7 +2,6 @@ package uz.momoit.lms_canvas.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
-import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static uz.momoit.lms_canvas.domain.AssignmentAsserts.*;
@@ -10,21 +9,13 @@ import static uz.momoit.lms_canvas.web.rest.TestUtil.createUpdateProxyForBean;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.EntityManager;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -33,7 +24,6 @@ import uz.momoit.lms_canvas.IntegrationTest;
 import uz.momoit.lms_canvas.domain.Assignment;
 import uz.momoit.lms_canvas.domain.enumeration.SubmissionTypeEnum;
 import uz.momoit.lms_canvas.repository.AssignmentRepository;
-import uz.momoit.lms_canvas.service.AssignmentService;
 import uz.momoit.lms_canvas.service.dto.AssignmentDTO;
 import uz.momoit.lms_canvas.service.mapper.AssignmentMapper;
 
@@ -41,7 +31,6 @@ import uz.momoit.lms_canvas.service.mapper.AssignmentMapper;
  * Integration tests for the {@link AssignmentResource} REST controller.
  */
 @IntegrationTest
-@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @WithMockUser
 class AssignmentResourceIT {
@@ -61,15 +50,6 @@ class AssignmentResourceIT {
     private static final Integer DEFAULT_ALLOWED_ATTEMPTS = 1;
     private static final Integer UPDATED_ALLOWED_ATTEMPTS = 2;
 
-    private static final Instant DEFAULT_START_DATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_START_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-
-    private static final Instant DEFAULT_END_DATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_END_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-
-    private static final Instant DEFAULT_DUE_DATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_DUE_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
 
@@ -85,14 +65,8 @@ class AssignmentResourceIT {
     @Autowired
     private AssignmentRepository assignmentRepository;
 
-    @Mock
-    private AssignmentRepository assignmentRepositoryMock;
-
     @Autowired
     private AssignmentMapper assignmentMapper;
-
-    @Mock
-    private AssignmentService assignmentServiceMock;
 
     @Autowired
     private EntityManager em;
@@ -117,9 +91,6 @@ class AssignmentResourceIT {
             .points(DEFAULT_POINTS)
             .submissionType(DEFAULT_SUBMISSION_TYPE)
             .allowedAttempts(DEFAULT_ALLOWED_ATTEMPTS)
-            .startDate(DEFAULT_START_DATE)
-            .endDate(DEFAULT_END_DATE)
-            .dueDate(DEFAULT_DUE_DATE)
             .published(DEFAULT_PUBLISHED);
         return assignment;
     }
@@ -137,9 +108,6 @@ class AssignmentResourceIT {
             .points(UPDATED_POINTS)
             .submissionType(UPDATED_SUBMISSION_TYPE)
             .allowedAttempts(UPDATED_ALLOWED_ATTEMPTS)
-            .startDate(UPDATED_START_DATE)
-            .endDate(UPDATED_END_DATE)
-            .dueDate(UPDATED_DUE_DATE)
             .published(UPDATED_PUBLISHED);
         return assignment;
     }
@@ -233,27 +201,7 @@ class AssignmentResourceIT {
             .andExpect(jsonPath("$.[*].points").value(hasItem(DEFAULT_POINTS.doubleValue())))
             .andExpect(jsonPath("$.[*].submissionType").value(hasItem(DEFAULT_SUBMISSION_TYPE.toString())))
             .andExpect(jsonPath("$.[*].allowedAttempts").value(hasItem(DEFAULT_ALLOWED_ATTEMPTS)))
-            .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE.toString())))
-            .andExpect(jsonPath("$.[*].endDate").value(hasItem(DEFAULT_END_DATE.toString())))
-            .andExpect(jsonPath("$.[*].dueDate").value(hasItem(DEFAULT_DUE_DATE.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())));
-    }
-
-    @SuppressWarnings({ "unchecked" })
-    void getAllAssignmentsWithEagerRelationshipsIsEnabled() throws Exception {
-        when(assignmentServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-
-        restAssignmentMockMvc.perform(get(ENTITY_API_URL + "?eagerload=true")).andExpect(status().isOk());
-
-        verify(assignmentServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
-
-    @SuppressWarnings({ "unchecked" })
-    void getAllAssignmentsWithEagerRelationshipsIsNotEnabled() throws Exception {
-        when(assignmentServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-
-        restAssignmentMockMvc.perform(get(ENTITY_API_URL + "?eagerload=false")).andExpect(status().isOk());
-        verify(assignmentRepositoryMock, times(1)).findAll(any(Pageable.class));
     }
 
     @Test
@@ -273,9 +221,6 @@ class AssignmentResourceIT {
             .andExpect(jsonPath("$.points").value(DEFAULT_POINTS.doubleValue()))
             .andExpect(jsonPath("$.submissionType").value(DEFAULT_SUBMISSION_TYPE.toString()))
             .andExpect(jsonPath("$.allowedAttempts").value(DEFAULT_ALLOWED_ATTEMPTS))
-            .andExpect(jsonPath("$.startDate").value(DEFAULT_START_DATE.toString()))
-            .andExpect(jsonPath("$.endDate").value(DEFAULT_END_DATE.toString()))
-            .andExpect(jsonPath("$.dueDate").value(DEFAULT_DUE_DATE.toString()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()));
     }
 
@@ -304,9 +249,6 @@ class AssignmentResourceIT {
             .points(UPDATED_POINTS)
             .submissionType(UPDATED_SUBMISSION_TYPE)
             .allowedAttempts(UPDATED_ALLOWED_ATTEMPTS)
-            .startDate(UPDATED_START_DATE)
-            .endDate(UPDATED_END_DATE)
-            .dueDate(UPDATED_DUE_DATE)
             .published(UPDATED_PUBLISHED);
         AssignmentDTO assignmentDTO = assignmentMapper.toDto(updatedAssignment);
 
@@ -397,12 +339,7 @@ class AssignmentResourceIT {
         Assignment partialUpdatedAssignment = new Assignment();
         partialUpdatedAssignment.setId(assignment.getId());
 
-        partialUpdatedAssignment
-            .points(UPDATED_POINTS)
-            .startDate(UPDATED_START_DATE)
-            .endDate(UPDATED_END_DATE)
-            .dueDate(UPDATED_DUE_DATE)
-            .published(UPDATED_PUBLISHED);
+        partialUpdatedAssignment.submissionType(UPDATED_SUBMISSION_TYPE).allowedAttempts(UPDATED_ALLOWED_ATTEMPTS);
 
         restAssignmentMockMvc
             .perform(
@@ -439,9 +376,6 @@ class AssignmentResourceIT {
             .points(UPDATED_POINTS)
             .submissionType(UPDATED_SUBMISSION_TYPE)
             .allowedAttempts(UPDATED_ALLOWED_ATTEMPTS)
-            .startDate(UPDATED_START_DATE)
-            .endDate(UPDATED_END_DATE)
-            .dueDate(UPDATED_DUE_DATE)
             .published(UPDATED_PUBLISHED);
 
         restAssignmentMockMvc

@@ -42,14 +42,6 @@ public interface AssignmentService {
     Page<AssignmentDTO> findAll(Pageable pageable);
 
     /**
-     * Get all the assignments with eager load of many-to-many relationships.
-     *
-     * @param pageable the pagination information.
-     * @return the list of entities.
-     */
-    Page<AssignmentDTO> findAllWithEagerRelationships(Pageable pageable);
-
-    /**
      * Get the "id" assignment.
      *
      * @param id the id of the entity.

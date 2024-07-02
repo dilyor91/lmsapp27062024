@@ -1,12 +1,8 @@
 package uz.momoit.lms_canvas.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
-import java.time.Instant;
-import java.util.HashSet;
-import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import uz.momoit.lms_canvas.domain.enumeration.SubmissionTypeEnum;
@@ -45,31 +41,8 @@ public class Assignment implements Serializable {
     @Column(name = "allowed_attempts")
     private Integer allowedAttempts;
 
-    @Column(name = "start_date")
-    private Instant startDate;
-
-    @Column(name = "end_date")
-    private Instant endDate;
-
-    @Column(name = "due_date")
-    private Instant dueDate;
-
     @Column(name = "published")
     private Boolean published;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "user" }, allowSetters = true)
-    private Course course;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-        name = "rel_assignment__course_section",
-        joinColumns = @JoinColumn(name = "assignment_id"),
-        inverseJoinColumns = @JoinColumn(name = "course_section_id")
-    )
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "course", "announcements", "assignments" }, allowSetters = true)
-    private Set<CourseSection> courseSections = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -151,45 +124,6 @@ public class Assignment implements Serializable {
         this.allowedAttempts = allowedAttempts;
     }
 
-    public Instant getStartDate() {
-        return this.startDate;
-    }
-
-    public Assignment startDate(Instant startDate) {
-        this.setStartDate(startDate);
-        return this;
-    }
-
-    public void setStartDate(Instant startDate) {
-        this.startDate = startDate;
-    }
-
-    public Instant getEndDate() {
-        return this.endDate;
-    }
-
-    public Assignment endDate(Instant endDate) {
-        this.setEndDate(endDate);
-        return this;
-    }
-
-    public void setEndDate(Instant endDate) {
-        this.endDate = endDate;
-    }
-
-    public Instant getDueDate() {
-        return this.dueDate;
-    }
-
-    public Assignment dueDate(Instant dueDate) {
-        this.setDueDate(dueDate);
-        return this;
-    }
-
-    public void setDueDate(Instant dueDate) {
-        this.dueDate = dueDate;
-    }
-
     public Boolean getPublished() {
         return this.published;
     }
@@ -201,42 +135,6 @@ public class Assignment implements Serializable {
 
     public void setPublished(Boolean published) {
         this.published = published;
-    }
-
-    public Course getCourse() {
-        return this.course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
-    public Assignment course(Course course) {
-        this.setCourse(course);
-        return this;
-    }
-
-    public Set<CourseSection> getCourseSections() {
-        return this.courseSections;
-    }
-
-    public void setCourseSections(Set<CourseSection> courseSections) {
-        this.courseSections = courseSections;
-    }
-
-    public Assignment courseSections(Set<CourseSection> courseSections) {
-        this.setCourseSections(courseSections);
-        return this;
-    }
-
-    public Assignment addCourseSection(CourseSection courseSection) {
-        this.courseSections.add(courseSection);
-        return this;
-    }
-
-    public Assignment removeCourseSection(CourseSection courseSection) {
-        this.courseSections.remove(courseSection);
-        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -268,9 +166,6 @@ public class Assignment implements Serializable {
             ", points=" + getPoints() +
             ", submissionType='" + getSubmissionType() + "'" +
             ", allowedAttempts=" + getAllowedAttempts() +
-            ", startDate='" + getStartDate() + "'" +
-            ", endDate='" + getEndDate() + "'" +
-            ", dueDate='" + getDueDate() + "'" +
             ", published='" + getPublished() + "'" +
             "}";
     }

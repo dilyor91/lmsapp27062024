@@ -38,15 +38,6 @@
               </span>
             }
           </dd>
-          <dt><span jhiTranslate="lmsapp27062024App.courseSection.assignment">Assignment</span></dt>
-          <dd>
-            @for (assignment of courseSection()!.assignments; track $index; let last = $last) {
-              <span>
-                <a [routerLink]="['/assignment', assignment.id, 'view']">{{ assignment?.id }}</a
-                >{{ last ? '' : ', ' }}
-              </span>
-            }
-          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

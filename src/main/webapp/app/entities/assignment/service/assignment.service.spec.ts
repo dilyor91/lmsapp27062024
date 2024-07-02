@@ -5,13 +5,10 @@ import { provideHttpClient } from '@angular/common/http';
 import { IAssignment } from '../assignment.model';
 import { sampleWithRequiredData, sampleWithNewData, sampleWithPartialData, sampleWithFullData } from '../assignment.test-samples';
 
-import { AssignmentService, RestAssignment } from './assignment.service';
+import { AssignmentService } from './assignment.service';
 
-const requireRestSample: RestAssignment = {
+const requireRestSample: IAssignment = {
   ...sampleWithRequiredData,
-  startDate: sampleWithRequiredData.startDate?.toJSON(),
-  endDate: sampleWithRequiredData.endDate?.toJSON(),
-  dueDate: sampleWithRequiredData.dueDate?.toJSON(),
 };
 
 describe('Assignment Service', () => {
