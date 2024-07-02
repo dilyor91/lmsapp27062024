@@ -47,18 +47,6 @@ entity Announcement {
    published Boolean
 }
 
-entity Assignment {
-    name String required
-    content String
-    points Float
-    submissionType SubmissionTypeEnum
-    allowedAttempts Integer
-    startDate Instant
-    endDate Instant
-    dueDate Instant
-    published Boolean
-}
-
 entity CalendarEvent {
     title String
     content String
@@ -180,9 +168,6 @@ enum EventFrequency {
     NOREPEAT, DAILY, WEEKLY
 }
 
-enum SubmissionTypeEnum {
-    ONLINE, PAPER
-}
 enum EnrollmentStatusEnum {
    ACTIVE, REJECTED, PENDING
 }
@@ -302,6 +287,30 @@ entity StudyTerm {
    status Boolean required
 }
 
+enum SubmissionTypeEnum {
+    ONLINE, PAPER
+}
+
+entity Assignment {
+    name String required
+    content String
+    points Float
+    submissionType SubmissionTypeEnum
+    allowedAttempts Integer
+    published Boolean
+}
+
+entity AssignmentCourseSection {
+    startDate Instant
+    endDate Instant
+}
+relationship ManyToOne {
+   AssignmentCourseSection{assignment} to Assignment
+   AssignmentCourseSection{course} to Course
+   AssignmentCourseSection{courseSection} to CourseSection
+}
+
+
 relationship ManyToOne {
    StudyTerm{studyAcademicYear} to StudyAcademicYear
 }
@@ -346,7 +355,6 @@ relationship ManyToOne {
     Enrollment{courseSection} to CourseSection
     Enrollment{course} to Course
     Announcement{course} to Course
-    Assignment{course} to Course
     CalendarEvent{user} to User
     WikiPage{course} to Course
     Student{user} to User
@@ -361,7 +369,6 @@ relationship ManyToOne {
 
 relationship ManyToMany {
     Announcement{courseSection} to CourseSection{announcement}
-    Assignment{courseSection} to CourseSection{assignment}
 }
 
 // Set pagination options

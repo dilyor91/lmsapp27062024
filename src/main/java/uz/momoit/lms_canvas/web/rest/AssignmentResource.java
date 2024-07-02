@@ -139,21 +139,12 @@ public class AssignmentResource {
      * {@code GET  /assignments} : get all the assignments.
      *
      * @param pageable the pagination information.
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of assignments in body.
      */
     @GetMapping("")
-    public ResponseEntity<List<AssignmentDTO>> getAllAssignments(
-        @org.springdoc.core.annotations.ParameterObject Pageable pageable,
-        @RequestParam(name = "eagerload", required = false, defaultValue = "true") boolean eagerload
-    ) {
+    public ResponseEntity<List<AssignmentDTO>> getAllAssignments(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
         log.debug("REST request to get a page of Assignments");
-        Page<AssignmentDTO> page;
-        if (eagerload) {
-            page = assignmentService.findAllWithEagerRelationships(pageable);
-        } else {
-            page = assignmentService.findAll(pageable);
-        }
+        Page<AssignmentDTO> page = assignmentService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

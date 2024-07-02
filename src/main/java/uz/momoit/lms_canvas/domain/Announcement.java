@@ -58,7 +58,7 @@ public class Announcement implements Serializable {
         inverseJoinColumns = @JoinColumn(name = "course_section_id")
     )
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "course", "announcements", "assignments" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "course", "announcements" }, allowSetters = true)
     private Set<CourseSection> courseSections = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

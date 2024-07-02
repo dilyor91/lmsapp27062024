@@ -38,7 +38,7 @@ public class QuizCourseSection implements Serializable {
     private Course course;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "course", "announcements", "assignments" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "course", "announcements" }, allowSetters = true)
     private CourseSection courseSection;
 
     @ManyToOne(fetch = FetchType.LAZY)

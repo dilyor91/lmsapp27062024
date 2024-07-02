@@ -1,49 +1,49 @@
 import { IAccounts, NewAccounts } from './accounts.model';
 
 export const sampleWithRequiredData: IAccounts = {
-  id: 4959,
-  username: 'despite',
-  fullName: 'fooey',
-  sortableName: 'absolute',
-  phone: '526-206-7635 x05446',
-  gender: 'as',
-  userType: 'STUDENT',
-  userStatus: 'PENDING',
-};
-
-export const sampleWithPartialData: IAccounts = {
-  id: 32548,
-  username: 'hmph broadcast',
-  fullName: 'if footstool',
-  sortableName: 'pharmacopoeia white',
-  phone: '574.383.1252 x6797',
-  locale: 'sharply versus',
-  gender: 'which once mmm',
+  id: 30412,
+  username: 'ew ack',
+  fullName: 'oh towards mumble',
+  sortableName: 'atrophy',
+  phone: '243.439.2649 x9097',
+  gender: 'prevaricate',
   userType: 'TEACHER',
   userStatus: 'BLOCKED',
 };
 
-export const sampleWithFullData: IAccounts = {
-  id: 21684,
-  username: 'playfully barring',
-  fullName: 'though',
-  sortableName: 'anxious to incidentally',
-  avatarImageUrl: 'under',
-  phone: '927.279.7794 x47752',
-  locale: 'tedious suspiciously madly',
-  gender: 'gee oof wait',
+export const sampleWithPartialData: IAccounts = {
+  id: 29412,
+  username: 'boo splendor when',
+  fullName: 'lounge inasmuch impound',
+  sortableName: 'that victorious',
+  avatarImageUrl: 'mysterious',
+  phone: '750.660.4676 x9287',
+  gender: 'consequently',
   userType: 'TEACHER',
   userStatus: 'PENDING',
 };
 
+export const sampleWithFullData: IAccounts = {
+  id: 14752,
+  username: 'dugout',
+  fullName: 'since meanwhile',
+  sortableName: 'anenst',
+  avatarImageUrl: 'chasten monopolise but',
+  phone: '1-663-828-5472',
+  locale: 'self-reliant',
+  gender: 'joyously fantastic',
+  userType: 'STUDENT',
+  userStatus: 'ACTIVE',
+};
+
 export const sampleWithNewData: NewAccounts = {
-  username: 'evil however',
-  fullName: 'hence writhing',
-  sortableName: 'ack yippee',
-  phone: '(658) 997-6000',
-  gender: 'hug circa cautiously',
+  username: 'mmm lovely onto',
+  fullName: 'failing although gleefully',
+  sortableName: 'viewer',
+  phone: '1-631-812-5834 x3690',
+  gender: 'heave hybridization crew',
   userType: 'TEACHER',
-  userStatus: 'PENDING',
+  userStatus: 'ACTIVE',
   id: null,
 };
 

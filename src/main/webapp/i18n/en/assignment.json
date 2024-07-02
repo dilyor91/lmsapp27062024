@@ -23,12 +23,7 @@
       "points": "Points",
       "submissionType": "Submission Type",
       "allowedAttempts": "Allowed Attempts",
-      "startDate": "Start Date",
-      "endDate": "End Date",
-      "dueDate": "Due Date",
-      "published": "Published",
-      "course": "Course",
-      "courseSection": "Course Section"
+      "published": "Published"
     }
   }
 }

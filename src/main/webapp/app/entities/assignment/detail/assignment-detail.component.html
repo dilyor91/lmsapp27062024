@@ -37,38 +37,9 @@
           <dd>
             <span>{{ assignment()!.allowedAttempts }}</span>
           </dd>
-          <dt><span jhiTranslate="lmsapp27062024App.assignment.startDate">Start Date</span></dt>
-          <dd>
-            <span>{{ assignment()!.startDate | formatMediumDatetime }}</span>
-          </dd>
-          <dt><span jhiTranslate="lmsapp27062024App.assignment.endDate">End Date</span></dt>
-          <dd>
-            <span>{{ assignment()!.endDate | formatMediumDatetime }}</span>
-          </dd>
-          <dt><span jhiTranslate="lmsapp27062024App.assignment.dueDate">Due Date</span></dt>
-          <dd>
-            <span>{{ assignment()!.dueDate | formatMediumDatetime }}</span>
-          </dd>
           <dt><span jhiTranslate="lmsapp27062024App.assignment.published">Published</span></dt>
           <dd>
             <span>{{ assignment()!.published }}</span>
-          </dd>
-          <dt><span jhiTranslate="lmsapp27062024App.assignment.course">Course</span></dt>
-          <dd>
-            @if (assignment()!.course) {
-              <div>
-                <a [routerLink]="['/course', assignment()!.course?.id, 'view']">{{ assignment()!.course?.id }}</a>
-              </div>
-            }
-          </dd>
-          <dt><span jhiTranslate="lmsapp27062024App.assignment.courseSection">Course Section</span></dt>
-          <dd>
-            @for (courseSection of assignment()!.courseSections; track $index; let last = $last) {
-              <span>
-                <a [routerLink]="['/course-section', courseSection.id, 'view']">{{ courseSection?.id }}</a
-                >{{ last ? '' : ', ' }}
-              </span>
-            }
           </dd>
         </dl>
 

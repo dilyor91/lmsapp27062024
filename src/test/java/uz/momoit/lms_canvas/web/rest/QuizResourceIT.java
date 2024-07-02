@@ -314,7 +314,7 @@ class QuizResourceIT {
         Quiz partialUpdatedQuiz = new Quiz();
         partialUpdatedQuiz.setId(quiz.getId());
 
-        partialUpdatedQuiz.quizName(UPDATED_QUIZ_NAME).timeInMinute(UPDATED_TIME_IN_MINUTE).published(UPDATED_PUBLISHED);
+        partialUpdatedQuiz.timeInMinute(UPDATED_TIME_IN_MINUTE).published(UPDATED_PUBLISHED);
 
         restQuizMockMvc
             .perform(

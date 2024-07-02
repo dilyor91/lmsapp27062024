@@ -60,7 +60,6 @@ public class CourseSectionAsserts {
         assertThat(expected)
             .as("Verify CourseSection relationships")
             .satisfies(e -> assertThat(e.getCourse()).as("check course").isEqualTo(actual.getCourse()))
-            .satisfies(e -> assertThat(e.getAnnouncements()).as("check announcements").isEqualTo(actual.getAnnouncements()))
-            .satisfies(e -> assertThat(e.getAssignments()).as("check assignments").isEqualTo(actual.getAssignments()));
+            .satisfies(e -> assertThat(e.getAnnouncements()).as("check announcements").isEqualTo(actual.getAnnouncements()));
     }
 }

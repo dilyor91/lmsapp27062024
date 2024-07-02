@@ -504,7 +504,10 @@ class CourseResourceIT {
             .courseCode(UPDATED_COURSE_CODE)
             .courseStartDate(UPDATED_COURSE_START_DATE)
             .courseEndDate(UPDATED_COURSE_END_DATE)
-            .selfEnrollment(UPDATED_SELF_ENROLLMENT);
+            .published(UPDATED_PUBLISHED)
+            .selfEnrollment(UPDATED_SELF_ENROLLMENT)
+            .selfEnrollmentCode(UPDATED_SELF_ENROLLMENT_CODE)
+            .storageQuota(UPDATED_STORAGE_QUOTA);
 
         restCourseMockMvc
             .perform(

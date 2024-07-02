@@ -25,12 +25,7 @@ describe('Assignment Form Service', () => {
             points: expect.any(Object),
             submissionType: expect.any(Object),
             allowedAttempts: expect.any(Object),
-            startDate: expect.any(Object),
-            endDate: expect.any(Object),
-            dueDate: expect.any(Object),
             published: expect.any(Object),
-            course: expect.any(Object),
-            courseSections: expect.any(Object),
           }),
         );
       });
@@ -46,12 +41,7 @@ describe('Assignment Form Service', () => {
             points: expect.any(Object),
             submissionType: expect.any(Object),
             allowedAttempts: expect.any(Object),
-            startDate: expect.any(Object),
-            endDate: expect.any(Object),
-            dueDate: expect.any(Object),
             published: expect.any(Object),
-            course: expect.any(Object),
-            courseSections: expect.any(Object),
           }),
         );
       });

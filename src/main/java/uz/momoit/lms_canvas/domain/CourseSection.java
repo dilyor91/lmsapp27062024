@@ -39,11 +39,6 @@ public class CourseSection implements Serializable {
     @JsonIgnoreProperties(value = { "course", "courseSections" }, allowSetters = true)
     private Set<Announcement> announcements = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "courseSections")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "course", "courseSections" }, allowSetters = true)
-    private Set<Assignment> assignments = new HashSet<>();
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -113,37 +108,6 @@ public class CourseSection implements Serializable {
     public CourseSection removeAnnouncement(Announcement announcement) {
         this.announcements.remove(announcement);
         announcement.getCourseSections().remove(this);
-        return this;
-    }
-
-    public Set<Assignment> getAssignments() {
-        return this.assignments;
-    }
-
-    public void setAssignments(Set<Assignment> assignments) {
-        if (this.assignments != null) {
-            this.assignments.forEach(i -> i.removeCourseSection(this));
-        }
-        if (assignments != null) {
-            assignments.forEach(i -> i.addCourseSection(this));
-        }
-        this.assignments = assignments;
-    }
-
-    public CourseSection assignments(Set<Assignment> assignments) {
-        this.setAssignments(assignments);
-        return this;
-    }
-
-    public CourseSection addAssignment(Assignment assignment) {
-        this.assignments.add(assignment);
-        assignment.getCourseSections().add(this);
-        return this;
-    }
-
-    public CourseSection removeAssignment(Assignment assignment) {
-        this.assignments.remove(assignment);
-        assignment.getCourseSections().remove(this);
         return this;
     }
 

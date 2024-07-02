@@ -26,13 +26,6 @@
       "relationshipName": "announcement",
       "relationshipSide": "right",
       "relationshipType": "many-to-many"
-    },
-    {
-      "otherEntityName": "assignment",
-      "otherEntityRelationshipName": "courseSection",
-      "relationshipName": "assignment",
-      "relationshipSide": "right",
-      "relationshipType": "many-to-many"
     }
   ],
   "searchEngine": "no",
