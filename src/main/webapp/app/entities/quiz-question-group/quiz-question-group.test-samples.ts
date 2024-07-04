@@ -1,17 +1,17 @@
 import { IQuizQuestionGroup, NewQuizQuestionGroup } from './quiz-question-group.model';
 
 export const sampleWithRequiredData: IQuizQuestionGroup = {
-  id: 26237,
+  id: 6815,
 };
 
 export const sampleWithPartialData: IQuizQuestionGroup = {
-  id: 28938,
-  questionCount: 18816,
+  id: 11074,
+  questionCount: 16688,
 };
 
 export const sampleWithFullData: IQuizQuestionGroup = {
-  id: 25451,
-  questionCount: 22902,
+  id: 13178,
+  questionCount: 21638,
 };
 
 export const sampleWithNewData: NewQuizQuestionGroup = {

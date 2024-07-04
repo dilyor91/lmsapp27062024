@@ -31,7 +31,7 @@ public class CourseSection implements Serializable {
     private String sectionName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "user" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "user", "courseWeekInfo" }, allowSetters = true)
     private Course course;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "courseSections")

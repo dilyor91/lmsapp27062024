@@ -34,7 +34,7 @@ public class AssignmentCourseSection implements Serializable {
     private Assignment assignment;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "user" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "user", "courseWeekInfo" }, allowSetters = true)
     private Course course;
 
     @ManyToOne(fetch = FetchType.LAZY)

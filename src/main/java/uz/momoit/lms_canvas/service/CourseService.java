@@ -1,5 +1,6 @@
 package uz.momoit.lms_canvas.service;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -40,6 +41,13 @@ public interface CourseService {
      * @return the list of entities.
      */
     Page<CourseDTO> findAll(Pageable pageable);
+
+    /**
+     * Get all the CourseDTO where CourseWeekInfo is {@code null}.
+     *
+     * @return the {@link List} of entities.
+     */
+    List<CourseDTO> findAllWhereCourseWeekInfoIsNull();
 
     /**
      * Get the "id" course.

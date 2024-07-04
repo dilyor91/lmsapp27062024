@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ICourse } from 'app/entities/course/course.model';
 import { CourseService } from 'app/entities/course/service/course.service';
+import { ICourseWeek } from 'app/entities/course-week/course-week.model';
+import { CourseWeekService } from 'app/entities/course-week/service/course-week.service';
 import { LessonTypeEnum } from 'app/entities/enumerations/lesson-type-enum.model';
 import { LessonService } from '../service/lesson.service';
 import { ILesson } from '../lesson.model';
@@ -26,16 +28,20 @@ export class LessonUpdateComponent implements OnInit {
   lessonTypeEnumValues = Object.keys(LessonTypeEnum);
 
   coursesSharedCollection: ICourse[] = [];
+  courseWeeksSharedCollection: ICourseWeek[] = [];
 
   protected lessonService = inject(LessonService);
   protected lessonFormService = inject(LessonFormService);
   protected courseService = inject(CourseService);
+  protected courseWeekService = inject(CourseWeekService);
   protected activatedRoute = inject(ActivatedRoute);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   editForm: LessonFormGroup = this.lessonFormService.createLessonFormGroup();
 
   compareCourse = (o1: ICourse | null, o2: ICourse | null): boolean => this.courseService.compareCourse(o1, o2);
+
+  compareCourseWeek = (o1: ICourseWeek | null, o2: ICourseWeek | null): boolean => this.courseWeekService.compareCourseWeek(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ lesson }) => {
@@ -86,6 +92,10 @@ export class LessonUpdateComponent implements OnInit {
     this.lessonFormService.resetForm(this.editForm, lesson);
 
     this.coursesSharedCollection = this.courseService.addCourseToCollectionIfMissing<ICourse>(this.coursesSharedCollection, lesson.course);
+    this.courseWeeksSharedCollection = this.courseWeekService.addCourseWeekToCollectionIfMissing<ICourseWeek>(
+      this.courseWeeksSharedCollection,
+      lesson.courseWeek,
+    );
   }
 
   protected loadRelationshipsOptions(): void {
@@ -94,5 +104,15 @@ export class LessonUpdateComponent implements OnInit {
       .pipe(map((res: HttpResponse<ICourse[]>) => res.body ?? []))
       .pipe(map((courses: ICourse[]) => this.courseService.addCourseToCollectionIfMissing<ICourse>(courses, this.lesson?.course)))
       .subscribe((courses: ICourse[]) => (this.coursesSharedCollection = courses));
+
+    this.courseWeekService
+      .query()
+      .pipe(map((res: HttpResponse<ICourseWeek[]>) => res.body ?? []))
+      .pipe(
+        map((courseWeeks: ICourseWeek[]) =>
+          this.courseWeekService.addCourseWeekToCollectionIfMissing<ICourseWeek>(courseWeeks, this.lesson?.courseWeek),
+        ),
+      )
+      .subscribe((courseWeeks: ICourseWeek[]) => (this.courseWeeksSharedCollection = courseWeeks));
   }
 }

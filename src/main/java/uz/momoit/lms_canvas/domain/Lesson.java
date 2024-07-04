@@ -46,8 +46,12 @@ public class Lesson implements Serializable {
     private String videoUrl;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "user" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "user", "courseWeekInfo" }, allowSetters = true)
     private Course course;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = { "course" }, allowSetters = true)
+    private CourseWeek courseWeek;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -139,6 +143,19 @@ public class Lesson implements Serializable {
 
     public Lesson course(Course course) {
         this.setCourse(course);
+        return this;
+    }
+
+    public CourseWeek getCourseWeek() {
+        return this.courseWeek;
+    }
+
+    public void setCourseWeek(CourseWeek courseWeek) {
+        this.courseWeek = courseWeek;
+    }
+
+    public Lesson courseWeek(CourseWeek courseWeek) {
+        this.setCourseWeek(courseWeek);
         return this;
     }
 

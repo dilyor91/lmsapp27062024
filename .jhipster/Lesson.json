@@ -38,6 +38,12 @@
       "relationshipName": "course",
       "relationshipSide": "left",
       "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "courseWeek",
+      "relationshipName": "courseWeek",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
     }
   ],
   "searchEngine": "no",

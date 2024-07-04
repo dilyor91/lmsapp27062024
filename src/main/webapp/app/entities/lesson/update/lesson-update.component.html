@@ -117,6 +117,23 @@
             }
           </select>
         </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_courseWeek" jhiTranslate="lmsapp27062024App.lesson.courseWeek">Course Week</label>
+          <select
+            class="form-control"
+            id="field_courseWeek"
+            data-cy="courseWeek"
+            name="courseWeek"
+            formControlName="courseWeek"
+            [compareWith]="compareCourseWeek"
+          >
+            <option [ngValue]="null"></option>
+            @for (courseWeekOption of courseWeeksSharedCollection; track $index) {
+              <option [ngValue]="courseWeekOption">{{ courseWeekOption.id }}</option>
+            }
+          </select>
+        </div>
       </div>
 
       <div>

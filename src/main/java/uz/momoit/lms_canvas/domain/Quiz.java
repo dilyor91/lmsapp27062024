@@ -36,7 +36,7 @@ public class Quiz implements Serializable {
     private Boolean published;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "user" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "user", "courseWeekInfo" }, allowSetters = true)
     private Course course;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

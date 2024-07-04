@@ -590,11 +590,16 @@ class StudentResourceIT {
         partialUpdatedStudent.setId(student.getId());
 
         partialUpdatedStudent
+            .lastName(UPDATED_LAST_NAME)
+            .middleName(UPDATED_MIDDLE_NAME)
             .birthdate(UPDATED_BIRTHDATE)
+            .email(UPDATED_EMAIL)
+            .hemisId(UPDATED_HEMIS_ID)
             .passportNumber(UPDATED_PASSPORT_NUMBER)
-            .city(UPDATED_CITY)
+            .jshshir(UPDATED_JSHSHIR)
+            .nationality(UPDATED_NATIONALITY)
+            .region(UPDATED_REGION)
             .semester(UPDATED_SEMESTER)
-            .educationLanguage(UPDATED_EDUCATION_LANGUAGE)
             .educationType(UPDATED_EDUCATION_TYPE);
 
         restStudentMockMvc

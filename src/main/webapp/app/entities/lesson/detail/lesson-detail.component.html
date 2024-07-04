@@ -45,6 +45,14 @@
               </div>
             }
           </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.lesson.courseWeek">Course Week</span></dt>
+          <dd>
+            @if (lesson()!.courseWeek) {
+              <div>
+                <a [routerLink]="['/course-week', lesson()!.courseWeek?.id, 'view']">{{ lesson()!.courseWeek?.id }}</a>
+              </div>
+            }
+          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (courseWeekInfo()) {
+      <div>
+        <h2 data-cy="courseWeekInfoDetailsHeading">
+          <span jhiTranslate="lmsapp27062024App.courseWeekInfo.detail.title">Course Week Info</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ courseWeekInfo()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.courseWeekInfo.totalWeek">Total Week</span></dt>
+          <dd>
+            <span>{{ courseWeekInfo()!.totalWeek }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.courseWeekInfo.lessonPerWeek">Lesson Per Week</span></dt>
+          <dd>
+            <span>{{ courseWeekInfo()!.lessonPerWeek }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.courseWeekInfo.startDate">Start Date</span></dt>
+          <dd>
+            <span>{{ courseWeekInfo()!.startDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.courseWeekInfo.weekDayCount">Week Day Count</span></dt>
+          <dd>
+            <span>{{ courseWeekInfo()!.weekDayCount }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.courseWeekInfo.course">Course</span></dt>
+          <dd>
+            @if (courseWeekInfo()!.course) {
+              <div>
+                <a [routerLink]="['/course', courseWeekInfo()!.course?.id, 'view']">{{ courseWeekInfo()!.course?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/course-week-info', courseWeekInfo()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

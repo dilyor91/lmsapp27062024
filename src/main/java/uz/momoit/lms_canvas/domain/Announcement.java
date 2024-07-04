@@ -48,7 +48,7 @@ public class Announcement implements Serializable {
     private Boolean published;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "user" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "user", "courseWeekInfo" }, allowSetters = true)
     private Course course;
 
     @ManyToMany(fetch = FetchType.LAZY)

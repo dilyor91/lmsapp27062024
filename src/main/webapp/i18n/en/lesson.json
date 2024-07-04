@@ -23,7 +23,8 @@
       "actualLessonDate": "Actual Lesson Date",
       "lessonType": "Lesson Type",
       "videoUrl": "Video Url",
-      "course": "Course"
+      "course": "Course",
+      "courseWeek": "Course Week"
     }
   }
 }

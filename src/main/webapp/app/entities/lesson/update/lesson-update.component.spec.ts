@@ -6,8 +6,10 @@ import { of, Subject, from } from 'rxjs';
 
 import { ICourse } from 'app/entities/course/course.model';
 import { CourseService } from 'app/entities/course/service/course.service';
-import { LessonService } from '../service/lesson.service';
+import { ICourseWeek } from 'app/entities/course-week/course-week.model';
+import { CourseWeekService } from 'app/entities/course-week/service/course-week.service';
 import { ILesson } from '../lesson.model';
+import { LessonService } from '../service/lesson.service';
 import { LessonFormService } from './lesson-form.service';
 
 import { LessonUpdateComponent } from './lesson-update.component';
@@ -19,6 +21,7 @@ describe('Lesson Management Update Component', () => {
   let lessonFormService: LessonFormService;
   let lessonService: LessonService;
   let courseService: CourseService;
+  let courseWeekService: CourseWeekService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -42,6 +45,7 @@ describe('Lesson Management Update Component', () => {
     lessonFormService = TestBed.inject(LessonFormService);
     lessonService = TestBed.inject(LessonService);
     courseService = TestBed.inject(CourseService);
+    courseWeekService = TestBed.inject(CourseWeekService);
 
     comp = fixture.componentInstance;
   });
@@ -49,10 +53,10 @@ describe('Lesson Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Course query and add missing value', () => {
       const lesson: ILesson = { id: 456 };
-      const course: ICourse = { id: 29135 };
+      const course: ICourse = { id: 24135 };
       lesson.course = course;
 
-      const courseCollection: ICourse[] = [{ id: 29811 }];
+      const courseCollection: ICourse[] = [{ id: 2693 }];
       jest.spyOn(courseService, 'query').mockReturnValue(of(new HttpResponse({ body: courseCollection })));
       const additionalCourses = [course];
       const expectedCollection: ICourse[] = [...additionalCourses, ...courseCollection];
@@ -69,15 +73,40 @@ describe('Lesson Management Update Component', () => {
       expect(comp.coursesSharedCollection).toEqual(expectedCollection);
     });
 
+    it('Should call CourseWeek query and add missing value', () => {
+      const lesson: ILesson = { id: 456 };
+      const courseWeek: ICourseWeek = { id: 14827 };
+      lesson.courseWeek = courseWeek;
+
+      const courseWeekCollection: ICourseWeek[] = [{ id: 15217 }];
+      jest.spyOn(courseWeekService, 'query').mockReturnValue(of(new HttpResponse({ body: courseWeekCollection })));
+      const additionalCourseWeeks = [courseWeek];
+      const expectedCollection: ICourseWeek[] = [...additionalCourseWeeks, ...courseWeekCollection];
+      jest.spyOn(courseWeekService, 'addCourseWeekToCollectionIfMissing').mockReturnValue(expectedCollection);
+
+      activatedRoute.data = of({ lesson });
+      comp.ngOnInit();
+
+      expect(courseWeekService.query).toHaveBeenCalled();
+      expect(courseWeekService.addCourseWeekToCollectionIfMissing).toHaveBeenCalledWith(
+        courseWeekCollection,
+        ...additionalCourseWeeks.map(expect.objectContaining),
+      );
+      expect(comp.courseWeeksSharedCollection).toEqual(expectedCollection);
+    });
+
     it('Should update editForm', () => {
       const lesson: ILesson = { id: 456 };
-      const course: ICourse = { id: 662 };
+      const course: ICourse = { id: 861 };
       lesson.course = course;
+      const courseWeek: ICourseWeek = { id: 9846 };
+      lesson.courseWeek = courseWeek;
 
       activatedRoute.data = of({ lesson });
       comp.ngOnInit();
 
       expect(comp.coursesSharedCollection).toContain(course);
+      expect(comp.courseWeeksSharedCollection).toContain(courseWeek);
       expect(comp.lesson).toEqual(lesson);
     });
   });
@@ -158,6 +187,16 @@ describe('Lesson Management Update Component', () => {
         jest.spyOn(courseService, 'compareCourse');
         comp.compareCourse(entity, entity2);
         expect(courseService.compareCourse).toHaveBeenCalledWith(entity, entity2);
+      });
+    });
+
+    describe('compareCourseWeek', () => {
+      it('Should forward to courseWeekService', () => {
+        const entity = { id: 123 };
+        const entity2 = { id: 456 };
+        jest.spyOn(courseWeekService, 'compareCourseWeek');
+        comp.compareCourseWeek(entity, entity2);
+        expect(courseWeekService.compareCourseWeek).toHaveBeenCalledWith(entity, entity2);
       });
     });
   });
