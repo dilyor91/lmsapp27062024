@@ -53,10 +53,10 @@ describe('StudentOption Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call StudentQuestion query and add missing value', () => {
       const studentOption: IStudentOption = { id: 456 };
-      const studentQuestion: IStudentQuestion = { id: 14793 };
+      const studentQuestion: IStudentQuestion = { id: 26255 };
       studentOption.studentQuestion = studentQuestion;
 
-      const studentQuestionCollection: IStudentQuestion[] = [{ id: 19356 }];
+      const studentQuestionCollection: IStudentQuestion[] = [{ id: 17569 }];
       jest.spyOn(studentQuestionService, 'query').mockReturnValue(of(new HttpResponse({ body: studentQuestionCollection })));
       const additionalStudentQuestions = [studentQuestion];
       const expectedCollection: IStudentQuestion[] = [...additionalStudentQuestions, ...studentQuestionCollection];
@@ -75,10 +75,10 @@ describe('StudentOption Management Update Component', () => {
 
     it('Should call Option query and add missing value', () => {
       const studentOption: IStudentOption = { id: 456 };
-      const option: IOption = { id: 12304 };
+      const option: IOption = { id: 9558 };
       studentOption.option = option;
 
-      const optionCollection: IOption[] = [{ id: 26344 }];
+      const optionCollection: IOption[] = [{ id: 18514 }];
       jest.spyOn(optionService, 'query').mockReturnValue(of(new HttpResponse({ body: optionCollection })));
       const additionalOptions = [option];
       const expectedCollection: IOption[] = [...additionalOptions, ...optionCollection];
@@ -97,9 +97,9 @@ describe('StudentOption Management Update Component', () => {
 
     it('Should update editForm', () => {
       const studentOption: IStudentOption = { id: 456 };
-      const studentQuestion: IStudentQuestion = { id: 2600 };
+      const studentQuestion: IStudentQuestion = { id: 949 };
       studentOption.studentQuestion = studentQuestion;
-      const option: IOption = { id: 20082 };
+      const option: IOption = { id: 18416 };
       studentOption.option = option;
 
       activatedRoute.data = of({ studentOption });

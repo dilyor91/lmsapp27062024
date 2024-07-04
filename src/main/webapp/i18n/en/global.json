@@ -39,7 +39,9 @@
         "studyTerm": "Study Term",
         "assignmentCourseSection": "Assignment Course Section",
         "courseWeekInfo": "Course Week Info",
-        "courseWeek": "Course Week"
+        "courseWeek": "Course Week",
+        "lessonMaterial": "Lesson Material",
+        "attachment": "Attachment"
       },
       "account": {
         "main": "Account",

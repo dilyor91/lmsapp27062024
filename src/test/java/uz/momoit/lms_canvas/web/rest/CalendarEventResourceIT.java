@@ -346,10 +346,10 @@ class CalendarEventResourceIT {
 
         partialUpdatedCalendarEvent
             .title(UPDATED_TITLE)
-            .date(UPDATED_DATE)
+            .content(UPDATED_CONTENT)
+            .startTime(UPDATED_START_TIME)
             .endTime(UPDATED_END_TIME)
-            .location(UPDATED_LOCATION)
-            .eventFrequency(UPDATED_EVENT_FREQUENCY);
+            .location(UPDATED_LOCATION);
 
         restCalendarEventMockMvc
             .perform(

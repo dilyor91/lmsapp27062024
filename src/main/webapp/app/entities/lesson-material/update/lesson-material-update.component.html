@@ -1,0 +1,109 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-lesson-material-heading"
+        data-cy="LessonMaterialCreateUpdateHeading"
+        jhiTranslate="lmsapp27062024App.lessonMaterial.home.createOrEditLabel"
+      >
+        Create or edit a Lesson Material
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="lmsapp27062024App.lessonMaterial.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_title" jhiTranslate="lmsapp27062024App.lessonMaterial.title">Title</label>
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_description" jhiTranslate="lmsapp27062024App.lessonMaterial.description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_lessonFileType" jhiTranslate="lmsapp27062024App.lessonMaterial.lessonFileType"
+            >Lesson File Type</label
+          >
+          <select
+            class="form-control"
+            name="lessonFileType"
+            formControlName="lessonFileType"
+            id="field_lessonFileType"
+            data-cy="lessonFileType"
+          >
+            <option [ngValue]="null">{{ 'lmsapp27062024App.LessonFileTypeEnum.null' | translate }}</option>
+            @for (lessonFileTypeEnum of lessonFileTypeEnumValues; track $index) {
+              <option [value]="lessonFileTypeEnum">{{ 'lmsapp27062024App.LessonFileTypeEnum.' + lessonFileTypeEnum | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_attachment" jhiTranslate="lmsapp27062024App.lessonMaterial.attachment">Attachment</label>
+          <select
+            class="form-control"
+            id="field_attachment"
+            data-cy="attachment"
+            name="attachment"
+            formControlName="attachment"
+            [compareWith]="compareAttachment"
+          >
+            <option [ngValue]="null"></option>
+            @for (attachmentOption of attachmentsCollection; track $index) {
+              <option [ngValue]="attachmentOption">{{ attachmentOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_lesson" jhiTranslate="lmsapp27062024App.lessonMaterial.lesson">Lesson</label>
+          <select
+            class="form-control"
+            id="field_lesson"
+            data-cy="lesson"
+            name="lesson"
+            formControlName="lesson"
+            [compareWith]="compareLesson"
+          >
+            <option [ngValue]="null"></option>
+            @for (lessonOption of lessonsSharedCollection; track $index) {
+              <option [ngValue]="lessonOption">{{ lessonOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -541,15 +541,13 @@ class TeacherResourceIT {
         partialUpdatedTeacher.setId(teacher.getId());
 
         partialUpdatedTeacher
-            .firstName(UPDATED_FIRST_NAME)
-            .lastName(UPDATED_LAST_NAME)
             .middleName(UPDATED_MIDDLE_NAME)
             .gender(UPDATED_GENDER)
             .birthdate(UPDATED_BIRTHDATE)
-            .phoneNumber(UPDATED_PHONE_NUMBER)
             .passportNumber(UPDATED_PASSPORT_NUMBER)
-            .nationality(UPDATED_NATIONALITY)
+            .jshshir(UPDATED_JSHSHIR)
             .position(UPDATED_POSITION)
+            .academicDegree(UPDATED_ACADEMIC_DEGREE)
             .academicTitle(UPDATED_ACADEMIC_TITLE);
 
         restTeacherMockMvc

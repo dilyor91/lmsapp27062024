@@ -296,6 +296,8 @@ class AssignmentCourseSectionResourceIT {
         AssignmentCourseSection partialUpdatedAssignmentCourseSection = new AssignmentCourseSection();
         partialUpdatedAssignmentCourseSection.setId(assignmentCourseSection.getId());
 
+        partialUpdatedAssignmentCourseSection.endDate(UPDATED_END_DATE);
+
         restAssignmentCourseSectionMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedAssignmentCourseSection.getId())
