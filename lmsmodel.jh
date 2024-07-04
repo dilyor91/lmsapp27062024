@@ -419,7 +419,7 @@ QuestionGroup, Question, Option,
 Quiz, QuizQuestionGroup, QuizCourseSection,
 QuizSession, StudentOption, StudentQuestion,
 StudentAnswerQuestion, QuizResult, Lesson, Attendance,
-CourseWeekInfo, CourseWeek
+CourseWeekInfo, CourseWeek, LessonMaterial
 with pagination
 
 // Use Data Transfer Objects (DTO)
