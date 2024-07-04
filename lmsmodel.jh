@@ -362,7 +362,7 @@ entity CourseWeek {
    weekDate Instant
 }
 
-enum LessonFileTypeEnum{
+enum LessonFileTypeEnum {
    VIDEO, PDF, FILE,
    SOCIAL_MEDIA, WEB_LINK, TEXT
 }
@@ -373,7 +373,7 @@ entity LessonMaterial {
    lessonFileType LessonFileTypeEnum   
 }
 
-relationship ManyToOne{
+relationship ManyToOne {
    LessonMaterial{lesson} to Lesson
 }
 
@@ -419,7 +419,7 @@ QuestionGroup, Question, Option,
 Quiz, QuizQuestionGroup, QuizCourseSection,
 QuizSession, StudentOption, StudentQuestion,
 StudentAnswerQuestion, QuizResult, Lesson, Attendance,
-CourseWeekInfo, CourseWeek
+CourseWeekInfo, CourseWeek, LessonMaterial
 with pagination
 
 // Use Data Transfer Objects (DTO)
