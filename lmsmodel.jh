@@ -362,8 +362,24 @@ entity CourseWeek {
    weekDate Instant
 }
 
+enum LessonFileTypeEnum{
+   VIDEO, PDF, FILE,
+   SOCIAL_MEDIA, WEB_LINK, TEXT
+}
+
+entity LessonMaterial {
+   title String
+   description String
+   lessonFileType LessonFileTypeEnum   
+}
+
+relationship ManyToOne{
+   LessonMaterial{lesson} to Lesson
+}
+
 relationship OneToOne {
     CourseWeekInfo {course} to Course
+    LessonMaterial{attachment} to Attachment
 }
 
 relationship ManyToOne{
