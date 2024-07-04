@@ -349,6 +349,28 @@ relationship ManyToOne {
    QuizCourseSection{quiz} to Quiz
 }
 
+entity CourseWeekInfo {
+    totalWeek Integer
+    lessonPerWeek Integer
+    startDate Instant
+    weekDayCount Integer
+}
+
+entity CourseWeek {
+   name String
+   published Boolean
+   weekDate Instant
+}
+
+relationship OneToOne {
+    CourseWeekInfo {course} to Course
+}
+
+relationship ManyToOne{
+    CourseWeek{course} to Course
+    Lesson{courseWeek} to CourseWeek
+}
+
 relationship ManyToOne {
     Enrollment{student} to Student
     CourseSection{course} to Course
@@ -380,7 +402,8 @@ Teacher, Department,
 QuestionGroup, Question, Option,
 Quiz, QuizQuestionGroup, QuizCourseSection,
 QuizSession, StudentOption, StudentQuestion,
-StudentAnswerQuestion, QuizResult, Lesson, Attendance
+StudentAnswerQuestion, QuizResult, Lesson, Attendance,
+CourseWeekInfo, CourseWeek
 with pagination
 
 // Use Data Transfer Objects (DTO)
