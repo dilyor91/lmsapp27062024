@@ -362,24 +362,25 @@ entity CourseWeek {
    weekDate Instant
 }
 
-enum LessonFileTypeEnum{
-   VIDEO, PDF, FILE,
-   SOCIAL_MEDIA, WEB_LINK, TEXT
+enum LessonFileTypeEnum {
+   VIDEO, PDF, FILE, SOCIAL_MEDIA, WEB_LINK, TEXT
 }
 
 entity LessonMaterial {
    title String
    description String
-   lessonFileType LessonFileTypeEnum   
+   lessonFileType LessonFileTypeEnum
 }
 
-relationship ManyToOne{
-   LessonMaterial{lesson} to Lesson
+relationship ManyToOne {
+   LessonMaterial {lesson} to Lesson
 }
+
+entity Attachment {}
 
 relationship OneToOne {
     CourseWeekInfo {course} to Course
-    LessonMaterial{attachment} to Attachment
+    LessonMaterial {attachment} to Attachment
 }
 
 relationship ManyToOne{
@@ -419,8 +420,7 @@ QuestionGroup, Question, Option,
 Quiz, QuizQuestionGroup, QuizCourseSection,
 QuizSession, StudentOption, StudentQuestion,
 StudentAnswerQuestion, QuizResult, Lesson, Attendance,
-CourseWeekInfo, CourseWeek
-with pagination
+CourseWeekInfo, CourseWeek, LessonMaterial with pagination
 
 // Use Data Transfer Objects (DTO)
 dto * with mapstruct
