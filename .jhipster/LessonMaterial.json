@@ -1,0 +1,40 @@
+{
+  "annotations": {
+    "changelogDate": "20240704124121"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lessonFileType",
+      "fieldType": "LessonFileTypeEnum",
+      "fieldValues": "VIDEO,PDF,FILE,SOCIAL_MEDIA,WEB_LINK,TEXT"
+    }
+  ],
+  "name": "LessonMaterial",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "attachment",
+      "relationshipName": "attachment",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "lesson",
+      "relationshipName": "lesson",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -53,10 +53,10 @@ describe('Announcement Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Course query and add missing value', () => {
       const announcement: IAnnouncement = { id: 456 };
-      const course: ICourse = { id: 13415 };
+      const course: ICourse = { id: 7741 };
       announcement.course = course;
 
-      const courseCollection: ICourse[] = [{ id: 928 }];
+      const courseCollection: ICourse[] = [{ id: 17327 }];
       jest.spyOn(courseService, 'query').mockReturnValue(of(new HttpResponse({ body: courseCollection })));
       const additionalCourses = [course];
       const expectedCollection: ICourse[] = [...additionalCourses, ...courseCollection];
@@ -75,10 +75,10 @@ describe('Announcement Management Update Component', () => {
 
     it('Should call CourseSection query and add missing value', () => {
       const announcement: IAnnouncement = { id: 456 };
-      const courseSections: ICourseSection[] = [{ id: 13080 }];
+      const courseSections: ICourseSection[] = [{ id: 22262 }];
       announcement.courseSections = courseSections;
 
-      const courseSectionCollection: ICourseSection[] = [{ id: 11064 }];
+      const courseSectionCollection: ICourseSection[] = [{ id: 20338 }];
       jest.spyOn(courseSectionService, 'query').mockReturnValue(of(new HttpResponse({ body: courseSectionCollection })));
       const additionalCourseSections = [...courseSections];
       const expectedCollection: ICourseSection[] = [...additionalCourseSections, ...courseSectionCollection];
@@ -97,9 +97,9 @@ describe('Announcement Management Update Component', () => {
 
     it('Should update editForm', () => {
       const announcement: IAnnouncement = { id: 456 };
-      const course: ICourse = { id: 10834 };
+      const course: ICourse = { id: 5208 };
       announcement.course = course;
-      const courseSection: ICourseSection = { id: 22841 };
+      const courseSection: ICourseSection = { id: 1029 };
       announcement.courseSections = [courseSection];
 
       activatedRoute.data = of({ announcement });

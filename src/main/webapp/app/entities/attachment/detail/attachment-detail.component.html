@@ -1,0 +1,26 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (attachment()) {
+      <div>
+        <h2 data-cy="attachmentDetailsHeading"><span jhiTranslate="lmsapp27062024App.attachment.detail.title">Attachment</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ attachment()!.id }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

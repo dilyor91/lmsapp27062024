@@ -1,49 +1,49 @@
 import { IAccounts, NewAccounts } from './accounts.model';
 
 export const sampleWithRequiredData: IAccounts = {
-  id: 19101,
-  username: 'since provided huzzah',
-  fullName: 'calculating disobey',
-  sortableName: 'mineral abaft',
-  phone: '(825) 792-9846 x00558',
-  gender: 'far',
+  id: 3513,
+  username: 'antling',
+  fullName: 'survival till for',
+  sortableName: 'obnoxiously accompany winch',
+  phone: '(654) 512-4884 x99008',
+  gender: 'anti prattle',
   userType: 'STUDENT',
   userStatus: 'PENDING',
 };
 
 export const sampleWithPartialData: IAccounts = {
-  id: 29162,
-  username: 'potentially yum polite',
-  fullName: 'ew searchingly request',
-  sortableName: 'diligent',
-  avatarImageUrl: 'a',
-  phone: '(619) 501-5156 x49000',
-  gender: 'aggressive practise likewise',
+  id: 22488,
+  username: 'itchy but',
+  fullName: 'since',
+  sortableName: 'leverage',
+  avatarImageUrl: 'competitor than',
+  phone: '1-572-613-2945',
+  gender: 'ew excluding upchange',
+  userType: 'TEACHER',
+  userStatus: 'PENDING',
+};
+
+export const sampleWithFullData: IAccounts = {
+  id: 3220,
+  username: 'finally brr duh',
+  fullName: 'angrily antibody immortalize',
+  sortableName: 'chandelier as unless',
+  avatarImageUrl: 'because aw',
+  phone: '1-956-859-2561 x498',
+  locale: 'defiant whoa boohoo',
+  gender: 'apt',
   userType: 'TEACHER',
   userStatus: 'BLOCKED',
 };
 
-export const sampleWithFullData: IAccounts = {
-  id: 10609,
-  username: 'barring woot',
-  fullName: 'industrialization wind-chime',
-  sortableName: 'lever abstract',
-  avatarImageUrl: 'blend repulsive editorialize',
-  phone: '227-221-1868 x7369',
-  locale: 'comedy',
-  gender: 'dreamily elaborate',
-  userType: 'STUDENT',
-  userStatus: 'ACTIVE',
-};
-
 export const sampleWithNewData: NewAccounts = {
-  username: 'swift',
-  fullName: 'term watery',
-  sortableName: 'apud codepage',
-  phone: '1-720-774-7783 x361',
-  gender: 'politely however',
+  username: 'roughly',
+  fullName: 'than',
+  sortableName: 'which phew writhing',
+  phone: '1-947-703-6312 x614',
+  gender: 'offensively',
   userType: 'STUDENT',
-  userStatus: 'ACTIVE',
+  userStatus: 'PENDING',
   id: null,
 };
 

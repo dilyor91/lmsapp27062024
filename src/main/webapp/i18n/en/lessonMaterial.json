@@ -1,0 +1,28 @@
+{
+  "lmsapp27062024App": {
+    "lessonMaterial": {
+      "home": {
+        "title": "Lesson Materials",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Lesson Material",
+        "createOrEditLabel": "Create or edit a Lesson Material",
+        "notFound": "No Lesson Materials found"
+      },
+      "created": "A new Lesson Material is created with identifier {{ param }}",
+      "updated": "A Lesson Material is updated with identifier {{ param }}",
+      "deleted": "A Lesson Material is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Lesson Material {{ id }}?"
+      },
+      "detail": {
+        "title": "Lesson Material"
+      },
+      "id": "ID",
+      "title": "Title",
+      "description": "Description",
+      "lessonFileType": "Lesson File Type",
+      "attachment": "Attachment",
+      "lesson": "Lesson"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@if (lessonMaterial) {
+  <form name="deleteForm" (ngSubmit)="confirmDelete(lessonMaterial.id!)">
+    <div class="modal-header">
+      <h4 class="modal-title" data-cy="lessonMaterialDeleteDialogHeading" jhiTranslate="entity.delete.title">Confirm delete operation</h4>
+    </div>
+
+    <div class="modal-body">
+      <jhi-alert-error></jhi-alert-error>
+      <p
+        id="jhi-delete-lessonMaterial-heading"
+        jhiTranslate="lmsapp27062024App.lessonMaterial.delete.question"
+        [translateValues]="{ id: lessonMaterial.id }"
+      >
+        Are you sure you want to delete Lesson Material {{ lessonMaterial.id }}?
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+      </button>
+
+      <button id="jhi-confirm-delete-lessonMaterial" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+        <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">Delete</span>
+      </button>
+    </div>
+  </form>
+}

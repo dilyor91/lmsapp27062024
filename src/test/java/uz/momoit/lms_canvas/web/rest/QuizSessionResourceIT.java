@@ -297,7 +297,7 @@ class QuizSessionResourceIT {
         QuizSession partialUpdatedQuizSession = new QuizSession();
         partialUpdatedQuizSession.setId(quizSession.getId());
 
-        partialUpdatedQuizSession.endTime(UPDATED_END_TIME).quizSessionEnum(UPDATED_QUIZ_SESSION_ENUM);
+        partialUpdatedQuizSession.endTime(UPDATED_END_TIME);
 
         restQuizSessionMockMvc
             .perform(

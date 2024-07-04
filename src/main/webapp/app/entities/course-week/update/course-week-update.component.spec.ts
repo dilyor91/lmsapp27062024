@@ -49,10 +49,10 @@ describe('CourseWeek Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Course query and add missing value', () => {
       const courseWeek: ICourseWeek = { id: 456 };
-      const course: ICourse = { id: 13302 };
+      const course: ICourse = { id: 12453 };
       courseWeek.course = course;
 
-      const courseCollection: ICourse[] = [{ id: 2516 }];
+      const courseCollection: ICourse[] = [{ id: 28689 }];
       jest.spyOn(courseService, 'query').mockReturnValue(of(new HttpResponse({ body: courseCollection })));
       const additionalCourses = [course];
       const expectedCollection: ICourse[] = [...additionalCourses, ...courseCollection];
@@ -71,7 +71,7 @@ describe('CourseWeek Management Update Component', () => {
 
     it('Should update editForm', () => {
       const courseWeek: ICourseWeek = { id: 456 };
-      const course: ICourse = { id: 8203 };
+      const course: ICourse = { id: 12824 };
       courseWeek.course = course;
 
       activatedRoute.data = of({ courseWeek });

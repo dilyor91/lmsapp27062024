@@ -295,6 +295,8 @@ class QuestionGroupResourceIT {
         QuestionGroup partialUpdatedQuestionGroup = new QuestionGroup();
         partialUpdatedQuestionGroup.setId(questionGroup.getId());
 
+        partialUpdatedQuestionGroup.name(UPDATED_NAME);
+
         restQuestionGroupMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedQuestionGroup.getId())
