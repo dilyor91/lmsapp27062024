@@ -38,6 +38,7 @@ type LessonFormGroupContent = {
   lessonType: FormControl<LessonFormRawValue['lessonType']>;
   videoUrl: FormControl<LessonFormRawValue['videoUrl']>;
   course: FormControl<LessonFormRawValue['course']>;
+  courseWeek: FormControl<LessonFormRawValue['courseWeek']>;
 };
 
 export type LessonFormGroup = FormGroup<LessonFormGroupContent>;
@@ -69,6 +70,7 @@ export class LessonFormService {
       }),
       videoUrl: new FormControl(lessonRawValue.videoUrl),
       course: new FormControl(lessonRawValue.course),
+      courseWeek: new FormControl(lessonRawValue.courseWeek),
     });
   }
 

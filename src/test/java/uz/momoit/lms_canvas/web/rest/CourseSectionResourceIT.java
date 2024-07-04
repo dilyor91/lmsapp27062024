@@ -295,8 +295,6 @@ class CourseSectionResourceIT {
         CourseSection partialUpdatedCourseSection = new CourseSection();
         partialUpdatedCourseSection.setId(courseSection.getId());
 
-        partialUpdatedCourseSection.sectionName(UPDATED_SECTION_NAME);
-
         restCourseSectionMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedCourseSection.getId())

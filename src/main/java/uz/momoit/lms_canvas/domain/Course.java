@@ -1,5 +1,6 @@
 package uz.momoit.lms_canvas.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
@@ -68,6 +69,10 @@ public class Course implements Serializable {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
     private User user;
+
+    @JsonIgnoreProperties(value = { "course" }, allowSetters = true)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "course")
+    private CourseWeekInfo courseWeekInfo;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -237,6 +242,25 @@ public class Course implements Serializable {
 
     public Course user(User user) {
         this.setUser(user);
+        return this;
+    }
+
+    public CourseWeekInfo getCourseWeekInfo() {
+        return this.courseWeekInfo;
+    }
+
+    public void setCourseWeekInfo(CourseWeekInfo courseWeekInfo) {
+        if (this.courseWeekInfo != null) {
+            this.courseWeekInfo.setCourse(null);
+        }
+        if (courseWeekInfo != null) {
+            courseWeekInfo.setCourse(this);
+        }
+        this.courseWeekInfo = courseWeekInfo;
+    }
+
+    public Course courseWeekInfo(CourseWeekInfo courseWeekInfo) {
+        this.setCourseWeekInfo(courseWeekInfo);
         return this;
     }
 

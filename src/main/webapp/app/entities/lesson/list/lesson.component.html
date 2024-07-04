@@ -83,6 +83,12 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
+            <th scope="col" jhiSortBy="courseWeek.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.lesson.courseWeek">Course Week</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -103,6 +109,13 @@
                 @if (lesson.course) {
                   <div>
                     <a [routerLink]="['/course', lesson.course.id, 'view']">{{ lesson.course.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (lesson.courseWeek) {
+                  <div>
+                    <a [routerLink]="['/course-week', lesson.courseWeek.id, 'view']">{{ lesson.courseWeek.id }}</a>
                   </div>
                 }
               </td>

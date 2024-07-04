@@ -26,6 +26,7 @@ describe('Lesson Form Service', () => {
             lessonType: expect.any(Object),
             videoUrl: expect.any(Object),
             course: expect.any(Object),
+            courseWeek: expect.any(Object),
           }),
         );
       });
@@ -42,6 +43,7 @@ describe('Lesson Form Service', () => {
             lessonType: expect.any(Object),
             videoUrl: expect.any(Object),
             course: expect.any(Object),
+            courseWeek: expect.any(Object),
           }),
         );
       });

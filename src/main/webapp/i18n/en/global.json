@@ -37,7 +37,9 @@
         "quizResult": "Quiz Result",
         "lesson": "Lesson",
         "studyTerm": "Study Term",
-        "assignmentCourseSection": "Assignment Course Section"
+        "assignmentCourseSection": "Assignment Course Section",
+        "courseWeekInfo": "Course Week Info",
+        "courseWeek": "Course Week"
       },
       "account": {
         "main": "Account",

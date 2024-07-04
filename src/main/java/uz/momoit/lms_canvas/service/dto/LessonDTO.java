@@ -29,6 +29,8 @@ public class LessonDTO implements Serializable {
 
     private CourseDTO course;
 
+    private CourseWeekDTO courseWeek;
+
     public Long getId() {
         return id;
     }
@@ -85,6 +87,14 @@ public class LessonDTO implements Serializable {
         this.course = course;
     }
 
+    public CourseWeekDTO getCourseWeek() {
+        return courseWeek;
+    }
+
+    public void setCourseWeek(CourseWeekDTO courseWeek) {
+        this.courseWeek = courseWeek;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -117,6 +127,7 @@ public class LessonDTO implements Serializable {
             ", lessonType='" + getLessonType() + "'" +
             ", videoUrl='" + getVideoUrl() + "'" +
             ", course=" + getCourse() +
+            ", courseWeek=" + getCourseWeek() +
             "}";
     }
 }

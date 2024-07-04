@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (courseWeek()) {
+      <div>
+        <h2 data-cy="courseWeekDetailsHeading"><span jhiTranslate="lmsapp27062024App.courseWeek.detail.title">Course Week</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ courseWeek()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.courseWeek.name">Name</span></dt>
+          <dd>
+            <span>{{ courseWeek()!.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.courseWeek.published">Published</span></dt>
+          <dd>
+            <span>{{ courseWeek()!.published }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.courseWeek.weekDate">Week Date</span></dt>
+          <dd>
+            <span>{{ courseWeek()!.weekDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.courseWeek.course">Course</span></dt>
+          <dd>
+            @if (courseWeek()!.course) {
+              <div>
+                <a [routerLink]="['/course', courseWeek()!.course?.id, 'view']">{{ courseWeek()!.course?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/course-week', courseWeek()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

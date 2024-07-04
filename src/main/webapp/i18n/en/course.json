@@ -29,7 +29,8 @@
       "selfEnrollmentCode": "Self Enrollment Code",
       "storageQuota": "Storage Quota",
       "status": "Status",
-      "user": "User"
+      "user": "User",
+      "courseWeekInfo": "Course Week Info"
     }
   }
 }

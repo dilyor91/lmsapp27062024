@@ -49,10 +49,10 @@ describe('Quiz Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Course query and add missing value', () => {
       const quiz: IQuiz = { id: 456 };
-      const course: ICourse = { id: 1616 };
+      const course: ICourse = { id: 918 };
       quiz.course = course;
 
-      const courseCollection: ICourse[] = [{ id: 22049 }];
+      const courseCollection: ICourse[] = [{ id: 7733 }];
       jest.spyOn(courseService, 'query').mockReturnValue(of(new HttpResponse({ body: courseCollection })));
       const additionalCourses = [course];
       const expectedCollection: ICourse[] = [...additionalCourses, ...courseCollection];
@@ -71,7 +71,7 @@ describe('Quiz Management Update Component', () => {
 
     it('Should update editForm', () => {
       const quiz: IQuiz = { id: 456 };
-      const course: ICourse = { id: 27108 };
+      const course: ICourse = { id: 32717 };
       quiz.course = course;
 
       activatedRoute.data = of({ quiz });

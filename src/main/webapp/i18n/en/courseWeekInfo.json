@@ -1,0 +1,28 @@
+{
+  "lmsapp27062024App": {
+    "courseWeekInfo": {
+      "home": {
+        "title": "Course Week Infos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Course Week Info",
+        "createOrEditLabel": "Create or edit a Course Week Info",
+        "notFound": "No Course Week Infos found"
+      },
+      "created": "A new Course Week Info is created with identifier {{ param }}",
+      "updated": "A Course Week Info is updated with identifier {{ param }}",
+      "deleted": "A Course Week Info is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Course Week Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Course Week Info"
+      },
+      "id": "ID",
+      "totalWeek": "Total Week",
+      "lessonPerWeek": "Lesson Per Week",
+      "startDate": "Start Date",
+      "weekDayCount": "Week Day Count",
+      "course": "Course"
+    }
+  }
+}

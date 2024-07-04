@@ -2,6 +2,7 @@ package uz.momoit.lms_canvas.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static uz.momoit.lms_canvas.domain.CourseTestSamples.*;
+import static uz.momoit.lms_canvas.domain.CourseWeekTestSamples.*;
 import static uz.momoit.lms_canvas.domain.LessonTestSamples.*;
 
 import org.junit.jupiter.api.Test;
@@ -33,5 +34,17 @@ class LessonTest {
 
         lesson.course(null);
         assertThat(lesson.getCourse()).isNull();
+    }
+
+    @Test
+    void courseWeekTest() {
+        Lesson lesson = getLessonRandomSampleGenerator();
+        CourseWeek courseWeekBack = getCourseWeekRandomSampleGenerator();
+
+        lesson.setCourseWeek(courseWeekBack);
+        assertThat(lesson.getCourseWeek()).isEqualTo(courseWeekBack);
+
+        lesson.courseWeek(null);
+        assertThat(lesson.getCourseWeek()).isNull();
     }
 }

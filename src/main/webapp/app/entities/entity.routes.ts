@@ -161,6 +161,16 @@ const routes: Routes = [
     data: { pageTitle: 'lmsapp27062024App.assignmentCourseSection.home.title' },
     loadChildren: () => import('./assignment-course-section/assignment-course-section.routes'),
   },
+  {
+    path: 'course-week-info',
+    data: { pageTitle: 'lmsapp27062024App.courseWeekInfo.home.title' },
+    loadChildren: () => import('./course-week-info/course-week-info.routes'),
+  },
+  {
+    path: 'course-week',
+    data: { pageTitle: 'lmsapp27062024App.courseWeek.home.title' },
+    loadChildren: () => import('./course-week/course-week.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 

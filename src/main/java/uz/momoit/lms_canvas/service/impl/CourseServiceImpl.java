@@ -1,6 +1,10 @@
 package uz.momoit.lms_canvas.service.impl;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -67,6 +71,19 @@ public class CourseServiceImpl implements CourseService {
     public Page<CourseDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Courses");
         return courseRepository.findAll(pageable).map(courseMapper::toDto);
+    }
+
+    /**
+     *  Get all the courses where CourseWeekInfo is {@code null}.
+     *  @return the list of entities.
+     */
+    @Transactional(readOnly = true)
+    public List<CourseDTO> findAllWhereCourseWeekInfoIsNull() {
+        log.debug("Request to get all courses where CourseWeekInfo is null");
+        return StreamSupport.stream(courseRepository.findAll().spliterator(), false)
+            .filter(course -> course.getCourseWeekInfo() == null)
+            .map(courseMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     @Override

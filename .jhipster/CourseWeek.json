@@ -1,0 +1,33 @@
+{
+  "annotations": {
+    "changelogDate": "20240704055406"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "published",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "weekDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "CourseWeek",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "course",
+      "relationshipName": "course",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

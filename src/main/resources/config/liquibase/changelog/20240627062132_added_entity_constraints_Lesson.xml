@@ -16,5 +16,12 @@
                                  referencedColumnNames="id"
                                  referencedTableName="course"
                                  />
+
+        <addForeignKeyConstraint baseColumnNames="course_week_id"
+                                 baseTableName="lesson"
+                                 constraintName="fk_lesson__course_week_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="course_week"
+                                 />
     </changeSet>
 </databaseChangeLog>
