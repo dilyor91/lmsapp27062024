@@ -341,9 +341,8 @@ class WikiPageResourceIT {
         partialUpdatedWikiPage.setId(wikiPage.getId());
 
         partialUpdatedWikiPage
-            .content(UPDATED_CONTENT)
-            .addToStudentsDate(UPDATED_ADD_TO_STUDENTS_DATE)
-            .published(UPDATED_PUBLISHED)
+            .addToStudents(UPDATED_ADD_TO_STUDENTS)
+            .publishedAt(UPDATED_PUBLISHED_AT)
             .notifyUsersChanges(UPDATED_NOTIFY_USERS_CHANGES);
 
         restWikiPageMockMvc

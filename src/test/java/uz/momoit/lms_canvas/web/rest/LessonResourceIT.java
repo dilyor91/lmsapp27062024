@@ -363,7 +363,10 @@ class LessonResourceIT {
         Lesson partialUpdatedLesson = new Lesson();
         partialUpdatedLesson.setId(lesson.getId());
 
-        partialUpdatedLesson.lessonTitle(UPDATED_LESSON_TITLE).actualLessonDate(UPDATED_ACTUAL_LESSON_DATE).videoUrl(UPDATED_VIDEO_URL);
+        partialUpdatedLesson
+            .startPlanDate(UPDATED_START_PLAN_DATE)
+            .actualLessonDate(UPDATED_ACTUAL_LESSON_DATE)
+            .lessonType(UPDATED_LESSON_TYPE);
 
         restLessonMockMvc
             .perform(

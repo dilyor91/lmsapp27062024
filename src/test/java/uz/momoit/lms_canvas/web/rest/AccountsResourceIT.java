@@ -468,8 +468,8 @@ class AccountsResourceIT {
 
         partialUpdatedAccounts
             .fullName(UPDATED_FULL_NAME)
-            .phone(UPDATED_PHONE)
-            .gender(UPDATED_GENDER)
+            .avatarImageUrl(UPDATED_AVATAR_IMAGE_URL)
+            .locale(UPDATED_LOCALE)
             .userType(UPDATED_USER_TYPE)
             .userStatus(UPDATED_USER_STATUS);
 

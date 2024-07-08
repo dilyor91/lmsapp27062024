@@ -1,31 +1,30 @@
 import { IAssignment, NewAssignment } from './assignment.model';
 
 export const sampleWithRequiredData: IAssignment = {
-  id: 6276,
-  name: 'manatee frightfully phew',
+  id: 6129,
+  name: 'safari who daily',
 };
 
 export const sampleWithPartialData: IAssignment = {
-  id: 4652,
-  name: 'e-book apropos really',
-  content: 'sternly',
-  points: 20502.09,
-  allowedAttempts: 16266,
+  id: 22235,
+  name: 'pace misread',
+  points: 17840.88,
+  submissionType: 'PAPER',
   published: false,
 };
 
 export const sampleWithFullData: IAssignment = {
-  id: 18430,
-  name: 'misread as friction',
-  content: 'hm ew',
-  points: 22976.68,
+  id: 14315,
+  name: 'after of',
+  content: 'though distributor',
+  points: 17277.21,
   submissionType: 'PAPER',
-  allowedAttempts: 6088,
+  allowedAttempts: 3055,
   published: false,
 };
 
 export const sampleWithNewData: NewAssignment = {
-  name: 'cygnet',
+  name: 'yum',
   id: null,
 };
 

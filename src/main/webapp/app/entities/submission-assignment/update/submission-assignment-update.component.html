@@ -1,0 +1,153 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-submission-assignment-heading"
+        data-cy="SubmissionAssignmentCreateUpdateHeading"
+        jhiTranslate="lmsapp27062024App.submissionAssignment.home.createOrEditLabel"
+      >
+        Create or edit a Submission Assignment
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="lmsapp27062024App.submissionAssignment.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_submissionDate" jhiTranslate="lmsapp27062024App.submissionAssignment.submissionDate"
+            >Submission Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_submissionDate"
+              data-cy="submissionDate"
+              type="datetime-local"
+              class="form-control"
+              name="submissionDate"
+              formControlName="submissionDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_content" jhiTranslate="lmsapp27062024App.submissionAssignment.content">Content</label>
+          <input type="text" class="form-control" name="content" id="field_content" data-cy="content" formControlName="content" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_comment" jhiTranslate="lmsapp27062024App.submissionAssignment.comment">Comment</label>
+          <input type="text" class="form-control" name="comment" id="field_comment" data-cy="comment" formControlName="comment" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_attempsNumber" jhiTranslate="lmsapp27062024App.submissionAssignment.attempsNumber"
+            >Attemps Number</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="attempsNumber"
+            id="field_attempsNumber"
+            data-cy="attempsNumber"
+            formControlName="attempsNumber"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_student" jhiTranslate="lmsapp27062024App.submissionAssignment.student">Student</label>
+          <select
+            class="form-control"
+            id="field_student"
+            data-cy="student"
+            name="student"
+            formControlName="student"
+            [compareWith]="compareStudent"
+          >
+            <option [ngValue]="null"></option>
+            @for (studentOption of studentsSharedCollection; track $index) {
+              <option [ngValue]="studentOption">{{ studentOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_course" jhiTranslate="lmsapp27062024App.submissionAssignment.course">Course</label>
+          <select
+            class="form-control"
+            id="field_course"
+            data-cy="course"
+            name="course"
+            formControlName="course"
+            [compareWith]="compareCourse"
+          >
+            <option [ngValue]="null"></option>
+            @for (courseOption of coursesSharedCollection; track $index) {
+              <option [ngValue]="courseOption">{{ courseOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_assignment" jhiTranslate="lmsapp27062024App.submissionAssignment.assignment"
+            >Assignment</label
+          >
+          <select
+            class="form-control"
+            id="field_assignment"
+            data-cy="assignment"
+            name="assignment"
+            formControlName="assignment"
+            [compareWith]="compareAssignment"
+          >
+            <option [ngValue]="null"></option>
+            @for (assignmentOption of assignmentsSharedCollection; track $index) {
+              <option [ngValue]="assignmentOption">{{ assignmentOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_attachment" jhiTranslate="lmsapp27062024App.submissionAssignment.attachment"
+            >Attachment</label
+          >
+          <select
+            class="form-control"
+            id="field_attachment"
+            data-cy="attachment"
+            name="attachment"
+            formControlName="attachment"
+            [compareWith]="compareAttachment"
+          >
+            <option [ngValue]="null"></option>
+            @for (attachmentOption of attachmentsSharedCollection; track $index) {
+              <option [ngValue]="attachmentOption">{{ attachmentOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

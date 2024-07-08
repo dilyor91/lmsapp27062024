@@ -1,17 +1,17 @@
 import { ISpeciality, NewSpeciality } from './speciality.model';
 
 export const sampleWithRequiredData: ISpeciality = {
-  id: 10877,
+  id: 4068,
 };
 
 export const sampleWithPartialData: ISpeciality = {
-  id: 20237,
-  name: 'inside',
+  id: 14583,
+  name: 'fame cautiously annually',
 };
 
 export const sampleWithFullData: ISpeciality = {
-  id: 29108,
-  name: 'quietly considering',
+  id: 17918,
+  name: 'which reappear',
 };
 
 export const sampleWithNewData: NewSpeciality = {

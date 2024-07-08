@@ -181,6 +181,11 @@ const routes: Routes = [
     data: { pageTitle: 'lmsapp27062024App.attachment.home.title' },
     loadChildren: () => import('./attachment/attachment.routes'),
   },
+  {
+    path: 'submission-assignment',
+    data: { pageTitle: 'lmsapp27062024App.submissionAssignment.home.title' },
+    loadChildren: () => import('./submission-assignment/submission-assignment.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 

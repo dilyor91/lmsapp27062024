@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (submissionAssignment()) {
+      <div>
+        <h2 data-cy="submissionAssignmentDetailsHeading">
+          <span jhiTranslate="lmsapp27062024App.submissionAssignment.detail.title">Submission Assignment</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ submissionAssignment()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.submissionAssignment.submissionDate">Submission Date</span></dt>
+          <dd>
+            <span>{{ submissionAssignment()!.submissionDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.submissionAssignment.content">Content</span></dt>
+          <dd>
+            <span>{{ submissionAssignment()!.content }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.submissionAssignment.comment">Comment</span></dt>
+          <dd>
+            <span>{{ submissionAssignment()!.comment }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.submissionAssignment.attempsNumber">Attemps Number</span></dt>
+          <dd>
+            <span>{{ submissionAssignment()!.attempsNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.submissionAssignment.student">Student</span></dt>
+          <dd>
+            @if (submissionAssignment()!.student) {
+              <div>
+                <a [routerLink]="['/student', submissionAssignment()!.student?.id, 'view']">{{ submissionAssignment()!.student?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.submissionAssignment.course">Course</span></dt>
+          <dd>
+            @if (submissionAssignment()!.course) {
+              <div>
+                <a [routerLink]="['/course', submissionAssignment()!.course?.id, 'view']">{{ submissionAssignment()!.course?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.submissionAssignment.assignment">Assignment</span></dt>
+          <dd>
+            @if (submissionAssignment()!.assignment) {
+              <div>
+                <a [routerLink]="['/assignment', submissionAssignment()!.assignment?.id, 'view']">{{
+                  submissionAssignment()!.assignment?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.submissionAssignment.attachment">Attachment</span></dt>
+          <dd>
+            @if (submissionAssignment()!.attachment) {
+              <div>
+                <a [routerLink]="['/attachment', submissionAssignment()!.attachment?.id, 'view']">{{
+                  submissionAssignment()!.attachment?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/submission-assignment', submissionAssignment()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

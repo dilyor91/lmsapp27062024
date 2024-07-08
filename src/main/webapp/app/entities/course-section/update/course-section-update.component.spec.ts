@@ -53,10 +53,10 @@ describe('CourseSection Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Course query and add missing value', () => {
       const courseSection: ICourseSection = { id: 456 };
-      const course: ICourse = { id: 2036 };
+      const course: ICourse = { id: 14834 };
       courseSection.course = course;
 
-      const courseCollection: ICourse[] = [{ id: 5996 }];
+      const courseCollection: ICourse[] = [{ id: 23785 }];
       jest.spyOn(courseService, 'query').mockReturnValue(of(new HttpResponse({ body: courseCollection })));
       const additionalCourses = [course];
       const expectedCollection: ICourse[] = [...additionalCourses, ...courseCollection];
@@ -75,10 +75,10 @@ describe('CourseSection Management Update Component', () => {
 
     it('Should call Announcement query and add missing value', () => {
       const courseSection: ICourseSection = { id: 456 };
-      const announcements: IAnnouncement[] = [{ id: 24214 }];
+      const announcements: IAnnouncement[] = [{ id: 17979 }];
       courseSection.announcements = announcements;
 
-      const announcementCollection: IAnnouncement[] = [{ id: 8774 }];
+      const announcementCollection: IAnnouncement[] = [{ id: 4021 }];
       jest.spyOn(announcementService, 'query').mockReturnValue(of(new HttpResponse({ body: announcementCollection })));
       const additionalAnnouncements = [...announcements];
       const expectedCollection: IAnnouncement[] = [...additionalAnnouncements, ...announcementCollection];
@@ -97,9 +97,9 @@ describe('CourseSection Management Update Component', () => {
 
     it('Should update editForm', () => {
       const courseSection: ICourseSection = { id: 456 };
-      const course: ICourse = { id: 4792 };
+      const course: ICourse = { id: 12709 };
       courseSection.course = course;
-      const announcement: IAnnouncement = { id: 21352 };
+      const announcement: IAnnouncement = { id: 2361 };
       courseSection.announcements = [announcement];
 
       activatedRoute.data = of({ courseSection });

@@ -3,20 +3,19 @@ import dayjs from 'dayjs/esm';
 import { ICourseWeek, NewCourseWeek } from './course-week.model';
 
 export const sampleWithRequiredData: ICourseWeek = {
-  id: 23454,
+  id: 4223,
 };
 
 export const sampleWithPartialData: ICourseWeek = {
-  id: 20538,
-  name: 'fitting',
-  published: true,
+  id: 16016,
+  weekDate: dayjs('2024-07-03T15:37'),
 };
 
 export const sampleWithFullData: ICourseWeek = {
-  id: 27790,
-  name: 'ouch fabulous',
+  id: 15060,
+  name: 'frankly duh',
   published: true,
-  weekDate: dayjs('2024-07-03T12:08'),
+  weekDate: dayjs('2024-07-03T16:11'),
 };
 
 export const sampleWithNewData: NewCourseWeek = {
