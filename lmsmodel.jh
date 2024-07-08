@@ -304,6 +304,21 @@ entity AssignmentCourseSection {
     startDate Instant
     endDate Instant
 }
+
+entity SubmissionAssignment {
+   submissionDate Instant
+   content String
+   comment String 
+   attempsNumber Integer
+}
+
+relationship ManyToOne {
+   SubmissionAssignment{student} to Student
+   SubmissionAssignment{course} to Course
+   SubmissionAssignment{assignment} to Assignment
+   SubmissionAssignment{attachment} to Attachment
+}
+
 relationship ManyToOne {
    AssignmentCourseSection{assignment} to Assignment
    AssignmentCourseSection{course} to Course
@@ -420,7 +435,7 @@ QuestionGroup, Question, Option,
 Quiz, QuizQuestionGroup, QuizCourseSection,
 QuizSession, StudentOption, StudentQuestion,
 StudentAnswerQuestion, QuizResult, Lesson, Attendance,
-CourseWeekInfo, CourseWeek, LessonMaterial with pagination
+CourseWeekInfo, CourseWeek, LessonMaterial, SubmissionAssignment with pagination
 
 // Use Data Transfer Objects (DTO)
 dto * with mapstruct
