@@ -1,0 +1,193 @@
+<div>
+  <h2 id="page-heading" data-cy="SubmissionAssignmentHeading">
+    <span jhiTranslate="lmsapp27062024App.submissionAssignment.home.title">Submission Assignments</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.submissionAssignment.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-submission-assignment"
+        [routerLink]="['/submission-assignment/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.submissionAssignment.home.createLabel">Create a new Submission Assignment</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (submissionAssignments?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="lmsapp27062024App.submissionAssignment.home.notFound">No Submission Assignments found</span>
+    </div>
+  }
+
+  @if (submissionAssignments && submissionAssignments.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="submissionDate">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.submissionAssignment.submissionDate">Submission Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="content">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.submissionAssignment.content">Content</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="comment">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.submissionAssignment.comment">Comment</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="attempsNumber">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.submissionAssignment.attempsNumber">Attemps Number</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="student.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.submissionAssignment.student">Student</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="course.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.submissionAssignment.course">Course</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="assignment.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.submissionAssignment.assignment">Assignment</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="attachment.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.submissionAssignment.attachment">Attachment</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (submissionAssignment of submissionAssignments; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/submission-assignment', submissionAssignment.id, 'view']">{{ submissionAssignment.id }}</a>
+              </td>
+              <td>{{ submissionAssignment.submissionDate | formatMediumDatetime }}</td>
+              <td>{{ submissionAssignment.content }}</td>
+              <td>{{ submissionAssignment.comment }}</td>
+              <td>{{ submissionAssignment.attempsNumber }}</td>
+              <td>
+                @if (submissionAssignment.student) {
+                  <div>
+                    <a [routerLink]="['/student', submissionAssignment.student.id, 'view']">{{ submissionAssignment.student.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (submissionAssignment.course) {
+                  <div>
+                    <a [routerLink]="['/course', submissionAssignment.course.id, 'view']">{{ submissionAssignment.course.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (submissionAssignment.assignment) {
+                  <div>
+                    <a [routerLink]="['/assignment', submissionAssignment.assignment.id, 'view']">{{
+                      submissionAssignment.assignment.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (submissionAssignment.attachment) {
+                  <div>
+                    <a [routerLink]="['/attachment', submissionAssignment.attachment.id, 'view']">{{
+                      submissionAssignment.attachment.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/submission-assignment', submissionAssignment.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/submission-assignment', submissionAssignment.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(submissionAssignment)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (submissionAssignments && submissionAssignments.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

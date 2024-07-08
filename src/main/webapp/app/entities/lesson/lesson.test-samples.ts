@@ -3,32 +3,32 @@ import dayjs from 'dayjs/esm';
 import { ILesson, NewLesson } from './lesson.model';
 
 export const sampleWithRequiredData: ILesson = {
-  id: 13571,
-  lessonTitle: 'surprised prosperity',
-  startPlanDate: dayjs('2024-06-27T01:55'),
+  id: 14409,
+  lessonTitle: 'gah eek',
+  startPlanDate: dayjs('2024-06-26T22:07'),
   lessonType: 'Lecture',
 };
 
 export const sampleWithPartialData: ILesson = {
-  id: 20213,
-  lessonTitle: 'regionalism mmm cultured',
-  startPlanDate: dayjs('2024-06-27T04:22'),
-  actualLessonDate: dayjs('2024-06-26T20:49'),
+  id: 16837,
+  lessonTitle: 'outside',
+  startPlanDate: dayjs('2024-06-27T00:34'),
+  actualLessonDate: dayjs('2024-06-26T15:47'),
   lessonType: 'Practice',
 };
 
 export const sampleWithFullData: ILesson = {
-  id: 18879,
-  lessonTitle: 'triumphantly',
-  startPlanDate: dayjs('2024-06-27T03:53'),
-  actualLessonDate: dayjs('2024-06-26T07:53'),
-  lessonType: 'Seminar',
-  videoUrl: 'foolishly thoughtfully victoriously',
+  id: 25006,
+  lessonTitle: 'consonant',
+  startPlanDate: dayjs('2024-06-26T21:08'),
+  actualLessonDate: dayjs('2024-06-26T18:46'),
+  lessonType: 'Practice',
+  videoUrl: 'painting',
 };
 
 export const sampleWithNewData: NewLesson = {
-  lessonTitle: 'indeed truthfully beef',
-  startPlanDate: dayjs('2024-06-27T05:34'),
+  lessonTitle: 'scarf gel',
+  startPlanDate: dayjs('2024-06-26T22:50'),
   lessonType: 'Practice',
   id: null,
 };

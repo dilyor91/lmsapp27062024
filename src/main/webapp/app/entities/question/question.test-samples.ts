@@ -1,24 +1,24 @@
 import { IQuestion, NewQuestion } from './question.model';
 
 export const sampleWithRequiredData: IQuestion = {
-  id: 4594,
-  questionText: 'potentially ah',
+  id: 26798,
+  questionText: 'timetable nurture unto',
 };
 
 export const sampleWithPartialData: IQuestion = {
-  id: 28471,
-  questionText: 'suddenly',
-  point: 3566,
+  id: 29134,
+  questionText: 'exalted waterlogged oh',
+  point: 17915,
 };
 
 export const sampleWithFullData: IQuestion = {
-  id: 13433,
-  questionText: 'blow',
-  point: 11572,
+  id: 396,
+  questionText: 'abaft',
+  point: 7920,
 };
 
 export const sampleWithNewData: NewQuestion = {
-  questionText: 'vanilla bluff',
+  questionText: 'from imperturbable dim',
   id: null,
 };
 

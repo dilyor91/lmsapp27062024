@@ -1,0 +1,31 @@
+{
+  "lmsapp27062024App": {
+    "submissionAssignment": {
+      "home": {
+        "title": "Submission Assignments",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Submission Assignment",
+        "createOrEditLabel": "Create or edit a Submission Assignment",
+        "notFound": "No Submission Assignments found"
+      },
+      "created": "A new Submission Assignment is created with identifier {{ param }}",
+      "updated": "A Submission Assignment is updated with identifier {{ param }}",
+      "deleted": "A Submission Assignment is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Submission Assignment {{ id }}?"
+      },
+      "detail": {
+        "title": "Submission Assignment"
+      },
+      "id": "ID",
+      "submissionDate": "Submission Date",
+      "content": "Content",
+      "comment": "Comment",
+      "attempsNumber": "Attemps Number",
+      "student": "Student",
+      "course": "Course",
+      "assignment": "Assignment",
+      "attachment": "Attachment"
+    }
+  }
+}

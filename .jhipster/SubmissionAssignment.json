@@ -1,0 +1,55 @@
+{
+  "annotations": {
+    "changelogDate": "20240708091510"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "submissionDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "content",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "comment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "attempsNumber",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "SubmissionAssignment",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "student",
+      "relationshipName": "student",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "course",
+      "relationshipName": "course",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "assignment",
+      "relationshipName": "assignment",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "attachment",
+      "relationshipName": "attachment",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

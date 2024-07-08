@@ -41,7 +41,8 @@
         "courseWeekInfo": "Course Week Info",
         "courseWeek": "Course Week",
         "lessonMaterial": "Lesson Material",
-        "attachment": "Attachment"
+        "attachment": "Attachment",
+        "submissionAssignment": "Submission Assignment"
       },
       "account": {
         "main": "Account",
