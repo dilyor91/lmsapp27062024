@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static uz.momoit.lms_canvas.domain.AssignmentTestSamples.*;
 import static uz.momoit.lms_canvas.domain.AttachmentTestSamples.*;
 import static uz.momoit.lms_canvas.domain.CourseTestSamples.*;
+import static uz.momoit.lms_canvas.domain.GradeTestSamples.*;
 import static uz.momoit.lms_canvas.domain.StudentTestSamples.*;
 import static uz.momoit.lms_canvas.domain.SubmissionAssignmentTestSamples.*;
 
@@ -72,5 +73,19 @@ class SubmissionAssignmentTest {
 
         submissionAssignment.attachment(null);
         assertThat(submissionAssignment.getAttachment()).isNull();
+    }
+
+    @Test
+    void gradeTest() {
+        SubmissionAssignment submissionAssignment = getSubmissionAssignmentRandomSampleGenerator();
+        Grade gradeBack = getGradeRandomSampleGenerator();
+
+        submissionAssignment.setGrade(gradeBack);
+        assertThat(submissionAssignment.getGrade()).isEqualTo(gradeBack);
+        assertThat(gradeBack.getSubmissionAssignment()).isEqualTo(submissionAssignment);
+
+        submissionAssignment.grade(null);
+        assertThat(submissionAssignment.getGrade()).isNull();
+        assertThat(gradeBack.getSubmissionAssignment()).isNull();
     }
 }

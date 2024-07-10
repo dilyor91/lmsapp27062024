@@ -54,6 +54,7 @@
     <include file="config/liquibase/changelog/20240704124121_added_entity_LessonMaterial.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240704124122_added_entity_Attachment.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240708091510_added_entity_SubmissionAssignment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240710063500_added_entity_Grade.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20240627062103_added_entity_constraints_Course.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240627062104_added_entity_constraints_CourseSection.xml" relativeToChangelogFile="false"/>
@@ -86,6 +87,7 @@
     <include file="config/liquibase/changelog/20240704055406_added_entity_constraints_CourseWeek.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240704124121_added_entity_constraints_LessonMaterial.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240708091510_added_entity_constraints_SubmissionAssignment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240710063500_added_entity_constraints_Grade.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

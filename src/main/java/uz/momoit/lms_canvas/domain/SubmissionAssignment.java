@@ -51,6 +51,10 @@ public class SubmissionAssignment implements Serializable {
     @JsonIgnoreProperties(value = { "lessonMaterial" }, allowSetters = true)
     private Attachment attachment;
 
+    @JsonIgnoreProperties(value = { "submissionAssignment", "teacher", "assignment" }, allowSetters = true)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "submissionAssignment")
+    private Grade grade;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -167,6 +171,25 @@ public class SubmissionAssignment implements Serializable {
 
     public SubmissionAssignment attachment(Attachment attachment) {
         this.setAttachment(attachment);
+        return this;
+    }
+
+    public Grade getGrade() {
+        return this.grade;
+    }
+
+    public void setGrade(Grade grade) {
+        if (this.grade != null) {
+            this.grade.setSubmissionAssignment(null);
+        }
+        if (grade != null) {
+            grade.setSubmissionAssignment(this);
+        }
+        this.grade = grade;
+    }
+
+    public SubmissionAssignment grade(Grade grade) {
+        this.setGrade(grade);
         return this;
     }
 

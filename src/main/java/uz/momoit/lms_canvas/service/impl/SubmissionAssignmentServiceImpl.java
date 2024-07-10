@@ -1,6 +1,10 @@
 package uz.momoit.lms_canvas.service.impl;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -70,6 +74,19 @@ public class SubmissionAssignmentServiceImpl implements SubmissionAssignmentServ
     public Page<SubmissionAssignmentDTO> findAll(Pageable pageable) {
         log.debug("Request to get all SubmissionAssignments");
         return submissionAssignmentRepository.findAll(pageable).map(submissionAssignmentMapper::toDto);
+    }
+
+    /**
+     *  Get all the submissionAssignments where Grade is {@code null}.
+     *  @return the list of entities.
+     */
+    @Transactional(readOnly = true)
+    public List<SubmissionAssignmentDTO> findAllWhereGradeIsNull() {
+        log.debug("Request to get all submissionAssignments where Grade is null");
+        return StreamSupport.stream(submissionAssignmentRepository.findAll().spliterator(), false)
+            .filter(submissionAssignment -> submissionAssignment.getGrade() == null)
+            .map(submissionAssignmentMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     @Override

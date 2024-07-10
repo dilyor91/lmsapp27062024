@@ -1,0 +1,154 @@
+<div>
+  <h2 id="page-heading" data-cy="GradeHeading">
+    <span jhiTranslate="lmsapp27062024App.grade.home.title">Grades</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.grade.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-grade"
+        [routerLink]="['/grade/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.grade.home.createLabel">Create a new Grade</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (grades?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="lmsapp27062024App.grade.home.notFound">No Grades found</span>
+    </div>
+  }
+
+  @if (grades && grades.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="point">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.grade.point">Point</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="gradedDate">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.grade.gradedDate">Graded Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="submissionAssignment.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.grade.submissionAssignment">Submission Assignment</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="teacher.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.grade.teacher">Teacher</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="assignment.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.grade.assignment">Assignment</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (grade of grades; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/grade', grade.id, 'view']">{{ grade.id }}</a>
+              </td>
+              <td>{{ grade.point }}</td>
+              <td>{{ grade.gradedDate | formatMediumDatetime }}</td>
+              <td>
+                @if (grade.submissionAssignment) {
+                  <div>
+                    <a [routerLink]="['/submission-assignment', grade.submissionAssignment.id, 'view']">{{
+                      grade.submissionAssignment.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (grade.teacher) {
+                  <div>
+                    <a [routerLink]="['/teacher', grade.teacher.id, 'view']">{{ grade.teacher.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (grade.assignment) {
+                  <div>
+                    <a [routerLink]="['/assignment', grade.assignment.id, 'view']">{{ grade.assignment.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/grade', grade.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/grade', grade.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(grade)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (grades && grades.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

@@ -319,6 +319,8 @@ class QuizCourseSectionResourceIT {
         QuizCourseSection partialUpdatedQuizCourseSection = new QuizCourseSection();
         partialUpdatedQuizCourseSection.setId(quizCourseSection.getId());
 
+        partialUpdatedQuizCourseSection.endDate(UPDATED_END_DATE);
+
         restQuizCourseSectionMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedQuizCourseSection.getId())

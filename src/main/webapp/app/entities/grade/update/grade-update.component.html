@@ -1,0 +1,109 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-grade-heading" data-cy="GradeCreateUpdateHeading" jhiTranslate="lmsapp27062024App.grade.home.createOrEditLabel">
+        Create or edit a Grade
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="lmsapp27062024App.grade.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_point" jhiTranslate="lmsapp27062024App.grade.point">Point</label>
+          <input type="number" class="form-control" name="point" id="field_point" data-cy="point" formControlName="point" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_gradedDate" jhiTranslate="lmsapp27062024App.grade.gradedDate">Graded Date</label>
+          <div class="d-flex">
+            <input
+              id="field_gradedDate"
+              data-cy="gradedDate"
+              type="datetime-local"
+              class="form-control"
+              name="gradedDate"
+              formControlName="gradedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_submissionAssignment" jhiTranslate="lmsapp27062024App.grade.submissionAssignment"
+            >Submission Assignment</label
+          >
+          <select
+            class="form-control"
+            id="field_submissionAssignment"
+            data-cy="submissionAssignment"
+            name="submissionAssignment"
+            formControlName="submissionAssignment"
+            [compareWith]="compareSubmissionAssignment"
+          >
+            <option [ngValue]="null"></option>
+            @for (submissionAssignmentOption of submissionAssignmentsCollection; track $index) {
+              <option [ngValue]="submissionAssignmentOption">{{ submissionAssignmentOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_teacher" jhiTranslate="lmsapp27062024App.grade.teacher">Teacher</label>
+          <select
+            class="form-control"
+            id="field_teacher"
+            data-cy="teacher"
+            name="teacher"
+            formControlName="teacher"
+            [compareWith]="compareTeacher"
+          >
+            <option [ngValue]="null"></option>
+            @for (teacherOption of teachersSharedCollection; track $index) {
+              <option [ngValue]="teacherOption">{{ teacherOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_assignment" jhiTranslate="lmsapp27062024App.grade.assignment">Assignment</label>
+          <select
+            class="form-control"
+            id="field_assignment"
+            data-cy="assignment"
+            name="assignment"
+            formControlName="assignment"
+            [compareWith]="compareAssignment"
+          >
+            <option [ngValue]="null"></option>
+            @for (assignmentOption of assignmentsSharedCollection; track $index) {
+              <option [ngValue]="assignmentOption">{{ assignmentOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

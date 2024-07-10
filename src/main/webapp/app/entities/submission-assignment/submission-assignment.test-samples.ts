@@ -3,21 +3,22 @@ import dayjs from 'dayjs/esm';
 import { ISubmissionAssignment, NewSubmissionAssignment } from './submission-assignment.model';
 
 export const sampleWithRequiredData: ISubmissionAssignment = {
-  id: 10727,
+  id: 26425,
 };
 
 export const sampleWithPartialData: ISubmissionAssignment = {
-  id: 31394,
-  submissionDate: dayjs('2024-07-07T23:59'),
-  attempsNumber: 14543,
+  id: 2128,
+  submissionDate: dayjs('2024-07-08T00:08'),
+  comment: 'aboard babyish',
+  attempsNumber: 16860,
 };
 
 export const sampleWithFullData: ISubmissionAssignment = {
-  id: 11644,
-  submissionDate: dayjs('2024-07-07T23:57'),
-  content: 'honestly',
-  comment: 'octave manifestation speedily',
-  attempsNumber: 18600,
+  id: 11464,
+  submissionDate: dayjs('2024-07-07T19:10'),
+  content: 'with stand',
+  comment: 'gadzooks honesty anti',
+  attempsNumber: 11944,
 };
 
 export const sampleWithNewData: NewSubmissionAssignment = {

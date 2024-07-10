@@ -307,8 +307,6 @@ class CourseWeekInfoResourceIT {
         CourseWeekInfo partialUpdatedCourseWeekInfo = new CourseWeekInfo();
         partialUpdatedCourseWeekInfo.setId(courseWeekInfo.getId());
 
-        partialUpdatedCourseWeekInfo.startDate(UPDATED_START_DATE);
-
         restCourseWeekInfoMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedCourseWeekInfo.getId())

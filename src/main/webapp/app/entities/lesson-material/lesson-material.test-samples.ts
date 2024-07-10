@@ -1,17 +1,18 @@
 import { ILessonMaterial, NewLessonMaterial } from './lesson-material.model';
 
 export const sampleWithRequiredData: ILessonMaterial = {
-  id: 20430,
+  id: 19532,
 };
 
 export const sampleWithPartialData: ILessonMaterial = {
-  id: 15381,
+  id: 14375,
+  description: 'subsidence',
 };
 
 export const sampleWithFullData: ILessonMaterial = {
-  id: 16717,
-  title: 'even',
-  description: 'govern ticket pocket',
+  id: 28060,
+  title: 'noisy',
+  description: 'grand',
   lessonFileType: 'SOCIAL_MEDIA',
 };
 

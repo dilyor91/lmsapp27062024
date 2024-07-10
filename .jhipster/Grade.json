@@ -1,0 +1,41 @@
+{
+  "annotations": {
+    "changelogDate": "20240710063500"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "point",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "gradedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "Grade",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "submissionAssignment",
+      "relationshipName": "submissionAssignment",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "teacher",
+      "relationshipName": "teacher",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "assignment",
+      "relationshipName": "assignment",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

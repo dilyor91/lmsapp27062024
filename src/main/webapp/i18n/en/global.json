@@ -42,7 +42,8 @@
         "courseWeek": "Course Week",
         "lessonMaterial": "Lesson Material",
         "attachment": "Attachment",
-        "submissionAssignment": "Submission Assignment"
+        "submissionAssignment": "Submission Assignment",
+        "grade": "Grade"
       },
       "account": {
         "main": "Account",
