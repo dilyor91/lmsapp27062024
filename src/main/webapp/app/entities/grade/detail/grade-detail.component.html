@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (grade()) {
+      <div>
+        <h2 data-cy="gradeDetailsHeading"><span jhiTranslate="lmsapp27062024App.grade.detail.title">Grade</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ grade()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.grade.point">Point</span></dt>
+          <dd>
+            <span>{{ grade()!.point }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.grade.gradedDate">Graded Date</span></dt>
+          <dd>
+            <span>{{ grade()!.gradedDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.grade.submissionAssignment">Submission Assignment</span></dt>
+          <dd>
+            @if (grade()!.submissionAssignment) {
+              <div>
+                <a [routerLink]="['/submission-assignment', grade()!.submissionAssignment?.id, 'view']">{{
+                  grade()!.submissionAssignment?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.grade.teacher">Teacher</span></dt>
+          <dd>
+            @if (grade()!.teacher) {
+              <div>
+                <a [routerLink]="['/teacher', grade()!.teacher?.id, 'view']">{{ grade()!.teacher?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.grade.assignment">Assignment</span></dt>
+          <dd>
+            @if (grade()!.assignment) {
+              <div>
+                <a [routerLink]="['/assignment', grade()!.assignment?.id, 'view']">{{ grade()!.assignment?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/grade', grade()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

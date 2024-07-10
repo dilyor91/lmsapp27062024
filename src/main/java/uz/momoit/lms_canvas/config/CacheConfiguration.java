@@ -90,6 +90,7 @@ public class CacheConfiguration {
             createCache(cm, uz.momoit.lms_canvas.domain.LessonMaterial.class.getName());
             createCache(cm, uz.momoit.lms_canvas.domain.Attachment.class.getName());
             createCache(cm, uz.momoit.lms_canvas.domain.SubmissionAssignment.class.getName());
+            createCache(cm, uz.momoit.lms_canvas.domain.Grade.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

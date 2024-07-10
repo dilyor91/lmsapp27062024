@@ -312,6 +312,20 @@ entity SubmissionAssignment {
    attempsNumber Integer
 }
 
+entity Grade {
+    point Integer
+    gradedDate Instant
+}
+
+relationship OneToOne {
+   Grade{submissionAssignment} to SubmissionAssignment
+}
+
+relationship ManyToOne {
+  Grade{teacher} to Teacher
+  Grade{assignment} to Assignment
+}
+
 relationship ManyToOne {
    SubmissionAssignment{student} to Student
    SubmissionAssignment{course} to Course
@@ -435,7 +449,7 @@ QuestionGroup, Question, Option,
 Quiz, QuizQuestionGroup, QuizCourseSection,
 QuizSession, StudentOption, StudentQuestion,
 StudentAnswerQuestion, QuizResult, Lesson, Attendance,
-CourseWeekInfo, CourseWeek, LessonMaterial, SubmissionAssignment with pagination
+CourseWeekInfo, CourseWeek, LessonMaterial, SubmissionAssignment, Grade with pagination
 
 // Use Data Transfer Objects (DTO)
 dto * with mapstruct

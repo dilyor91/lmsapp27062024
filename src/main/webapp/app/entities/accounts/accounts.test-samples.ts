@@ -1,49 +1,49 @@
 import { IAccounts, NewAccounts } from './accounts.model';
 
 export const sampleWithRequiredData: IAccounts = {
-  id: 10426,
-  username: 'meh calf indeed',
-  fullName: 'fooey lest gracefully',
-  sortableName: 'yahoo',
-  phone: '1-941-278-7237',
-  gender: 'failing',
-  userType: 'STUDENT',
-  userStatus: 'ACTIVE',
-};
-
-export const sampleWithPartialData: IAccounts = {
-  id: 19821,
-  username: 'taste harass',
-  fullName: 'whoever',
-  sortableName: 'launder abrogation after',
-  avatarImageUrl: 'cherry reassuringly',
-  phone: '(793) 401-1701 x4102',
-  gender: 'ground',
+  id: 6423,
+  username: 'courage who',
+  fullName: 'meanwhile phew tire',
+  sortableName: 'phooey where vastly',
+  phone: '950.541.2567 x87786',
+  gender: 'modulo ha drat',
   userType: 'TEACHER',
   userStatus: 'BLOCKED',
 };
 
-export const sampleWithFullData: IAccounts = {
-  id: 584,
-  username: 'juxtapose er',
-  fullName: 'implement',
-  sortableName: 'bud radar',
-  avatarImageUrl: 'adventurously',
-  phone: '234-998-1957 x9253',
-  locale: 'for eek while',
-  gender: 'textual afterwards aside',
+export const sampleWithPartialData: IAccounts = {
+  id: 32625,
+  username: 'tussle youthfully key',
+  fullName: 'mesmerize',
+  sortableName: 'remorseful alienated',
+  phone: '577-623-7180 x7841',
+  locale: 'boohoo',
+  gender: 'giggle correspond astonishing',
   userType: 'TEACHER',
+  userStatus: 'ACTIVE',
+};
+
+export const sampleWithFullData: IAccounts = {
+  id: 2087,
+  username: 'ha worried oil',
+  fullName: 'or worthwhile',
+  sortableName: 'divine anxiously opposite',
+  avatarImageUrl: 'courageous buttress next',
+  phone: '667-737-4303 x59553',
+  locale: 'underneath countermand seriously',
+  gender: 'biodegradable who provided',
+  userType: 'STUDENT',
   userStatus: 'PENDING',
 };
 
 export const sampleWithNewData: NewAccounts = {
-  username: 'branch zowie save',
-  fullName: 'physical doctorate recklessly',
-  sortableName: 'aboard vice but',
-  phone: '1-541-563-8715 x8090',
-  gender: 'when interview rewarding',
+  username: 'as unless',
+  fullName: 'wisely so blank',
+  sortableName: 'unless highly',
+  phone: '783-316-2713',
+  gender: 'aside',
   userType: 'TEACHER',
-  userStatus: 'ACTIVE',
+  userStatus: 'PENDING',
   id: null,
 };
 

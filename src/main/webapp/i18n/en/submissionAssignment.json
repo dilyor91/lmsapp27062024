@@ -25,7 +25,8 @@
       "student": "Student",
       "course": "Course",
       "assignment": "Assignment",
-      "attachment": "Attachment"
+      "attachment": "Attachment",
+      "grade": "Grade"
     }
   }
 }
