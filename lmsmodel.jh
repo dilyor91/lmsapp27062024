@@ -439,6 +439,18 @@ relationship ManyToMany {
     Announcement{courseSection} to CourseSection{announcement}
 }
 
+entity AssignmentComment {
+   comment String required
+   commentDate Instant required
+}
+
+relationship ManyToOne {
+   AssignmentComment{submissionAssignment} to SubmissionAssignment
+   AssignmentComment{assignment} to Assignment
+   AssignmentComment{student} to Student
+   AssignmentComment{teacher} to Teacher
+}
+
 // Set pagination options
 paginate  Course, CourseSection, Enrollment, Accounts, 
 Assignment, Announcement, CalendarEvent, WikiPage,
@@ -449,7 +461,7 @@ QuestionGroup, Question, Option,
 Quiz, QuizQuestionGroup, QuizCourseSection,
 QuizSession, StudentOption, StudentQuestion,
 StudentAnswerQuestion, QuizResult, Lesson, Attendance,
-CourseWeekInfo, CourseWeek, LessonMaterial, SubmissionAssignment, Grade with pagination
+CourseWeekInfo, CourseWeek, LessonMaterial, SubmissionAssignment, Grade, AssignmentComment with pagination
 
 // Use Data Transfer Objects (DTO)
 dto * with mapstruct
