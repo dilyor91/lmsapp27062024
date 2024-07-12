@@ -1,0 +1,29 @@
+{
+  "lmsapp27062024App": {
+    "assignmentComment": {
+      "home": {
+        "title": "Assignment Comments",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Assignment Comment",
+        "createOrEditLabel": "Create or edit a Assignment Comment",
+        "notFound": "No Assignment Comments found"
+      },
+      "created": "A new Assignment Comment is created with identifier {{ param }}",
+      "updated": "A Assignment Comment is updated with identifier {{ param }}",
+      "deleted": "A Assignment Comment is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Assignment Comment {{ id }}?"
+      },
+      "detail": {
+        "title": "Assignment Comment"
+      },
+      "id": "ID",
+      "comment": "Comment",
+      "commentDate": "Comment Date",
+      "submissionAssignment": "Submission Assignment",
+      "assignment": "Assignment",
+      "student": "Student",
+      "teacher": "Teacher"
+    }
+  }
+}

@@ -57,10 +57,10 @@ describe('Teacher Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call User query and add missing value', () => {
       const teacher: ITeacher = { id: 456 };
-      const user: IUser = { id: 2724 };
+      const user: IUser = { id: 24777 };
       teacher.user = user;
 
-      const userCollection: IUser[] = [{ id: 27521 }];
+      const userCollection: IUser[] = [{ id: 11552 }];
       jest.spyOn(userService, 'query').mockReturnValue(of(new HttpResponse({ body: userCollection })));
       const additionalUsers = [user];
       const expectedCollection: IUser[] = [...additionalUsers, ...userCollection];
@@ -79,10 +79,10 @@ describe('Teacher Management Update Component', () => {
 
     it('Should call Faculty query and add missing value', () => {
       const teacher: ITeacher = { id: 456 };
-      const faculty: IFaculty = { id: 24413 };
+      const faculty: IFaculty = { id: 11824 };
       teacher.faculty = faculty;
 
-      const facultyCollection: IFaculty[] = [{ id: 25415 }];
+      const facultyCollection: IFaculty[] = [{ id: 28560 }];
       jest.spyOn(facultyService, 'query').mockReturnValue(of(new HttpResponse({ body: facultyCollection })));
       const additionalFaculties = [faculty];
       const expectedCollection: IFaculty[] = [...additionalFaculties, ...facultyCollection];
@@ -101,10 +101,10 @@ describe('Teacher Management Update Component', () => {
 
     it('Should call Department query and add missing value', () => {
       const teacher: ITeacher = { id: 456 };
-      const department: IDepartment = { id: 27550 };
+      const department: IDepartment = { id: 13051 };
       teacher.department = department;
 
-      const departmentCollection: IDepartment[] = [{ id: 7521 }];
+      const departmentCollection: IDepartment[] = [{ id: 26637 }];
       jest.spyOn(departmentService, 'query').mockReturnValue(of(new HttpResponse({ body: departmentCollection })));
       const additionalDepartments = [department];
       const expectedCollection: IDepartment[] = [...additionalDepartments, ...departmentCollection];
@@ -123,11 +123,11 @@ describe('Teacher Management Update Component', () => {
 
     it('Should update editForm', () => {
       const teacher: ITeacher = { id: 456 };
-      const user: IUser = { id: 16593 };
+      const user: IUser = { id: 19179 };
       teacher.user = user;
-      const faculty: IFaculty = { id: 25235 };
+      const faculty: IFaculty = { id: 5429 };
       teacher.faculty = faculty;
-      const department: IDepartment = { id: 13565 };
+      const department: IDepartment = { id: 9571 };
       teacher.department = department;
 
       activatedRoute.data = of({ teacher });

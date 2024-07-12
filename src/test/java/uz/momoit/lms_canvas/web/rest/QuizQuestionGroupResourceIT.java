@@ -278,8 +278,6 @@ class QuizQuestionGroupResourceIT {
         QuizQuestionGroup partialUpdatedQuizQuestionGroup = new QuizQuestionGroup();
         partialUpdatedQuizQuestionGroup.setId(quizQuestionGroup.getId());
 
-        partialUpdatedQuizQuestionGroup.questionCount(UPDATED_QUESTION_COUNT);
-
         restQuizQuestionGroupMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedQuizQuestionGroup.getId())

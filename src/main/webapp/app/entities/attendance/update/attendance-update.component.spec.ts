@@ -53,10 +53,10 @@ describe('Attendance Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Student query and add missing value', () => {
       const attendance: IAttendance = { id: 456 };
-      const student: IStudent = { id: 12464 };
+      const student: IStudent = { id: 3775 };
       attendance.student = student;
 
-      const studentCollection: IStudent[] = [{ id: 13411 }];
+      const studentCollection: IStudent[] = [{ id: 13715 }];
       jest.spyOn(studentService, 'query').mockReturnValue(of(new HttpResponse({ body: studentCollection })));
       const additionalStudents = [student];
       const expectedCollection: IStudent[] = [...additionalStudents, ...studentCollection];
@@ -75,10 +75,10 @@ describe('Attendance Management Update Component', () => {
 
     it('Should call Lesson query and add missing value', () => {
       const attendance: IAttendance = { id: 456 };
-      const lesson: ILesson = { id: 29917 };
+      const lesson: ILesson = { id: 3789 };
       attendance.lesson = lesson;
 
-      const lessonCollection: ILesson[] = [{ id: 20065 }];
+      const lessonCollection: ILesson[] = [{ id: 16486 }];
       jest.spyOn(lessonService, 'query').mockReturnValue(of(new HttpResponse({ body: lessonCollection })));
       const additionalLessons = [lesson];
       const expectedCollection: ILesson[] = [...additionalLessons, ...lessonCollection];
@@ -97,9 +97,9 @@ describe('Attendance Management Update Component', () => {
 
     it('Should update editForm', () => {
       const attendance: IAttendance = { id: 456 };
-      const student: IStudent = { id: 15333 };
+      const student: IStudent = { id: 21316 };
       attendance.student = student;
-      const lesson: ILesson = { id: 21265 };
+      const lesson: ILesson = { id: 1922 };
       attendance.lesson = lesson;
 
       activatedRoute.data = of({ attendance });

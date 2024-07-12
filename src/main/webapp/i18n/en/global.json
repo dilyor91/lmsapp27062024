@@ -43,7 +43,8 @@
         "lessonMaterial": "Lesson Material",
         "attachment": "Attachment",
         "submissionAssignment": "Submission Assignment",
-        "grade": "Grade"
+        "grade": "Grade",
+        "assignmentComment": "Assignment Comment"
       },
       "account": {
         "main": "Account",

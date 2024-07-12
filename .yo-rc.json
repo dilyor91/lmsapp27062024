@@ -53,14 +53,15 @@
       "LessonMaterial",
       "Attachment",
       "SubmissionAssignment",
-      "Grade"
+      "Grade",
+      "AssignmentComment"
     ],
     "gitCompany": "",
     "jhiPrefix": "jhi",
     "jhipsterVersion": "8.6.0",
     "jwtSecretKey": "NTc4NjIxNjdjNDQ2MjU3YmEwMTM2OWIzY2E5NmVlZTRkOGZiZmRjNjg0ZDEyYjVhNmY5MDA4NmM3MTZjZjE4Y2IwZjdmYTBjMTU0ODYxY2RmYWYzMzdlMTFiMmYyZDBmNTUxMWNlNWI4NTk1Y2YxYjA5N2RlZTIzYjUxOGM3NDc=",
     "languages": ["en"],
-    "lastLiquibaseTimestamp": 1720593300000,
+    "lastLiquibaseTimestamp": 1720766369000,
     "messageBroker": false,
     "nativeLanguage": "en",
     "packageFolder": "uz/momoit/lms_canvas",
