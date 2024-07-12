@@ -1,0 +1,152 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-assignment-comment-heading"
+        data-cy="AssignmentCommentCreateUpdateHeading"
+        jhiTranslate="lmsapp27062024App.assignmentComment.home.createOrEditLabel"
+      >
+        Create or edit a Assignment Comment
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="lmsapp27062024App.assignmentComment.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_comment" jhiTranslate="lmsapp27062024App.assignmentComment.comment">Comment</label>
+          <input type="text" class="form-control" name="comment" id="field_comment" data-cy="comment" formControlName="comment" />
+          @if (editForm.get('comment')!.invalid && (editForm.get('comment')!.dirty || editForm.get('comment')!.touched)) {
+            <div>
+              @if (editForm.get('comment')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_commentDate" jhiTranslate="lmsapp27062024App.assignmentComment.commentDate"
+            >Comment Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_commentDate"
+              data-cy="commentDate"
+              type="datetime-local"
+              class="form-control"
+              name="commentDate"
+              formControlName="commentDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (editForm.get('commentDate')!.invalid && (editForm.get('commentDate')!.dirty || editForm.get('commentDate')!.touched)) {
+            <div>
+              @if (editForm.get('commentDate')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('commentDate')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >This field should be a date and time.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_submissionAssignment" jhiTranslate="lmsapp27062024App.assignmentComment.submissionAssignment"
+            >Submission Assignment</label
+          >
+          <select
+            class="form-control"
+            id="field_submissionAssignment"
+            data-cy="submissionAssignment"
+            name="submissionAssignment"
+            formControlName="submissionAssignment"
+            [compareWith]="compareSubmissionAssignment"
+          >
+            <option [ngValue]="null"></option>
+            @for (submissionAssignmentOption of submissionAssignmentsSharedCollection; track $index) {
+              <option [ngValue]="submissionAssignmentOption">{{ submissionAssignmentOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_assignment" jhiTranslate="lmsapp27062024App.assignmentComment.assignment">Assignment</label>
+          <select
+            class="form-control"
+            id="field_assignment"
+            data-cy="assignment"
+            name="assignment"
+            formControlName="assignment"
+            [compareWith]="compareAssignment"
+          >
+            <option [ngValue]="null"></option>
+            @for (assignmentOption of assignmentsSharedCollection; track $index) {
+              <option [ngValue]="assignmentOption">{{ assignmentOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_student" jhiTranslate="lmsapp27062024App.assignmentComment.student">Student</label>
+          <select
+            class="form-control"
+            id="field_student"
+            data-cy="student"
+            name="student"
+            formControlName="student"
+            [compareWith]="compareStudent"
+          >
+            <option [ngValue]="null"></option>
+            @for (studentOption of studentsSharedCollection; track $index) {
+              <option [ngValue]="studentOption">{{ studentOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_teacher" jhiTranslate="lmsapp27062024App.assignmentComment.teacher">Teacher</label>
+          <select
+            class="form-control"
+            id="field_teacher"
+            data-cy="teacher"
+            name="teacher"
+            formControlName="teacher"
+            [compareWith]="compareTeacher"
+          >
+            <option [ngValue]="null"></option>
+            @for (teacherOption of teachersSharedCollection; track $index) {
+              <option [ngValue]="teacherOption">{{ teacherOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

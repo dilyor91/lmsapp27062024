@@ -53,10 +53,10 @@ describe('CourseSection Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Course query and add missing value', () => {
       const courseSection: ICourseSection = { id: 456 };
-      const course: ICourse = { id: 9381 };
+      const course: ICourse = { id: 3911 };
       courseSection.course = course;
 
-      const courseCollection: ICourse[] = [{ id: 20114 }];
+      const courseCollection: ICourse[] = [{ id: 27077 }];
       jest.spyOn(courseService, 'query').mockReturnValue(of(new HttpResponse({ body: courseCollection })));
       const additionalCourses = [course];
       const expectedCollection: ICourse[] = [...additionalCourses, ...courseCollection];
@@ -75,10 +75,10 @@ describe('CourseSection Management Update Component', () => {
 
     it('Should call Announcement query and add missing value', () => {
       const courseSection: ICourseSection = { id: 456 };
-      const announcements: IAnnouncement[] = [{ id: 23401 }];
+      const announcements: IAnnouncement[] = [{ id: 1947 }];
       courseSection.announcements = announcements;
 
-      const announcementCollection: IAnnouncement[] = [{ id: 32142 }];
+      const announcementCollection: IAnnouncement[] = [{ id: 1579 }];
       jest.spyOn(announcementService, 'query').mockReturnValue(of(new HttpResponse({ body: announcementCollection })));
       const additionalAnnouncements = [...announcements];
       const expectedCollection: IAnnouncement[] = [...additionalAnnouncements, ...announcementCollection];
@@ -97,9 +97,9 @@ describe('CourseSection Management Update Component', () => {
 
     it('Should update editForm', () => {
       const courseSection: ICourseSection = { id: 456 };
-      const course: ICourse = { id: 26577 };
+      const course: ICourse = { id: 14663 };
       courseSection.course = course;
-      const announcement: IAnnouncement = { id: 20290 };
+      const announcement: IAnnouncement = { id: 24254 };
       courseSection.announcements = [announcement];
 
       activatedRoute.data = of({ courseSection });

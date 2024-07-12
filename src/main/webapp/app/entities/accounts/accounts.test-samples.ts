@@ -1,47 +1,47 @@
 import { IAccounts, NewAccounts } from './accounts.model';
 
 export const sampleWithRequiredData: IAccounts = {
-  id: 6423,
-  username: 'courage who',
-  fullName: 'meanwhile phew tire',
-  sortableName: 'phooey where vastly',
-  phone: '950.541.2567 x87786',
-  gender: 'modulo ha drat',
-  userType: 'TEACHER',
-  userStatus: 'BLOCKED',
-};
-
-export const sampleWithPartialData: IAccounts = {
-  id: 32625,
-  username: 'tussle youthfully key',
-  fullName: 'mesmerize',
-  sortableName: 'remorseful alienated',
-  phone: '577-623-7180 x7841',
-  locale: 'boohoo',
-  gender: 'giggle correspond astonishing',
-  userType: 'TEACHER',
+  id: 7591,
+  username: 'yum anti complete',
+  fullName: 'meh cicada',
+  sortableName: 'geez untried yum',
+  phone: '617.900.4874 x4537',
+  gender: 'otter',
+  userType: 'STUDENT',
   userStatus: 'ACTIVE',
 };
 
-export const sampleWithFullData: IAccounts = {
-  id: 2087,
-  username: 'ha worried oil',
-  fullName: 'or worthwhile',
-  sortableName: 'divine anxiously opposite',
-  avatarImageUrl: 'courageous buttress next',
-  phone: '667-737-4303 x59553',
-  locale: 'underneath countermand seriously',
-  gender: 'biodegradable who provided',
+export const sampleWithPartialData: IAccounts = {
+  id: 2958,
+  username: 'dimly zowie likely',
+  fullName: 'chaise elite anenst',
+  sortableName: 'when glossy',
+  phone: '(637) 651-7351 x03916',
+  locale: 'gibber',
+  gender: 'concerning',
   userType: 'STUDENT',
+  userStatus: 'BLOCKED',
+};
+
+export const sampleWithFullData: IAccounts = {
+  id: 27816,
+  username: 'tall ideal',
+  fullName: 'parallel',
+  sortableName: 'vintage',
+  avatarImageUrl: 'pace',
+  phone: '1-746-607-8956 x3394',
+  locale: 'once',
+  gender: 'electrocute mini-skirt',
+  userType: 'TEACHER',
   userStatus: 'PENDING',
 };
 
 export const sampleWithNewData: NewAccounts = {
-  username: 'as unless',
-  fullName: 'wisely so blank',
-  sortableName: 'unless highly',
-  phone: '783-316-2713',
-  gender: 'aside',
+  username: 'knottily gadzooks rouse',
+  fullName: 'shop gadzooks',
+  sortableName: 'considering precede whoever',
+  phone: '1-839-999-6654 x9431',
+  gender: 'savory er manatee',
   userType: 'TEACHER',
   userStatus: 'PENDING',
   id: null,

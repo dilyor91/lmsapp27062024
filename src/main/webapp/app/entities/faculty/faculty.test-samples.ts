@@ -1,17 +1,17 @@
 import { IFaculty, NewFaculty } from './faculty.model';
 
 export const sampleWithRequiredData: IFaculty = {
-  id: 12060,
+  id: 9958,
 };
 
 export const sampleWithPartialData: IFaculty = {
-  id: 22003,
-  name: 'yowza',
+  id: 2350,
+  name: 'officially positively',
 };
 
 export const sampleWithFullData: IFaculty = {
-  id: 26465,
-  name: 'filing yippee',
+  id: 15204,
+  name: 'weakly',
 };
 
 export const sampleWithNewData: NewFaculty = {

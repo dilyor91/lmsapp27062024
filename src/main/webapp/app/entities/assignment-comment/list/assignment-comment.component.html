@@ -1,0 +1,175 @@
+<div>
+  <h2 id="page-heading" data-cy="AssignmentCommentHeading">
+    <span jhiTranslate="lmsapp27062024App.assignmentComment.home.title">Assignment Comments</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.assignmentComment.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-assignment-comment"
+        [routerLink]="['/assignment-comment/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.assignmentComment.home.createLabel">Create a new Assignment Comment</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (assignmentComments?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="lmsapp27062024App.assignmentComment.home.notFound">No Assignment Comments found</span>
+    </div>
+  }
+
+  @if (assignmentComments && assignmentComments.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="comment">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.assignmentComment.comment">Comment</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="commentDate">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.assignmentComment.commentDate">Comment Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="submissionAssignment.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.assignmentComment.submissionAssignment">Submission Assignment</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="assignment.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.assignmentComment.assignment">Assignment</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="student.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.assignmentComment.student">Student</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="teacher.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.assignmentComment.teacher">Teacher</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (assignmentComment of assignmentComments; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/assignment-comment', assignmentComment.id, 'view']">{{ assignmentComment.id }}</a>
+              </td>
+              <td>{{ assignmentComment.comment }}</td>
+              <td>{{ assignmentComment.commentDate | formatMediumDatetime }}</td>
+              <td>
+                @if (assignmentComment.submissionAssignment) {
+                  <div>
+                    <a [routerLink]="['/submission-assignment', assignmentComment.submissionAssignment.id, 'view']">{{
+                      assignmentComment.submissionAssignment.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (assignmentComment.assignment) {
+                  <div>
+                    <a [routerLink]="['/assignment', assignmentComment.assignment.id, 'view']">{{ assignmentComment.assignment.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (assignmentComment.student) {
+                  <div>
+                    <a [routerLink]="['/student', assignmentComment.student.id, 'view']">{{ assignmentComment.student.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (assignmentComment.teacher) {
+                  <div>
+                    <a [routerLink]="['/teacher', assignmentComment.teacher.id, 'view']">{{ assignmentComment.teacher.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/assignment-comment', assignmentComment.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/assignment-comment', assignmentComment.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(assignmentComment)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (assignmentComments && assignmentComments.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

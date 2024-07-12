@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity AssignmentComment.
+    -->
+    <changeSet id="20240712063929-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="submission_assignment_id"
+                                 baseTableName="assignment_comment"
+                                 constraintName="fk_assignment_comment__submission_assignment_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="submission_assignment"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="assignment_id"
+                                 baseTableName="assignment_comment"
+                                 constraintName="fk_assignment_comment__assignment_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="assignment"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="student_id"
+                                 baseTableName="assignment_comment"
+                                 constraintName="fk_assignment_comment__student_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="student"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="teacher_id"
+                                 baseTableName="assignment_comment"
+                                 constraintName="fk_assignment_comment__teacher_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="teacher"
+                                 />
+    </changeSet>
+</databaseChangeLog>
