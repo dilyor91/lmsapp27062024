@@ -49,10 +49,10 @@ describe('Speciality Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Faculty query and add missing value', () => {
       const speciality: ISpeciality = { id: 456 };
-      const faculty: IFaculty = { id: 14124 };
+      const faculty: IFaculty = { id: 16271 };
       speciality.faculty = faculty;
 
-      const facultyCollection: IFaculty[] = [{ id: 25709 }];
+      const facultyCollection: IFaculty[] = [{ id: 7241 }];
       jest.spyOn(facultyService, 'query').mockReturnValue(of(new HttpResponse({ body: facultyCollection })));
       const additionalFaculties = [faculty];
       const expectedCollection: IFaculty[] = [...additionalFaculties, ...facultyCollection];
@@ -71,7 +71,7 @@ describe('Speciality Management Update Component', () => {
 
     it('Should update editForm', () => {
       const speciality: ISpeciality = { id: 456 };
-      const faculty: IFaculty = { id: 15024 };
+      const faculty: IFaculty = { id: 19703 };
       speciality.faculty = faculty;
 
       activatedRoute.data = of({ speciality });

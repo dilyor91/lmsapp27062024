@@ -1,49 +1,48 @@
 import { IAccounts, NewAccounts } from './accounts.model';
 
 export const sampleWithRequiredData: IAccounts = {
-  id: 7591,
-  username: 'yum anti complete',
-  fullName: 'meh cicada',
-  sortableName: 'geez untried yum',
-  phone: '617.900.4874 x4537',
-  gender: 'otter',
-  userType: 'STUDENT',
-  userStatus: 'ACTIVE',
-};
-
-export const sampleWithPartialData: IAccounts = {
-  id: 2958,
-  username: 'dimly zowie likely',
-  fullName: 'chaise elite anenst',
-  sortableName: 'when glossy',
-  phone: '(637) 651-7351 x03916',
-  locale: 'gibber',
-  gender: 'concerning',
-  userType: 'STUDENT',
+  id: 5050,
+  username: 'syrup',
+  fullName: 'on provided',
+  sortableName: 'prosecute zowie soul',
+  phone: '930-454-3127 x176',
+  gender: 'feint',
+  userType: 'TEACHER',
   userStatus: 'BLOCKED',
 };
 
+export const sampleWithPartialData: IAccounts = {
+  id: 3740,
+  username: 'cathedral spectacles',
+  fullName: 'composed',
+  sortableName: 'original engineer gasket',
+  phone: '1-648-584-0606 x50141',
+  gender: 'drat',
+  userType: 'STUDENT',
+  userStatus: 'PENDING',
+};
+
 export const sampleWithFullData: IAccounts = {
-  id: 27816,
-  username: 'tall ideal',
-  fullName: 'parallel',
-  sortableName: 'vintage',
-  avatarImageUrl: 'pace',
-  phone: '1-746-607-8956 x3394',
-  locale: 'once',
-  gender: 'electrocute mini-skirt',
-  userType: 'TEACHER',
+  id: 3612,
+  username: 'wannabe slip wildly',
+  fullName: 'station unnecessarily',
+  sortableName: 'large unibody',
+  avatarImageUrl: 'into carefully',
+  phone: '737.365.8037 x8392',
+  locale: 'pheromone unveil at',
+  gender: 'physically gee',
+  userType: 'STUDENT',
   userStatus: 'PENDING',
 };
 
 export const sampleWithNewData: NewAccounts = {
-  username: 'knottily gadzooks rouse',
-  fullName: 'shop gadzooks',
-  sortableName: 'considering precede whoever',
-  phone: '1-839-999-6654 x9431',
-  gender: 'savory er manatee',
+  username: 'stump yippee although',
+  fullName: 'soggy unbearably aw',
+  sortableName: 'periodic',
+  phone: '(861) 805-7138',
+  gender: 'politely roughly lovable',
   userType: 'TEACHER',
-  userStatus: 'PENDING',
+  userStatus: 'ACTIVE',
   id: null,
 };
 

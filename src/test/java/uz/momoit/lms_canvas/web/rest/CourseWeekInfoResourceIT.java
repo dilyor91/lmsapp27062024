@@ -307,7 +307,11 @@ class CourseWeekInfoResourceIT {
         CourseWeekInfo partialUpdatedCourseWeekInfo = new CourseWeekInfo();
         partialUpdatedCourseWeekInfo.setId(courseWeekInfo.getId());
 
-        partialUpdatedCourseWeekInfo.totalWeek(UPDATED_TOTAL_WEEK).lessonPerWeek(UPDATED_LESSON_PER_WEEK);
+        partialUpdatedCourseWeekInfo
+            .totalWeek(UPDATED_TOTAL_WEEK)
+            .lessonPerWeek(UPDATED_LESSON_PER_WEEK)
+            .startDate(UPDATED_START_DATE)
+            .weekDayCount(UPDATED_WEEK_DAY_COUNT);
 
         restCourseWeekInfoMockMvc
             .perform(
