@@ -1,0 +1,10 @@
+{
+  "lmsapp27062024App": {
+    "NotificationType": {
+      "null": "",
+      "ASSIGNMENT": "ASSIGNMENT",
+      "QUIZ": "QUIZ",
+      "SUBMISSION_ASSIGNMENT": "SUBMISSION_ASSIGNMENT"
+    }
+  }
+}

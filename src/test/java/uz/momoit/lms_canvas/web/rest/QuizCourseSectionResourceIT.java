@@ -319,7 +319,7 @@ class QuizCourseSectionResourceIT {
         QuizCourseSection partialUpdatedQuizCourseSection = new QuizCourseSection();
         partialUpdatedQuizCourseSection.setId(quizCourseSection.getId());
 
-        partialUpdatedQuizCourseSection.endDate(UPDATED_END_DATE);
+        partialUpdatedQuizCourseSection.startDate(UPDATED_START_DATE);
 
         restQuizCourseSectionMockMvc
             .perform(

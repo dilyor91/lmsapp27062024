@@ -1,0 +1,61 @@
+{
+  "annotations": {
+    "changelogDate": "20240731091059"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "message",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "readDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "read",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "notificationType",
+      "fieldType": "NotificationType",
+      "fieldValues": "ASSIGNMENT,QUIZ,SUBMISSION_ASSIGNMENT"
+    }
+  ],
+  "name": "Notification",
+  "relationships": [
+    {
+      "otherEntityName": "quiz",
+      "relationshipName": "quiz",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "assignment",
+      "relationshipName": "assignment",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "submissionAssignment",
+      "relationshipName": "submissionAssignment",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "student",
+      "relationshipName": "student",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "teacher",
+      "relationshipName": "teacher",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

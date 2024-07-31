@@ -1,21 +1,20 @@
 import { ILessonMaterial, NewLessonMaterial } from './lesson-material.model';
 
 export const sampleWithRequiredData: ILessonMaterial = {
-  id: 24515,
+  id: 14862,
 };
 
 export const sampleWithPartialData: ILessonMaterial = {
-  id: 32470,
-  title: 'truthfully truthful',
-  description: 'that zowie',
-  lessonFileType: 'VIDEO',
+  id: 12701,
+  title: 'readily',
+  lessonFileType: 'WEB_LINK',
 };
 
 export const sampleWithFullData: ILessonMaterial = {
-  id: 20904,
-  title: 'but',
-  description: 'sweaty selfishly',
-  lessonFileType: 'SOCIAL_MEDIA',
+  id: 2626,
+  title: 'even froth though',
+  description: 'gah by',
+  lessonFileType: 'FILE',
 };
 
 export const sampleWithNewData: NewLessonMaterial = {

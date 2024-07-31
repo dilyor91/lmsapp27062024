@@ -295,7 +295,7 @@ class LessonMaterialResourceIT {
         LessonMaterial partialUpdatedLessonMaterial = new LessonMaterial();
         partialUpdatedLessonMaterial.setId(lessonMaterial.getId());
 
-        partialUpdatedLessonMaterial.title(UPDATED_TITLE);
+        partialUpdatedLessonMaterial.description(UPDATED_DESCRIPTION);
 
         restLessonMaterialMockMvc
             .perform(

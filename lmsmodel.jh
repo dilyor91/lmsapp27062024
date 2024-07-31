@@ -451,6 +451,27 @@ relationship ManyToOne {
    AssignmentComment{teacher} to Teacher
 }
 
+enum NotificationType {
+    ASSIGNMENT,
+    QUIZ,
+    SUBMISSION_ASSIGNMENT
+}
+
+entity Notification {
+    message String
+    readDate Instant
+    read Boolean
+    notificationType NotificationType
+}
+
+relationship ManyToOne {
+    Notification{quiz} to Quiz
+    Notification{assignment} to Assignment
+    Notification{submissionAssignment} to SubmissionAssignment
+    Notification{student} to Student
+    Notification{teacher} to Teacher
+}
+
 // Set pagination options
 paginate  Course, CourseSection, Enrollment, Accounts, 
 Assignment, Announcement, CalendarEvent, WikiPage,

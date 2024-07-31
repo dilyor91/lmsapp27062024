@@ -1,0 +1,163 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-notification-heading"
+        data-cy="NotificationCreateUpdateHeading"
+        jhiTranslate="lmsapp27062024App.notification.home.createOrEditLabel"
+      >
+        Create or edit a Notification
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="lmsapp27062024App.notification.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_message" jhiTranslate="lmsapp27062024App.notification.message">Message</label>
+          <input type="text" class="form-control" name="message" id="field_message" data-cy="message" formControlName="message" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_readDate" jhiTranslate="lmsapp27062024App.notification.readDate">Read Date</label>
+          <div class="d-flex">
+            <input
+              id="field_readDate"
+              data-cy="readDate"
+              type="datetime-local"
+              class="form-control"
+              name="readDate"
+              formControlName="readDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_read" jhiTranslate="lmsapp27062024App.notification.read">Read</label>
+          <input type="checkbox" class="form-check" name="read" id="field_read" data-cy="read" formControlName="read" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_notificationType" jhiTranslate="lmsapp27062024App.notification.notificationType"
+            >Notification Type</label
+          >
+          <select
+            class="form-control"
+            name="notificationType"
+            formControlName="notificationType"
+            id="field_notificationType"
+            data-cy="notificationType"
+          >
+            <option [ngValue]="null">{{ 'lmsapp27062024App.NotificationType.null' | translate }}</option>
+            @for (notificationType of notificationTypeValues; track $index) {
+              <option [value]="notificationType">{{ 'lmsapp27062024App.NotificationType.' + notificationType | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_quiz" jhiTranslate="lmsapp27062024App.notification.quiz">Quiz</label>
+          <select class="form-control" id="field_quiz" data-cy="quiz" name="quiz" formControlName="quiz" [compareWith]="compareQuiz">
+            <option [ngValue]="null"></option>
+            @for (quizOption of quizzesSharedCollection; track $index) {
+              <option [ngValue]="quizOption">{{ quizOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_assignment" jhiTranslate="lmsapp27062024App.notification.assignment">Assignment</label>
+          <select
+            class="form-control"
+            id="field_assignment"
+            data-cy="assignment"
+            name="assignment"
+            formControlName="assignment"
+            [compareWith]="compareAssignment"
+          >
+            <option [ngValue]="null"></option>
+            @for (assignmentOption of assignmentsSharedCollection; track $index) {
+              <option [ngValue]="assignmentOption">{{ assignmentOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_submissionAssignment" jhiTranslate="lmsapp27062024App.notification.submissionAssignment"
+            >Submission Assignment</label
+          >
+          <select
+            class="form-control"
+            id="field_submissionAssignment"
+            data-cy="submissionAssignment"
+            name="submissionAssignment"
+            formControlName="submissionAssignment"
+            [compareWith]="compareSubmissionAssignment"
+          >
+            <option [ngValue]="null"></option>
+            @for (submissionAssignmentOption of submissionAssignmentsSharedCollection; track $index) {
+              <option [ngValue]="submissionAssignmentOption">{{ submissionAssignmentOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_student" jhiTranslate="lmsapp27062024App.notification.student">Student</label>
+          <select
+            class="form-control"
+            id="field_student"
+            data-cy="student"
+            name="student"
+            formControlName="student"
+            [compareWith]="compareStudent"
+          >
+            <option [ngValue]="null"></option>
+            @for (studentOption of studentsSharedCollection; track $index) {
+              <option [ngValue]="studentOption">{{ studentOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_teacher" jhiTranslate="lmsapp27062024App.notification.teacher">Teacher</label>
+          <select
+            class="form-control"
+            id="field_teacher"
+            data-cy="teacher"
+            name="teacher"
+            formControlName="teacher"
+            [compareWith]="compareTeacher"
+          >
+            <option [ngValue]="null"></option>
+            @for (teacherOption of teachersSharedCollection; track $index) {
+              <option [ngValue]="teacherOption">{{ teacherOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

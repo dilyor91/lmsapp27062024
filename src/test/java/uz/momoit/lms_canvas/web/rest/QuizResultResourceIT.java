@@ -305,7 +305,7 @@ class QuizResultResourceIT {
         QuizResult partialUpdatedQuizResult = new QuizResult();
         partialUpdatedQuizResult.setId(quizResult.getId());
 
-        partialUpdatedQuizResult.totalQuestionCnt(UPDATED_TOTAL_QUESTION_CNT).correctAnswerCnt(UPDATED_CORRECT_ANSWER_CNT);
+        partialUpdatedQuizResult.point(UPDATED_POINT);
 
         restQuizResultMockMvc
             .perform(

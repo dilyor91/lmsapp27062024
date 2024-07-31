@@ -44,7 +44,8 @@
         "attachment": "Attachment",
         "submissionAssignment": "Submission Assignment",
         "grade": "Grade",
-        "assignmentComment": "Assignment Comment"
+        "assignmentComment": "Assignment Comment",
+        "notification": "Notification"
       },
       "account": {
         "main": "Account",

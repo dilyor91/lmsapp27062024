@@ -1,0 +1,183 @@
+<div>
+  <h2 id="page-heading" data-cy="NotificationHeading">
+    <span jhiTranslate="lmsapp27062024App.notification.home.title">Notifications</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.notification.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-notification"
+        [routerLink]="['/notification/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.notification.home.createLabel">Create a new Notification</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (notifications?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="lmsapp27062024App.notification.home.notFound">No Notifications found</span>
+    </div>
+  }
+
+  @if (notifications && notifications.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="message">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.notification.message">Message</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="readDate">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.notification.readDate">Read Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="read">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.notification.read">Read</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="notificationType">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.notification.notificationType">Notification Type</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="quiz.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.notification.quiz">Quiz</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="assignment.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.notification.assignment">Assignment</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="submissionAssignment.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.notification.submissionAssignment">Submission Assignment</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="student.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.notification.student">Student</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="teacher.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.notification.teacher">Teacher</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (notification of notifications; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/notification', notification.id, 'view']">{{ notification.id }}</a>
+              </td>
+              <td>{{ notification.message }}</td>
+              <td>{{ notification.readDate | formatMediumDatetime }}</td>
+              <td>{{ notification.read }}</td>
+              <td [jhiTranslate]="'lmsapp27062024App.NotificationType.' + (notification.notificationType ?? 'null')">
+                {{
+                  { null: '', ASSIGNMENT: 'ASSIGNMENT', QUIZ: 'QUIZ', SUBMISSION_ASSIGNMENT: 'SUBMISSION_ASSIGNMENT' }[
+                    notification.notificationType ?? 'null'
+                  ]
+                }}
+              </td>
+              <td>
+                @if (notification.quiz) {
+                  <div>
+                    <a [routerLink]="['/quiz', notification.quiz.id, 'view']">{{ notification.quiz.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (notification.assignment) {
+                  <div>
+                    <a [routerLink]="['/assignment', notification.assignment.id, 'view']">{{ notification.assignment.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (notification.submissionAssignment) {
+                  <div>
+                    <a [routerLink]="['/submission-assignment', notification.submissionAssignment.id, 'view']">{{
+                      notification.submissionAssignment.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (notification.student) {
+                  <div>
+                    <a [routerLink]="['/student', notification.student.id, 'view']">{{ notification.student.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (notification.teacher) {
+                  <div>
+                    <a [routerLink]="['/teacher', notification.teacher.id, 'view']">{{ notification.teacher.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/notification', notification.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/notification', notification.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(notification)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>
