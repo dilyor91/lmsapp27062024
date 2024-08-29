@@ -22,7 +22,7 @@ import uz.momoit.lms_canvas.service.mapper.AttachmentMapper;
 @Transactional
 public class AttachmentServiceImpl implements AttachmentService {
 
-    private static final Logger log = LoggerFactory.getLogger(AttachmentServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AttachmentServiceImpl.class);
 
     private final AttachmentRepository attachmentRepository;
 
@@ -35,7 +35,7 @@ public class AttachmentServiceImpl implements AttachmentService {
 
     @Override
     public AttachmentDTO save(AttachmentDTO attachmentDTO) {
-        log.debug("Request to save Attachment : {}", attachmentDTO);
+        LOG.debug("Request to save Attachment : {}", attachmentDTO);
         Attachment attachment = attachmentMapper.toEntity(attachmentDTO);
         attachment = attachmentRepository.save(attachment);
         return attachmentMapper.toDto(attachment);
@@ -44,7 +44,7 @@ public class AttachmentServiceImpl implements AttachmentService {
     @Override
     @Transactional(readOnly = true)
     public List<AttachmentDTO> findAll() {
-        log.debug("Request to get all Attachments");
+        LOG.debug("Request to get all Attachments");
         return attachmentRepository.findAll().stream().map(attachmentMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
     }
 
@@ -54,7 +54,7 @@ public class AttachmentServiceImpl implements AttachmentService {
      */
     @Transactional(readOnly = true)
     public List<AttachmentDTO> findAllWhereLessonMaterialIsNull() {
-        log.debug("Request to get all attachments where LessonMaterial is null");
+        LOG.debug("Request to get all attachments where LessonMaterial is null");
         return StreamSupport.stream(attachmentRepository.findAll().spliterator(), false)
             .filter(attachment -> attachment.getLessonMaterial() == null)
             .map(attachmentMapper::toDto)
@@ -64,13 +64,13 @@ public class AttachmentServiceImpl implements AttachmentService {
     @Override
     @Transactional(readOnly = true)
     public Optional<AttachmentDTO> findOne(Long id) {
-        log.debug("Request to get Attachment : {}", id);
+        LOG.debug("Request to get Attachment : {}", id);
         return attachmentRepository.findById(id).map(attachmentMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Attachment : {}", id);
+        LOG.debug("Request to delete Attachment : {}", id);
         attachmentRepository.deleteById(id);
     }
 }

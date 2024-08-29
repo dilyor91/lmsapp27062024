@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
-import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideHttpClient } from '@angular/common/http';
 
 import { IStudyTerm } from '../study-term.model';
-import { sampleWithRequiredData, sampleWithNewData, sampleWithPartialData, sampleWithFullData } from '../study-term.test-samples';
+import { sampleWithFullData, sampleWithNewData, sampleWithPartialData, sampleWithRequiredData } from '../study-term.test-samples';
 
-import { StudyTermService, RestStudyTerm } from './study-term.service';
+import { RestStudyTerm, StudyTermService } from './study-term.service';
 
 const requireRestSample: RestStudyTerm = {
   ...sampleWithRequiredData,

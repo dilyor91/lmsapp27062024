@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { sampleWithRequiredData, sampleWithNewData } from '../group.test-samples';
+import { sampleWithNewData, sampleWithRequiredData } from '../group.test-samples';
 
 import { GroupFormService } from './group-form.service';
 

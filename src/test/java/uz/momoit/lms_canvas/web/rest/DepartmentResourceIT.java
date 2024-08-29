@@ -68,9 +68,8 @@ class DepartmentResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Department createEntity(EntityManager em) {
-        Department department = new Department().name(DEFAULT_NAME);
-        return department;
+    public static Department createEntity() {
+        return new Department().name(DEFAULT_NAME);
     }
 
     /**
@@ -79,14 +78,13 @@ class DepartmentResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Department createUpdatedEntity(EntityManager em) {
-        Department department = new Department().name(UPDATED_NAME);
-        return department;
+    public static Department createUpdatedEntity() {
+        return new Department().name(UPDATED_NAME);
     }
 
     @BeforeEach
     public void initTest() {
-        department = createEntity(em);
+        department = createEntity();
     }
 
     @AfterEach

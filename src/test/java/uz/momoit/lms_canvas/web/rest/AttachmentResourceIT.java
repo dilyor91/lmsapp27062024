@@ -8,8 +8,6 @@ import static uz.momoit.lms_canvas.domain.AttachmentAsserts.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.EntityManager;
-import java.util.Random;
-import java.util.concurrent.atomic.AtomicLong;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,9 +34,6 @@ class AttachmentResourceIT {
     private static final String ENTITY_API_URL = "/api/attachments";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
-    private static Random random = new Random();
-    private static AtomicLong longCount = new AtomicLong(random.nextInt() + (2 * Integer.MAX_VALUE));
-
     @Autowired
     private ObjectMapper om;
 
@@ -64,9 +59,8 @@ class AttachmentResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Attachment createEntity(EntityManager em) {
-        Attachment attachment = new Attachment();
-        return attachment;
+    public static Attachment createEntity() {
+        return new Attachment();
     }
 
     /**
@@ -75,14 +69,13 @@ class AttachmentResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Attachment createUpdatedEntity(EntityManager em) {
-        Attachment attachment = new Attachment();
-        return attachment;
+    public static Attachment createUpdatedEntity() {
+        return new Attachment();
     }
 
     @BeforeEach
     public void initTest() {
-        attachment = createEntity(em);
+        attachment = createEntity();
     }
 
     @AfterEach

@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.QuizCourseSectionMapper;
 @Transactional
 public class QuizCourseSectionServiceImpl implements QuizCourseSectionService {
 
-    private static final Logger log = LoggerFactory.getLogger(QuizCourseSectionServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(QuizCourseSectionServiceImpl.class);
 
     private final QuizCourseSectionRepository quizCourseSectionRepository;
 
@@ -36,7 +36,7 @@ public class QuizCourseSectionServiceImpl implements QuizCourseSectionService {
 
     @Override
     public QuizCourseSectionDTO save(QuizCourseSectionDTO quizCourseSectionDTO) {
-        log.debug("Request to save QuizCourseSection : {}", quizCourseSectionDTO);
+        LOG.debug("Request to save QuizCourseSection : {}", quizCourseSectionDTO);
         QuizCourseSection quizCourseSection = quizCourseSectionMapper.toEntity(quizCourseSectionDTO);
         quizCourseSection = quizCourseSectionRepository.save(quizCourseSection);
         return quizCourseSectionMapper.toDto(quizCourseSection);
@@ -44,7 +44,7 @@ public class QuizCourseSectionServiceImpl implements QuizCourseSectionService {
 
     @Override
     public QuizCourseSectionDTO update(QuizCourseSectionDTO quizCourseSectionDTO) {
-        log.debug("Request to update QuizCourseSection : {}", quizCourseSectionDTO);
+        LOG.debug("Request to update QuizCourseSection : {}", quizCourseSectionDTO);
         QuizCourseSection quizCourseSection = quizCourseSectionMapper.toEntity(quizCourseSectionDTO);
         quizCourseSection = quizCourseSectionRepository.save(quizCourseSection);
         return quizCourseSectionMapper.toDto(quizCourseSection);
@@ -52,7 +52,7 @@ public class QuizCourseSectionServiceImpl implements QuizCourseSectionService {
 
     @Override
     public Optional<QuizCourseSectionDTO> partialUpdate(QuizCourseSectionDTO quizCourseSectionDTO) {
-        log.debug("Request to partially update QuizCourseSection : {}", quizCourseSectionDTO);
+        LOG.debug("Request to partially update QuizCourseSection : {}", quizCourseSectionDTO);
 
         return quizCourseSectionRepository
             .findById(quizCourseSectionDTO.getId())
@@ -68,20 +68,20 @@ public class QuizCourseSectionServiceImpl implements QuizCourseSectionService {
     @Override
     @Transactional(readOnly = true)
     public Page<QuizCourseSectionDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all QuizCourseSections");
+        LOG.debug("Request to get all QuizCourseSections");
         return quizCourseSectionRepository.findAll(pageable).map(quizCourseSectionMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<QuizCourseSectionDTO> findOne(Long id) {
-        log.debug("Request to get QuizCourseSection : {}", id);
+        LOG.debug("Request to get QuizCourseSection : {}", id);
         return quizCourseSectionRepository.findById(id).map(quizCourseSectionMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete QuizCourseSection : {}", id);
+        LOG.debug("Request to delete QuizCourseSection : {}", id);
         quizCourseSectionRepository.deleteById(id);
     }
 }

@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { LessonMaterialComponent } from './list/lesson-material.component';
-import { LessonMaterialDetailComponent } from './detail/lesson-material-detail.component';
-import { LessonMaterialUpdateComponent } from './update/lesson-material-update.component';
 import LessonMaterialResolve from './route/lesson-material-routing-resolve.service';
 
 const lessonMaterialRoute: Routes = [
   {
     path: '',
-    component: LessonMaterialComponent,
+    loadComponent: () => import('./list/lesson-material.component').then(m => m.LessonMaterialComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: LessonMaterialDetailComponent,
+    loadComponent: () => import('./detail/lesson-material-detail.component').then(m => m.LessonMaterialDetailComponent),
     resolve: {
       lessonMaterial: LessonMaterialResolve,
     },
@@ -26,7 +23,7 @@ const lessonMaterialRoute: Routes = [
   },
   {
     path: 'new',
-    component: LessonMaterialUpdateComponent,
+    loadComponent: () => import('./update/lesson-material-update.component').then(m => m.LessonMaterialUpdateComponent),
     resolve: {
       lessonMaterial: LessonMaterialResolve,
     },
@@ -34,7 +31,7 @@ const lessonMaterialRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: LessonMaterialUpdateComponent,
+    loadComponent: () => import('./update/lesson-material-update.component').then(m => m.LessonMaterialUpdateComponent),
     resolve: {
       lessonMaterial: LessonMaterialResolve,
     },

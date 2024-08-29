@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (group()) {
+    @if (group(); as groupRef) {
       <div>
         <h2 data-cy="groupDetailsHeading"><span jhiTranslate="lmsapp27062024App.group.detail.title">Group</span></h2>
 
@@ -13,17 +13,17 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
-            <span>{{ group()!.id }}</span>
+            <span>{{ groupRef.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.group.name">Name</span></dt>
           <dd>
-            <span>{{ group()!.name }}</span>
+            <span>{{ groupRef.name }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.group.speciality">Speciality</span></dt>
           <dd>
             @if (group()!.speciality) {
               <div>
-                <a [routerLink]="['/speciality', group()!.speciality?.id, 'view']">{{ group()!.speciality?.id }}</a>
+                <a [routerLink]="['/speciality', group()!.speciality?.id, 'view']">{{ groupRef.speciality?.id }}</a>
               </div>
             }
           </dd>
@@ -33,7 +33,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/group', group()!.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/group', groupRef.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

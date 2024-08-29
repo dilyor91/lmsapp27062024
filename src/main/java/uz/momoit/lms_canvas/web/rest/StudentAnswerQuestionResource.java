@@ -29,7 +29,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/student-answer-questions")
 public class StudentAnswerQuestionResource {
 
-    private static final Logger log = LoggerFactory.getLogger(StudentAnswerQuestionResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(StudentAnswerQuestionResource.class);
 
     private static final String ENTITY_NAME = "studentAnswerQuestion";
 
@@ -59,7 +59,7 @@ public class StudentAnswerQuestionResource {
     public ResponseEntity<StudentAnswerQuestionDTO> createStudentAnswerQuestion(
         @RequestBody StudentAnswerQuestionDTO studentAnswerQuestionDTO
     ) throws URISyntaxException {
-        log.debug("REST request to save StudentAnswerQuestion : {}", studentAnswerQuestionDTO);
+        LOG.debug("REST request to save StudentAnswerQuestion : {}", studentAnswerQuestionDTO);
         if (studentAnswerQuestionDTO.getId() != null) {
             throw new BadRequestAlertException("A new studentAnswerQuestion cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -84,7 +84,7 @@ public class StudentAnswerQuestionResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody StudentAnswerQuestionDTO studentAnswerQuestionDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update StudentAnswerQuestion : {}, {}", id, studentAnswerQuestionDTO);
+        LOG.debug("REST request to update StudentAnswerQuestion : {}, {}", id, studentAnswerQuestionDTO);
         if (studentAnswerQuestionDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -118,7 +118,7 @@ public class StudentAnswerQuestionResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody StudentAnswerQuestionDTO studentAnswerQuestionDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update StudentAnswerQuestion partially : {}, {}", id, studentAnswerQuestionDTO);
+        LOG.debug("REST request to partial update StudentAnswerQuestion partially : {}, {}", id, studentAnswerQuestionDTO);
         if (studentAnswerQuestionDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -148,7 +148,7 @@ public class StudentAnswerQuestionResource {
     public ResponseEntity<List<StudentAnswerQuestionDTO>> getAllStudentAnswerQuestions(
         @org.springdoc.core.annotations.ParameterObject Pageable pageable
     ) {
-        log.debug("REST request to get a page of StudentAnswerQuestions");
+        LOG.debug("REST request to get a page of StudentAnswerQuestions");
         Page<StudentAnswerQuestionDTO> page = studentAnswerQuestionService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -162,7 +162,7 @@ public class StudentAnswerQuestionResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<StudentAnswerQuestionDTO> getStudentAnswerQuestion(@PathVariable("id") Long id) {
-        log.debug("REST request to get StudentAnswerQuestion : {}", id);
+        LOG.debug("REST request to get StudentAnswerQuestion : {}", id);
         Optional<StudentAnswerQuestionDTO> studentAnswerQuestionDTO = studentAnswerQuestionService.findOne(id);
         return ResponseUtil.wrapOrNotFound(studentAnswerQuestionDTO);
     }
@@ -175,7 +175,7 @@ public class StudentAnswerQuestionResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudentAnswerQuestion(@PathVariable("id") Long id) {
-        log.debug("REST request to delete StudentAnswerQuestion : {}", id);
+        LOG.debug("REST request to delete StudentAnswerQuestion : {}", id);
         studentAnswerQuestionService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

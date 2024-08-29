@@ -17,7 +17,7 @@ describe('SubmissionAssignment Management Detail Component', () => {
           [
             {
               path: '**',
-              component: SubmissionAssignmentDetailComponent,
+              loadComponent: () => import('./submission-assignment-detail.component').then(m => m.SubmissionAssignmentDetailComponent),
               resolve: { submissionAssignment: () => of({ id: 123 }) },
             },
           ],

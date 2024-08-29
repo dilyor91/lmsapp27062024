@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -20,7 +20,7 @@ import { TeacherService } from 'app/entities/teacher/service/teacher.service';
 import { NotificationType } from 'app/entities/enumerations/notification-type.model';
 import { NotificationService } from '../service/notification.service';
 import { INotification } from '../notification.model';
-import { NotificationFormService, NotificationFormGroup } from './notification-form.service';
+import { NotificationFormGroup, NotificationFormService } from './notification-form.service';
 
 @Component({
   standalone: true,

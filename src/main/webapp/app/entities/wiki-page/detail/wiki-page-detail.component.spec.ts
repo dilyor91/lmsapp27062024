@@ -17,7 +17,7 @@ describe('WikiPage Management Detail Component', () => {
           [
             {
               path: '**',
-              component: WikiPageDetailComponent,
+              loadComponent: () => import('./wiki-page-detail.component').then(m => m.WikiPageDetailComponent),
               resolve: { wikiPage: () => of({ id: 123 }) },
             },
           ],

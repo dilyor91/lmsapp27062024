@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.AssignmentCommentMapper;
 @Transactional
 public class AssignmentCommentServiceImpl implements AssignmentCommentService {
 
-    private static final Logger log = LoggerFactory.getLogger(AssignmentCommentServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AssignmentCommentServiceImpl.class);
 
     private final AssignmentCommentRepository assignmentCommentRepository;
 
@@ -36,7 +36,7 @@ public class AssignmentCommentServiceImpl implements AssignmentCommentService {
 
     @Override
     public AssignmentCommentDTO save(AssignmentCommentDTO assignmentCommentDTO) {
-        log.debug("Request to save AssignmentComment : {}", assignmentCommentDTO);
+        LOG.debug("Request to save AssignmentComment : {}", assignmentCommentDTO);
         AssignmentComment assignmentComment = assignmentCommentMapper.toEntity(assignmentCommentDTO);
         assignmentComment = assignmentCommentRepository.save(assignmentComment);
         return assignmentCommentMapper.toDto(assignmentComment);
@@ -44,7 +44,7 @@ public class AssignmentCommentServiceImpl implements AssignmentCommentService {
 
     @Override
     public AssignmentCommentDTO update(AssignmentCommentDTO assignmentCommentDTO) {
-        log.debug("Request to update AssignmentComment : {}", assignmentCommentDTO);
+        LOG.debug("Request to update AssignmentComment : {}", assignmentCommentDTO);
         AssignmentComment assignmentComment = assignmentCommentMapper.toEntity(assignmentCommentDTO);
         assignmentComment = assignmentCommentRepository.save(assignmentComment);
         return assignmentCommentMapper.toDto(assignmentComment);
@@ -52,7 +52,7 @@ public class AssignmentCommentServiceImpl implements AssignmentCommentService {
 
     @Override
     public Optional<AssignmentCommentDTO> partialUpdate(AssignmentCommentDTO assignmentCommentDTO) {
-        log.debug("Request to partially update AssignmentComment : {}", assignmentCommentDTO);
+        LOG.debug("Request to partially update AssignmentComment : {}", assignmentCommentDTO);
 
         return assignmentCommentRepository
             .findById(assignmentCommentDTO.getId())
@@ -68,20 +68,20 @@ public class AssignmentCommentServiceImpl implements AssignmentCommentService {
     @Override
     @Transactional(readOnly = true)
     public Page<AssignmentCommentDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all AssignmentComments");
+        LOG.debug("Request to get all AssignmentComments");
         return assignmentCommentRepository.findAll(pageable).map(assignmentCommentMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<AssignmentCommentDTO> findOne(Long id) {
-        log.debug("Request to get AssignmentComment : {}", id);
+        LOG.debug("Request to get AssignmentComment : {}", id);
         return assignmentCommentRepository.findById(id).map(assignmentCommentMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete AssignmentComment : {}", id);
+        LOG.debug("Request to delete AssignmentComment : {}", id);
         assignmentCommentRepository.deleteById(id);
     }
 }

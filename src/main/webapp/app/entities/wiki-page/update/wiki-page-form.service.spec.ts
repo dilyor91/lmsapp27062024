@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { sampleWithRequiredData, sampleWithNewData } from '../wiki-page.test-samples';
+import { sampleWithNewData, sampleWithRequiredData } from '../wiki-page.test-samples';
 
 import { WikiPageFormService } from './wiki-page-form.service';
 

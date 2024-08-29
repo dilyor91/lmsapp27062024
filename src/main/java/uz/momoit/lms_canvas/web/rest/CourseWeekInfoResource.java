@@ -29,7 +29,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/course-week-infos")
 public class CourseWeekInfoResource {
 
-    private static final Logger log = LoggerFactory.getLogger(CourseWeekInfoResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CourseWeekInfoResource.class);
 
     private static final String ENTITY_NAME = "courseWeekInfo";
 
@@ -55,7 +55,7 @@ public class CourseWeekInfoResource {
     @PostMapping("")
     public ResponseEntity<CourseWeekInfoDTO> createCourseWeekInfo(@RequestBody CourseWeekInfoDTO courseWeekInfoDTO)
         throws URISyntaxException {
-        log.debug("REST request to save CourseWeekInfo : {}", courseWeekInfoDTO);
+        LOG.debug("REST request to save CourseWeekInfo : {}", courseWeekInfoDTO);
         if (courseWeekInfoDTO.getId() != null) {
             throw new BadRequestAlertException("A new courseWeekInfo cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -80,7 +80,7 @@ public class CourseWeekInfoResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody CourseWeekInfoDTO courseWeekInfoDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update CourseWeekInfo : {}, {}", id, courseWeekInfoDTO);
+        LOG.debug("REST request to update CourseWeekInfo : {}, {}", id, courseWeekInfoDTO);
         if (courseWeekInfoDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -114,7 +114,7 @@ public class CourseWeekInfoResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody CourseWeekInfoDTO courseWeekInfoDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update CourseWeekInfo partially : {}, {}", id, courseWeekInfoDTO);
+        LOG.debug("REST request to partial update CourseWeekInfo partially : {}, {}", id, courseWeekInfoDTO);
         if (courseWeekInfoDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -144,7 +144,7 @@ public class CourseWeekInfoResource {
     public ResponseEntity<List<CourseWeekInfoDTO>> getAllCourseWeekInfos(
         @org.springdoc.core.annotations.ParameterObject Pageable pageable
     ) {
-        log.debug("REST request to get a page of CourseWeekInfos");
+        LOG.debug("REST request to get a page of CourseWeekInfos");
         Page<CourseWeekInfoDTO> page = courseWeekInfoService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -158,7 +158,7 @@ public class CourseWeekInfoResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<CourseWeekInfoDTO> getCourseWeekInfo(@PathVariable("id") Long id) {
-        log.debug("REST request to get CourseWeekInfo : {}", id);
+        LOG.debug("REST request to get CourseWeekInfo : {}", id);
         Optional<CourseWeekInfoDTO> courseWeekInfoDTO = courseWeekInfoService.findOne(id);
         return ResponseUtil.wrapOrNotFound(courseWeekInfoDTO);
     }
@@ -171,7 +171,7 @@ public class CourseWeekInfoResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCourseWeekInfo(@PathVariable("id") Long id) {
-        log.debug("REST request to delete CourseWeekInfo : {}", id);
+        LOG.debug("REST request to delete CourseWeekInfo : {}", id);
         courseWeekInfoService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

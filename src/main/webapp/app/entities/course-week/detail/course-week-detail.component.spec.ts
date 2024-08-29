@@ -17,7 +17,7 @@ describe('CourseWeek Management Detail Component', () => {
           [
             {
               path: '**',
-              component: CourseWeekDetailComponent,
+              loadComponent: () => import('./course-week-detail.component').then(m => m.CourseWeekDetailComponent),
               resolve: { courseWeek: () => of({ id: 123 }) },
             },
           ],

@@ -77,12 +77,8 @@ class QuizSessionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static QuizSession createEntity(EntityManager em) {
-        QuizSession quizSession = new QuizSession()
-            .startTime(DEFAULT_START_TIME)
-            .endTime(DEFAULT_END_TIME)
-            .quizSessionEnum(DEFAULT_QUIZ_SESSION_ENUM);
-        return quizSession;
+    public static QuizSession createEntity() {
+        return new QuizSession().startTime(DEFAULT_START_TIME).endTime(DEFAULT_END_TIME).quizSessionEnum(DEFAULT_QUIZ_SESSION_ENUM);
     }
 
     /**
@@ -91,17 +87,13 @@ class QuizSessionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static QuizSession createUpdatedEntity(EntityManager em) {
-        QuizSession quizSession = new QuizSession()
-            .startTime(UPDATED_START_TIME)
-            .endTime(UPDATED_END_TIME)
-            .quizSessionEnum(UPDATED_QUIZ_SESSION_ENUM);
-        return quizSession;
+    public static QuizSession createUpdatedEntity() {
+        return new QuizSession().startTime(UPDATED_START_TIME).endTime(UPDATED_END_TIME).quizSessionEnum(UPDATED_QUIZ_SESSION_ENUM);
     }
 
     @BeforeEach
     public void initTest() {
-        quizSession = createEntity(em);
+        quizSession = createEntity();
     }
 
     @AfterEach
@@ -297,7 +289,7 @@ class QuizSessionResourceIT {
         QuizSession partialUpdatedQuizSession = new QuizSession();
         partialUpdatedQuizSession.setId(quizSession.getId());
 
-        partialUpdatedQuizSession.endTime(UPDATED_END_TIME);
+        partialUpdatedQuizSession.startTime(UPDATED_START_TIME).endTime(UPDATED_END_TIME);
 
         restQuizSessionMockMvc
             .perform(

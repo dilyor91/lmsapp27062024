@@ -68,9 +68,8 @@ class QuizQuestionGroupResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static QuizQuestionGroup createEntity(EntityManager em) {
-        QuizQuestionGroup quizQuestionGroup = new QuizQuestionGroup().questionCount(DEFAULT_QUESTION_COUNT);
-        return quizQuestionGroup;
+    public static QuizQuestionGroup createEntity() {
+        return new QuizQuestionGroup().questionCount(DEFAULT_QUESTION_COUNT);
     }
 
     /**
@@ -79,14 +78,13 @@ class QuizQuestionGroupResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static QuizQuestionGroup createUpdatedEntity(EntityManager em) {
-        QuizQuestionGroup quizQuestionGroup = new QuizQuestionGroup().questionCount(UPDATED_QUESTION_COUNT);
-        return quizQuestionGroup;
+    public static QuizQuestionGroup createUpdatedEntity() {
+        return new QuizQuestionGroup().questionCount(UPDATED_QUESTION_COUNT);
     }
 
     @BeforeEach
     public void initTest() {
-        quizQuestionGroup = createEntity(em);
+        quizQuestionGroup = createEntity();
     }
 
     @AfterEach
@@ -277,6 +275,8 @@ class QuizQuestionGroupResourceIT {
         // Update the quizQuestionGroup using partial update
         QuizQuestionGroup partialUpdatedQuizQuestionGroup = new QuizQuestionGroup();
         partialUpdatedQuizQuestionGroup.setId(quizQuestionGroup.getId());
+
+        partialUpdatedQuizQuestionGroup.questionCount(UPDATED_QUESTION_COUNT);
 
         restQuizQuestionGroupMockMvc
             .perform(

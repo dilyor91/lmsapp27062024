@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.FacultyMapper;
 @Transactional
 public class FacultyServiceImpl implements FacultyService {
 
-    private static final Logger log = LoggerFactory.getLogger(FacultyServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FacultyServiceImpl.class);
 
     private final FacultyRepository facultyRepository;
 
@@ -33,7 +33,7 @@ public class FacultyServiceImpl implements FacultyService {
 
     @Override
     public FacultyDTO save(FacultyDTO facultyDTO) {
-        log.debug("Request to save Faculty : {}", facultyDTO);
+        LOG.debug("Request to save Faculty : {}", facultyDTO);
         Faculty faculty = facultyMapper.toEntity(facultyDTO);
         faculty = facultyRepository.save(faculty);
         return facultyMapper.toDto(faculty);
@@ -41,7 +41,7 @@ public class FacultyServiceImpl implements FacultyService {
 
     @Override
     public FacultyDTO update(FacultyDTO facultyDTO) {
-        log.debug("Request to update Faculty : {}", facultyDTO);
+        LOG.debug("Request to update Faculty : {}", facultyDTO);
         Faculty faculty = facultyMapper.toEntity(facultyDTO);
         faculty = facultyRepository.save(faculty);
         return facultyMapper.toDto(faculty);
@@ -49,7 +49,7 @@ public class FacultyServiceImpl implements FacultyService {
 
     @Override
     public Optional<FacultyDTO> partialUpdate(FacultyDTO facultyDTO) {
-        log.debug("Request to partially update Faculty : {}", facultyDTO);
+        LOG.debug("Request to partially update Faculty : {}", facultyDTO);
 
         return facultyRepository
             .findById(facultyDTO.getId())
@@ -65,20 +65,20 @@ public class FacultyServiceImpl implements FacultyService {
     @Override
     @Transactional(readOnly = true)
     public Page<FacultyDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all Faculties");
+        LOG.debug("Request to get all Faculties");
         return facultyRepository.findAll(pageable).map(facultyMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<FacultyDTO> findOne(Long id) {
-        log.debug("Request to get Faculty : {}", id);
+        LOG.debug("Request to get Faculty : {}", id);
         return facultyRepository.findById(id).map(facultyMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Faculty : {}", id);
+        LOG.debug("Request to delete Faculty : {}", id);
         facultyRepository.deleteById(id);
     }
 }

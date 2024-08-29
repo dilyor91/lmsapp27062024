@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (teacher()) {
+    @if (teacher(); as teacherRef) {
       <div>
         <h2 data-cy="teacherDetailsHeading"><span jhiTranslate="lmsapp27062024App.teacher.detail.title">Teacher</span></h2>
 
@@ -13,73 +13,73 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
-            <span>{{ teacher()!.id }}</span>
+            <span>{{ teacherRef.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.firstName">First Name</span></dt>
           <dd>
-            <span>{{ teacher()!.firstName }}</span>
+            <span>{{ teacherRef.firstName }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.lastName">Last Name</span></dt>
           <dd>
-            <span>{{ teacher()!.lastName }}</span>
+            <span>{{ teacherRef.lastName }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.middleName">Middle Name</span></dt>
           <dd>
-            <span>{{ teacher()!.middleName }}</span>
+            <span>{{ teacherRef.middleName }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.gender">Gender</span></dt>
           <dd>
-            <span [jhiTranslate]="'lmsapp27062024App.GenderEnum.' + (teacher()!.gender ?? 'null')">{{
-              { null: '', MALE: 'MALE', FEMALE: 'FEMALE' }[teacher()!.gender ?? 'null']
+            <span [jhiTranslate]="'lmsapp27062024App.GenderEnum.' + (teacherRef.gender ?? 'null')">{{
+              { null: '', MALE: 'MALE', FEMALE: 'FEMALE' }[teacherRef.gender ?? 'null']
             }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.birthdate">Birthdate</span></dt>
           <dd>
-            <span>{{ teacher()!.birthdate }}</span>
+            <span>{{ teacherRef.birthdate }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.phoneNumber">Phone Number</span></dt>
           <dd>
-            <span>{{ teacher()!.phoneNumber }}</span>
+            <span>{{ teacherRef.phoneNumber }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.email">Email</span></dt>
           <dd>
-            <span>{{ teacher()!.email }}</span>
+            <span>{{ teacherRef.email }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.passportNumber">Passport Number</span></dt>
           <dd>
-            <span>{{ teacher()!.passportNumber }}</span>
+            <span>{{ teacherRef.passportNumber }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.jshshir">Jshshir</span></dt>
           <dd>
-            <span>{{ teacher()!.jshshir }}</span>
+            <span>{{ teacherRef.jshshir }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.isActive">Is Active</span></dt>
           <dd>
-            <span>{{ teacher()!.isActive }}</span>
+            <span>{{ teacherRef.isActive }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.nationality">Nationality</span></dt>
           <dd>
-            <span>{{ teacher()!.nationality }}</span>
+            <span>{{ teacherRef.nationality }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.country">Country</span></dt>
           <dd>
-            <span>{{ teacher()!.country }}</span>
+            <span>{{ teacherRef.country }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.city">City</span></dt>
           <dd>
-            <span>{{ teacher()!.city }}</span>
+            <span>{{ teacherRef.city }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.region">Region</span></dt>
           <dd>
-            <span>{{ teacher()!.region }}</span>
+            <span>{{ teacherRef.region }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.addressLine">Address Line</span></dt>
           <dd>
-            <span>{{ teacher()!.addressLine }}</span>
+            <span>{{ teacherRef.addressLine }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.position">Position</span></dt>
           <dd>
-            <span [jhiTranslate]="'lmsapp27062024App.PositionEnum.' + (teacher()!.position ?? 'null')">{{
+            <span [jhiTranslate]="'lmsapp27062024App.PositionEnum.' + (teacherRef.position ?? 'null')">{{
               {
                 null: '',
                 ASSISTENT: 'ASSISTENT',
@@ -87,30 +87,30 @@
                 DOTSENT: 'DOTSENT',
                 PROFESSOR: 'PROFESSOR',
                 KAFEDRA_MUDIRI: 'KAFEDRA_MUDIRI',
-              }[teacher()!.position ?? 'null']
+              }[teacherRef.position ?? 'null']
             }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.academicDegree">Academic Degree</span></dt>
           <dd>
-            <span [jhiTranslate]="'lmsapp27062024App.AcademicDegreeEnum.' + (teacher()!.academicDegree ?? 'null')">{{
-              { null: '', ILMIY_DARAJASIZ: 'ILMIY_DARAJASIZ', PHD: 'PHD', FAN_DOCTORI: 'FAN_DOCTORI' }[teacher()!.academicDegree ?? 'null']
+            <span [jhiTranslate]="'lmsapp27062024App.AcademicDegreeEnum.' + (teacherRef.academicDegree ?? 'null')">{{
+              { null: '', ILMIY_DARAJASIZ: 'ILMIY_DARAJASIZ', PHD: 'PHD', FAN_DOCTORI: 'FAN_DOCTORI' }[teacherRef.academicDegree ?? 'null']
             }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.academicTitle">Academic Title</span></dt>
           <dd>
-            <span [jhiTranslate]="'lmsapp27062024App.AcademicTitleEnum.' + (teacher()!.academicTitle ?? 'null')">{{
-              { null: '', ILMIY_UNVONSIZ: 'ILMIY_UNVONSIZ', DOTSENT: 'DOTSENT', PROFESSOR: 'PROFESSOR' }[teacher()!.academicTitle ?? 'null']
+            <span [jhiTranslate]="'lmsapp27062024App.AcademicTitleEnum.' + (teacherRef.academicTitle ?? 'null')">{{
+              { null: '', ILMIY_UNVONSIZ: 'ILMIY_UNVONSIZ', DOTSENT: 'DOTSENT', PROFESSOR: 'PROFESSOR' }[teacherRef.academicTitle ?? 'null']
             }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.user">User</span></dt>
           <dd>
-            <span>{{ teacher()!.user?.id }}</span>
+            <span>{{ teacherRef.user?.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.teacher.faculty">Faculty</span></dt>
           <dd>
             @if (teacher()!.faculty) {
               <div>
-                <a [routerLink]="['/faculty', teacher()!.faculty?.id, 'view']">{{ teacher()!.faculty?.id }}</a>
+                <a [routerLink]="['/faculty', teacher()!.faculty?.id, 'view']">{{ teacherRef.faculty?.id }}</a>
               </div>
             }
           </dd>
@@ -118,7 +118,7 @@
           <dd>
             @if (teacher()!.department) {
               <div>
-                <a [routerLink]="['/department', teacher()!.department?.id, 'view']">{{ teacher()!.department?.id }}</a>
+                <a [routerLink]="['/department', teacher()!.department?.id, 'view']">{{ teacherRef.department?.id }}</a>
               </div>
             }
           </dd>
@@ -128,7 +128,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/teacher', teacher()!.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/teacher', teacherRef.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

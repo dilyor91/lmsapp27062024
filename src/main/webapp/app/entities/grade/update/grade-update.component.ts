@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -15,7 +15,7 @@ import { IAssignment } from 'app/entities/assignment/assignment.model';
 import { AssignmentService } from 'app/entities/assignment/service/assignment.service';
 import { GradeService } from '../service/grade.service';
 import { IGrade } from '../grade.model';
-import { GradeFormService, GradeFormGroup } from './grade-form.service';
+import { GradeFormGroup, GradeFormService } from './grade-form.service';
 
 @Component({
   standalone: true,

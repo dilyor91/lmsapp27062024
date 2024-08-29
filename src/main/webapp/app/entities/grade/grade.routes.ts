@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { GradeComponent } from './list/grade.component';
-import { GradeDetailComponent } from './detail/grade-detail.component';
-import { GradeUpdateComponent } from './update/grade-update.component';
 import GradeResolve from './route/grade-routing-resolve.service';
 
 const gradeRoute: Routes = [
   {
     path: '',
-    component: GradeComponent,
+    loadComponent: () => import('./list/grade.component').then(m => m.GradeComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: GradeDetailComponent,
+    loadComponent: () => import('./detail/grade-detail.component').then(m => m.GradeDetailComponent),
     resolve: {
       grade: GradeResolve,
     },
@@ -26,7 +23,7 @@ const gradeRoute: Routes = [
   },
   {
     path: 'new',
-    component: GradeUpdateComponent,
+    loadComponent: () => import('./update/grade-update.component').then(m => m.GradeUpdateComponent),
     resolve: {
       grade: GradeResolve,
     },
@@ -34,7 +31,7 @@ const gradeRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: GradeUpdateComponent,
+    loadComponent: () => import('./update/grade-update.component').then(m => m.GradeUpdateComponent),
     resolve: {
       grade: GradeResolve,
     },

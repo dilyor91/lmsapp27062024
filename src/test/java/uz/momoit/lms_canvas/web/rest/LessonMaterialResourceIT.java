@@ -75,12 +75,8 @@ class LessonMaterialResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static LessonMaterial createEntity(EntityManager em) {
-        LessonMaterial lessonMaterial = new LessonMaterial()
-            .title(DEFAULT_TITLE)
-            .description(DEFAULT_DESCRIPTION)
-            .lessonFileType(DEFAULT_LESSON_FILE_TYPE);
-        return lessonMaterial;
+    public static LessonMaterial createEntity() {
+        return new LessonMaterial().title(DEFAULT_TITLE).description(DEFAULT_DESCRIPTION).lessonFileType(DEFAULT_LESSON_FILE_TYPE);
     }
 
     /**
@@ -89,17 +85,13 @@ class LessonMaterialResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static LessonMaterial createUpdatedEntity(EntityManager em) {
-        LessonMaterial lessonMaterial = new LessonMaterial()
-            .title(UPDATED_TITLE)
-            .description(UPDATED_DESCRIPTION)
-            .lessonFileType(UPDATED_LESSON_FILE_TYPE);
-        return lessonMaterial;
+    public static LessonMaterial createUpdatedEntity() {
+        return new LessonMaterial().title(UPDATED_TITLE).description(UPDATED_DESCRIPTION).lessonFileType(UPDATED_LESSON_FILE_TYPE);
     }
 
     @BeforeEach
     public void initTest() {
-        lessonMaterial = createEntity(em);
+        lessonMaterial = createEntity();
     }
 
     @AfterEach
@@ -295,7 +287,7 @@ class LessonMaterialResourceIT {
         LessonMaterial partialUpdatedLessonMaterial = new LessonMaterial();
         partialUpdatedLessonMaterial.setId(lessonMaterial.getId());
 
-        partialUpdatedLessonMaterial.description(UPDATED_DESCRIPTION);
+        partialUpdatedLessonMaterial.lessonFileType(UPDATED_LESSON_FILE_TYPE);
 
         restLessonMaterialMockMvc
             .perform(

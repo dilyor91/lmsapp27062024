@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -13,7 +13,7 @@ import { IAnnouncement } from 'app/entities/announcement/announcement.model';
 import { AnnouncementService } from 'app/entities/announcement/service/announcement.service';
 import { CourseSectionService } from '../service/course-section.service';
 import { ICourseSection } from '../course-section.model';
-import { CourseSectionFormService, CourseSectionFormGroup } from './course-section-form.service';
+import { CourseSectionFormGroup, CourseSectionFormService } from './course-section-form.service';
 
 @Component({
   standalone: true,

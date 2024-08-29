@@ -17,7 +17,7 @@ describe('LessonMaterial Management Detail Component', () => {
           [
             {
               path: '**',
-              component: LessonMaterialDetailComponent,
+              loadComponent: () => import('./lesson-material-detail.component').then(m => m.LessonMaterialDetailComponent),
               resolve: { lessonMaterial: () => of({ id: 123 }) },
             },
           ],

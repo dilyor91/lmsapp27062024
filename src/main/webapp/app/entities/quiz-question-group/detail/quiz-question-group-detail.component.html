@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (quizQuestionGroup()) {
+    @if (quizQuestionGroup(); as quizQuestionGroupRef) {
       <div>
         <h2 data-cy="quizQuestionGroupDetailsHeading">
           <span jhiTranslate="lmsapp27062024App.quizQuestionGroup.detail.title">Quiz Question Group</span>
@@ -15,17 +15,17 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
-            <span>{{ quizQuestionGroup()!.id }}</span>
+            <span>{{ quizQuestionGroupRef.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.quizQuestionGroup.questionCount">Question Count</span></dt>
           <dd>
-            <span>{{ quizQuestionGroup()!.questionCount }}</span>
+            <span>{{ quizQuestionGroupRef.questionCount }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.quizQuestionGroup.quiz">Quiz</span></dt>
           <dd>
             @if (quizQuestionGroup()!.quiz) {
               <div>
-                <a [routerLink]="['/quiz', quizQuestionGroup()!.quiz?.id, 'view']">{{ quizQuestionGroup()!.quiz?.id }}</a>
+                <a [routerLink]="['/quiz', quizQuestionGroup()!.quiz?.id, 'view']">{{ quizQuestionGroupRef.quiz?.id }}</a>
               </div>
             }
           </dd>
@@ -34,7 +34,7 @@
             @if (quizQuestionGroup()!.questionGroup) {
               <div>
                 <a [routerLink]="['/question-group', quizQuestionGroup()!.questionGroup?.id, 'view']">{{
-                  quizQuestionGroup()!.questionGroup?.id
+                  quizQuestionGroupRef.questionGroup?.id
                 }}</a>
               </div>
             }
@@ -45,7 +45,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/quiz-question-group', quizQuestionGroup()!.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/quiz-question-group', quizQuestionGroupRef.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

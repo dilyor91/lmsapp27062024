@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.QuizQuestionGroupMapper;
 @Transactional
 public class QuizQuestionGroupServiceImpl implements QuizQuestionGroupService {
 
-    private static final Logger log = LoggerFactory.getLogger(QuizQuestionGroupServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(QuizQuestionGroupServiceImpl.class);
 
     private final QuizQuestionGroupRepository quizQuestionGroupRepository;
 
@@ -36,7 +36,7 @@ public class QuizQuestionGroupServiceImpl implements QuizQuestionGroupService {
 
     @Override
     public QuizQuestionGroupDTO save(QuizQuestionGroupDTO quizQuestionGroupDTO) {
-        log.debug("Request to save QuizQuestionGroup : {}", quizQuestionGroupDTO);
+        LOG.debug("Request to save QuizQuestionGroup : {}", quizQuestionGroupDTO);
         QuizQuestionGroup quizQuestionGroup = quizQuestionGroupMapper.toEntity(quizQuestionGroupDTO);
         quizQuestionGroup = quizQuestionGroupRepository.save(quizQuestionGroup);
         return quizQuestionGroupMapper.toDto(quizQuestionGroup);
@@ -44,7 +44,7 @@ public class QuizQuestionGroupServiceImpl implements QuizQuestionGroupService {
 
     @Override
     public QuizQuestionGroupDTO update(QuizQuestionGroupDTO quizQuestionGroupDTO) {
-        log.debug("Request to update QuizQuestionGroup : {}", quizQuestionGroupDTO);
+        LOG.debug("Request to update QuizQuestionGroup : {}", quizQuestionGroupDTO);
         QuizQuestionGroup quizQuestionGroup = quizQuestionGroupMapper.toEntity(quizQuestionGroupDTO);
         quizQuestionGroup = quizQuestionGroupRepository.save(quizQuestionGroup);
         return quizQuestionGroupMapper.toDto(quizQuestionGroup);
@@ -52,7 +52,7 @@ public class QuizQuestionGroupServiceImpl implements QuizQuestionGroupService {
 
     @Override
     public Optional<QuizQuestionGroupDTO> partialUpdate(QuizQuestionGroupDTO quizQuestionGroupDTO) {
-        log.debug("Request to partially update QuizQuestionGroup : {}", quizQuestionGroupDTO);
+        LOG.debug("Request to partially update QuizQuestionGroup : {}", quizQuestionGroupDTO);
 
         return quizQuestionGroupRepository
             .findById(quizQuestionGroupDTO.getId())
@@ -68,20 +68,20 @@ public class QuizQuestionGroupServiceImpl implements QuizQuestionGroupService {
     @Override
     @Transactional(readOnly = true)
     public Page<QuizQuestionGroupDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all QuizQuestionGroups");
+        LOG.debug("Request to get all QuizQuestionGroups");
         return quizQuestionGroupRepository.findAll(pageable).map(quizQuestionGroupMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<QuizQuestionGroupDTO> findOne(Long id) {
-        log.debug("Request to get QuizQuestionGroup : {}", id);
+        LOG.debug("Request to get QuizQuestionGroup : {}", id);
         return quizQuestionGroupRepository.findById(id).map(quizQuestionGroupMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete QuizQuestionGroup : {}", id);
+        LOG.debug("Request to delete QuizQuestionGroup : {}", id);
         quizQuestionGroupRepository.deleteById(id);
     }
 }

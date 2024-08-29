@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (studyAcademicYear()) {
+    @if (studyAcademicYear(); as studyAcademicYearRef) {
       <div>
         <h2 data-cy="studyAcademicYearDetailsHeading">
           <span jhiTranslate="lmsapp27062024App.studyAcademicYear.detail.title">Study Academic Year</span>
@@ -15,15 +15,15 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
-            <span>{{ studyAcademicYear()!.id }}</span>
+            <span>{{ studyAcademicYearRef.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.studyAcademicYear.fromDate">From Date</span></dt>
           <dd>
-            <span>{{ studyAcademicYear()!.fromDate | formatMediumDatetime }}</span>
+            <span>{{ studyAcademicYearRef.fromDate | formatMediumDatetime }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.studyAcademicYear.endDate">End Date</span></dt>
           <dd>
-            <span>{{ studyAcademicYear()!.endDate | formatMediumDatetime }}</span>
+            <span>{{ studyAcademicYearRef.endDate | formatMediumDatetime }}</span>
           </dd>
         </dl>
 
@@ -31,7 +31,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/study-academic-year', studyAcademicYear()!.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/study-academic-year', studyAcademicYearRef.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

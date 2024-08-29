@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.EnrollmentMapper;
 @Transactional
 public class EnrollmentServiceImpl implements EnrollmentService {
 
-    private static final Logger log = LoggerFactory.getLogger(EnrollmentServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(EnrollmentServiceImpl.class);
 
     private final EnrollmentRepository enrollmentRepository;
 
@@ -33,7 +33,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 
     @Override
     public EnrollmentDTO save(EnrollmentDTO enrollmentDTO) {
-        log.debug("Request to save Enrollment : {}", enrollmentDTO);
+        LOG.debug("Request to save Enrollment : {}", enrollmentDTO);
         Enrollment enrollment = enrollmentMapper.toEntity(enrollmentDTO);
         enrollment = enrollmentRepository.save(enrollment);
         return enrollmentMapper.toDto(enrollment);
@@ -41,7 +41,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 
     @Override
     public EnrollmentDTO update(EnrollmentDTO enrollmentDTO) {
-        log.debug("Request to update Enrollment : {}", enrollmentDTO);
+        LOG.debug("Request to update Enrollment : {}", enrollmentDTO);
         Enrollment enrollment = enrollmentMapper.toEntity(enrollmentDTO);
         enrollment = enrollmentRepository.save(enrollment);
         return enrollmentMapper.toDto(enrollment);
@@ -49,7 +49,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 
     @Override
     public Optional<EnrollmentDTO> partialUpdate(EnrollmentDTO enrollmentDTO) {
-        log.debug("Request to partially update Enrollment : {}", enrollmentDTO);
+        LOG.debug("Request to partially update Enrollment : {}", enrollmentDTO);
 
         return enrollmentRepository
             .findById(enrollmentDTO.getId())
@@ -65,20 +65,20 @@ public class EnrollmentServiceImpl implements EnrollmentService {
     @Override
     @Transactional(readOnly = true)
     public Page<EnrollmentDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all Enrollments");
+        LOG.debug("Request to get all Enrollments");
         return enrollmentRepository.findAll(pageable).map(enrollmentMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<EnrollmentDTO> findOne(Long id) {
-        log.debug("Request to get Enrollment : {}", id);
+        LOG.debug("Request to get Enrollment : {}", id);
         return enrollmentRepository.findById(id).map(enrollmentMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Enrollment : {}", id);
+        LOG.debug("Request to delete Enrollment : {}", id);
         enrollmentRepository.deleteById(id);
     }
 }

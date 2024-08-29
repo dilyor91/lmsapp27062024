@@ -29,7 +29,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/groups")
 public class GroupResource {
 
-    private static final Logger log = LoggerFactory.getLogger(GroupResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(GroupResource.class);
 
     private static final String ENTITY_NAME = "group";
 
@@ -54,7 +54,7 @@ public class GroupResource {
      */
     @PostMapping("")
     public ResponseEntity<GroupDTO> createGroup(@RequestBody GroupDTO groupDTO) throws URISyntaxException {
-        log.debug("REST request to save Group : {}", groupDTO);
+        LOG.debug("REST request to save Group : {}", groupDTO);
         if (groupDTO.getId() != null) {
             throw new BadRequestAlertException("A new group cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -79,7 +79,7 @@ public class GroupResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody GroupDTO groupDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update Group : {}, {}", id, groupDTO);
+        LOG.debug("REST request to update Group : {}, {}", id, groupDTO);
         if (groupDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -113,7 +113,7 @@ public class GroupResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody GroupDTO groupDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Group partially : {}, {}", id, groupDTO);
+        LOG.debug("REST request to partial update Group partially : {}, {}", id, groupDTO);
         if (groupDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -141,7 +141,7 @@ public class GroupResource {
      */
     @GetMapping("")
     public ResponseEntity<List<GroupDTO>> getAllGroups(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of Groups");
+        LOG.debug("REST request to get a page of Groups");
         Page<GroupDTO> page = groupService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -155,7 +155,7 @@ public class GroupResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<GroupDTO> getGroup(@PathVariable("id") Long id) {
-        log.debug("REST request to get Group : {}", id);
+        LOG.debug("REST request to get Group : {}", id);
         Optional<GroupDTO> groupDTO = groupService.findOne(id);
         return ResponseUtil.wrapOrNotFound(groupDTO);
     }
@@ -168,7 +168,7 @@ public class GroupResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteGroup(@PathVariable("id") Long id) {
-        log.debug("REST request to delete Group : {}", id);
+        LOG.debug("REST request to delete Group : {}", id);
         groupService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

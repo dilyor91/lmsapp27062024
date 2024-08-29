@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { QuestionGroupComponent } from './list/question-group.component';
-import { QuestionGroupDetailComponent } from './detail/question-group-detail.component';
-import { QuestionGroupUpdateComponent } from './update/question-group-update.component';
 import QuestionGroupResolve from './route/question-group-routing-resolve.service';
 
 const questionGroupRoute: Routes = [
   {
     path: '',
-    component: QuestionGroupComponent,
+    loadComponent: () => import('./list/question-group.component').then(m => m.QuestionGroupComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: QuestionGroupDetailComponent,
+    loadComponent: () => import('./detail/question-group-detail.component').then(m => m.QuestionGroupDetailComponent),
     resolve: {
       questionGroup: QuestionGroupResolve,
     },
@@ -26,7 +23,7 @@ const questionGroupRoute: Routes = [
   },
   {
     path: 'new',
-    component: QuestionGroupUpdateComponent,
+    loadComponent: () => import('./update/question-group-update.component').then(m => m.QuestionGroupUpdateComponent),
     resolve: {
       questionGroup: QuestionGroupResolve,
     },
@@ -34,7 +31,7 @@ const questionGroupRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: QuestionGroupUpdateComponent,
+    loadComponent: () => import('./update/question-group-update.component').then(m => m.QuestionGroupUpdateComponent),
     resolve: {
       questionGroup: QuestionGroupResolve,
     },

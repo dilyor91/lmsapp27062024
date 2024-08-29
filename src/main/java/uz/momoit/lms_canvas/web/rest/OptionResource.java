@@ -31,7 +31,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/options")
 public class OptionResource {
 
-    private static final Logger log = LoggerFactory.getLogger(OptionResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(OptionResource.class);
 
     private static final String ENTITY_NAME = "option";
 
@@ -56,7 +56,7 @@ public class OptionResource {
      */
     @PostMapping("")
     public ResponseEntity<OptionDTO> createOption(@Valid @RequestBody OptionDTO optionDTO) throws URISyntaxException {
-        log.debug("REST request to save Option : {}", optionDTO);
+        LOG.debug("REST request to save Option : {}", optionDTO);
         if (optionDTO.getId() != null) {
             throw new BadRequestAlertException("A new option cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -81,7 +81,7 @@ public class OptionResource {
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody OptionDTO optionDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update Option : {}, {}", id, optionDTO);
+        LOG.debug("REST request to update Option : {}, {}", id, optionDTO);
         if (optionDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -115,7 +115,7 @@ public class OptionResource {
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody OptionDTO optionDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Option partially : {}, {}", id, optionDTO);
+        LOG.debug("REST request to partial update Option partially : {}, {}", id, optionDTO);
         if (optionDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -143,7 +143,7 @@ public class OptionResource {
      */
     @GetMapping("")
     public ResponseEntity<List<OptionDTO>> getAllOptions(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of Options");
+        LOG.debug("REST request to get a page of Options");
         Page<OptionDTO> page = optionService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -157,7 +157,7 @@ public class OptionResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<OptionDTO> getOption(@PathVariable("id") Long id) {
-        log.debug("REST request to get Option : {}", id);
+        LOG.debug("REST request to get Option : {}", id);
         Optional<OptionDTO> optionDTO = optionService.findOne(id);
         return ResponseUtil.wrapOrNotFound(optionDTO);
     }
@@ -170,7 +170,7 @@ public class OptionResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteOption(@PathVariable("id") Long id) {
-        log.debug("REST request to delete Option : {}", id);
+        LOG.debug("REST request to delete Option : {}", id);
         optionService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

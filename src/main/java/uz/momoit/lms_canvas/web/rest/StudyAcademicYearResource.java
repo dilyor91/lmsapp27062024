@@ -30,7 +30,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/study-academic-years")
 public class StudyAcademicYearResource {
 
-    private static final Logger log = LoggerFactory.getLogger(StudyAcademicYearResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(StudyAcademicYearResource.class);
 
     private static final String ENTITY_NAME = "studyAcademicYear";
 
@@ -59,7 +59,7 @@ public class StudyAcademicYearResource {
     @PostMapping("")
     public ResponseEntity<StudyAcademicYearDTO> createStudyAcademicYear(@RequestBody StudyAcademicYearDTO studyAcademicYearDTO)
         throws URISyntaxException {
-        log.debug("REST request to save StudyAcademicYear : {}", studyAcademicYearDTO);
+        LOG.debug("REST request to save StudyAcademicYear : {}", studyAcademicYearDTO);
         if (studyAcademicYearDTO.getId() != null) {
             throw new BadRequestAlertException("A new studyAcademicYear cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -84,7 +84,7 @@ public class StudyAcademicYearResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody StudyAcademicYearDTO studyAcademicYearDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update StudyAcademicYear : {}, {}", id, studyAcademicYearDTO);
+        LOG.debug("REST request to update StudyAcademicYear : {}, {}", id, studyAcademicYearDTO);
         if (studyAcademicYearDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -118,7 +118,7 @@ public class StudyAcademicYearResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody StudyAcademicYearDTO studyAcademicYearDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update StudyAcademicYear partially : {}, {}", id, studyAcademicYearDTO);
+        LOG.debug("REST request to partial update StudyAcademicYear partially : {}, {}", id, studyAcademicYearDTO);
         if (studyAcademicYearDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -151,10 +151,10 @@ public class StudyAcademicYearResource {
         @RequestParam(name = "filter", required = false) String filter
     ) {
         if ("student-is-null".equals(filter)) {
-            log.debug("REST request to get all StudyAcademicYears where student is null");
+            LOG.debug("REST request to get all StudyAcademicYears where student is null");
             return new ResponseEntity<>(studyAcademicYearService.findAllWhereStudentIsNull(), HttpStatus.OK);
         }
-        log.debug("REST request to get a page of StudyAcademicYears");
+        LOG.debug("REST request to get a page of StudyAcademicYears");
         Page<StudyAcademicYearDTO> page = studyAcademicYearService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -168,7 +168,7 @@ public class StudyAcademicYearResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<StudyAcademicYearDTO> getStudyAcademicYear(@PathVariable("id") Long id) {
-        log.debug("REST request to get StudyAcademicYear : {}", id);
+        LOG.debug("REST request to get StudyAcademicYear : {}", id);
         Optional<StudyAcademicYearDTO> studyAcademicYearDTO = studyAcademicYearService.findOne(id);
         return ResponseUtil.wrapOrNotFound(studyAcademicYearDTO);
     }
@@ -181,7 +181,7 @@ public class StudyAcademicYearResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudyAcademicYear(@PathVariable("id") Long id) {
-        log.debug("REST request to delete StudyAcademicYear : {}", id);
+        LOG.debug("REST request to delete StudyAcademicYear : {}", id);
         studyAcademicYearService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

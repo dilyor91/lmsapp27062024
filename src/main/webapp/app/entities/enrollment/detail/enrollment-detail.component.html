@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (enrollment()) {
+    @if (enrollment(); as enrollmentRef) {
       <div>
         <h2 data-cy="enrollmentDetailsHeading"><span jhiTranslate="lmsapp27062024App.enrollment.detail.title">Enrollment</span></h2>
 
@@ -13,27 +13,27 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
-            <span>{{ enrollment()!.id }}</span>
+            <span>{{ enrollmentRef.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.enrollment.enrollmentStatus">Enrollment Status</span></dt>
           <dd>
-            <span [jhiTranslate]="'lmsapp27062024App.EnrollmentStatusEnum.' + (enrollment()!.enrollmentStatus ?? 'null')">{{
-              { null: '', ACTIVE: 'ACTIVE', REJECTED: 'REJECTED', PENDING: 'PENDING' }[enrollment()!.enrollmentStatus ?? 'null']
+            <span [jhiTranslate]="'lmsapp27062024App.EnrollmentStatusEnum.' + (enrollmentRef.enrollmentStatus ?? 'null')">{{
+              { null: '', ACTIVE: 'ACTIVE', REJECTED: 'REJECTED', PENDING: 'PENDING' }[enrollmentRef.enrollmentStatus ?? 'null']
             }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.enrollment.lastActivityAt">Last Activity At</span></dt>
           <dd>
-            <span>{{ enrollment()!.lastActivityAt | formatMediumDatetime }}</span>
+            <span>{{ enrollmentRef.lastActivityAt | formatMediumDatetime }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.enrollment.enrollmentDate">Enrollment Date</span></dt>
           <dd>
-            <span>{{ enrollment()!.enrollmentDate | formatMediumDatetime }}</span>
+            <span>{{ enrollmentRef.enrollmentDate | formatMediumDatetime }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.enrollment.student">Student</span></dt>
           <dd>
             @if (enrollment()!.student) {
               <div>
-                <a [routerLink]="['/student', enrollment()!.student?.id, 'view']">{{ enrollment()!.student?.id }}</a>
+                <a [routerLink]="['/student', enrollment()!.student?.id, 'view']">{{ enrollmentRef.student?.id }}</a>
               </div>
             }
           </dd>
@@ -41,7 +41,7 @@
           <dd>
             @if (enrollment()!.courseSection) {
               <div>
-                <a [routerLink]="['/course-section', enrollment()!.courseSection?.id, 'view']">{{ enrollment()!.courseSection?.id }}</a>
+                <a [routerLink]="['/course-section', enrollment()!.courseSection?.id, 'view']">{{ enrollmentRef.courseSection?.id }}</a>
               </div>
             }
           </dd>
@@ -49,7 +49,7 @@
           <dd>
             @if (enrollment()!.course) {
               <div>
-                <a [routerLink]="['/course', enrollment()!.course?.id, 'view']">{{ enrollment()!.course?.id }}</a>
+                <a [routerLink]="['/course', enrollment()!.course?.id, 'view']">{{ enrollmentRef.course?.id }}</a>
               </div>
             }
           </dd>
@@ -59,7 +59,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/enrollment', enrollment()!.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/enrollment', enrollmentRef.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

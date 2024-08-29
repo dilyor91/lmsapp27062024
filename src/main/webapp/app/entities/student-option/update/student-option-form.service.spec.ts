@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { sampleWithRequiredData, sampleWithNewData } from '../student-option.test-samples';
+import { sampleWithNewData, sampleWithRequiredData } from '../student-option.test-samples';
 
 import { StudentOptionFormService } from './student-option-form.service';
 

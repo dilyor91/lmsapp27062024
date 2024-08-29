@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (student()) {
+    @if (student(); as studentRef) {
       <div>
         <h2 data-cy="studentDetailsHeading"><span jhiTranslate="lmsapp27062024App.student.detail.title">Student</span></h2>
 
@@ -13,102 +13,102 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
-            <span>{{ student()!.id }}</span>
+            <span>{{ studentRef.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.firstName">First Name</span></dt>
           <dd>
-            <span>{{ student()!.firstName }}</span>
+            <span>{{ studentRef.firstName }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.lastName">Last Name</span></dt>
           <dd>
-            <span>{{ student()!.lastName }}</span>
+            <span>{{ studentRef.lastName }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.middleName">Middle Name</span></dt>
           <dd>
-            <span>{{ student()!.middleName }}</span>
+            <span>{{ studentRef.middleName }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.gender">Gender</span></dt>
           <dd>
-            <span>{{ student()!.gender }}</span>
+            <span>{{ studentRef.gender }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.birthdate">Birthdate</span></dt>
           <dd>
-            <span>{{ student()!.birthdate }}</span>
+            <span>{{ studentRef.birthdate }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.phoneNumber">Phone Number</span></dt>
           <dd>
-            <span>{{ student()!.phoneNumber }}</span>
+            <span>{{ studentRef.phoneNumber }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.email">Email</span></dt>
           <dd>
-            <span>{{ student()!.email }}</span>
+            <span>{{ studentRef.email }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.hemisId">Hemis Id</span></dt>
           <dd>
-            <span>{{ student()!.hemisId }}</span>
+            <span>{{ studentRef.hemisId }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.passportNumber">Passport Number</span></dt>
           <dd>
-            <span>{{ student()!.passportNumber }}</span>
+            <span>{{ studentRef.passportNumber }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.jshshir">Jshshir</span></dt>
           <dd>
-            <span>{{ student()!.jshshir }}</span>
+            <span>{{ studentRef.jshshir }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.isActive">Is Active</span></dt>
           <dd>
-            <span>{{ student()!.isActive }}</span>
+            <span>{{ studentRef.isActive }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.tutionType">Tution Type</span></dt>
           <dd>
-            <span [jhiTranslate]="'lmsapp27062024App.TutionTypeEnum.' + (student()!.tutionType ?? 'null')">{{
-              { null: '', GRANT: 'GRANT', KONTRAKT: 'KONTRAKT' }[student()!.tutionType ?? 'null']
+            <span [jhiTranslate]="'lmsapp27062024App.TutionTypeEnum.' + (studentRef.tutionType ?? 'null')">{{
+              { null: '', GRANT: 'GRANT', KONTRAKT: 'KONTRAKT' }[studentRef.tutionType ?? 'null']
             }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.nationality">Nationality</span></dt>
           <dd>
-            <span>{{ student()!.nationality }}</span>
+            <span>{{ studentRef.nationality }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.country">Country</span></dt>
           <dd>
-            <span>{{ student()!.country }}</span>
+            <span>{{ studentRef.country }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.city">City</span></dt>
           <dd>
-            <span>{{ student()!.city }}</span>
+            <span>{{ studentRef.city }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.region">Region</span></dt>
           <dd>
-            <span>{{ student()!.region }}</span>
+            <span>{{ studentRef.region }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.addressLine">Address Line</span></dt>
           <dd>
-            <span>{{ student()!.addressLine }}</span>
+            <span>{{ studentRef.addressLine }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.course">Course</span></dt>
           <dd>
-            <span>{{ student()!.course }}</span>
+            <span>{{ studentRef.course }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.semester">Semester</span></dt>
           <dd>
-            <span>{{ student()!.semester }}</span>
+            <span>{{ studentRef.semester }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.educationLanguage">Education Language</span></dt>
           <dd>
-            <span [jhiTranslate]="'lmsapp27062024App.EducationLanguage.' + (student()!.educationLanguage ?? 'null')">{{
-              { null: '', UZBEK: 'UZBEK', RUSSIAN: 'RUSSIAN', ENGLISH: 'ENGLISH' }[student()!.educationLanguage ?? 'null']
+            <span [jhiTranslate]="'lmsapp27062024App.EducationLanguage.' + (studentRef.educationLanguage ?? 'null')">{{
+              { null: '', UZBEK: 'UZBEK', RUSSIAN: 'RUSSIAN', ENGLISH: 'ENGLISH' }[studentRef.educationLanguage ?? 'null']
             }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.educationType">Education Type</span></dt>
           <dd>
-            <span [jhiTranslate]="'lmsapp27062024App.EducationType.' + (student()!.educationType ?? 'null')">{{
-              { null: '', KUNDUZGI: 'KUNDUZGI', KECHKI: 'KECHKI', SIRTQI: 'SIRTQI' }[student()!.educationType ?? 'null']
+            <span [jhiTranslate]="'lmsapp27062024App.EducationType.' + (studentRef.educationType ?? 'null')">{{
+              { null: '', KUNDUZGI: 'KUNDUZGI', KECHKI: 'KECHKI', SIRTQI: 'SIRTQI' }[studentRef.educationType ?? 'null']
             }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.educationForm">Education Form</span></dt>
           <dd>
-            <span [jhiTranslate]="'lmsapp27062024App.EducationForm.' + (student()!.educationForm ?? 'null')">{{
-              { null: '', BAKALAVR: 'BAKALAVR', MAGISTR: 'MAGISTR' }[student()!.educationForm ?? 'null']
+            <span [jhiTranslate]="'lmsapp27062024App.EducationForm.' + (studentRef.educationForm ?? 'null')">{{
+              { null: '', BAKALAVR: 'BAKALAVR', MAGISTR: 'MAGISTR' }[studentRef.educationForm ?? 'null']
             }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.studyAcademicYear">Study Academic Year</span></dt>
@@ -116,20 +116,20 @@
             @if (student()!.studyAcademicYear) {
               <div>
                 <a [routerLink]="['/study-academic-year', student()!.studyAcademicYear?.id, 'view']">{{
-                  student()!.studyAcademicYear?.id
+                  studentRef.studyAcademicYear?.id
                 }}</a>
               </div>
             }
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.user">User</span></dt>
           <dd>
-            <span>{{ student()!.user?.id }}</span>
+            <span>{{ studentRef.user?.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.student.faculty">Faculty</span></dt>
           <dd>
             @if (student()!.faculty) {
               <div>
-                <a [routerLink]="['/faculty', student()!.faculty?.id, 'view']">{{ student()!.faculty?.id }}</a>
+                <a [routerLink]="['/faculty', student()!.faculty?.id, 'view']">{{ studentRef.faculty?.id }}</a>
               </div>
             }
           </dd>
@@ -137,7 +137,7 @@
           <dd>
             @if (student()!.speciality) {
               <div>
-                <a [routerLink]="['/speciality', student()!.speciality?.id, 'view']">{{ student()!.speciality?.id }}</a>
+                <a [routerLink]="['/speciality', student()!.speciality?.id, 'view']">{{ studentRef.speciality?.id }}</a>
               </div>
             }
           </dd>
@@ -145,7 +145,7 @@
           <dd>
             @if (student()!.group) {
               <div>
-                <a [routerLink]="['/group', student()!.group?.id, 'view']">{{ student()!.group?.id }}</a>
+                <a [routerLink]="['/group', student()!.group?.id, 'view']">{{ studentRef.group?.id }}</a>
               </div>
             }
           </dd>
@@ -155,7 +155,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/student', student()!.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/student', studentRef.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

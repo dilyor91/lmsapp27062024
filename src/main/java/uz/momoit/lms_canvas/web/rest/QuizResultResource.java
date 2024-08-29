@@ -29,7 +29,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/quiz-results")
 public class QuizResultResource {
 
-    private static final Logger log = LoggerFactory.getLogger(QuizResultResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(QuizResultResource.class);
 
     private static final String ENTITY_NAME = "quizResult";
 
@@ -54,7 +54,7 @@ public class QuizResultResource {
      */
     @PostMapping("")
     public ResponseEntity<QuizResultDTO> createQuizResult(@RequestBody QuizResultDTO quizResultDTO) throws URISyntaxException {
-        log.debug("REST request to save QuizResult : {}", quizResultDTO);
+        LOG.debug("REST request to save QuizResult : {}", quizResultDTO);
         if (quizResultDTO.getId() != null) {
             throw new BadRequestAlertException("A new quizResult cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -79,7 +79,7 @@ public class QuizResultResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody QuizResultDTO quizResultDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update QuizResult : {}, {}", id, quizResultDTO);
+        LOG.debug("REST request to update QuizResult : {}, {}", id, quizResultDTO);
         if (quizResultDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -113,7 +113,7 @@ public class QuizResultResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody QuizResultDTO quizResultDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update QuizResult partially : {}, {}", id, quizResultDTO);
+        LOG.debug("REST request to partial update QuizResult partially : {}, {}", id, quizResultDTO);
         if (quizResultDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -141,7 +141,7 @@ public class QuizResultResource {
      */
     @GetMapping("")
     public ResponseEntity<List<QuizResultDTO>> getAllQuizResults(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of QuizResults");
+        LOG.debug("REST request to get a page of QuizResults");
         Page<QuizResultDTO> page = quizResultService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -155,7 +155,7 @@ public class QuizResultResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<QuizResultDTO> getQuizResult(@PathVariable("id") Long id) {
-        log.debug("REST request to get QuizResult : {}", id);
+        LOG.debug("REST request to get QuizResult : {}", id);
         Optional<QuizResultDTO> quizResultDTO = quizResultService.findOne(id);
         return ResponseUtil.wrapOrNotFound(quizResultDTO);
     }
@@ -168,7 +168,7 @@ public class QuizResultResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteQuizResult(@PathVariable("id") Long id) {
-        log.debug("REST request to delete QuizResult : {}", id);
+        LOG.debug("REST request to delete QuizResult : {}", id);
         quizResultService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

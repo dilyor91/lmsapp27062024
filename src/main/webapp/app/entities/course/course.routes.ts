@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { CourseComponent } from './list/course.component';
-import { CourseDetailComponent } from './detail/course-detail.component';
-import { CourseUpdateComponent } from './update/course-update.component';
 import CourseResolve from './route/course-routing-resolve.service';
 
 const courseRoute: Routes = [
   {
     path: '',
-    component: CourseComponent,
+    loadComponent: () => import('./list/course.component').then(m => m.CourseComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: CourseDetailComponent,
+    loadComponent: () => import('./detail/course-detail.component').then(m => m.CourseDetailComponent),
     resolve: {
       course: CourseResolve,
     },
@@ -26,7 +23,7 @@ const courseRoute: Routes = [
   },
   {
     path: 'new',
-    component: CourseUpdateComponent,
+    loadComponent: () => import('./update/course-update.component').then(m => m.CourseUpdateComponent),
     resolve: {
       course: CourseResolve,
     },
@@ -34,7 +31,7 @@ const courseRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: CourseUpdateComponent,
+    loadComponent: () => import('./update/course-update.component').then(m => m.CourseUpdateComponent),
     resolve: {
       course: CourseResolve,
     },

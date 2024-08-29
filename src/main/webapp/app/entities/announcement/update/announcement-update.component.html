@@ -19,10 +19,11 @@
           </div>
         }
 
+        @let titleRef = editForm.get('title')!;
         <div class="mb-3">
           <label class="form-label" for="field_title" jhiTranslate="lmsapp27062024App.announcement.title">Title</label>
           <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
-          @if (editForm.get('title')!.invalid && (editForm.get('title')!.dirty || editForm.get('title')!.touched)) {
+          @if (titleRef.invalid && (titleRef.dirty || titleRef.touched)) {
             <div>
               @if (editForm.get('title')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
@@ -31,10 +32,11 @@
           }
         </div>
 
+        @let contentRef = editForm.get('content')!;
         <div class="mb-3">
           <label class="form-label" for="field_content" jhiTranslate="lmsapp27062024App.announcement.content">Content</label>
           <input type="text" class="form-control" name="content" id="field_content" data-cy="content" formControlName="content" />
-          @if (editForm.get('content')!.invalid && (editForm.get('content')!.dirty || editForm.get('content')!.touched)) {
+          @if (contentRef.invalid && (contentRef.dirty || contentRef.touched)) {
             <div>
               @if (editForm.get('content')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>

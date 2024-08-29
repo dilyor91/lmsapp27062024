@@ -94,8 +94,8 @@ class AccountsResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Accounts createEntity(EntityManager em) {
-        Accounts accounts = new Accounts()
+    public static Accounts createEntity() {
+        return new Accounts()
             .username(DEFAULT_USERNAME)
             .fullName(DEFAULT_FULL_NAME)
             .sortableName(DEFAULT_SORTABLE_NAME)
@@ -105,7 +105,6 @@ class AccountsResourceIT {
             .gender(DEFAULT_GENDER)
             .userType(DEFAULT_USER_TYPE)
             .userStatus(DEFAULT_USER_STATUS);
-        return accounts;
     }
 
     /**
@@ -114,8 +113,8 @@ class AccountsResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Accounts createUpdatedEntity(EntityManager em) {
-        Accounts accounts = new Accounts()
+    public static Accounts createUpdatedEntity() {
+        return new Accounts()
             .username(UPDATED_USERNAME)
             .fullName(UPDATED_FULL_NAME)
             .sortableName(UPDATED_SORTABLE_NAME)
@@ -125,12 +124,11 @@ class AccountsResourceIT {
             .gender(UPDATED_GENDER)
             .userType(UPDATED_USER_TYPE)
             .userStatus(UPDATED_USER_STATUS);
-        return accounts;
     }
 
     @BeforeEach
     public void initTest() {
-        accounts = createEntity(em);
+        accounts = createEntity();
     }
 
     @AfterEach
@@ -469,6 +467,7 @@ class AccountsResourceIT {
         partialUpdatedAccounts
             .username(UPDATED_USERNAME)
             .fullName(UPDATED_FULL_NAME)
+            .sortableName(UPDATED_SORTABLE_NAME)
             .avatarImageUrl(UPDATED_AVATAR_IMAGE_URL)
             .userStatus(UPDATED_USER_STATUS);
 

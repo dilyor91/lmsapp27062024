@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -17,7 +17,7 @@ import { IAttachment } from 'app/entities/attachment/attachment.model';
 import { AttachmentService } from 'app/entities/attachment/service/attachment.service';
 import { SubmissionAssignmentService } from '../service/submission-assignment.service';
 import { ISubmissionAssignment } from '../submission-assignment.model';
-import { SubmissionAssignmentFormService, SubmissionAssignmentFormGroup } from './submission-assignment-form.service';
+import { SubmissionAssignmentFormGroup, SubmissionAssignmentFormService } from './submission-assignment-form.service';
 
 @Component({
   standalone: true,

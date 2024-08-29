@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { AttendanceComponent } from './list/attendance.component';
-import { AttendanceDetailComponent } from './detail/attendance-detail.component';
-import { AttendanceUpdateComponent } from './update/attendance-update.component';
 import AttendanceResolve from './route/attendance-routing-resolve.service';
 
 const attendanceRoute: Routes = [
   {
     path: '',
-    component: AttendanceComponent,
+    loadComponent: () => import('./list/attendance.component').then(m => m.AttendanceComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: AttendanceDetailComponent,
+    loadComponent: () => import('./detail/attendance-detail.component').then(m => m.AttendanceDetailComponent),
     resolve: {
       attendance: AttendanceResolve,
     },
@@ -26,7 +23,7 @@ const attendanceRoute: Routes = [
   },
   {
     path: 'new',
-    component: AttendanceUpdateComponent,
+    loadComponent: () => import('./update/attendance-update.component').then(m => m.AttendanceUpdateComponent),
     resolve: {
       attendance: AttendanceResolve,
     },
@@ -34,7 +31,7 @@ const attendanceRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: AttendanceUpdateComponent,
+    loadComponent: () => import('./update/attendance-update.component').then(m => m.AttendanceUpdateComponent),
     resolve: {
       attendance: AttendanceResolve,
     },

@@ -29,7 +29,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/student-questions")
 public class StudentQuestionResource {
 
-    private static final Logger log = LoggerFactory.getLogger(StudentQuestionResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(StudentQuestionResource.class);
 
     private static final String ENTITY_NAME = "studentQuestion";
 
@@ -55,7 +55,7 @@ public class StudentQuestionResource {
     @PostMapping("")
     public ResponseEntity<StudentQuestionDTO> createStudentQuestion(@RequestBody StudentQuestionDTO studentQuestionDTO)
         throws URISyntaxException {
-        log.debug("REST request to save StudentQuestion : {}", studentQuestionDTO);
+        LOG.debug("REST request to save StudentQuestion : {}", studentQuestionDTO);
         if (studentQuestionDTO.getId() != null) {
             throw new BadRequestAlertException("A new studentQuestion cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -80,7 +80,7 @@ public class StudentQuestionResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody StudentQuestionDTO studentQuestionDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update StudentQuestion : {}, {}", id, studentQuestionDTO);
+        LOG.debug("REST request to update StudentQuestion : {}, {}", id, studentQuestionDTO);
         if (studentQuestionDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -114,7 +114,7 @@ public class StudentQuestionResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody StudentQuestionDTO studentQuestionDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update StudentQuestion partially : {}, {}", id, studentQuestionDTO);
+        LOG.debug("REST request to partial update StudentQuestion partially : {}, {}", id, studentQuestionDTO);
         if (studentQuestionDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -144,7 +144,7 @@ public class StudentQuestionResource {
     public ResponseEntity<List<StudentQuestionDTO>> getAllStudentQuestions(
         @org.springdoc.core.annotations.ParameterObject Pageable pageable
     ) {
-        log.debug("REST request to get a page of StudentQuestions");
+        LOG.debug("REST request to get a page of StudentQuestions");
         Page<StudentQuestionDTO> page = studentQuestionService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -158,7 +158,7 @@ public class StudentQuestionResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<StudentQuestionDTO> getStudentQuestion(@PathVariable("id") Long id) {
-        log.debug("REST request to get StudentQuestion : {}", id);
+        LOG.debug("REST request to get StudentQuestion : {}", id);
         Optional<StudentQuestionDTO> studentQuestionDTO = studentQuestionService.findOne(id);
         return ResponseUtil.wrapOrNotFound(studentQuestionDTO);
     }
@@ -171,7 +171,7 @@ public class StudentQuestionResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudentQuestion(@PathVariable("id") Long id) {
-        log.debug("REST request to delete StudentQuestion : {}", id);
+        LOG.debug("REST request to delete StudentQuestion : {}", id);
         studentQuestionService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

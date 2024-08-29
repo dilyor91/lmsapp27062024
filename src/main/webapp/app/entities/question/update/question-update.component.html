@@ -15,6 +15,7 @@
           </div>
         }
 
+        @let questionTextRef = editForm.get('questionText')!;
         <div class="mb-3">
           <label class="form-label" for="field_questionText" jhiTranslate="lmsapp27062024App.question.questionText">Question Text</label>
           <input
@@ -25,7 +26,7 @@
             data-cy="questionText"
             formControlName="questionText"
           />
-          @if (editForm.get('questionText')!.invalid && (editForm.get('questionText')!.dirty || editForm.get('questionText')!.touched)) {
+          @if (questionTextRef.invalid && (questionTextRef.dirty || questionTextRef.touched)) {
             <div>
               @if (editForm.get('questionText')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>

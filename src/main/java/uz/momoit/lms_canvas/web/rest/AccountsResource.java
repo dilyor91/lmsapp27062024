@@ -31,7 +31,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/accounts")
 public class AccountsResource {
 
-    private static final Logger log = LoggerFactory.getLogger(AccountsResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AccountsResource.class);
 
     private static final String ENTITY_NAME = "accounts";
 
@@ -56,7 +56,7 @@ public class AccountsResource {
      */
     @PostMapping("")
     public ResponseEntity<AccountsDTO> createAccounts(@Valid @RequestBody AccountsDTO accountsDTO) throws URISyntaxException {
-        log.debug("REST request to save Accounts : {}", accountsDTO);
+        LOG.debug("REST request to save Accounts : {}", accountsDTO);
         if (accountsDTO.getId() != null) {
             throw new BadRequestAlertException("A new accounts cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -81,7 +81,7 @@ public class AccountsResource {
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody AccountsDTO accountsDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update Accounts : {}, {}", id, accountsDTO);
+        LOG.debug("REST request to update Accounts : {}, {}", id, accountsDTO);
         if (accountsDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -115,7 +115,7 @@ public class AccountsResource {
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody AccountsDTO accountsDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Accounts partially : {}, {}", id, accountsDTO);
+        LOG.debug("REST request to partial update Accounts partially : {}, {}", id, accountsDTO);
         if (accountsDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -143,7 +143,7 @@ public class AccountsResource {
      */
     @GetMapping("")
     public ResponseEntity<List<AccountsDTO>> getAllAccounts(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of Accounts");
+        LOG.debug("REST request to get a page of Accounts");
         Page<AccountsDTO> page = accountsService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -157,7 +157,7 @@ public class AccountsResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<AccountsDTO> getAccounts(@PathVariable("id") Long id) {
-        log.debug("REST request to get Accounts : {}", id);
+        LOG.debug("REST request to get Accounts : {}", id);
         Optional<AccountsDTO> accountsDTO = accountsService.findOne(id);
         return ResponseUtil.wrapOrNotFound(accountsDTO);
     }
@@ -170,7 +170,7 @@ public class AccountsResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAccounts(@PathVariable("id") Long id) {
-        log.debug("REST request to delete Accounts : {}", id);
+        LOG.debug("REST request to delete Accounts : {}", id);
         accountsService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

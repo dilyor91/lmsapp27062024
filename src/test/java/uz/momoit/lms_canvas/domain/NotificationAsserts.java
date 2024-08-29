@@ -64,8 +64,8 @@ public class NotificationAsserts {
             .as("Verify Notification relationships")
             .satisfies(e -> assertThat(e.getQuiz()).as("check quiz").isEqualTo(actual.getQuiz()))
             .satisfies(e -> assertThat(e.getAssignment()).as("check assignment").isEqualTo(actual.getAssignment()))
-            .satisfies(
-                e -> assertThat(e.getSubmissionAssignment()).as("check submissionAssignment").isEqualTo(actual.getSubmissionAssignment())
+            .satisfies(e ->
+                assertThat(e.getSubmissionAssignment()).as("check submissionAssignment").isEqualTo(actual.getSubmissionAssignment())
             )
             .satisfies(e -> assertThat(e.getStudent()).as("check student").isEqualTo(actual.getStudent()))
             .satisfies(e -> assertThat(e.getTeacher()).as("check teacher").isEqualTo(actual.getTeacher()));

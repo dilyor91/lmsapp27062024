@@ -31,7 +31,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/enrollments")
 public class EnrollmentResource {
 
-    private static final Logger log = LoggerFactory.getLogger(EnrollmentResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(EnrollmentResource.class);
 
     private static final String ENTITY_NAME = "enrollment";
 
@@ -56,7 +56,7 @@ public class EnrollmentResource {
      */
     @PostMapping("")
     public ResponseEntity<EnrollmentDTO> createEnrollment(@Valid @RequestBody EnrollmentDTO enrollmentDTO) throws URISyntaxException {
-        log.debug("REST request to save Enrollment : {}", enrollmentDTO);
+        LOG.debug("REST request to save Enrollment : {}", enrollmentDTO);
         if (enrollmentDTO.getId() != null) {
             throw new BadRequestAlertException("A new enrollment cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -81,7 +81,7 @@ public class EnrollmentResource {
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody EnrollmentDTO enrollmentDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update Enrollment : {}, {}", id, enrollmentDTO);
+        LOG.debug("REST request to update Enrollment : {}, {}", id, enrollmentDTO);
         if (enrollmentDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -115,7 +115,7 @@ public class EnrollmentResource {
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody EnrollmentDTO enrollmentDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Enrollment partially : {}, {}", id, enrollmentDTO);
+        LOG.debug("REST request to partial update Enrollment partially : {}, {}", id, enrollmentDTO);
         if (enrollmentDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -143,7 +143,7 @@ public class EnrollmentResource {
      */
     @GetMapping("")
     public ResponseEntity<List<EnrollmentDTO>> getAllEnrollments(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of Enrollments");
+        LOG.debug("REST request to get a page of Enrollments");
         Page<EnrollmentDTO> page = enrollmentService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -157,7 +157,7 @@ public class EnrollmentResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<EnrollmentDTO> getEnrollment(@PathVariable("id") Long id) {
-        log.debug("REST request to get Enrollment : {}", id);
+        LOG.debug("REST request to get Enrollment : {}", id);
         Optional<EnrollmentDTO> enrollmentDTO = enrollmentService.findOne(id);
         return ResponseUtil.wrapOrNotFound(enrollmentDTO);
     }
@@ -170,7 +170,7 @@ public class EnrollmentResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEnrollment(@PathVariable("id") Long id) {
-        log.debug("REST request to delete Enrollment : {}", id);
+        LOG.debug("REST request to delete Enrollment : {}", id);
         enrollmentService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

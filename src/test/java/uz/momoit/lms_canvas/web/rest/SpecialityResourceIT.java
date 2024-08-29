@@ -68,9 +68,8 @@ class SpecialityResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Speciality createEntity(EntityManager em) {
-        Speciality speciality = new Speciality().name(DEFAULT_NAME);
-        return speciality;
+    public static Speciality createEntity() {
+        return new Speciality().name(DEFAULT_NAME);
     }
 
     /**
@@ -79,14 +78,13 @@ class SpecialityResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Speciality createUpdatedEntity(EntityManager em) {
-        Speciality speciality = new Speciality().name(UPDATED_NAME);
-        return speciality;
+    public static Speciality createUpdatedEntity() {
+        return new Speciality().name(UPDATED_NAME);
     }
 
     @BeforeEach
     public void initTest() {
-        speciality = createEntity(em);
+        speciality = createEntity();
     }
 
     @AfterEach
@@ -277,6 +275,8 @@ class SpecialityResourceIT {
         // Update the speciality using partial update
         Speciality partialUpdatedSpeciality = new Speciality();
         partialUpdatedSpeciality.setId(speciality.getId());
+
+        partialUpdatedSpeciality.name(UPDATED_NAME);
 
         restSpecialityMockMvc
             .perform(

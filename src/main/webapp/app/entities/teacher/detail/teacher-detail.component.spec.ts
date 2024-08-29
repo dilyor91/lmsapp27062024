@@ -17,7 +17,7 @@ describe('Teacher Management Detail Component', () => {
           [
             {
               path: '**',
-              component: TeacherDetailComponent,
+              loadComponent: () => import('./teacher-detail.component').then(m => m.TeacherDetailComponent),
               resolve: { teacher: () => of({ id: 123 }) },
             },
           ],

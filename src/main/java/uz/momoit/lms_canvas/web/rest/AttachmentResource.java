@@ -23,7 +23,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/attachments")
 public class AttachmentResource {
 
-    private static final Logger log = LoggerFactory.getLogger(AttachmentResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AttachmentResource.class);
 
     private static final String ENTITY_NAME = "attachment";
 
@@ -48,7 +48,7 @@ public class AttachmentResource {
      */
     @PostMapping("")
     public ResponseEntity<AttachmentDTO> createAttachment(@RequestBody AttachmentDTO attachmentDTO) throws URISyntaxException {
-        log.debug("REST request to save Attachment : {}", attachmentDTO);
+        LOG.debug("REST request to save Attachment : {}", attachmentDTO);
         if (attachmentDTO.getId() != null) {
             throw new BadRequestAlertException("A new attachment cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -67,10 +67,10 @@ public class AttachmentResource {
     @GetMapping("")
     public List<AttachmentDTO> getAllAttachments(@RequestParam(name = "filter", required = false) String filter) {
         if ("lessonmaterial-is-null".equals(filter)) {
-            log.debug("REST request to get all Attachments where lessonMaterial is null");
+            LOG.debug("REST request to get all Attachments where lessonMaterial is null");
             return attachmentService.findAllWhereLessonMaterialIsNull();
         }
-        log.debug("REST request to get all Attachments");
+        LOG.debug("REST request to get all Attachments");
         return attachmentService.findAll();
     }
 
@@ -82,7 +82,7 @@ public class AttachmentResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<AttachmentDTO> getAttachment(@PathVariable("id") Long id) {
-        log.debug("REST request to get Attachment : {}", id);
+        LOG.debug("REST request to get Attachment : {}", id);
         Optional<AttachmentDTO> attachmentDTO = attachmentService.findOne(id);
         return ResponseUtil.wrapOrNotFound(attachmentDTO);
     }
@@ -95,7 +95,7 @@ public class AttachmentResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAttachment(@PathVariable("id") Long id) {
-        log.debug("REST request to delete Attachment : {}", id);
+        LOG.debug("REST request to delete Attachment : {}", id);
         attachmentService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

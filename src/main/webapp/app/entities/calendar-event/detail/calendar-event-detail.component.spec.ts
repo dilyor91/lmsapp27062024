@@ -17,7 +17,7 @@ describe('CalendarEvent Management Detail Component', () => {
           [
             {
               path: '**',
-              component: CalendarEventDetailComponent,
+              loadComponent: () => import('./calendar-event-detail.component').then(m => m.CalendarEventDetailComponent),
               resolve: { calendarEvent: () => of({ id: 123 }) },
             },
           ],

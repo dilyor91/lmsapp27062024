@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.CourseWeekMapper;
 @Transactional
 public class CourseWeekServiceImpl implements CourseWeekService {
 
-    private static final Logger log = LoggerFactory.getLogger(CourseWeekServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CourseWeekServiceImpl.class);
 
     private final CourseWeekRepository courseWeekRepository;
 
@@ -33,7 +33,7 @@ public class CourseWeekServiceImpl implements CourseWeekService {
 
     @Override
     public CourseWeekDTO save(CourseWeekDTO courseWeekDTO) {
-        log.debug("Request to save CourseWeek : {}", courseWeekDTO);
+        LOG.debug("Request to save CourseWeek : {}", courseWeekDTO);
         CourseWeek courseWeek = courseWeekMapper.toEntity(courseWeekDTO);
         courseWeek = courseWeekRepository.save(courseWeek);
         return courseWeekMapper.toDto(courseWeek);
@@ -41,7 +41,7 @@ public class CourseWeekServiceImpl implements CourseWeekService {
 
     @Override
     public CourseWeekDTO update(CourseWeekDTO courseWeekDTO) {
-        log.debug("Request to update CourseWeek : {}", courseWeekDTO);
+        LOG.debug("Request to update CourseWeek : {}", courseWeekDTO);
         CourseWeek courseWeek = courseWeekMapper.toEntity(courseWeekDTO);
         courseWeek = courseWeekRepository.save(courseWeek);
         return courseWeekMapper.toDto(courseWeek);
@@ -49,7 +49,7 @@ public class CourseWeekServiceImpl implements CourseWeekService {
 
     @Override
     public Optional<CourseWeekDTO> partialUpdate(CourseWeekDTO courseWeekDTO) {
-        log.debug("Request to partially update CourseWeek : {}", courseWeekDTO);
+        LOG.debug("Request to partially update CourseWeek : {}", courseWeekDTO);
 
         return courseWeekRepository
             .findById(courseWeekDTO.getId())
@@ -65,20 +65,20 @@ public class CourseWeekServiceImpl implements CourseWeekService {
     @Override
     @Transactional(readOnly = true)
     public Page<CourseWeekDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all CourseWeeks");
+        LOG.debug("Request to get all CourseWeeks");
         return courseWeekRepository.findAll(pageable).map(courseWeekMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<CourseWeekDTO> findOne(Long id) {
-        log.debug("Request to get CourseWeek : {}", id);
+        LOG.debug("Request to get CourseWeek : {}", id);
         return courseWeekRepository.findById(id).map(courseWeekMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete CourseWeek : {}", id);
+        LOG.debug("Request to delete CourseWeek : {}", id);
         courseWeekRepository.deleteById(id);
     }
 }

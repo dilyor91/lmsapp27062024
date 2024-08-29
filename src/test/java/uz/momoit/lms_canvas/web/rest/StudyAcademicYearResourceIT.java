@@ -73,9 +73,8 @@ class StudyAcademicYearResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static StudyAcademicYear createEntity(EntityManager em) {
-        StudyAcademicYear studyAcademicYear = new StudyAcademicYear().fromDate(DEFAULT_FROM_DATE).endDate(DEFAULT_END_DATE);
-        return studyAcademicYear;
+    public static StudyAcademicYear createEntity() {
+        return new StudyAcademicYear().fromDate(DEFAULT_FROM_DATE).endDate(DEFAULT_END_DATE);
     }
 
     /**
@@ -84,14 +83,13 @@ class StudyAcademicYearResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static StudyAcademicYear createUpdatedEntity(EntityManager em) {
-        StudyAcademicYear studyAcademicYear = new StudyAcademicYear().fromDate(UPDATED_FROM_DATE).endDate(UPDATED_END_DATE);
-        return studyAcademicYear;
+    public static StudyAcademicYear createUpdatedEntity() {
+        return new StudyAcademicYear().fromDate(UPDATED_FROM_DATE).endDate(UPDATED_END_DATE);
     }
 
     @BeforeEach
     public void initTest() {
-        studyAcademicYear = createEntity(em);
+        studyAcademicYear = createEntity();
     }
 
     @AfterEach
@@ -284,8 +282,6 @@ class StudyAcademicYearResourceIT {
         // Update the studyAcademicYear using partial update
         StudyAcademicYear partialUpdatedStudyAcademicYear = new StudyAcademicYear();
         partialUpdatedStudyAcademicYear.setId(studyAcademicYear.getId());
-
-        partialUpdatedStudyAcademicYear.fromDate(UPDATED_FROM_DATE).endDate(UPDATED_END_DATE);
 
         restStudyAcademicYearMockMvc
             .perform(

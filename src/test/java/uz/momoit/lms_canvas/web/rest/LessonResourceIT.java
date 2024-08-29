@@ -83,14 +83,13 @@ class LessonResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Lesson createEntity(EntityManager em) {
-        Lesson lesson = new Lesson()
+    public static Lesson createEntity() {
+        return new Lesson()
             .lessonTitle(DEFAULT_LESSON_TITLE)
             .startPlanDate(DEFAULT_START_PLAN_DATE)
             .actualLessonDate(DEFAULT_ACTUAL_LESSON_DATE)
             .lessonType(DEFAULT_LESSON_TYPE)
             .videoUrl(DEFAULT_VIDEO_URL);
-        return lesson;
     }
 
     /**
@@ -99,19 +98,18 @@ class LessonResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Lesson createUpdatedEntity(EntityManager em) {
-        Lesson lesson = new Lesson()
+    public static Lesson createUpdatedEntity() {
+        return new Lesson()
             .lessonTitle(UPDATED_LESSON_TITLE)
             .startPlanDate(UPDATED_START_PLAN_DATE)
             .actualLessonDate(UPDATED_ACTUAL_LESSON_DATE)
             .lessonType(UPDATED_LESSON_TYPE)
             .videoUrl(UPDATED_VIDEO_URL);
-        return lesson;
     }
 
     @BeforeEach
     public void initTest() {
-        lesson = createEntity(em);
+        lesson = createEntity();
     }
 
     @AfterEach
@@ -363,7 +361,11 @@ class LessonResourceIT {
         Lesson partialUpdatedLesson = new Lesson();
         partialUpdatedLesson.setId(lesson.getId());
 
-        partialUpdatedLesson.lessonTitle(UPDATED_LESSON_TITLE).startPlanDate(UPDATED_START_PLAN_DATE).lessonType(UPDATED_LESSON_TYPE);
+        partialUpdatedLesson
+            .lessonTitle(UPDATED_LESSON_TITLE)
+            .actualLessonDate(UPDATED_ACTUAL_LESSON_DATE)
+            .lessonType(UPDATED_LESSON_TYPE)
+            .videoUrl(UPDATED_VIDEO_URL);
 
         restLessonMockMvc
             .perform(

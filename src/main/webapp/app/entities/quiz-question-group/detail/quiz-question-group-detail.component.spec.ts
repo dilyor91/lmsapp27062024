@@ -17,7 +17,7 @@ describe('QuizQuestionGroup Management Detail Component', () => {
           [
             {
               path: '**',
-              component: QuizQuestionGroupDetailComponent,
+              loadComponent: () => import('./quiz-question-group-detail.component').then(m => m.QuizQuestionGroupDetailComponent),
               resolve: { quizQuestionGroup: () => of({ id: 123 }) },
             },
           ],

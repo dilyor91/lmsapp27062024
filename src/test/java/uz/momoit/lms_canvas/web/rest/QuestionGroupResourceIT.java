@@ -68,9 +68,8 @@ class QuestionGroupResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static QuestionGroup createEntity(EntityManager em) {
-        QuestionGroup questionGroup = new QuestionGroup().name(DEFAULT_NAME);
-        return questionGroup;
+    public static QuestionGroup createEntity() {
+        return new QuestionGroup().name(DEFAULT_NAME);
     }
 
     /**
@@ -79,14 +78,13 @@ class QuestionGroupResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static QuestionGroup createUpdatedEntity(EntityManager em) {
-        QuestionGroup questionGroup = new QuestionGroup().name(UPDATED_NAME);
-        return questionGroup;
+    public static QuestionGroup createUpdatedEntity() {
+        return new QuestionGroup().name(UPDATED_NAME);
     }
 
     @BeforeEach
     public void initTest() {
-        questionGroup = createEntity(em);
+        questionGroup = createEntity();
     }
 
     @AfterEach
@@ -294,8 +292,6 @@ class QuestionGroupResourceIT {
         // Update the questionGroup using partial update
         QuestionGroup partialUpdatedQuestionGroup = new QuestionGroup();
         partialUpdatedQuestionGroup.setId(questionGroup.getId());
-
-        partialUpdatedQuestionGroup.name(UPDATED_NAME);
 
         restQuestionGroupMockMvc
             .perform(

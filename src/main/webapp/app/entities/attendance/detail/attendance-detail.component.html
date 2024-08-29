@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (attendance()) {
+    @if (attendance(); as attendanceRef) {
       <div>
         <h2 data-cy="attendanceDetailsHeading"><span jhiTranslate="lmsapp27062024App.attendance.detail.title">Attendance</span></h2>
 
@@ -13,19 +13,19 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
-            <span>{{ attendance()!.id }}</span>
+            <span>{{ attendanceRef.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.attendance.attendanceEnum">Attendance Enum</span></dt>
           <dd>
-            <span [jhiTranslate]="'lmsapp27062024App.AttendanceEnum.' + (attendance()!.attendanceEnum ?? 'null')">{{
-              { null: '', PRESENT: 'PRESENT', LATE: 'LATE', ABSENT: 'ABSENT' }[attendance()!.attendanceEnum ?? 'null']
+            <span [jhiTranslate]="'lmsapp27062024App.AttendanceEnum.' + (attendanceRef.attendanceEnum ?? 'null')">{{
+              { null: '', PRESENT: 'PRESENT', LATE: 'LATE', ABSENT: 'ABSENT' }[attendanceRef.attendanceEnum ?? 'null']
             }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.attendance.student">Student</span></dt>
           <dd>
             @if (attendance()!.student) {
               <div>
-                <a [routerLink]="['/student', attendance()!.student?.id, 'view']">{{ attendance()!.student?.id }}</a>
+                <a [routerLink]="['/student', attendance()!.student?.id, 'view']">{{ attendanceRef.student?.id }}</a>
               </div>
             }
           </dd>
@@ -33,7 +33,7 @@
           <dd>
             @if (attendance()!.lesson) {
               <div>
-                <a [routerLink]="['/lesson', attendance()!.lesson?.id, 'view']">{{ attendance()!.lesson?.id }}</a>
+                <a [routerLink]="['/lesson', attendance()!.lesson?.id, 'view']">{{ attendanceRef.lesson?.id }}</a>
               </div>
             }
           </dd>
@@ -43,7 +43,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/attendance', attendance()!.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/attendance', attendanceRef.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { AssignmentCommentComponent } from './list/assignment-comment.component';
-import { AssignmentCommentDetailComponent } from './detail/assignment-comment-detail.component';
-import { AssignmentCommentUpdateComponent } from './update/assignment-comment-update.component';
 import AssignmentCommentResolve from './route/assignment-comment-routing-resolve.service';
 
 const assignmentCommentRoute: Routes = [
   {
     path: '',
-    component: AssignmentCommentComponent,
+    loadComponent: () => import('./list/assignment-comment.component').then(m => m.AssignmentCommentComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: AssignmentCommentDetailComponent,
+    loadComponent: () => import('./detail/assignment-comment-detail.component').then(m => m.AssignmentCommentDetailComponent),
     resolve: {
       assignmentComment: AssignmentCommentResolve,
     },
@@ -26,7 +23,7 @@ const assignmentCommentRoute: Routes = [
   },
   {
     path: 'new',
-    component: AssignmentCommentUpdateComponent,
+    loadComponent: () => import('./update/assignment-comment-update.component').then(m => m.AssignmentCommentUpdateComponent),
     resolve: {
       assignmentComment: AssignmentCommentResolve,
     },
@@ -34,7 +31,7 @@ const assignmentCommentRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: AssignmentCommentUpdateComponent,
+    loadComponent: () => import('./update/assignment-comment-update.component').then(m => m.AssignmentCommentUpdateComponent),
     resolve: {
       assignmentComment: AssignmentCommentResolve,
     },

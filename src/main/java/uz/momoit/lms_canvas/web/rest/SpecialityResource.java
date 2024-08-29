@@ -29,7 +29,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/specialities")
 public class SpecialityResource {
 
-    private static final Logger log = LoggerFactory.getLogger(SpecialityResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SpecialityResource.class);
 
     private static final String ENTITY_NAME = "speciality";
 
@@ -54,7 +54,7 @@ public class SpecialityResource {
      */
     @PostMapping("")
     public ResponseEntity<SpecialityDTO> createSpeciality(@RequestBody SpecialityDTO specialityDTO) throws URISyntaxException {
-        log.debug("REST request to save Speciality : {}", specialityDTO);
+        LOG.debug("REST request to save Speciality : {}", specialityDTO);
         if (specialityDTO.getId() != null) {
             throw new BadRequestAlertException("A new speciality cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -79,7 +79,7 @@ public class SpecialityResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody SpecialityDTO specialityDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update Speciality : {}, {}", id, specialityDTO);
+        LOG.debug("REST request to update Speciality : {}, {}", id, specialityDTO);
         if (specialityDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -113,7 +113,7 @@ public class SpecialityResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody SpecialityDTO specialityDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Speciality partially : {}, {}", id, specialityDTO);
+        LOG.debug("REST request to partial update Speciality partially : {}, {}", id, specialityDTO);
         if (specialityDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -141,7 +141,7 @@ public class SpecialityResource {
      */
     @GetMapping("")
     public ResponseEntity<List<SpecialityDTO>> getAllSpecialities(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of Specialities");
+        LOG.debug("REST request to get a page of Specialities");
         Page<SpecialityDTO> page = specialityService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -155,7 +155,7 @@ public class SpecialityResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<SpecialityDTO> getSpeciality(@PathVariable("id") Long id) {
-        log.debug("REST request to get Speciality : {}", id);
+        LOG.debug("REST request to get Speciality : {}", id);
         Optional<SpecialityDTO> specialityDTO = specialityService.findOne(id);
         return ResponseUtil.wrapOrNotFound(specialityDTO);
     }
@@ -168,7 +168,7 @@ public class SpecialityResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteSpeciality(@PathVariable("id") Long id) {
-        log.debug("REST request to delete Speciality : {}", id);
+        LOG.debug("REST request to delete Speciality : {}", id);
         specialityService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

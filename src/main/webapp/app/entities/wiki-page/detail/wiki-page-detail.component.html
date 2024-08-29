@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (wikiPage()) {
+    @if (wikiPage(); as wikiPageRef) {
       <div>
         <h2 data-cy="wikiPageDetailsHeading"><span jhiTranslate="lmsapp27062024App.wikiPage.detail.title">Wiki Page</span></h2>
 
@@ -13,49 +13,49 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
-            <span>{{ wikiPage()!.id }}</span>
+            <span>{{ wikiPageRef.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.wikiPage.title">Title</span></dt>
           <dd>
-            <span>{{ wikiPage()!.title }}</span>
+            <span>{{ wikiPageRef.title }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.wikiPage.content">Content</span></dt>
           <dd>
-            <span>{{ wikiPage()!.content }}</span>
+            <span>{{ wikiPageRef.content }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.wikiPage.whoAllowed">Who Allowed</span></dt>
           <dd>
-            <span [jhiTranslate]="'lmsapp27062024App.WhoAllowed.' + (wikiPage()!.whoAllowed ?? 'null')">{{
+            <span [jhiTranslate]="'lmsapp27062024App.WhoAllowed.' + (wikiPageRef.whoAllowed ?? 'null')">{{
               { null: '', ONLY_TEACHERS: 'ONLY_TEACHERS', TEACHER_AND_STUDENTS: 'TEACHER_AND_STUDENTS', ANYONE: 'ANYONE' }[
-                wikiPage()!.whoAllowed ?? 'null'
+                wikiPageRef.whoAllowed ?? 'null'
               ]
             }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.wikiPage.addToStudents">Add To Students</span></dt>
           <dd>
-            <span>{{ wikiPage()!.addToStudents }}</span>
+            <span>{{ wikiPageRef.addToStudents }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.wikiPage.addToStudentsDate">Add To Students Date</span></dt>
           <dd>
-            <span>{{ wikiPage()!.addToStudentsDate | formatMediumDatetime }}</span>
+            <span>{{ wikiPageRef.addToStudentsDate | formatMediumDatetime }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.wikiPage.publishedAt">Published At</span></dt>
           <dd>
-            <span>{{ wikiPage()!.publishedAt | formatMediumDatetime }}</span>
+            <span>{{ wikiPageRef.publishedAt | formatMediumDatetime }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.wikiPage.published">Published</span></dt>
           <dd>
-            <span>{{ wikiPage()!.published }}</span>
+            <span>{{ wikiPageRef.published }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.wikiPage.notifyUsersChanges">Notify Users Changes</span></dt>
           <dd>
-            <span>{{ wikiPage()!.notifyUsersChanges }}</span>
+            <span>{{ wikiPageRef.notifyUsersChanges }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.wikiPage.course">Course</span></dt>
           <dd>
             @if (wikiPage()!.course) {
               <div>
-                <a [routerLink]="['/course', wikiPage()!.course?.id, 'view']">{{ wikiPage()!.course?.id }}</a>
+                <a [routerLink]="['/course', wikiPage()!.course?.id, 'view']">{{ wikiPageRef.course?.id }}</a>
               </div>
             }
           </dd>
@@ -65,7 +65,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/wiki-page', wikiPage()!.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/wiki-page', wikiPageRef.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

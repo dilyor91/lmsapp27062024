@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (questionGroup()) {
+    @if (questionGroup(); as questionGroupRef) {
       <div>
         <h2 data-cy="questionGroupDetailsHeading">
           <span jhiTranslate="lmsapp27062024App.questionGroup.detail.title">Question Group</span>
@@ -15,17 +15,17 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
-            <span>{{ questionGroup()!.id }}</span>
+            <span>{{ questionGroupRef.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.questionGroup.name">Name</span></dt>
           <dd>
-            <span>{{ questionGroup()!.name }}</span>
+            <span>{{ questionGroupRef.name }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.questionGroup.course">Course</span></dt>
           <dd>
             @if (questionGroup()!.course) {
               <div>
-                <a [routerLink]="['/course', questionGroup()!.course?.id, 'view']">{{ questionGroup()!.course?.id }}</a>
+                <a [routerLink]="['/course', questionGroup()!.course?.id, 'view']">{{ questionGroupRef.course?.id }}</a>
               </div>
             }
           </dd>
@@ -35,7 +35,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/question-group', questionGroup()!.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/question-group', questionGroupRef.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

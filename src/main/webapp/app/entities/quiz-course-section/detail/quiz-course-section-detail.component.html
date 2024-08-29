@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (quizCourseSection()) {
+    @if (quizCourseSection(); as quizCourseSectionRef) {
       <div>
         <h2 data-cy="quizCourseSectionDetailsHeading">
           <span jhiTranslate="lmsapp27062024App.quizCourseSection.detail.title">Quiz Course Section</span>
@@ -15,21 +15,21 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
-            <span>{{ quizCourseSection()!.id }}</span>
+            <span>{{ quizCourseSectionRef.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.quizCourseSection.startDate">Start Date</span></dt>
           <dd>
-            <span>{{ quizCourseSection()!.startDate | formatMediumDatetime }}</span>
+            <span>{{ quizCourseSectionRef.startDate | formatMediumDatetime }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.quizCourseSection.endDate">End Date</span></dt>
           <dd>
-            <span>{{ quizCourseSection()!.endDate | formatMediumDatetime }}</span>
+            <span>{{ quizCourseSectionRef.endDate | formatMediumDatetime }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.quizCourseSection.course">Course</span></dt>
           <dd>
             @if (quizCourseSection()!.course) {
               <div>
-                <a [routerLink]="['/course', quizCourseSection()!.course?.id, 'view']">{{ quizCourseSection()!.course?.id }}</a>
+                <a [routerLink]="['/course', quizCourseSection()!.course?.id, 'view']">{{ quizCourseSectionRef.course?.id }}</a>
               </div>
             }
           </dd>
@@ -38,7 +38,7 @@
             @if (quizCourseSection()!.courseSection) {
               <div>
                 <a [routerLink]="['/course-section', quizCourseSection()!.courseSection?.id, 'view']">{{
-                  quizCourseSection()!.courseSection?.id
+                  quizCourseSectionRef.courseSection?.id
                 }}</a>
               </div>
             }
@@ -47,7 +47,7 @@
           <dd>
             @if (quizCourseSection()!.quiz) {
               <div>
-                <a [routerLink]="['/quiz', quizCourseSection()!.quiz?.id, 'view']">{{ quizCourseSection()!.quiz?.id }}</a>
+                <a [routerLink]="['/quiz', quizCourseSection()!.quiz?.id, 'view']">{{ quizCourseSectionRef.quiz?.id }}</a>
               </div>
             }
           </dd>
@@ -57,7 +57,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/quiz-course-section', quizCourseSection()!.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/quiz-course-section', quizCourseSectionRef.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

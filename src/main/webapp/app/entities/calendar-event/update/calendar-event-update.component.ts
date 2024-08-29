@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -12,7 +12,7 @@ import { UserService } from 'app/entities/user/service/user.service';
 import { EventFrequency } from 'app/entities/enumerations/event-frequency.model';
 import { CalendarEventService } from '../service/calendar-event.service';
 import { ICalendarEvent } from '../calendar-event.model';
-import { CalendarEventFormService, CalendarEventFormGroup } from './calendar-event-form.service';
+import { CalendarEventFormGroup, CalendarEventFormService } from './calendar-event-form.service';
 
 @Component({
   standalone: true,

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { sampleWithRequiredData, sampleWithNewData } from '../faculty.test-samples';
+import { sampleWithNewData, sampleWithRequiredData } from '../faculty.test-samples';
 
 import { FacultyFormService } from './faculty-form.service';
 

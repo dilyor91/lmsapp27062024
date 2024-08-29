@@ -31,7 +31,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/teachers")
 public class TeacherResource {
 
-    private static final Logger log = LoggerFactory.getLogger(TeacherResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TeacherResource.class);
 
     private static final String ENTITY_NAME = "teacher";
 
@@ -56,7 +56,7 @@ public class TeacherResource {
      */
     @PostMapping("")
     public ResponseEntity<TeacherDTO> createTeacher(@Valid @RequestBody TeacherDTO teacherDTO) throws URISyntaxException {
-        log.debug("REST request to save Teacher : {}", teacherDTO);
+        LOG.debug("REST request to save Teacher : {}", teacherDTO);
         if (teacherDTO.getId() != null) {
             throw new BadRequestAlertException("A new teacher cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -81,7 +81,7 @@ public class TeacherResource {
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody TeacherDTO teacherDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update Teacher : {}, {}", id, teacherDTO);
+        LOG.debug("REST request to update Teacher : {}, {}", id, teacherDTO);
         if (teacherDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -115,7 +115,7 @@ public class TeacherResource {
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody TeacherDTO teacherDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Teacher partially : {}, {}", id, teacherDTO);
+        LOG.debug("REST request to partial update Teacher partially : {}, {}", id, teacherDTO);
         if (teacherDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -143,7 +143,7 @@ public class TeacherResource {
      */
     @GetMapping("")
     public ResponseEntity<List<TeacherDTO>> getAllTeachers(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of Teachers");
+        LOG.debug("REST request to get a page of Teachers");
         Page<TeacherDTO> page = teacherService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -157,7 +157,7 @@ public class TeacherResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<TeacherDTO> getTeacher(@PathVariable("id") Long id) {
-        log.debug("REST request to get Teacher : {}", id);
+        LOG.debug("REST request to get Teacher : {}", id);
         Optional<TeacherDTO> teacherDTO = teacherService.findOne(id);
         return ResponseUtil.wrapOrNotFound(teacherDTO);
     }
@@ -170,7 +170,7 @@ public class TeacherResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTeacher(@PathVariable("id") Long id) {
-        log.debug("REST request to delete Teacher : {}", id);
+        LOG.debug("REST request to delete Teacher : {}", id);
         teacherService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

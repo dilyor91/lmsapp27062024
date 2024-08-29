@@ -26,7 +26,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/study-terms")
 public class StudyTermResource {
 
-    private static final Logger log = LoggerFactory.getLogger(StudyTermResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(StudyTermResource.class);
 
     private static final String ENTITY_NAME = "studyTerm";
 
@@ -51,7 +51,7 @@ public class StudyTermResource {
      */
     @PostMapping("")
     public ResponseEntity<StudyTermDTO> createStudyTerm(@Valid @RequestBody StudyTermDTO studyTermDTO) throws URISyntaxException {
-        log.debug("REST request to save StudyTerm : {}", studyTermDTO);
+        LOG.debug("REST request to save StudyTerm : {}", studyTermDTO);
         if (studyTermDTO.getId() != null) {
             throw new BadRequestAlertException("A new studyTerm cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -76,7 +76,7 @@ public class StudyTermResource {
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody StudyTermDTO studyTermDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update StudyTerm : {}, {}", id, studyTermDTO);
+        LOG.debug("REST request to update StudyTerm : {}, {}", id, studyTermDTO);
         if (studyTermDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -110,7 +110,7 @@ public class StudyTermResource {
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody StudyTermDTO studyTermDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update StudyTerm partially : {}, {}", id, studyTermDTO);
+        LOG.debug("REST request to partial update StudyTerm partially : {}, {}", id, studyTermDTO);
         if (studyTermDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -137,7 +137,7 @@ public class StudyTermResource {
      */
     @GetMapping("")
     public List<StudyTermDTO> getAllStudyTerms() {
-        log.debug("REST request to get all StudyTerms");
+        LOG.debug("REST request to get all StudyTerms");
         return studyTermService.findAll();
     }
 
@@ -149,7 +149,7 @@ public class StudyTermResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<StudyTermDTO> getStudyTerm(@PathVariable("id") Long id) {
-        log.debug("REST request to get StudyTerm : {}", id);
+        LOG.debug("REST request to get StudyTerm : {}", id);
         Optional<StudyTermDTO> studyTermDTO = studyTermService.findOne(id);
         return ResponseUtil.wrapOrNotFound(studyTermDTO);
     }
@@ -162,7 +162,7 @@ public class StudyTermResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudyTerm(@PathVariable("id") Long id) {
-        log.debug("REST request to delete StudyTerm : {}", id);
+        LOG.debug("REST request to delete StudyTerm : {}", id);
         studyTermService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

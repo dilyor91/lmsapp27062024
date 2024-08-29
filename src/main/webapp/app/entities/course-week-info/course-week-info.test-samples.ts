@@ -3,21 +3,20 @@ import dayjs from 'dayjs/esm';
 import { ICourseWeekInfo, NewCourseWeekInfo } from './course-week-info.model';
 
 export const sampleWithRequiredData: ICourseWeekInfo = {
-  id: 18908,
+  id: 31907,
 };
 
 export const sampleWithPartialData: ICourseWeekInfo = {
-  id: 13282,
-  lessonPerWeek: 18165,
-  startDate: dayjs('2024-07-04T04:06'),
+  id: 27416,
+  lessonPerWeek: 2840,
 };
 
 export const sampleWithFullData: ICourseWeekInfo = {
-  id: 24276,
-  totalWeek: 30468,
-  lessonPerWeek: 29906,
-  startDate: dayjs('2024-07-03T19:22'),
-  weekDayCount: 13824,
+  id: 25381,
+  totalWeek: 6053,
+  lessonPerWeek: 17700,
+  startDate: dayjs('2024-07-04T04:42'),
+  weekDayCount: 11288,
 };
 
 export const sampleWithNewData: NewCourseWeekInfo = {

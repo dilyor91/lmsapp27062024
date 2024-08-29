@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -14,7 +14,7 @@ import { QuizService } from 'app/entities/quiz/service/quiz.service';
 import { QuizSessionEnum } from 'app/entities/enumerations/quiz-session-enum.model';
 import { QuizSessionService } from '../service/quiz-session.service';
 import { IQuizSession } from '../quiz-session.model';
-import { QuizSessionFormService, QuizSessionFormGroup } from './quiz-session-form.service';
+import { QuizSessionFormGroup, QuizSessionFormService } from './quiz-session-form.service';
 
 @Component({
   standalone: true,

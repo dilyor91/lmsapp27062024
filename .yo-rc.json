@@ -55,14 +55,15 @@
       "SubmissionAssignment",
       "Grade",
       "AssignmentComment",
-      "Notification"
+      "Notification",
+      "CalendarTodo"
     ],
     "gitCompany": "",
     "jhiPrefix": "jhi",
-    "jhipsterVersion": "8.6.0",
+    "jhipsterVersion": "8.7.0",
     "jwtSecretKey": "NTc4NjIxNjdjNDQ2MjU3YmEwMTM2OWIzY2E5NmVlZTRkOGZiZmRjNjg0ZDEyYjVhNmY5MDA4NmM3MTZjZjE4Y2IwZjdmYTBjMTU0ODYxY2RmYWYzMzdlMTFiMmYyZDBmNTUxMWNlNWI4NTk1Y2YxYjA5N2RlZTIzYjUxOGM3NDc=",
     "languages": ["en"],
-    "lastLiquibaseTimestamp": 1722417059000,
+    "lastLiquibaseTimestamp": 1724922096000,
     "messageBroker": false,
     "nativeLanguage": "en",
     "packageFolder": "uz/momoit/lms_canvas",

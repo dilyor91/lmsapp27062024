@@ -56,5 +56,7 @@ public class FacultyAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertFacultyUpdatableRelationshipsEquals(Faculty expected, Faculty actual) {}
+    public static void assertFacultyUpdatableRelationshipsEquals(Faculty expected, Faculty actual) {
+        // empty method
+    }
 }

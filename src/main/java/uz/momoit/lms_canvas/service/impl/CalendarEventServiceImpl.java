@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.CalendarEventMapper;
 @Transactional
 public class CalendarEventServiceImpl implements CalendarEventService {
 
-    private static final Logger log = LoggerFactory.getLogger(CalendarEventServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CalendarEventServiceImpl.class);
 
     private final CalendarEventRepository calendarEventRepository;
 
@@ -33,7 +33,7 @@ public class CalendarEventServiceImpl implements CalendarEventService {
 
     @Override
     public CalendarEventDTO save(CalendarEventDTO calendarEventDTO) {
-        log.debug("Request to save CalendarEvent : {}", calendarEventDTO);
+        LOG.debug("Request to save CalendarEvent : {}", calendarEventDTO);
         CalendarEvent calendarEvent = calendarEventMapper.toEntity(calendarEventDTO);
         calendarEvent = calendarEventRepository.save(calendarEvent);
         return calendarEventMapper.toDto(calendarEvent);
@@ -41,7 +41,7 @@ public class CalendarEventServiceImpl implements CalendarEventService {
 
     @Override
     public CalendarEventDTO update(CalendarEventDTO calendarEventDTO) {
-        log.debug("Request to update CalendarEvent : {}", calendarEventDTO);
+        LOG.debug("Request to update CalendarEvent : {}", calendarEventDTO);
         CalendarEvent calendarEvent = calendarEventMapper.toEntity(calendarEventDTO);
         calendarEvent = calendarEventRepository.save(calendarEvent);
         return calendarEventMapper.toDto(calendarEvent);
@@ -49,7 +49,7 @@ public class CalendarEventServiceImpl implements CalendarEventService {
 
     @Override
     public Optional<CalendarEventDTO> partialUpdate(CalendarEventDTO calendarEventDTO) {
-        log.debug("Request to partially update CalendarEvent : {}", calendarEventDTO);
+        LOG.debug("Request to partially update CalendarEvent : {}", calendarEventDTO);
 
         return calendarEventRepository
             .findById(calendarEventDTO.getId())
@@ -65,20 +65,20 @@ public class CalendarEventServiceImpl implements CalendarEventService {
     @Override
     @Transactional(readOnly = true)
     public Page<CalendarEventDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all CalendarEvents");
+        LOG.debug("Request to get all CalendarEvents");
         return calendarEventRepository.findAll(pageable).map(calendarEventMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<CalendarEventDTO> findOne(Long id) {
-        log.debug("Request to get CalendarEvent : {}", id);
+        LOG.debug("Request to get CalendarEvent : {}", id);
         return calendarEventRepository.findById(id).map(calendarEventMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete CalendarEvent : {}", id);
+        LOG.debug("Request to delete CalendarEvent : {}", id);
         calendarEventRepository.deleteById(id);
     }
 }

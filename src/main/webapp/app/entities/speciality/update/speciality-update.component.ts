@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { IFaculty } from 'app/entities/faculty/faculty.model';
 import { FacultyService } from 'app/entities/faculty/service/faculty.service';
 import { ISpeciality } from '../speciality.model';
 import { SpecialityService } from '../service/speciality.service';
-import { SpecialityFormService, SpecialityFormGroup } from './speciality-form.service';
+import { SpecialityFormGroup, SpecialityFormService } from './speciality-form.service';
 
 @Component({
   standalone: true,

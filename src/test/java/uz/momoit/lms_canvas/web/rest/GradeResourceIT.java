@@ -73,9 +73,8 @@ class GradeResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Grade createEntity(EntityManager em) {
-        Grade grade = new Grade().point(DEFAULT_POINT).gradedDate(DEFAULT_GRADED_DATE);
-        return grade;
+    public static Grade createEntity() {
+        return new Grade().point(DEFAULT_POINT).gradedDate(DEFAULT_GRADED_DATE);
     }
 
     /**
@@ -84,14 +83,13 @@ class GradeResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Grade createUpdatedEntity(EntityManager em) {
-        Grade grade = new Grade().point(UPDATED_POINT).gradedDate(UPDATED_GRADED_DATE);
-        return grade;
+    public static Grade createUpdatedEntity() {
+        return new Grade().point(UPDATED_POINT).gradedDate(UPDATED_GRADED_DATE);
     }
 
     @BeforeEach
     public void initTest() {
-        grade = createEntity(em);
+        grade = createEntity();
     }
 
     @AfterEach
@@ -281,7 +279,7 @@ class GradeResourceIT {
         Grade partialUpdatedGrade = new Grade();
         partialUpdatedGrade.setId(grade.getId());
 
-        partialUpdatedGrade.point(UPDATED_POINT);
+        partialUpdatedGrade.point(UPDATED_POINT).gradedDate(UPDATED_GRADED_DATE);
 
         restGradeMockMvc
             .perform(

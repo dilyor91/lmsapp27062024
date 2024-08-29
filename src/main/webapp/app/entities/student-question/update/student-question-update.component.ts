@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -13,7 +13,7 @@ import { IQuestion } from 'app/entities/question/question.model';
 import { QuestionService } from 'app/entities/question/service/question.service';
 import { StudentQuestionService } from '../service/student-question.service';
 import { IStudentQuestion } from '../student-question.model';
-import { StudentQuestionFormService, StudentQuestionFormGroup } from './student-question-form.service';
+import { StudentQuestionFormGroup, StudentQuestionFormService } from './student-question-form.service';
 
 @Component({
   standalone: true,

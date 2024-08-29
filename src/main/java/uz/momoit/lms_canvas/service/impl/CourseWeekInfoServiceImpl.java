@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.CourseWeekInfoMapper;
 @Transactional
 public class CourseWeekInfoServiceImpl implements CourseWeekInfoService {
 
-    private static final Logger log = LoggerFactory.getLogger(CourseWeekInfoServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CourseWeekInfoServiceImpl.class);
 
     private final CourseWeekInfoRepository courseWeekInfoRepository;
 
@@ -33,7 +33,7 @@ public class CourseWeekInfoServiceImpl implements CourseWeekInfoService {
 
     @Override
     public CourseWeekInfoDTO save(CourseWeekInfoDTO courseWeekInfoDTO) {
-        log.debug("Request to save CourseWeekInfo : {}", courseWeekInfoDTO);
+        LOG.debug("Request to save CourseWeekInfo : {}", courseWeekInfoDTO);
         CourseWeekInfo courseWeekInfo = courseWeekInfoMapper.toEntity(courseWeekInfoDTO);
         courseWeekInfo = courseWeekInfoRepository.save(courseWeekInfo);
         return courseWeekInfoMapper.toDto(courseWeekInfo);
@@ -41,7 +41,7 @@ public class CourseWeekInfoServiceImpl implements CourseWeekInfoService {
 
     @Override
     public CourseWeekInfoDTO update(CourseWeekInfoDTO courseWeekInfoDTO) {
-        log.debug("Request to update CourseWeekInfo : {}", courseWeekInfoDTO);
+        LOG.debug("Request to update CourseWeekInfo : {}", courseWeekInfoDTO);
         CourseWeekInfo courseWeekInfo = courseWeekInfoMapper.toEntity(courseWeekInfoDTO);
         courseWeekInfo = courseWeekInfoRepository.save(courseWeekInfo);
         return courseWeekInfoMapper.toDto(courseWeekInfo);
@@ -49,7 +49,7 @@ public class CourseWeekInfoServiceImpl implements CourseWeekInfoService {
 
     @Override
     public Optional<CourseWeekInfoDTO> partialUpdate(CourseWeekInfoDTO courseWeekInfoDTO) {
-        log.debug("Request to partially update CourseWeekInfo : {}", courseWeekInfoDTO);
+        LOG.debug("Request to partially update CourseWeekInfo : {}", courseWeekInfoDTO);
 
         return courseWeekInfoRepository
             .findById(courseWeekInfoDTO.getId())
@@ -65,20 +65,20 @@ public class CourseWeekInfoServiceImpl implements CourseWeekInfoService {
     @Override
     @Transactional(readOnly = true)
     public Page<CourseWeekInfoDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all CourseWeekInfos");
+        LOG.debug("Request to get all CourseWeekInfos");
         return courseWeekInfoRepository.findAll(pageable).map(courseWeekInfoMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<CourseWeekInfoDTO> findOne(Long id) {
-        log.debug("Request to get CourseWeekInfo : {}", id);
+        LOG.debug("Request to get CourseWeekInfo : {}", id);
         return courseWeekInfoRepository.findById(id).map(courseWeekInfoMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete CourseWeekInfo : {}", id);
+        LOG.debug("Request to delete CourseWeekInfo : {}", id);
         courseWeekInfoRepository.deleteById(id);
     }
 }

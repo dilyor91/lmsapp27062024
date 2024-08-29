@@ -29,7 +29,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/wiki-pages")
 public class WikiPageResource {
 
-    private static final Logger log = LoggerFactory.getLogger(WikiPageResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(WikiPageResource.class);
 
     private static final String ENTITY_NAME = "wikiPage";
 
@@ -54,7 +54,7 @@ public class WikiPageResource {
      */
     @PostMapping("")
     public ResponseEntity<WikiPageDTO> createWikiPage(@RequestBody WikiPageDTO wikiPageDTO) throws URISyntaxException {
-        log.debug("REST request to save WikiPage : {}", wikiPageDTO);
+        LOG.debug("REST request to save WikiPage : {}", wikiPageDTO);
         if (wikiPageDTO.getId() != null) {
             throw new BadRequestAlertException("A new wikiPage cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -79,7 +79,7 @@ public class WikiPageResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody WikiPageDTO wikiPageDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update WikiPage : {}, {}", id, wikiPageDTO);
+        LOG.debug("REST request to update WikiPage : {}, {}", id, wikiPageDTO);
         if (wikiPageDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -113,7 +113,7 @@ public class WikiPageResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody WikiPageDTO wikiPageDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update WikiPage partially : {}, {}", id, wikiPageDTO);
+        LOG.debug("REST request to partial update WikiPage partially : {}, {}", id, wikiPageDTO);
         if (wikiPageDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -141,7 +141,7 @@ public class WikiPageResource {
      */
     @GetMapping("")
     public ResponseEntity<List<WikiPageDTO>> getAllWikiPages(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of WikiPages");
+        LOG.debug("REST request to get a page of WikiPages");
         Page<WikiPageDTO> page = wikiPageService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -155,7 +155,7 @@ public class WikiPageResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<WikiPageDTO> getWikiPage(@PathVariable("id") Long id) {
-        log.debug("REST request to get WikiPage : {}", id);
+        LOG.debug("REST request to get WikiPage : {}", id);
         Optional<WikiPageDTO> wikiPageDTO = wikiPageService.findOne(id);
         return ResponseUtil.wrapOrNotFound(wikiPageDTO);
     }
@@ -168,7 +168,7 @@ public class WikiPageResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteWikiPage(@PathVariable("id") Long id) {
-        log.debug("REST request to delete WikiPage : {}", id);
+        LOG.debug("REST request to delete WikiPage : {}", id);
         wikiPageService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

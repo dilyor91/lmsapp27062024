@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideHttpClient, HttpResponse } from '@angular/common/http';
+import { HttpResponse, provideHttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { of, Subject, from } from 'rxjs';
+import { Subject, from, of } from 'rxjs';
 
 import { IStudentQuestion } from 'app/entities/student-question/student-question.model';
 import { StudentQuestionService } from 'app/entities/student-question/service/student-question.service';
@@ -53,10 +53,10 @@ describe('StudentOption Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call StudentQuestion query and add missing value', () => {
       const studentOption: IStudentOption = { id: 456 };
-      const studentQuestion: IStudentQuestion = { id: 4976 };
+      const studentQuestion: IStudentQuestion = { id: 27769 };
       studentOption.studentQuestion = studentQuestion;
 
-      const studentQuestionCollection: IStudentQuestion[] = [{ id: 2453 }];
+      const studentQuestionCollection: IStudentQuestion[] = [{ id: 29861 }];
       jest.spyOn(studentQuestionService, 'query').mockReturnValue(of(new HttpResponse({ body: studentQuestionCollection })));
       const additionalStudentQuestions = [studentQuestion];
       const expectedCollection: IStudentQuestion[] = [...additionalStudentQuestions, ...studentQuestionCollection];
@@ -75,10 +75,10 @@ describe('StudentOption Management Update Component', () => {
 
     it('Should call Option query and add missing value', () => {
       const studentOption: IStudentOption = { id: 456 };
-      const option: IOption = { id: 18915 };
+      const option: IOption = { id: 4642 };
       studentOption.option = option;
 
-      const optionCollection: IOption[] = [{ id: 26882 }];
+      const optionCollection: IOption[] = [{ id: 11826 }];
       jest.spyOn(optionService, 'query').mockReturnValue(of(new HttpResponse({ body: optionCollection })));
       const additionalOptions = [option];
       const expectedCollection: IOption[] = [...additionalOptions, ...optionCollection];
@@ -97,9 +97,9 @@ describe('StudentOption Management Update Component', () => {
 
     it('Should update editForm', () => {
       const studentOption: IStudentOption = { id: 456 };
-      const studentQuestion: IStudentQuestion = { id: 6447 };
+      const studentQuestion: IStudentQuestion = { id: 13463 };
       studentOption.studentQuestion = studentQuestion;
-      const option: IOption = { id: 20417 };
+      const option: IOption = { id: 5928 };
       studentOption.option = option;
 
       activatedRoute.data = of({ studentOption });

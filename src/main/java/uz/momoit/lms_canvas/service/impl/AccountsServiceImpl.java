@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.AccountsMapper;
 @Transactional
 public class AccountsServiceImpl implements AccountsService {
 
-    private static final Logger log = LoggerFactory.getLogger(AccountsServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AccountsServiceImpl.class);
 
     private final AccountsRepository accountsRepository;
 
@@ -33,7 +33,7 @@ public class AccountsServiceImpl implements AccountsService {
 
     @Override
     public AccountsDTO save(AccountsDTO accountsDTO) {
-        log.debug("Request to save Accounts : {}", accountsDTO);
+        LOG.debug("Request to save Accounts : {}", accountsDTO);
         Accounts accounts = accountsMapper.toEntity(accountsDTO);
         accounts = accountsRepository.save(accounts);
         return accountsMapper.toDto(accounts);
@@ -41,7 +41,7 @@ public class AccountsServiceImpl implements AccountsService {
 
     @Override
     public AccountsDTO update(AccountsDTO accountsDTO) {
-        log.debug("Request to update Accounts : {}", accountsDTO);
+        LOG.debug("Request to update Accounts : {}", accountsDTO);
         Accounts accounts = accountsMapper.toEntity(accountsDTO);
         accounts = accountsRepository.save(accounts);
         return accountsMapper.toDto(accounts);
@@ -49,7 +49,7 @@ public class AccountsServiceImpl implements AccountsService {
 
     @Override
     public Optional<AccountsDTO> partialUpdate(AccountsDTO accountsDTO) {
-        log.debug("Request to partially update Accounts : {}", accountsDTO);
+        LOG.debug("Request to partially update Accounts : {}", accountsDTO);
 
         return accountsRepository
             .findById(accountsDTO.getId())
@@ -65,20 +65,20 @@ public class AccountsServiceImpl implements AccountsService {
     @Override
     @Transactional(readOnly = true)
     public Page<AccountsDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all Accounts");
+        LOG.debug("Request to get all Accounts");
         return accountsRepository.findAll(pageable).map(accountsMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<AccountsDTO> findOne(Long id) {
-        log.debug("Request to get Accounts : {}", id);
+        LOG.debug("Request to get Accounts : {}", id);
         return accountsRepository.findById(id).map(accountsMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Accounts : {}", id);
+        LOG.debug("Request to delete Accounts : {}", id);
         accountsRepository.deleteById(id);
     }
 }

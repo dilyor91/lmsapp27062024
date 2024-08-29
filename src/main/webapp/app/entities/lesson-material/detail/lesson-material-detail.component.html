@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (lessonMaterial()) {
+    @if (lessonMaterial(); as lessonMaterialRef) {
       <div>
         <h2 data-cy="lessonMaterialDetailsHeading">
           <span jhiTranslate="lmsapp27062024App.lessonMaterial.detail.title">Lesson Material</span>
@@ -15,21 +15,21 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
-            <span>{{ lessonMaterial()!.id }}</span>
+            <span>{{ lessonMaterialRef.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.lessonMaterial.title">Title</span></dt>
           <dd>
-            <span>{{ lessonMaterial()!.title }}</span>
+            <span>{{ lessonMaterialRef.title }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.lessonMaterial.description">Description</span></dt>
           <dd>
-            <span>{{ lessonMaterial()!.description }}</span>
+            <span>{{ lessonMaterialRef.description }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.lessonMaterial.lessonFileType">Lesson File Type</span></dt>
           <dd>
-            <span [jhiTranslate]="'lmsapp27062024App.LessonFileTypeEnum.' + (lessonMaterial()!.lessonFileType ?? 'null')">{{
+            <span [jhiTranslate]="'lmsapp27062024App.LessonFileTypeEnum.' + (lessonMaterialRef.lessonFileType ?? 'null')">{{
               { null: '', VIDEO: 'VIDEO', PDF: 'PDF', FILE: 'FILE', SOCIAL_MEDIA: 'SOCIAL_MEDIA', WEB_LINK: 'WEB_LINK', TEXT: 'TEXT' }[
-                lessonMaterial()!.lessonFileType ?? 'null'
+                lessonMaterialRef.lessonFileType ?? 'null'
               ]
             }}</span>
           </dd>
@@ -37,7 +37,7 @@
           <dd>
             @if (lessonMaterial()!.attachment) {
               <div>
-                <a [routerLink]="['/attachment', lessonMaterial()!.attachment?.id, 'view']">{{ lessonMaterial()!.attachment?.id }}</a>
+                <a [routerLink]="['/attachment', lessonMaterial()!.attachment?.id, 'view']">{{ lessonMaterialRef.attachment?.id }}</a>
               </div>
             }
           </dd>
@@ -45,7 +45,7 @@
           <dd>
             @if (lessonMaterial()!.lesson) {
               <div>
-                <a [routerLink]="['/lesson', lessonMaterial()!.lesson?.id, 'view']">{{ lessonMaterial()!.lesson?.id }}</a>
+                <a [routerLink]="['/lesson', lessonMaterial()!.lesson?.id, 'view']">{{ lessonMaterialRef.lesson?.id }}</a>
               </div>
             }
           </dd>
@@ -55,7 +55,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/lesson-material', lessonMaterial()!.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/lesson-material', lessonMaterialRef.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

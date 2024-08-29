@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { IStudyAcademicYear } from 'app/entities/study-academic-year/study-acade
 import { StudyAcademicYearService } from 'app/entities/study-academic-year/service/study-academic-year.service';
 import { IStudyTerm } from '../study-term.model';
 import { StudyTermService } from '../service/study-term.service';
-import { StudyTermFormService, StudyTermFormGroup } from './study-term-form.service';
+import { StudyTermFormGroup, StudyTermFormService } from './study-term-form.service';
 
 @Component({
   standalone: true,

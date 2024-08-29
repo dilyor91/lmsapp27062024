@@ -29,7 +29,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/attendances")
 public class AttendanceResource {
 
-    private static final Logger log = LoggerFactory.getLogger(AttendanceResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AttendanceResource.class);
 
     private static final String ENTITY_NAME = "attendance";
 
@@ -54,7 +54,7 @@ public class AttendanceResource {
      */
     @PostMapping("")
     public ResponseEntity<AttendanceDTO> createAttendance(@RequestBody AttendanceDTO attendanceDTO) throws URISyntaxException {
-        log.debug("REST request to save Attendance : {}", attendanceDTO);
+        LOG.debug("REST request to save Attendance : {}", attendanceDTO);
         if (attendanceDTO.getId() != null) {
             throw new BadRequestAlertException("A new attendance cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -79,7 +79,7 @@ public class AttendanceResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody AttendanceDTO attendanceDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update Attendance : {}, {}", id, attendanceDTO);
+        LOG.debug("REST request to update Attendance : {}, {}", id, attendanceDTO);
         if (attendanceDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -113,7 +113,7 @@ public class AttendanceResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody AttendanceDTO attendanceDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Attendance partially : {}, {}", id, attendanceDTO);
+        LOG.debug("REST request to partial update Attendance partially : {}, {}", id, attendanceDTO);
         if (attendanceDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -141,7 +141,7 @@ public class AttendanceResource {
      */
     @GetMapping("")
     public ResponseEntity<List<AttendanceDTO>> getAllAttendances(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of Attendances");
+        LOG.debug("REST request to get a page of Attendances");
         Page<AttendanceDTO> page = attendanceService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -155,7 +155,7 @@ public class AttendanceResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<AttendanceDTO> getAttendance(@PathVariable("id") Long id) {
-        log.debug("REST request to get Attendance : {}", id);
+        LOG.debug("REST request to get Attendance : {}", id);
         Optional<AttendanceDTO> attendanceDTO = attendanceService.findOne(id);
         return ResponseUtil.wrapOrNotFound(attendanceDTO);
     }
@@ -168,7 +168,7 @@ public class AttendanceResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAttendance(@PathVariable("id") Long id) {
-        log.debug("REST request to delete Attendance : {}", id);
+        LOG.debug("REST request to delete Attendance : {}", id);
         attendanceService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

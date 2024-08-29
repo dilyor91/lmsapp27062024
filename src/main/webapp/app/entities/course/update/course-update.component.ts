@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { IUser } from 'app/entities/user/user.model';
 import { UserService } from 'app/entities/user/service/user.service';
 import { ICourse } from '../course.model';
 import { CourseService } from '../service/course.service';
-import { CourseFormService, CourseFormGroup } from './course-form.service';
+import { CourseFormGroup, CourseFormService } from './course-form.service';
 
 @Component({
   standalone: true,

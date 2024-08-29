@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.LessonMapper;
 @Transactional
 public class LessonServiceImpl implements LessonService {
 
-    private static final Logger log = LoggerFactory.getLogger(LessonServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(LessonServiceImpl.class);
 
     private final LessonRepository lessonRepository;
 
@@ -33,7 +33,7 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     public LessonDTO save(LessonDTO lessonDTO) {
-        log.debug("Request to save Lesson : {}", lessonDTO);
+        LOG.debug("Request to save Lesson : {}", lessonDTO);
         Lesson lesson = lessonMapper.toEntity(lessonDTO);
         lesson = lessonRepository.save(lesson);
         return lessonMapper.toDto(lesson);
@@ -41,7 +41,7 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     public LessonDTO update(LessonDTO lessonDTO) {
-        log.debug("Request to update Lesson : {}", lessonDTO);
+        LOG.debug("Request to update Lesson : {}", lessonDTO);
         Lesson lesson = lessonMapper.toEntity(lessonDTO);
         lesson = lessonRepository.save(lesson);
         return lessonMapper.toDto(lesson);
@@ -49,7 +49,7 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     public Optional<LessonDTO> partialUpdate(LessonDTO lessonDTO) {
-        log.debug("Request to partially update Lesson : {}", lessonDTO);
+        LOG.debug("Request to partially update Lesson : {}", lessonDTO);
 
         return lessonRepository
             .findById(lessonDTO.getId())
@@ -65,20 +65,20 @@ public class LessonServiceImpl implements LessonService {
     @Override
     @Transactional(readOnly = true)
     public Page<LessonDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all Lessons");
+        LOG.debug("Request to get all Lessons");
         return lessonRepository.findAll(pageable).map(lessonMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<LessonDTO> findOne(Long id) {
-        log.debug("Request to get Lesson : {}", id);
+        LOG.debug("Request to get Lesson : {}", id);
         return lessonRepository.findById(id).map(lessonMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Lesson : {}", id);
+        LOG.debug("Request to delete Lesson : {}", id);
         lessonRepository.deleteById(id);
     }
 }

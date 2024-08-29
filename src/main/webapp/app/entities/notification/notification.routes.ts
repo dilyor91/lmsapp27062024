@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { NotificationComponent } from './list/notification.component';
-import { NotificationDetailComponent } from './detail/notification-detail.component';
-import { NotificationUpdateComponent } from './update/notification-update.component';
 import NotificationResolve from './route/notification-routing-resolve.service';
 
 const notificationRoute: Routes = [
   {
     path: '',
-    component: NotificationComponent,
+    loadComponent: () => import('./list/notification.component').then(m => m.NotificationComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: NotificationDetailComponent,
+    loadComponent: () => import('./detail/notification-detail.component').then(m => m.NotificationDetailComponent),
     resolve: {
       notification: NotificationResolve,
     },
@@ -26,7 +23,7 @@ const notificationRoute: Routes = [
   },
   {
     path: 'new',
-    component: NotificationUpdateComponent,
+    loadComponent: () => import('./update/notification-update.component').then(m => m.NotificationUpdateComponent),
     resolve: {
       notification: NotificationResolve,
     },
@@ -34,7 +31,7 @@ const notificationRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: NotificationUpdateComponent,
+    loadComponent: () => import('./update/notification-update.component').then(m => m.NotificationUpdateComponent),
     resolve: {
       notification: NotificationResolve,
     },

@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { AssignmentComponent } from './list/assignment.component';
-import { AssignmentDetailComponent } from './detail/assignment-detail.component';
-import { AssignmentUpdateComponent } from './update/assignment-update.component';
 import AssignmentResolve from './route/assignment-routing-resolve.service';
 
 const assignmentRoute: Routes = [
   {
     path: '',
-    component: AssignmentComponent,
+    loadComponent: () => import('./list/assignment.component').then(m => m.AssignmentComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: AssignmentDetailComponent,
+    loadComponent: () => import('./detail/assignment-detail.component').then(m => m.AssignmentDetailComponent),
     resolve: {
       assignment: AssignmentResolve,
     },
@@ -26,7 +23,7 @@ const assignmentRoute: Routes = [
   },
   {
     path: 'new',
-    component: AssignmentUpdateComponent,
+    loadComponent: () => import('./update/assignment-update.component').then(m => m.AssignmentUpdateComponent),
     resolve: {
       assignment: AssignmentResolve,
     },
@@ -34,7 +31,7 @@ const assignmentRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: AssignmentUpdateComponent,
+    loadComponent: () => import('./update/assignment-update.component').then(m => m.AssignmentUpdateComponent),
     resolve: {
       assignment: AssignmentResolve,
     },

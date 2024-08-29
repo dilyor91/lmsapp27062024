@@ -17,7 +17,7 @@ describe('StudyTerm Management Detail Component', () => {
           [
             {
               path: '**',
-              component: StudyTermDetailComponent,
+              loadComponent: () => import('./study-term-detail.component').then(m => m.StudyTermDetailComponent),
               resolve: { studyTerm: () => of({ id: 123 }) },
             },
           ],

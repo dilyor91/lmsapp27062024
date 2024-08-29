@@ -31,7 +31,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/assignments")
 public class AssignmentResource {
 
-    private static final Logger log = LoggerFactory.getLogger(AssignmentResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AssignmentResource.class);
 
     private static final String ENTITY_NAME = "assignment";
 
@@ -56,7 +56,7 @@ public class AssignmentResource {
      */
     @PostMapping("")
     public ResponseEntity<AssignmentDTO> createAssignment(@Valid @RequestBody AssignmentDTO assignmentDTO) throws URISyntaxException {
-        log.debug("REST request to save Assignment : {}", assignmentDTO);
+        LOG.debug("REST request to save Assignment : {}", assignmentDTO);
         if (assignmentDTO.getId() != null) {
             throw new BadRequestAlertException("A new assignment cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -81,7 +81,7 @@ public class AssignmentResource {
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody AssignmentDTO assignmentDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update Assignment : {}, {}", id, assignmentDTO);
+        LOG.debug("REST request to update Assignment : {}, {}", id, assignmentDTO);
         if (assignmentDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -115,7 +115,7 @@ public class AssignmentResource {
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody AssignmentDTO assignmentDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Assignment partially : {}, {}", id, assignmentDTO);
+        LOG.debug("REST request to partial update Assignment partially : {}, {}", id, assignmentDTO);
         if (assignmentDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -143,7 +143,7 @@ public class AssignmentResource {
      */
     @GetMapping("")
     public ResponseEntity<List<AssignmentDTO>> getAllAssignments(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of Assignments");
+        LOG.debug("REST request to get a page of Assignments");
         Page<AssignmentDTO> page = assignmentService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -157,7 +157,7 @@ public class AssignmentResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<AssignmentDTO> getAssignment(@PathVariable("id") Long id) {
-        log.debug("REST request to get Assignment : {}", id);
+        LOG.debug("REST request to get Assignment : {}", id);
         Optional<AssignmentDTO> assignmentDTO = assignmentService.findOne(id);
         return ResponseUtil.wrapOrNotFound(assignmentDTO);
     }
@@ -170,7 +170,7 @@ public class AssignmentResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAssignment(@PathVariable("id") Long id) {
-        log.debug("REST request to delete Assignment : {}", id);
+        LOG.debug("REST request to delete Assignment : {}", id);
         assignmentService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

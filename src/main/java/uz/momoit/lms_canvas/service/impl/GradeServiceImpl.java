@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.GradeMapper;
 @Transactional
 public class GradeServiceImpl implements GradeService {
 
-    private static final Logger log = LoggerFactory.getLogger(GradeServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(GradeServiceImpl.class);
 
     private final GradeRepository gradeRepository;
 
@@ -33,7 +33,7 @@ public class GradeServiceImpl implements GradeService {
 
     @Override
     public GradeDTO save(GradeDTO gradeDTO) {
-        log.debug("Request to save Grade : {}", gradeDTO);
+        LOG.debug("Request to save Grade : {}", gradeDTO);
         Grade grade = gradeMapper.toEntity(gradeDTO);
         grade = gradeRepository.save(grade);
         return gradeMapper.toDto(grade);
@@ -41,7 +41,7 @@ public class GradeServiceImpl implements GradeService {
 
     @Override
     public GradeDTO update(GradeDTO gradeDTO) {
-        log.debug("Request to update Grade : {}", gradeDTO);
+        LOG.debug("Request to update Grade : {}", gradeDTO);
         Grade grade = gradeMapper.toEntity(gradeDTO);
         grade = gradeRepository.save(grade);
         return gradeMapper.toDto(grade);
@@ -49,7 +49,7 @@ public class GradeServiceImpl implements GradeService {
 
     @Override
     public Optional<GradeDTO> partialUpdate(GradeDTO gradeDTO) {
-        log.debug("Request to partially update Grade : {}", gradeDTO);
+        LOG.debug("Request to partially update Grade : {}", gradeDTO);
 
         return gradeRepository
             .findById(gradeDTO.getId())
@@ -65,20 +65,20 @@ public class GradeServiceImpl implements GradeService {
     @Override
     @Transactional(readOnly = true)
     public Page<GradeDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all Grades");
+        LOG.debug("Request to get all Grades");
         return gradeRepository.findAll(pageable).map(gradeMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<GradeDTO> findOne(Long id) {
-        log.debug("Request to get Grade : {}", id);
+        LOG.debug("Request to get Grade : {}", id);
         return gradeRepository.findById(id).map(gradeMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Grade : {}", id);
+        LOG.debug("Request to delete Grade : {}", id);
         gradeRepository.deleteById(id);
     }
 }

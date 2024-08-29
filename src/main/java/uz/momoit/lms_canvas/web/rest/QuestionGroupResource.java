@@ -31,7 +31,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/question-groups")
 public class QuestionGroupResource {
 
-    private static final Logger log = LoggerFactory.getLogger(QuestionGroupResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(QuestionGroupResource.class);
 
     private static final String ENTITY_NAME = "questionGroup";
 
@@ -57,7 +57,7 @@ public class QuestionGroupResource {
     @PostMapping("")
     public ResponseEntity<QuestionGroupDTO> createQuestionGroup(@Valid @RequestBody QuestionGroupDTO questionGroupDTO)
         throws URISyntaxException {
-        log.debug("REST request to save QuestionGroup : {}", questionGroupDTO);
+        LOG.debug("REST request to save QuestionGroup : {}", questionGroupDTO);
         if (questionGroupDTO.getId() != null) {
             throw new BadRequestAlertException("A new questionGroup cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -82,7 +82,7 @@ public class QuestionGroupResource {
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody QuestionGroupDTO questionGroupDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update QuestionGroup : {}, {}", id, questionGroupDTO);
+        LOG.debug("REST request to update QuestionGroup : {}, {}", id, questionGroupDTO);
         if (questionGroupDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -116,7 +116,7 @@ public class QuestionGroupResource {
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody QuestionGroupDTO questionGroupDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update QuestionGroup partially : {}, {}", id, questionGroupDTO);
+        LOG.debug("REST request to partial update QuestionGroup partially : {}, {}", id, questionGroupDTO);
         if (questionGroupDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -144,7 +144,7 @@ public class QuestionGroupResource {
      */
     @GetMapping("")
     public ResponseEntity<List<QuestionGroupDTO>> getAllQuestionGroups(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of QuestionGroups");
+        LOG.debug("REST request to get a page of QuestionGroups");
         Page<QuestionGroupDTO> page = questionGroupService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -158,7 +158,7 @@ public class QuestionGroupResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<QuestionGroupDTO> getQuestionGroup(@PathVariable("id") Long id) {
-        log.debug("REST request to get QuestionGroup : {}", id);
+        LOG.debug("REST request to get QuestionGroup : {}", id);
         Optional<QuestionGroupDTO> questionGroupDTO = questionGroupService.findOne(id);
         return ResponseUtil.wrapOrNotFound(questionGroupDTO);
     }
@@ -171,7 +171,7 @@ public class QuestionGroupResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteQuestionGroup(@PathVariable("id") Long id) {
-        log.debug("REST request to delete QuestionGroup : {}", id);
+        LOG.debug("REST request to delete QuestionGroup : {}", id);
         questionGroupService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

@@ -1,15 +1,15 @@
 import { IAttachment, NewAttachment } from './attachment.model';
 
 export const sampleWithRequiredData: IAttachment = {
-  id: 14184,
+  id: 19678,
 };
 
 export const sampleWithPartialData: IAttachment = {
-  id: 32753,
+  id: 18174,
 };
 
 export const sampleWithFullData: IAttachment = {
-  id: 19625,
+  id: 19807,
 };
 
 export const sampleWithNewData: NewAttachment = {

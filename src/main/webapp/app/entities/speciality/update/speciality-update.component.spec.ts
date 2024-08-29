@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideHttpClient, HttpResponse } from '@angular/common/http';
+import { HttpResponse, provideHttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { of, Subject, from } from 'rxjs';
+import { Subject, from, of } from 'rxjs';
 
 import { IFaculty } from 'app/entities/faculty/faculty.model';
 import { FacultyService } from 'app/entities/faculty/service/faculty.service';
@@ -49,10 +49,10 @@ describe('Speciality Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Faculty query and add missing value', () => {
       const speciality: ISpeciality = { id: 456 };
-      const faculty: IFaculty = { id: 16271 };
+      const faculty: IFaculty = { id: 29989 };
       speciality.faculty = faculty;
 
-      const facultyCollection: IFaculty[] = [{ id: 7241 }];
+      const facultyCollection: IFaculty[] = [{ id: 16960 }];
       jest.spyOn(facultyService, 'query').mockReturnValue(of(new HttpResponse({ body: facultyCollection })));
       const additionalFaculties = [faculty];
       const expectedCollection: IFaculty[] = [...additionalFaculties, ...facultyCollection];
@@ -71,7 +71,7 @@ describe('Speciality Management Update Component', () => {
 
     it('Should update editForm', () => {
       const speciality: ISpeciality = { id: 456 };
-      const faculty: IFaculty = { id: 19703 };
+      const faculty: IFaculty = { id: 1 };
       speciality.faculty = faculty;
 
       activatedRoute.data = of({ speciality });

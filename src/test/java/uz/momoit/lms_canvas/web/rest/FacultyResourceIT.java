@@ -68,9 +68,8 @@ class FacultyResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Faculty createEntity(EntityManager em) {
-        Faculty faculty = new Faculty().name(DEFAULT_NAME);
-        return faculty;
+    public static Faculty createEntity() {
+        return new Faculty().name(DEFAULT_NAME);
     }
 
     /**
@@ -79,14 +78,13 @@ class FacultyResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Faculty createUpdatedEntity(EntityManager em) {
-        Faculty faculty = new Faculty().name(UPDATED_NAME);
-        return faculty;
+    public static Faculty createUpdatedEntity() {
+        return new Faculty().name(UPDATED_NAME);
     }
 
     @BeforeEach
     public void initTest() {
-        faculty = createEntity(em);
+        faculty = createEntity();
     }
 
     @AfterEach
@@ -273,8 +271,6 @@ class FacultyResourceIT {
         // Update the faculty using partial update
         Faculty partialUpdatedFaculty = new Faculty();
         partialUpdatedFaculty.setId(faculty.getId());
-
-        partialUpdatedFaculty.name(UPDATED_NAME);
 
         restFacultyMockMvc
             .perform(

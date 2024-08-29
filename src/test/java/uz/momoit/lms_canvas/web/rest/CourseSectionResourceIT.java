@@ -68,9 +68,8 @@ class CourseSectionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static CourseSection createEntity(EntityManager em) {
-        CourseSection courseSection = new CourseSection().sectionName(DEFAULT_SECTION_NAME);
-        return courseSection;
+    public static CourseSection createEntity() {
+        return new CourseSection().sectionName(DEFAULT_SECTION_NAME);
     }
 
     /**
@@ -79,14 +78,13 @@ class CourseSectionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static CourseSection createUpdatedEntity(EntityManager em) {
-        CourseSection courseSection = new CourseSection().sectionName(UPDATED_SECTION_NAME);
-        return courseSection;
+    public static CourseSection createUpdatedEntity() {
+        return new CourseSection().sectionName(UPDATED_SECTION_NAME);
     }
 
     @BeforeEach
     public void initTest() {
-        courseSection = createEntity(em);
+        courseSection = createEntity();
     }
 
     @AfterEach

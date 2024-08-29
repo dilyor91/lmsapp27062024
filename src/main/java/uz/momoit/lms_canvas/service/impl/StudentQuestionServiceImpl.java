@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.StudentQuestionMapper;
 @Transactional
 public class StudentQuestionServiceImpl implements StudentQuestionService {
 
-    private static final Logger log = LoggerFactory.getLogger(StudentQuestionServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(StudentQuestionServiceImpl.class);
 
     private final StudentQuestionRepository studentQuestionRepository;
 
@@ -33,7 +33,7 @@ public class StudentQuestionServiceImpl implements StudentQuestionService {
 
     @Override
     public StudentQuestionDTO save(StudentQuestionDTO studentQuestionDTO) {
-        log.debug("Request to save StudentQuestion : {}", studentQuestionDTO);
+        LOG.debug("Request to save StudentQuestion : {}", studentQuestionDTO);
         StudentQuestion studentQuestion = studentQuestionMapper.toEntity(studentQuestionDTO);
         studentQuestion = studentQuestionRepository.save(studentQuestion);
         return studentQuestionMapper.toDto(studentQuestion);
@@ -41,7 +41,7 @@ public class StudentQuestionServiceImpl implements StudentQuestionService {
 
     @Override
     public StudentQuestionDTO update(StudentQuestionDTO studentQuestionDTO) {
-        log.debug("Request to update StudentQuestion : {}", studentQuestionDTO);
+        LOG.debug("Request to update StudentQuestion : {}", studentQuestionDTO);
         StudentQuestion studentQuestion = studentQuestionMapper.toEntity(studentQuestionDTO);
         studentQuestion = studentQuestionRepository.save(studentQuestion);
         return studentQuestionMapper.toDto(studentQuestion);
@@ -49,7 +49,7 @@ public class StudentQuestionServiceImpl implements StudentQuestionService {
 
     @Override
     public Optional<StudentQuestionDTO> partialUpdate(StudentQuestionDTO studentQuestionDTO) {
-        log.debug("Request to partially update StudentQuestion : {}", studentQuestionDTO);
+        LOG.debug("Request to partially update StudentQuestion : {}", studentQuestionDTO);
 
         return studentQuestionRepository
             .findById(studentQuestionDTO.getId())
@@ -65,20 +65,20 @@ public class StudentQuestionServiceImpl implements StudentQuestionService {
     @Override
     @Transactional(readOnly = true)
     public Page<StudentQuestionDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all StudentQuestions");
+        LOG.debug("Request to get all StudentQuestions");
         return studentQuestionRepository.findAll(pageable).map(studentQuestionMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<StudentQuestionDTO> findOne(Long id) {
-        log.debug("Request to get StudentQuestion : {}", id);
+        LOG.debug("Request to get StudentQuestion : {}", id);
         return studentQuestionRepository.findById(id).map(studentQuestionMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete StudentQuestion : {}", id);
+        LOG.debug("Request to delete StudentQuestion : {}", id);
         studentQuestionRepository.deleteById(id);
     }
 }

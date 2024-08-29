@@ -19,6 +19,7 @@
           </div>
         }
 
+        @let sectionNameRef = editForm.get('sectionName')!;
         <div class="mb-3">
           <label class="form-label" for="field_sectionName" jhiTranslate="lmsapp27062024App.courseSection.sectionName">Section Name</label>
           <input
@@ -29,7 +30,7 @@
             data-cy="sectionName"
             formControlName="sectionName"
           />
-          @if (editForm.get('sectionName')!.invalid && (editForm.get('sectionName')!.dirty || editForm.get('sectionName')!.touched)) {
+          @if (sectionNameRef.invalid && (sectionNameRef.dirty || sectionNameRef.touched)) {
             <div>
               @if (editForm.get('sectionName')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>

@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.StudentOptionMapper;
 @Transactional
 public class StudentOptionServiceImpl implements StudentOptionService {
 
-    private static final Logger log = LoggerFactory.getLogger(StudentOptionServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(StudentOptionServiceImpl.class);
 
     private final StudentOptionRepository studentOptionRepository;
 
@@ -33,7 +33,7 @@ public class StudentOptionServiceImpl implements StudentOptionService {
 
     @Override
     public StudentOptionDTO save(StudentOptionDTO studentOptionDTO) {
-        log.debug("Request to save StudentOption : {}", studentOptionDTO);
+        LOG.debug("Request to save StudentOption : {}", studentOptionDTO);
         StudentOption studentOption = studentOptionMapper.toEntity(studentOptionDTO);
         studentOption = studentOptionRepository.save(studentOption);
         return studentOptionMapper.toDto(studentOption);
@@ -41,7 +41,7 @@ public class StudentOptionServiceImpl implements StudentOptionService {
 
     @Override
     public StudentOptionDTO update(StudentOptionDTO studentOptionDTO) {
-        log.debug("Request to update StudentOption : {}", studentOptionDTO);
+        LOG.debug("Request to update StudentOption : {}", studentOptionDTO);
         StudentOption studentOption = studentOptionMapper.toEntity(studentOptionDTO);
         studentOption = studentOptionRepository.save(studentOption);
         return studentOptionMapper.toDto(studentOption);
@@ -49,7 +49,7 @@ public class StudentOptionServiceImpl implements StudentOptionService {
 
     @Override
     public Optional<StudentOptionDTO> partialUpdate(StudentOptionDTO studentOptionDTO) {
-        log.debug("Request to partially update StudentOption : {}", studentOptionDTO);
+        LOG.debug("Request to partially update StudentOption : {}", studentOptionDTO);
 
         return studentOptionRepository
             .findById(studentOptionDTO.getId())
@@ -65,20 +65,20 @@ public class StudentOptionServiceImpl implements StudentOptionService {
     @Override
     @Transactional(readOnly = true)
     public Page<StudentOptionDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all StudentOptions");
+        LOG.debug("Request to get all StudentOptions");
         return studentOptionRepository.findAll(pageable).map(studentOptionMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<StudentOptionDTO> findOne(Long id) {
-        log.debug("Request to get StudentOption : {}", id);
+        LOG.debug("Request to get StudentOption : {}", id);
         return studentOptionRepository.findById(id).map(studentOptionMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete StudentOption : {}", id);
+        LOG.debug("Request to delete StudentOption : {}", id);
         studentOptionRepository.deleteById(id);
     }
 }

@@ -17,7 +17,7 @@ describe('Question Management Detail Component', () => {
           [
             {
               path: '**',
-              component: QuestionDetailComponent,
+              loadComponent: () => import('./question-detail.component').then(m => m.QuestionDetailComponent),
               resolve: { question: () => of({ id: 123 }) },
             },
           ],

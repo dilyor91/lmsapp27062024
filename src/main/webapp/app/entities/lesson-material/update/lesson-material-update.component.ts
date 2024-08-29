@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -14,7 +14,7 @@ import { LessonService } from 'app/entities/lesson/service/lesson.service';
 import { LessonFileTypeEnum } from 'app/entities/enumerations/lesson-file-type-enum.model';
 import { LessonMaterialService } from '../service/lesson-material.service';
 import { ILessonMaterial } from '../lesson-material.model';
-import { LessonMaterialFormService, LessonMaterialFormGroup } from './lesson-material-form.service';
+import { LessonMaterialFormGroup, LessonMaterialFormService } from './lesson-material-form.service';
 
 @Component({
   standalone: true,

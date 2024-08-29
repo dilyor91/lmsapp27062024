@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (accounts()) {
+    @if (accounts(); as accountsRef) {
       <div>
         <h2 data-cy="accountsDetailsHeading"><span jhiTranslate="lmsapp27062024App.accounts.detail.title">Accounts</span></h2>
 
@@ -13,46 +13,46 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
-            <span>{{ accounts()!.id }}</span>
+            <span>{{ accountsRef.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.accounts.username">Username</span></dt>
           <dd>
-            <span>{{ accounts()!.username }}</span>
+            <span>{{ accountsRef.username }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.accounts.fullName">Full Name</span></dt>
           <dd>
-            <span>{{ accounts()!.fullName }}</span>
+            <span>{{ accountsRef.fullName }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.accounts.sortableName">Sortable Name</span></dt>
           <dd>
-            <span>{{ accounts()!.sortableName }}</span>
+            <span>{{ accountsRef.sortableName }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.accounts.avatarImageUrl">Avatar Image Url</span></dt>
           <dd>
-            <span>{{ accounts()!.avatarImageUrl }}</span>
+            <span>{{ accountsRef.avatarImageUrl }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.accounts.phone">Phone</span></dt>
           <dd>
-            <span>{{ accounts()!.phone }}</span>
+            <span>{{ accountsRef.phone }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.accounts.locale">Locale</span></dt>
           <dd>
-            <span>{{ accounts()!.locale }}</span>
+            <span>{{ accountsRef.locale }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.accounts.gender">Gender</span></dt>
           <dd>
-            <span>{{ accounts()!.gender }}</span>
+            <span>{{ accountsRef.gender }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.accounts.userType">User Type</span></dt>
           <dd>
-            <span [jhiTranslate]="'lmsapp27062024App.UserType.' + (accounts()!.userType ?? 'null')">{{
-              { null: '', STUDENT: 'STUDENT', TEACHER: 'TEACHER' }[accounts()!.userType ?? 'null']
+            <span [jhiTranslate]="'lmsapp27062024App.UserType.' + (accountsRef.userType ?? 'null')">{{
+              { null: '', STUDENT: 'STUDENT', TEACHER: 'TEACHER' }[accountsRef.userType ?? 'null']
             }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.accounts.userStatus">User Status</span></dt>
           <dd>
-            <span [jhiTranslate]="'lmsapp27062024App.UserStatus.' + (accounts()!.userStatus ?? 'null')">{{
-              { null: '', ACTIVE: 'ACTIVE', PENDING: 'PENDING', BLOCKED: 'BLOCKED' }[accounts()!.userStatus ?? 'null']
+            <span [jhiTranslate]="'lmsapp27062024App.UserStatus.' + (accountsRef.userStatus ?? 'null')">{{
+              { null: '', ACTIVE: 'ACTIVE', PENDING: 'PENDING', BLOCKED: 'BLOCKED' }[accountsRef.userStatus ?? 'null']
             }}</span>
           </dd>
         </dl>
@@ -61,7 +61,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/accounts', accounts()!.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/accounts', accountsRef.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

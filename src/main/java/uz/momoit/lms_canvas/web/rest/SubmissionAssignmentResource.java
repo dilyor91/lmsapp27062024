@@ -30,7 +30,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/submission-assignments")
 public class SubmissionAssignmentResource {
 
-    private static final Logger log = LoggerFactory.getLogger(SubmissionAssignmentResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SubmissionAssignmentResource.class);
 
     private static final String ENTITY_NAME = "submissionAssignment";
 
@@ -59,7 +59,7 @@ public class SubmissionAssignmentResource {
     @PostMapping("")
     public ResponseEntity<SubmissionAssignmentDTO> createSubmissionAssignment(@RequestBody SubmissionAssignmentDTO submissionAssignmentDTO)
         throws URISyntaxException {
-        log.debug("REST request to save SubmissionAssignment : {}", submissionAssignmentDTO);
+        LOG.debug("REST request to save SubmissionAssignment : {}", submissionAssignmentDTO);
         if (submissionAssignmentDTO.getId() != null) {
             throw new BadRequestAlertException("A new submissionAssignment cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -84,7 +84,7 @@ public class SubmissionAssignmentResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody SubmissionAssignmentDTO submissionAssignmentDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update SubmissionAssignment : {}, {}", id, submissionAssignmentDTO);
+        LOG.debug("REST request to update SubmissionAssignment : {}, {}", id, submissionAssignmentDTO);
         if (submissionAssignmentDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -118,7 +118,7 @@ public class SubmissionAssignmentResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody SubmissionAssignmentDTO submissionAssignmentDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update SubmissionAssignment partially : {}, {}", id, submissionAssignmentDTO);
+        LOG.debug("REST request to partial update SubmissionAssignment partially : {}, {}", id, submissionAssignmentDTO);
         if (submissionAssignmentDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -151,10 +151,10 @@ public class SubmissionAssignmentResource {
         @RequestParam(name = "filter", required = false) String filter
     ) {
         if ("grade-is-null".equals(filter)) {
-            log.debug("REST request to get all SubmissionAssignments where grade is null");
+            LOG.debug("REST request to get all SubmissionAssignments where grade is null");
             return new ResponseEntity<>(submissionAssignmentService.findAllWhereGradeIsNull(), HttpStatus.OK);
         }
-        log.debug("REST request to get a page of SubmissionAssignments");
+        LOG.debug("REST request to get a page of SubmissionAssignments");
         Page<SubmissionAssignmentDTO> page = submissionAssignmentService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -168,7 +168,7 @@ public class SubmissionAssignmentResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<SubmissionAssignmentDTO> getSubmissionAssignment(@PathVariable("id") Long id) {
-        log.debug("REST request to get SubmissionAssignment : {}", id);
+        LOG.debug("REST request to get SubmissionAssignment : {}", id);
         Optional<SubmissionAssignmentDTO> submissionAssignmentDTO = submissionAssignmentService.findOne(id);
         return ResponseUtil.wrapOrNotFound(submissionAssignmentDTO);
     }
@@ -181,7 +181,7 @@ public class SubmissionAssignmentResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteSubmissionAssignment(@PathVariable("id") Long id) {
-        log.debug("REST request to delete SubmissionAssignment : {}", id);
+        LOG.debug("REST request to delete SubmissionAssignment : {}", id);
         submissionAssignmentService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

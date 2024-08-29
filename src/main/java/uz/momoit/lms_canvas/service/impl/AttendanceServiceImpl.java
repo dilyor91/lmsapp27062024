@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.AttendanceMapper;
 @Transactional
 public class AttendanceServiceImpl implements AttendanceService {
 
-    private static final Logger log = LoggerFactory.getLogger(AttendanceServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AttendanceServiceImpl.class);
 
     private final AttendanceRepository attendanceRepository;
 
@@ -33,7 +33,7 @@ public class AttendanceServiceImpl implements AttendanceService {
 
     @Override
     public AttendanceDTO save(AttendanceDTO attendanceDTO) {
-        log.debug("Request to save Attendance : {}", attendanceDTO);
+        LOG.debug("Request to save Attendance : {}", attendanceDTO);
         Attendance attendance = attendanceMapper.toEntity(attendanceDTO);
         attendance = attendanceRepository.save(attendance);
         return attendanceMapper.toDto(attendance);
@@ -41,7 +41,7 @@ public class AttendanceServiceImpl implements AttendanceService {
 
     @Override
     public AttendanceDTO update(AttendanceDTO attendanceDTO) {
-        log.debug("Request to update Attendance : {}", attendanceDTO);
+        LOG.debug("Request to update Attendance : {}", attendanceDTO);
         Attendance attendance = attendanceMapper.toEntity(attendanceDTO);
         attendance = attendanceRepository.save(attendance);
         return attendanceMapper.toDto(attendance);
@@ -49,7 +49,7 @@ public class AttendanceServiceImpl implements AttendanceService {
 
     @Override
     public Optional<AttendanceDTO> partialUpdate(AttendanceDTO attendanceDTO) {
-        log.debug("Request to partially update Attendance : {}", attendanceDTO);
+        LOG.debug("Request to partially update Attendance : {}", attendanceDTO);
 
         return attendanceRepository
             .findById(attendanceDTO.getId())
@@ -65,20 +65,20 @@ public class AttendanceServiceImpl implements AttendanceService {
     @Override
     @Transactional(readOnly = true)
     public Page<AttendanceDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all Attendances");
+        LOG.debug("Request to get all Attendances");
         return attendanceRepository.findAll(pageable).map(attendanceMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<AttendanceDTO> findOne(Long id) {
-        log.debug("Request to get Attendance : {}", id);
+        LOG.debug("Request to get Attendance : {}", id);
         return attendanceRepository.findById(id).map(attendanceMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Attendance : {}", id);
+        LOG.debug("Request to delete Attendance : {}", id);
         attendanceRepository.deleteById(id);
     }
 }

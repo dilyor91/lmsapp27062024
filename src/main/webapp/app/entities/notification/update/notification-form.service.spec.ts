@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { sampleWithRequiredData, sampleWithNewData } from '../notification.test-samples';
+import { sampleWithNewData, sampleWithRequiredData } from '../notification.test-samples';
 
 import { NotificationFormService } from './notification-form.service';
 

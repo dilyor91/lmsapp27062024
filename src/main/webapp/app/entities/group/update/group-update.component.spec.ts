@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideHttpClient, HttpResponse } from '@angular/common/http';
+import { HttpResponse, provideHttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { of, Subject, from } from 'rxjs';
+import { Subject, from, of } from 'rxjs';
 
 import { ISpeciality } from 'app/entities/speciality/speciality.model';
 import { SpecialityService } from 'app/entities/speciality/service/speciality.service';
@@ -49,10 +49,10 @@ describe('Group Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Speciality query and add missing value', () => {
       const group: IGroup = { id: 456 };
-      const speciality: ISpeciality = { id: 24460 };
+      const speciality: ISpeciality = { id: 19818 };
       group.speciality = speciality;
 
-      const specialityCollection: ISpeciality[] = [{ id: 28342 }];
+      const specialityCollection: ISpeciality[] = [{ id: 11015 }];
       jest.spyOn(specialityService, 'query').mockReturnValue(of(new HttpResponse({ body: specialityCollection })));
       const additionalSpecialities = [speciality];
       const expectedCollection: ISpeciality[] = [...additionalSpecialities, ...specialityCollection];
@@ -71,7 +71,7 @@ describe('Group Management Update Component', () => {
 
     it('Should update editForm', () => {
       const group: IGroup = { id: 456 };
-      const speciality: ISpeciality = { id: 11559 };
+      const speciality: ISpeciality = { id: 31538 };
       group.speciality = speciality;
 
       activatedRoute.data = of({ group });

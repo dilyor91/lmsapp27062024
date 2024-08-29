@@ -21,7 +21,7 @@ import uz.momoit.lms_canvas.service.mapper.AssignmentCourseSectionMapper;
 @Transactional
 public class AssignmentCourseSectionServiceImpl implements AssignmentCourseSectionService {
 
-    private static final Logger log = LoggerFactory.getLogger(AssignmentCourseSectionServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AssignmentCourseSectionServiceImpl.class);
 
     private final AssignmentCourseSectionRepository assignmentCourseSectionRepository;
 
@@ -37,7 +37,7 @@ public class AssignmentCourseSectionServiceImpl implements AssignmentCourseSecti
 
     @Override
     public AssignmentCourseSectionDTO save(AssignmentCourseSectionDTO assignmentCourseSectionDTO) {
-        log.debug("Request to save AssignmentCourseSection : {}", assignmentCourseSectionDTO);
+        LOG.debug("Request to save AssignmentCourseSection : {}", assignmentCourseSectionDTO);
         AssignmentCourseSection assignmentCourseSection = assignmentCourseSectionMapper.toEntity(assignmentCourseSectionDTO);
         assignmentCourseSection = assignmentCourseSectionRepository.save(assignmentCourseSection);
         return assignmentCourseSectionMapper.toDto(assignmentCourseSection);
@@ -45,7 +45,7 @@ public class AssignmentCourseSectionServiceImpl implements AssignmentCourseSecti
 
     @Override
     public AssignmentCourseSectionDTO update(AssignmentCourseSectionDTO assignmentCourseSectionDTO) {
-        log.debug("Request to update AssignmentCourseSection : {}", assignmentCourseSectionDTO);
+        LOG.debug("Request to update AssignmentCourseSection : {}", assignmentCourseSectionDTO);
         AssignmentCourseSection assignmentCourseSection = assignmentCourseSectionMapper.toEntity(assignmentCourseSectionDTO);
         assignmentCourseSection = assignmentCourseSectionRepository.save(assignmentCourseSection);
         return assignmentCourseSectionMapper.toDto(assignmentCourseSection);
@@ -53,7 +53,7 @@ public class AssignmentCourseSectionServiceImpl implements AssignmentCourseSecti
 
     @Override
     public Optional<AssignmentCourseSectionDTO> partialUpdate(AssignmentCourseSectionDTO assignmentCourseSectionDTO) {
-        log.debug("Request to partially update AssignmentCourseSection : {}", assignmentCourseSectionDTO);
+        LOG.debug("Request to partially update AssignmentCourseSection : {}", assignmentCourseSectionDTO);
 
         return assignmentCourseSectionRepository
             .findById(assignmentCourseSectionDTO.getId())
@@ -69,7 +69,7 @@ public class AssignmentCourseSectionServiceImpl implements AssignmentCourseSecti
     @Override
     @Transactional(readOnly = true)
     public List<AssignmentCourseSectionDTO> findAll() {
-        log.debug("Request to get all AssignmentCourseSections");
+        LOG.debug("Request to get all AssignmentCourseSections");
         return assignmentCourseSectionRepository
             .findAll()
             .stream()
@@ -80,13 +80,13 @@ public class AssignmentCourseSectionServiceImpl implements AssignmentCourseSecti
     @Override
     @Transactional(readOnly = true)
     public Optional<AssignmentCourseSectionDTO> findOne(Long id) {
-        log.debug("Request to get AssignmentCourseSection : {}", id);
+        LOG.debug("Request to get AssignmentCourseSection : {}", id);
         return assignmentCourseSectionRepository.findById(id).map(assignmentCourseSectionMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete AssignmentCourseSection : {}", id);
+        LOG.debug("Request to delete AssignmentCourseSection : {}", id);
         assignmentCourseSectionRepository.deleteById(id);
     }
 }

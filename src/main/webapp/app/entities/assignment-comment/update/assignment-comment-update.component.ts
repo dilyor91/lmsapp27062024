@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -17,7 +17,7 @@ import { ITeacher } from 'app/entities/teacher/teacher.model';
 import { TeacherService } from 'app/entities/teacher/service/teacher.service';
 import { AssignmentCommentService } from '../service/assignment-comment.service';
 import { IAssignmentComment } from '../assignment-comment.model';
-import { AssignmentCommentFormService, AssignmentCommentFormGroup } from './assignment-comment-form.service';
+import { AssignmentCommentFormGroup, AssignmentCommentFormService } from './assignment-comment-form.service';
 
 @Component({
   standalone: true,

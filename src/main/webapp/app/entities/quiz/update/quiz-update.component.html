@@ -15,10 +15,11 @@
           </div>
         }
 
+        @let quizNameRef = editForm.get('quizName')!;
         <div class="mb-3">
           <label class="form-label" for="field_quizName" jhiTranslate="lmsapp27062024App.quiz.quizName">Quiz Name</label>
           <input type="text" class="form-control" name="quizName" id="field_quizName" data-cy="quizName" formControlName="quizName" />
-          @if (editForm.get('quizName')!.invalid && (editForm.get('quizName')!.dirty || editForm.get('quizName')!.touched)) {
+          @if (quizNameRef.invalid && (quizNameRef.dirty || quizNameRef.touched)) {
             <div>
               @if (editForm.get('quizName')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
@@ -27,6 +28,7 @@
           }
         </div>
 
+        @let timeInMinuteRef = editForm.get('timeInMinute')!;
         <div class="mb-3">
           <label class="form-label" for="field_timeInMinute" jhiTranslate="lmsapp27062024App.quiz.timeInMinute">Time In Minute</label>
           <input
@@ -37,7 +39,7 @@
             data-cy="timeInMinute"
             formControlName="timeInMinute"
           />
-          @if (editForm.get('timeInMinute')!.invalid && (editForm.get('timeInMinute')!.dirty || editForm.get('timeInMinute')!.touched)) {
+          @if (timeInMinuteRef.invalid && (timeInMinuteRef.dirty || timeInMinuteRef.touched)) {
             <div>
               @if (editForm.get('timeInMinute')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>

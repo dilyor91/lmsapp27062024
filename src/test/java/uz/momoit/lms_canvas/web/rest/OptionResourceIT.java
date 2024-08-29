@@ -71,9 +71,8 @@ class OptionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Option createEntity(EntityManager em) {
-        Option option = new Option().optionText(DEFAULT_OPTION_TEXT).isCorrect(DEFAULT_IS_CORRECT);
-        return option;
+    public static Option createEntity() {
+        return new Option().optionText(DEFAULT_OPTION_TEXT).isCorrect(DEFAULT_IS_CORRECT);
     }
 
     /**
@@ -82,14 +81,13 @@ class OptionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Option createUpdatedEntity(EntityManager em) {
-        Option option = new Option().optionText(UPDATED_OPTION_TEXT).isCorrect(UPDATED_IS_CORRECT);
-        return option;
+    public static Option createUpdatedEntity() {
+        return new Option().optionText(UPDATED_OPTION_TEXT).isCorrect(UPDATED_IS_CORRECT);
     }
 
     @BeforeEach
     public void initTest() {
-        option = createEntity(em);
+        option = createEntity();
     }
 
     @AfterEach

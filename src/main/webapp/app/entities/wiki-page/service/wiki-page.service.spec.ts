@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
-import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideHttpClient } from '@angular/common/http';
 
 import { IWikiPage } from '../wiki-page.model';
-import { sampleWithRequiredData, sampleWithNewData, sampleWithPartialData, sampleWithFullData } from '../wiki-page.test-samples';
+import { sampleWithFullData, sampleWithNewData, sampleWithPartialData, sampleWithRequiredData } from '../wiki-page.test-samples';
 
-import { WikiPageService, RestWikiPage } from './wiki-page.service';
+import { RestWikiPage, WikiPageService } from './wiki-page.service';
 
 const requireRestSample: RestWikiPage = {
   ...sampleWithRequiredData,

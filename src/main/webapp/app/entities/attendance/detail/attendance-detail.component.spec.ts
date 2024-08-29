@@ -17,7 +17,7 @@ describe('Attendance Management Detail Component', () => {
           [
             {
               path: '**',
-              component: AttendanceDetailComponent,
+              loadComponent: () => import('./attendance-detail.component').then(m => m.AttendanceDetailComponent),
               resolve: { attendance: () => of({ id: 123 }) },
             },
           ],

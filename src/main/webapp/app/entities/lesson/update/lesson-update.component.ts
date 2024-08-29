@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -14,7 +14,7 @@ import { CourseWeekService } from 'app/entities/course-week/service/course-week.
 import { LessonTypeEnum } from 'app/entities/enumerations/lesson-type-enum.model';
 import { LessonService } from '../service/lesson.service';
 import { ILesson } from '../lesson.model';
-import { LessonFormService, LessonFormGroup } from './lesson-form.service';
+import { LessonFormGroup, LessonFormService } from './lesson-form.service';
 
 @Component({
   standalone: true,

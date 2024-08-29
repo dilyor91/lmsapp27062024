@@ -17,7 +17,7 @@ describe('Faculty Management Detail Component', () => {
           [
             {
               path: '**',
-              component: FacultyDetailComponent,
+              loadComponent: () => import('./faculty-detail.component').then(m => m.FacultyDetailComponent),
               resolve: { faculty: () => of({ id: 123 }) },
             },
           ],

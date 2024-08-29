@@ -15,10 +15,11 @@
           </div>
         }
 
+        @let usernameRef = editForm.get('username')!;
         <div class="mb-3">
           <label class="form-label" for="field_username" jhiTranslate="lmsapp27062024App.accounts.username">Username</label>
           <input type="text" class="form-control" name="username" id="field_username" data-cy="username" formControlName="username" />
-          @if (editForm.get('username')!.invalid && (editForm.get('username')!.dirty || editForm.get('username')!.touched)) {
+          @if (usernameRef.invalid && (usernameRef.dirty || usernameRef.touched)) {
             <div>
               @if (editForm.get('username')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
@@ -27,10 +28,11 @@
           }
         </div>
 
+        @let fullNameRef = editForm.get('fullName')!;
         <div class="mb-3">
           <label class="form-label" for="field_fullName" jhiTranslate="lmsapp27062024App.accounts.fullName">Full Name</label>
           <input type="text" class="form-control" name="fullName" id="field_fullName" data-cy="fullName" formControlName="fullName" />
-          @if (editForm.get('fullName')!.invalid && (editForm.get('fullName')!.dirty || editForm.get('fullName')!.touched)) {
+          @if (fullNameRef.invalid && (fullNameRef.dirty || fullNameRef.touched)) {
             <div>
               @if (editForm.get('fullName')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
@@ -39,6 +41,7 @@
           }
         </div>
 
+        @let sortableNameRef = editForm.get('sortableName')!;
         <div class="mb-3">
           <label class="form-label" for="field_sortableName" jhiTranslate="lmsapp27062024App.accounts.sortableName">Sortable Name</label>
           <input
@@ -49,7 +52,7 @@
             data-cy="sortableName"
             formControlName="sortableName"
           />
-          @if (editForm.get('sortableName')!.invalid && (editForm.get('sortableName')!.dirty || editForm.get('sortableName')!.touched)) {
+          @if (sortableNameRef.invalid && (sortableNameRef.dirty || sortableNameRef.touched)) {
             <div>
               @if (editForm.get('sortableName')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
@@ -72,10 +75,11 @@
           />
         </div>
 
+        @let phoneRef = editForm.get('phone')!;
         <div class="mb-3">
           <label class="form-label" for="field_phone" jhiTranslate="lmsapp27062024App.accounts.phone">Phone</label>
           <input type="text" class="form-control" name="phone" id="field_phone" data-cy="phone" formControlName="phone" />
-          @if (editForm.get('phone')!.invalid && (editForm.get('phone')!.dirty || editForm.get('phone')!.touched)) {
+          @if (phoneRef.invalid && (phoneRef.dirty || phoneRef.touched)) {
             <div>
               @if (editForm.get('phone')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
@@ -89,10 +93,11 @@
           <input type="text" class="form-control" name="locale" id="field_locale" data-cy="locale" formControlName="locale" />
         </div>
 
+        @let genderRef = editForm.get('gender')!;
         <div class="mb-3">
           <label class="form-label" for="field_gender" jhiTranslate="lmsapp27062024App.accounts.gender">Gender</label>
           <input type="text" class="form-control" name="gender" id="field_gender" data-cy="gender" formControlName="gender" />
-          @if (editForm.get('gender')!.invalid && (editForm.get('gender')!.dirty || editForm.get('gender')!.touched)) {
+          @if (genderRef.invalid && (genderRef.dirty || genderRef.touched)) {
             <div>
               @if (editForm.get('gender')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
@@ -101,6 +106,7 @@
           }
         </div>
 
+        @let userTypeRef = editForm.get('userType')!;
         <div class="mb-3">
           <label class="form-label" for="field_userType" jhiTranslate="lmsapp27062024App.accounts.userType">User Type</label>
           <select class="form-control" name="userType" formControlName="userType" id="field_userType" data-cy="userType">
@@ -109,7 +115,7 @@
               <option [value]="userType">{{ 'lmsapp27062024App.UserType.' + userType | translate }}</option>
             }
           </select>
-          @if (editForm.get('userType')!.invalid && (editForm.get('userType')!.dirty || editForm.get('userType')!.touched)) {
+          @if (userTypeRef.invalid && (userTypeRef.dirty || userTypeRef.touched)) {
             <div>
               @if (editForm.get('userType')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
@@ -118,6 +124,7 @@
           }
         </div>
 
+        @let userStatusRef = editForm.get('userStatus')!;
         <div class="mb-3">
           <label class="form-label" for="field_userStatus" jhiTranslate="lmsapp27062024App.accounts.userStatus">User Status</label>
           <select class="form-control" name="userStatus" formControlName="userStatus" id="field_userStatus" data-cy="userStatus">
@@ -126,7 +133,7 @@
               <option [value]="userStatus">{{ 'lmsapp27062024App.UserStatus.' + userStatus | translate }}</option>
             }
           </select>
-          @if (editForm.get('userStatus')!.invalid && (editForm.get('userStatus')!.dirty || editForm.get('userStatus')!.touched)) {
+          @if (userStatusRef.invalid && (userStatusRef.dirty || userStatusRef.touched)) {
             <div>
               @if (editForm.get('userStatus')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>

@@ -24,7 +24,7 @@ import uz.momoit.lms_canvas.service.mapper.StudyAcademicYearMapper;
 @Transactional
 public class StudyAcademicYearServiceImpl implements StudyAcademicYearService {
 
-    private static final Logger log = LoggerFactory.getLogger(StudyAcademicYearServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(StudyAcademicYearServiceImpl.class);
 
     private final StudyAcademicYearRepository studyAcademicYearRepository;
 
@@ -40,7 +40,7 @@ public class StudyAcademicYearServiceImpl implements StudyAcademicYearService {
 
     @Override
     public StudyAcademicYearDTO save(StudyAcademicYearDTO studyAcademicYearDTO) {
-        log.debug("Request to save StudyAcademicYear : {}", studyAcademicYearDTO);
+        LOG.debug("Request to save StudyAcademicYear : {}", studyAcademicYearDTO);
         StudyAcademicYear studyAcademicYear = studyAcademicYearMapper.toEntity(studyAcademicYearDTO);
         studyAcademicYear = studyAcademicYearRepository.save(studyAcademicYear);
         return studyAcademicYearMapper.toDto(studyAcademicYear);
@@ -48,7 +48,7 @@ public class StudyAcademicYearServiceImpl implements StudyAcademicYearService {
 
     @Override
     public StudyAcademicYearDTO update(StudyAcademicYearDTO studyAcademicYearDTO) {
-        log.debug("Request to update StudyAcademicYear : {}", studyAcademicYearDTO);
+        LOG.debug("Request to update StudyAcademicYear : {}", studyAcademicYearDTO);
         StudyAcademicYear studyAcademicYear = studyAcademicYearMapper.toEntity(studyAcademicYearDTO);
         studyAcademicYear = studyAcademicYearRepository.save(studyAcademicYear);
         return studyAcademicYearMapper.toDto(studyAcademicYear);
@@ -56,7 +56,7 @@ public class StudyAcademicYearServiceImpl implements StudyAcademicYearService {
 
     @Override
     public Optional<StudyAcademicYearDTO> partialUpdate(StudyAcademicYearDTO studyAcademicYearDTO) {
-        log.debug("Request to partially update StudyAcademicYear : {}", studyAcademicYearDTO);
+        LOG.debug("Request to partially update StudyAcademicYear : {}", studyAcademicYearDTO);
 
         return studyAcademicYearRepository
             .findById(studyAcademicYearDTO.getId())
@@ -72,7 +72,7 @@ public class StudyAcademicYearServiceImpl implements StudyAcademicYearService {
     @Override
     @Transactional(readOnly = true)
     public Page<StudyAcademicYearDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all StudyAcademicYears");
+        LOG.debug("Request to get all StudyAcademicYears");
         return studyAcademicYearRepository.findAll(pageable).map(studyAcademicYearMapper::toDto);
     }
 
@@ -82,7 +82,7 @@ public class StudyAcademicYearServiceImpl implements StudyAcademicYearService {
      */
     @Transactional(readOnly = true)
     public List<StudyAcademicYearDTO> findAllWhereStudentIsNull() {
-        log.debug("Request to get all studyAcademicYears where Student is null");
+        LOG.debug("Request to get all studyAcademicYears where Student is null");
         return StreamSupport.stream(studyAcademicYearRepository.findAll().spliterator(), false)
             .filter(studyAcademicYear -> studyAcademicYear.getStudent() == null)
             .map(studyAcademicYearMapper::toDto)
@@ -92,13 +92,13 @@ public class StudyAcademicYearServiceImpl implements StudyAcademicYearService {
     @Override
     @Transactional(readOnly = true)
     public Optional<StudyAcademicYearDTO> findOne(Long id) {
-        log.debug("Request to get StudyAcademicYear : {}", id);
+        LOG.debug("Request to get StudyAcademicYear : {}", id);
         return studyAcademicYearRepository.findById(id).map(studyAcademicYearMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete StudyAcademicYear : {}", id);
+        LOG.debug("Request to delete StudyAcademicYear : {}", id);
         studyAcademicYearRepository.deleteById(id);
     }
 }

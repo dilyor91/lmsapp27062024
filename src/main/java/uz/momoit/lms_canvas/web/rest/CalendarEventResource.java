@@ -29,7 +29,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/calendar-events")
 public class CalendarEventResource {
 
-    private static final Logger log = LoggerFactory.getLogger(CalendarEventResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CalendarEventResource.class);
 
     private static final String ENTITY_NAME = "calendarEvent";
 
@@ -54,7 +54,7 @@ public class CalendarEventResource {
      */
     @PostMapping("")
     public ResponseEntity<CalendarEventDTO> createCalendarEvent(@RequestBody CalendarEventDTO calendarEventDTO) throws URISyntaxException {
-        log.debug("REST request to save CalendarEvent : {}", calendarEventDTO);
+        LOG.debug("REST request to save CalendarEvent : {}", calendarEventDTO);
         if (calendarEventDTO.getId() != null) {
             throw new BadRequestAlertException("A new calendarEvent cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -79,7 +79,7 @@ public class CalendarEventResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody CalendarEventDTO calendarEventDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update CalendarEvent : {}, {}", id, calendarEventDTO);
+        LOG.debug("REST request to update CalendarEvent : {}, {}", id, calendarEventDTO);
         if (calendarEventDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -113,7 +113,7 @@ public class CalendarEventResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody CalendarEventDTO calendarEventDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update CalendarEvent partially : {}, {}", id, calendarEventDTO);
+        LOG.debug("REST request to partial update CalendarEvent partially : {}, {}", id, calendarEventDTO);
         if (calendarEventDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -141,7 +141,7 @@ public class CalendarEventResource {
      */
     @GetMapping("")
     public ResponseEntity<List<CalendarEventDTO>> getAllCalendarEvents(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of CalendarEvents");
+        LOG.debug("REST request to get a page of CalendarEvents");
         Page<CalendarEventDTO> page = calendarEventService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -155,7 +155,7 @@ public class CalendarEventResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<CalendarEventDTO> getCalendarEvent(@PathVariable("id") Long id) {
-        log.debug("REST request to get CalendarEvent : {}", id);
+        LOG.debug("REST request to get CalendarEvent : {}", id);
         Optional<CalendarEventDTO> calendarEventDTO = calendarEventService.findOne(id);
         return ResponseUtil.wrapOrNotFound(calendarEventDTO);
     }
@@ -168,7 +168,7 @@ public class CalendarEventResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCalendarEvent(@PathVariable("id") Long id) {
-        log.debug("REST request to delete CalendarEvent : {}", id);
+        LOG.debug("REST request to delete CalendarEvent : {}", id);
         calendarEventService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

@@ -17,7 +17,7 @@ describe('AssignmentComment Management Detail Component', () => {
           [
             {
               path: '**',
-              component: AssignmentCommentDetailComponent,
+              loadComponent: () => import('./assignment-comment-detail.component').then(m => m.AssignmentCommentDetailComponent),
               resolve: { assignmentComment: () => of({ id: 123 }) },
             },
           ],

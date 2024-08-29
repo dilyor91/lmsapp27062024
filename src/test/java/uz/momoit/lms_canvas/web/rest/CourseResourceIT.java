@@ -104,8 +104,8 @@ class CourseResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Course createEntity(EntityManager em) {
-        Course course = new Course()
+    public static Course createEntity() {
+        return new Course()
             .courseName(DEFAULT_COURSE_NAME)
             .courseCode(DEFAULT_COURSE_CODE)
             .courseImagePath(DEFAULT_COURSE_IMAGE_PATH)
@@ -117,7 +117,6 @@ class CourseResourceIT {
             .selfEnrollmentCode(DEFAULT_SELF_ENROLLMENT_CODE)
             .storageQuota(DEFAULT_STORAGE_QUOTA)
             .status(DEFAULT_STATUS);
-        return course;
     }
 
     /**
@@ -126,8 +125,8 @@ class CourseResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Course createUpdatedEntity(EntityManager em) {
-        Course course = new Course()
+    public static Course createUpdatedEntity() {
+        return new Course()
             .courseName(UPDATED_COURSE_NAME)
             .courseCode(UPDATED_COURSE_CODE)
             .courseImagePath(UPDATED_COURSE_IMAGE_PATH)
@@ -139,12 +138,11 @@ class CourseResourceIT {
             .selfEnrollmentCode(UPDATED_SELF_ENROLLMENT_CODE)
             .storageQuota(UPDATED_STORAGE_QUOTA)
             .status(UPDATED_STATUS);
-        return course;
     }
 
     @BeforeEach
     public void initTest() {
-        course = createEntity(em);
+        course = createEntity();
     }
 
     @AfterEach
@@ -501,11 +499,11 @@ class CourseResourceIT {
 
         partialUpdatedCourse
             .courseName(UPDATED_COURSE_NAME)
-            .courseImagePath(UPDATED_COURSE_IMAGE_PATH)
             .courseStartDate(UPDATED_COURSE_START_DATE)
             .courseEndDate(UPDATED_COURSE_END_DATE)
-            .courseFormat(UPDATED_COURSE_FORMAT)
-            .storageQuota(UPDATED_STORAGE_QUOTA)
+            .published(UPDATED_PUBLISHED)
+            .selfEnrollment(UPDATED_SELF_ENROLLMENT)
+            .selfEnrollmentCode(UPDATED_SELF_ENROLLMENT_CODE)
             .status(UPDATED_STATUS);
 
         restCourseMockMvc

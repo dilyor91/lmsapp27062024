@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { CourseSectionComponent } from './list/course-section.component';
-import { CourseSectionDetailComponent } from './detail/course-section-detail.component';
-import { CourseSectionUpdateComponent } from './update/course-section-update.component';
 import CourseSectionResolve from './route/course-section-routing-resolve.service';
 
 const courseSectionRoute: Routes = [
   {
     path: '',
-    component: CourseSectionComponent,
+    loadComponent: () => import('./list/course-section.component').then(m => m.CourseSectionComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: CourseSectionDetailComponent,
+    loadComponent: () => import('./detail/course-section-detail.component').then(m => m.CourseSectionDetailComponent),
     resolve: {
       courseSection: CourseSectionResolve,
     },
@@ -26,7 +23,7 @@ const courseSectionRoute: Routes = [
   },
   {
     path: 'new',
-    component: CourseSectionUpdateComponent,
+    loadComponent: () => import('./update/course-section-update.component').then(m => m.CourseSectionUpdateComponent),
     resolve: {
       courseSection: CourseSectionResolve,
     },
@@ -34,7 +31,7 @@ const courseSectionRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: CourseSectionUpdateComponent,
+    loadComponent: () => import('./update/course-section-update.component').then(m => m.CourseSectionUpdateComponent),
     resolve: {
       courseSection: CourseSectionResolve,
     },

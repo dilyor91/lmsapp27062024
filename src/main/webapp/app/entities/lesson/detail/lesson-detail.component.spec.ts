@@ -17,7 +17,7 @@ describe('Lesson Management Detail Component', () => {
           [
             {
               path: '**',
-              component: LessonDetailComponent,
+              loadComponent: () => import('./lesson-detail.component').then(m => m.LessonDetailComponent),
               resolve: { lesson: () => of({ id: 123 }) },
             },
           ],

@@ -29,7 +29,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/faculties")
 public class FacultyResource {
 
-    private static final Logger log = LoggerFactory.getLogger(FacultyResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FacultyResource.class);
 
     private static final String ENTITY_NAME = "faculty";
 
@@ -54,7 +54,7 @@ public class FacultyResource {
      */
     @PostMapping("")
     public ResponseEntity<FacultyDTO> createFaculty(@RequestBody FacultyDTO facultyDTO) throws URISyntaxException {
-        log.debug("REST request to save Faculty : {}", facultyDTO);
+        LOG.debug("REST request to save Faculty : {}", facultyDTO);
         if (facultyDTO.getId() != null) {
             throw new BadRequestAlertException("A new faculty cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -79,7 +79,7 @@ public class FacultyResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody FacultyDTO facultyDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update Faculty : {}, {}", id, facultyDTO);
+        LOG.debug("REST request to update Faculty : {}, {}", id, facultyDTO);
         if (facultyDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -113,7 +113,7 @@ public class FacultyResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody FacultyDTO facultyDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Faculty partially : {}, {}", id, facultyDTO);
+        LOG.debug("REST request to partial update Faculty partially : {}, {}", id, facultyDTO);
         if (facultyDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -141,7 +141,7 @@ public class FacultyResource {
      */
     @GetMapping("")
     public ResponseEntity<List<FacultyDTO>> getAllFaculties(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of Faculties");
+        LOG.debug("REST request to get a page of Faculties");
         Page<FacultyDTO> page = facultyService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -155,7 +155,7 @@ public class FacultyResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<FacultyDTO> getFaculty(@PathVariable("id") Long id) {
-        log.debug("REST request to get Faculty : {}", id);
+        LOG.debug("REST request to get Faculty : {}", id);
         Optional<FacultyDTO> facultyDTO = facultyService.findOne(id);
         return ResponseUtil.wrapOrNotFound(facultyDTO);
     }
@@ -168,7 +168,7 @@ public class FacultyResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteFaculty(@PathVariable("id") Long id) {
-        log.debug("REST request to delete Faculty : {}", id);
+        LOG.debug("REST request to delete Faculty : {}", id);
         facultyService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

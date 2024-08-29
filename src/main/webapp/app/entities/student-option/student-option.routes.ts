@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { StudentOptionComponent } from './list/student-option.component';
-import { StudentOptionDetailComponent } from './detail/student-option-detail.component';
-import { StudentOptionUpdateComponent } from './update/student-option-update.component';
 import StudentOptionResolve from './route/student-option-routing-resolve.service';
 
 const studentOptionRoute: Routes = [
   {
     path: '',
-    component: StudentOptionComponent,
+    loadComponent: () => import('./list/student-option.component').then(m => m.StudentOptionComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: StudentOptionDetailComponent,
+    loadComponent: () => import('./detail/student-option-detail.component').then(m => m.StudentOptionDetailComponent),
     resolve: {
       studentOption: StudentOptionResolve,
     },
@@ -26,7 +23,7 @@ const studentOptionRoute: Routes = [
   },
   {
     path: 'new',
-    component: StudentOptionUpdateComponent,
+    loadComponent: () => import('./update/student-option-update.component').then(m => m.StudentOptionUpdateComponent),
     resolve: {
       studentOption: StudentOptionResolve,
     },
@@ -34,7 +31,7 @@ const studentOptionRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: StudentOptionUpdateComponent,
+    loadComponent: () => import('./update/student-option-update.component').then(m => m.StudentOptionUpdateComponent),
     resolve: {
       studentOption: StudentOptionResolve,
     },

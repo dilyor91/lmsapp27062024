@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.LessonMaterialMapper;
 @Transactional
 public class LessonMaterialServiceImpl implements LessonMaterialService {
 
-    private static final Logger log = LoggerFactory.getLogger(LessonMaterialServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(LessonMaterialServiceImpl.class);
 
     private final LessonMaterialRepository lessonMaterialRepository;
 
@@ -33,7 +33,7 @@ public class LessonMaterialServiceImpl implements LessonMaterialService {
 
     @Override
     public LessonMaterialDTO save(LessonMaterialDTO lessonMaterialDTO) {
-        log.debug("Request to save LessonMaterial : {}", lessonMaterialDTO);
+        LOG.debug("Request to save LessonMaterial : {}", lessonMaterialDTO);
         LessonMaterial lessonMaterial = lessonMaterialMapper.toEntity(lessonMaterialDTO);
         lessonMaterial = lessonMaterialRepository.save(lessonMaterial);
         return lessonMaterialMapper.toDto(lessonMaterial);
@@ -41,7 +41,7 @@ public class LessonMaterialServiceImpl implements LessonMaterialService {
 
     @Override
     public LessonMaterialDTO update(LessonMaterialDTO lessonMaterialDTO) {
-        log.debug("Request to update LessonMaterial : {}", lessonMaterialDTO);
+        LOG.debug("Request to update LessonMaterial : {}", lessonMaterialDTO);
         LessonMaterial lessonMaterial = lessonMaterialMapper.toEntity(lessonMaterialDTO);
         lessonMaterial = lessonMaterialRepository.save(lessonMaterial);
         return lessonMaterialMapper.toDto(lessonMaterial);
@@ -49,7 +49,7 @@ public class LessonMaterialServiceImpl implements LessonMaterialService {
 
     @Override
     public Optional<LessonMaterialDTO> partialUpdate(LessonMaterialDTO lessonMaterialDTO) {
-        log.debug("Request to partially update LessonMaterial : {}", lessonMaterialDTO);
+        LOG.debug("Request to partially update LessonMaterial : {}", lessonMaterialDTO);
 
         return lessonMaterialRepository
             .findById(lessonMaterialDTO.getId())
@@ -65,20 +65,20 @@ public class LessonMaterialServiceImpl implements LessonMaterialService {
     @Override
     @Transactional(readOnly = true)
     public Page<LessonMaterialDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all LessonMaterials");
+        LOG.debug("Request to get all LessonMaterials");
         return lessonMaterialRepository.findAll(pageable).map(lessonMaterialMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<LessonMaterialDTO> findOne(Long id) {
-        log.debug("Request to get LessonMaterial : {}", id);
+        LOG.debug("Request to get LessonMaterial : {}", id);
         return lessonMaterialRepository.findById(id).map(lessonMaterialMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete LessonMaterial : {}", id);
+        LOG.debug("Request to delete LessonMaterial : {}", id);
         lessonMaterialRepository.deleteById(id);
     }
 }

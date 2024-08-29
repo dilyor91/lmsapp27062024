@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SubmissionTypeEnum } from 'app/entities/enumerations/submission-type-enum.model';
 import { IAssignment } from '../assignment.model';
 import { AssignmentService } from '../service/assignment.service';
-import { AssignmentFormService, AssignmentFormGroup } from './assignment-form.service';
+import { AssignmentFormGroup, AssignmentFormService } from './assignment-form.service';
 
 @Component({
   standalone: true,

@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { StudyTermComponent } from './list/study-term.component';
-import { StudyTermDetailComponent } from './detail/study-term-detail.component';
-import { StudyTermUpdateComponent } from './update/study-term-update.component';
 import StudyTermResolve from './route/study-term-routing-resolve.service';
 
 const studyTermRoute: Routes = [
   {
     path: '',
-    component: StudyTermComponent,
+    loadComponent: () => import('./list/study-term.component').then(m => m.StudyTermComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: StudyTermDetailComponent,
+    loadComponent: () => import('./detail/study-term-detail.component').then(m => m.StudyTermDetailComponent),
     resolve: {
       studyTerm: StudyTermResolve,
     },
@@ -26,7 +23,7 @@ const studyTermRoute: Routes = [
   },
   {
     path: 'new',
-    component: StudyTermUpdateComponent,
+    loadComponent: () => import('./update/study-term-update.component').then(m => m.StudyTermUpdateComponent),
     resolve: {
       studyTerm: StudyTermResolve,
     },
@@ -34,7 +31,7 @@ const studyTermRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: StudyTermUpdateComponent,
+    loadComponent: () => import('./update/study-term-update.component').then(m => m.StudyTermUpdateComponent),
     resolve: {
       studyTerm: StudyTermResolve,
     },

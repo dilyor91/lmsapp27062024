@@ -79,13 +79,12 @@ class SubmissionAssignmentResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static SubmissionAssignment createEntity(EntityManager em) {
-        SubmissionAssignment submissionAssignment = new SubmissionAssignment()
+    public static SubmissionAssignment createEntity() {
+        return new SubmissionAssignment()
             .submissionDate(DEFAULT_SUBMISSION_DATE)
             .content(DEFAULT_CONTENT)
             .comment(DEFAULT_COMMENT)
             .attempsNumber(DEFAULT_ATTEMPS_NUMBER);
-        return submissionAssignment;
     }
 
     /**
@@ -94,18 +93,17 @@ class SubmissionAssignmentResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static SubmissionAssignment createUpdatedEntity(EntityManager em) {
-        SubmissionAssignment submissionAssignment = new SubmissionAssignment()
+    public static SubmissionAssignment createUpdatedEntity() {
+        return new SubmissionAssignment()
             .submissionDate(UPDATED_SUBMISSION_DATE)
             .content(UPDATED_CONTENT)
             .comment(UPDATED_COMMENT)
             .attempsNumber(UPDATED_ATTEMPS_NUMBER);
-        return submissionAssignment;
     }
 
     @BeforeEach
     public void initTest() {
-        submissionAssignment = createEntity(em);
+        submissionAssignment = createEntity();
     }
 
     @AfterEach
@@ -314,7 +312,7 @@ class SubmissionAssignmentResourceIT {
         SubmissionAssignment partialUpdatedSubmissionAssignment = new SubmissionAssignment();
         partialUpdatedSubmissionAssignment.setId(submissionAssignment.getId());
 
-        partialUpdatedSubmissionAssignment.submissionDate(UPDATED_SUBMISSION_DATE).content(UPDATED_CONTENT);
+        partialUpdatedSubmissionAssignment.submissionDate(UPDATED_SUBMISSION_DATE).content(UPDATED_CONTENT).comment(UPDATED_COMMENT);
 
         restSubmissionAssignmentMockMvc
             .perform(
