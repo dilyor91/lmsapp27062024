@@ -17,7 +17,7 @@ describe('Option Management Detail Component', () => {
           [
             {
               path: '**',
-              component: OptionDetailComponent,
+              loadComponent: () => import('./option-detail.component').then(m => m.OptionDetailComponent),
               resolve: { option: () => of({ id: 123 }) },
             },
           ],

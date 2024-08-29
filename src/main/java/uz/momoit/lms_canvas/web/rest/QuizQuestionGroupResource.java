@@ -29,7 +29,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/quiz-question-groups")
 public class QuizQuestionGroupResource {
 
-    private static final Logger log = LoggerFactory.getLogger(QuizQuestionGroupResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(QuizQuestionGroupResource.class);
 
     private static final String ENTITY_NAME = "quizQuestionGroup";
 
@@ -58,7 +58,7 @@ public class QuizQuestionGroupResource {
     @PostMapping("")
     public ResponseEntity<QuizQuestionGroupDTO> createQuizQuestionGroup(@RequestBody QuizQuestionGroupDTO quizQuestionGroupDTO)
         throws URISyntaxException {
-        log.debug("REST request to save QuizQuestionGroup : {}", quizQuestionGroupDTO);
+        LOG.debug("REST request to save QuizQuestionGroup : {}", quizQuestionGroupDTO);
         if (quizQuestionGroupDTO.getId() != null) {
             throw new BadRequestAlertException("A new quizQuestionGroup cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -83,7 +83,7 @@ public class QuizQuestionGroupResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody QuizQuestionGroupDTO quizQuestionGroupDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update QuizQuestionGroup : {}, {}", id, quizQuestionGroupDTO);
+        LOG.debug("REST request to update QuizQuestionGroup : {}, {}", id, quizQuestionGroupDTO);
         if (quizQuestionGroupDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -117,7 +117,7 @@ public class QuizQuestionGroupResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody QuizQuestionGroupDTO quizQuestionGroupDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update QuizQuestionGroup partially : {}, {}", id, quizQuestionGroupDTO);
+        LOG.debug("REST request to partial update QuizQuestionGroup partially : {}, {}", id, quizQuestionGroupDTO);
         if (quizQuestionGroupDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -147,7 +147,7 @@ public class QuizQuestionGroupResource {
     public ResponseEntity<List<QuizQuestionGroupDTO>> getAllQuizQuestionGroups(
         @org.springdoc.core.annotations.ParameterObject Pageable pageable
     ) {
-        log.debug("REST request to get a page of QuizQuestionGroups");
+        LOG.debug("REST request to get a page of QuizQuestionGroups");
         Page<QuizQuestionGroupDTO> page = quizQuestionGroupService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -161,7 +161,7 @@ public class QuizQuestionGroupResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<QuizQuestionGroupDTO> getQuizQuestionGroup(@PathVariable("id") Long id) {
-        log.debug("REST request to get QuizQuestionGroup : {}", id);
+        LOG.debug("REST request to get QuizQuestionGroup : {}", id);
         Optional<QuizQuestionGroupDTO> quizQuestionGroupDTO = quizQuestionGroupService.findOne(id);
         return ResponseUtil.wrapOrNotFound(quizQuestionGroupDTO);
     }
@@ -174,7 +174,7 @@ public class QuizQuestionGroupResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteQuizQuestionGroup(@PathVariable("id") Long id) {
-        log.debug("REST request to delete QuizQuestionGroup : {}", id);
+        LOG.debug("REST request to delete QuizQuestionGroup : {}", id);
         quizQuestionGroupService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

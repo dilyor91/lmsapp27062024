@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.QuizMapper;
 @Transactional
 public class QuizServiceImpl implements QuizService {
 
-    private static final Logger log = LoggerFactory.getLogger(QuizServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(QuizServiceImpl.class);
 
     private final QuizRepository quizRepository;
 
@@ -33,7 +33,7 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public QuizDTO save(QuizDTO quizDTO) {
-        log.debug("Request to save Quiz : {}", quizDTO);
+        LOG.debug("Request to save Quiz : {}", quizDTO);
         Quiz quiz = quizMapper.toEntity(quizDTO);
         quiz = quizRepository.save(quiz);
         return quizMapper.toDto(quiz);
@@ -41,7 +41,7 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public QuizDTO update(QuizDTO quizDTO) {
-        log.debug("Request to update Quiz : {}", quizDTO);
+        LOG.debug("Request to update Quiz : {}", quizDTO);
         Quiz quiz = quizMapper.toEntity(quizDTO);
         quiz = quizRepository.save(quiz);
         return quizMapper.toDto(quiz);
@@ -49,7 +49,7 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public Optional<QuizDTO> partialUpdate(QuizDTO quizDTO) {
-        log.debug("Request to partially update Quiz : {}", quizDTO);
+        LOG.debug("Request to partially update Quiz : {}", quizDTO);
 
         return quizRepository
             .findById(quizDTO.getId())
@@ -65,20 +65,20 @@ public class QuizServiceImpl implements QuizService {
     @Override
     @Transactional(readOnly = true)
     public Page<QuizDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all Quizzes");
+        LOG.debug("Request to get all Quizzes");
         return quizRepository.findAll(pageable).map(quizMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<QuizDTO> findOne(Long id) {
-        log.debug("Request to get Quiz : {}", id);
+        LOG.debug("Request to get Quiz : {}", id);
         return quizRepository.findById(id).map(quizMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Quiz : {}", id);
+        LOG.debug("Request to delete Quiz : {}", id);
         quizRepository.deleteById(id);
     }
 }

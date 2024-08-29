@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.GroupMapper;
 @Transactional
 public class GroupServiceImpl implements GroupService {
 
-    private static final Logger log = LoggerFactory.getLogger(GroupServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(GroupServiceImpl.class);
 
     private final GroupRepository groupRepository;
 
@@ -33,7 +33,7 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public GroupDTO save(GroupDTO groupDTO) {
-        log.debug("Request to save Group : {}", groupDTO);
+        LOG.debug("Request to save Group : {}", groupDTO);
         Group group = groupMapper.toEntity(groupDTO);
         group = groupRepository.save(group);
         return groupMapper.toDto(group);
@@ -41,7 +41,7 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public GroupDTO update(GroupDTO groupDTO) {
-        log.debug("Request to update Group : {}", groupDTO);
+        LOG.debug("Request to update Group : {}", groupDTO);
         Group group = groupMapper.toEntity(groupDTO);
         group = groupRepository.save(group);
         return groupMapper.toDto(group);
@@ -49,7 +49,7 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public Optional<GroupDTO> partialUpdate(GroupDTO groupDTO) {
-        log.debug("Request to partially update Group : {}", groupDTO);
+        LOG.debug("Request to partially update Group : {}", groupDTO);
 
         return groupRepository
             .findById(groupDTO.getId())
@@ -65,20 +65,20 @@ public class GroupServiceImpl implements GroupService {
     @Override
     @Transactional(readOnly = true)
     public Page<GroupDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all Groups");
+        LOG.debug("Request to get all Groups");
         return groupRepository.findAll(pageable).map(groupMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<GroupDTO> findOne(Long id) {
-        log.debug("Request to get Group : {}", id);
+        LOG.debug("Request to get Group : {}", id);
         return groupRepository.findById(id).map(groupMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Group : {}", id);
+        LOG.debug("Request to delete Group : {}", id);
         groupRepository.deleteById(id);
     }
 }

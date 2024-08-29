@@ -68,9 +68,8 @@ class GroupResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Group createEntity(EntityManager em) {
-        Group group = new Group().name(DEFAULT_NAME);
-        return group;
+    public static Group createEntity() {
+        return new Group().name(DEFAULT_NAME);
     }
 
     /**
@@ -79,14 +78,13 @@ class GroupResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Group createUpdatedEntity(EntityManager em) {
-        Group group = new Group().name(UPDATED_NAME);
-        return group;
+    public static Group createUpdatedEntity() {
+        return new Group().name(UPDATED_NAME);
     }
 
     @BeforeEach
     public void initTest() {
-        group = createEntity(em);
+        group = createEntity();
     }
 
     @AfterEach

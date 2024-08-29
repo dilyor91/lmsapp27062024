@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -14,7 +14,7 @@ import { LessonService } from 'app/entities/lesson/service/lesson.service';
 import { AttendanceEnum } from 'app/entities/enumerations/attendance-enum.model';
 import { AttendanceService } from '../service/attendance.service';
 import { IAttendance } from '../attendance.model';
-import { AttendanceFormService, AttendanceFormGroup } from './attendance-form.service';
+import { AttendanceFormGroup, AttendanceFormService } from './attendance-form.service';
 
 @Component({
   standalone: true,

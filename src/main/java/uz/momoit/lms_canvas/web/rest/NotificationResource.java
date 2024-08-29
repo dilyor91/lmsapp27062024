@@ -24,7 +24,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/notifications")
 public class NotificationResource {
 
-    private static final Logger log = LoggerFactory.getLogger(NotificationResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(NotificationResource.class);
 
     private static final String ENTITY_NAME = "notification";
 
@@ -49,7 +49,7 @@ public class NotificationResource {
      */
     @PostMapping("")
     public ResponseEntity<NotificationDTO> createNotification(@RequestBody NotificationDTO notificationDTO) throws URISyntaxException {
-        log.debug("REST request to save Notification : {}", notificationDTO);
+        LOG.debug("REST request to save Notification : {}", notificationDTO);
         if (notificationDTO.getId() != null) {
             throw new BadRequestAlertException("A new notification cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -74,7 +74,7 @@ public class NotificationResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody NotificationDTO notificationDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update Notification : {}, {}", id, notificationDTO);
+        LOG.debug("REST request to update Notification : {}, {}", id, notificationDTO);
         if (notificationDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -108,7 +108,7 @@ public class NotificationResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody NotificationDTO notificationDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Notification partially : {}, {}", id, notificationDTO);
+        LOG.debug("REST request to partial update Notification partially : {}, {}", id, notificationDTO);
         if (notificationDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -135,7 +135,7 @@ public class NotificationResource {
      */
     @GetMapping("")
     public List<NotificationDTO> getAllNotifications() {
-        log.debug("REST request to get all Notifications");
+        LOG.debug("REST request to get all Notifications");
         return notificationService.findAll();
     }
 
@@ -147,7 +147,7 @@ public class NotificationResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<NotificationDTO> getNotification(@PathVariable("id") Long id) {
-        log.debug("REST request to get Notification : {}", id);
+        LOG.debug("REST request to get Notification : {}", id);
         Optional<NotificationDTO> notificationDTO = notificationService.findOne(id);
         return ResponseUtil.wrapOrNotFound(notificationDTO);
     }
@@ -160,7 +160,7 @@ public class NotificationResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteNotification(@PathVariable("id") Long id) {
-        log.debug("REST request to delete Notification : {}", id);
+        LOG.debug("REST request to delete Notification : {}", id);
         notificationService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

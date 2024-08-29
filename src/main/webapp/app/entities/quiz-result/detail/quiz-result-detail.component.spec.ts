@@ -17,7 +17,7 @@ describe('QuizResult Management Detail Component', () => {
           [
             {
               path: '**',
-              component: QuizResultDetailComponent,
+              loadComponent: () => import('./quiz-result-detail.component').then(m => m.QuizResultDetailComponent),
               resolve: { quizResult: () => of({ id: 123 }) },
             },
           ],

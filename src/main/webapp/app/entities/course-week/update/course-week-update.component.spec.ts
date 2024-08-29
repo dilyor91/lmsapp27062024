@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideHttpClient, HttpResponse } from '@angular/common/http';
+import { HttpResponse, provideHttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { of, Subject, from } from 'rxjs';
+import { Subject, from, of } from 'rxjs';
 
 import { ICourse } from 'app/entities/course/course.model';
 import { CourseService } from 'app/entities/course/service/course.service';
@@ -49,10 +49,10 @@ describe('CourseWeek Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Course query and add missing value', () => {
       const courseWeek: ICourseWeek = { id: 456 };
-      const course: ICourse = { id: 14889 };
+      const course: ICourse = { id: 11905 };
       courseWeek.course = course;
 
-      const courseCollection: ICourse[] = [{ id: 714 }];
+      const courseCollection: ICourse[] = [{ id: 16752 }];
       jest.spyOn(courseService, 'query').mockReturnValue(of(new HttpResponse({ body: courseCollection })));
       const additionalCourses = [course];
       const expectedCollection: ICourse[] = [...additionalCourses, ...courseCollection];
@@ -71,7 +71,7 @@ describe('CourseWeek Management Update Component', () => {
 
     it('Should update editForm', () => {
       const courseWeek: ICourseWeek = { id: 456 };
-      const course: ICourse = { id: 2996 };
+      const course: ICourse = { id: 26014 };
       courseWeek.course = course;
 
       activatedRoute.data = of({ courseWeek });

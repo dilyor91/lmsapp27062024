@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { SpecialityComponent } from './list/speciality.component';
-import { SpecialityDetailComponent } from './detail/speciality-detail.component';
-import { SpecialityUpdateComponent } from './update/speciality-update.component';
 import SpecialityResolve from './route/speciality-routing-resolve.service';
 
 const specialityRoute: Routes = [
   {
     path: '',
-    component: SpecialityComponent,
+    loadComponent: () => import('./list/speciality.component').then(m => m.SpecialityComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: SpecialityDetailComponent,
+    loadComponent: () => import('./detail/speciality-detail.component').then(m => m.SpecialityDetailComponent),
     resolve: {
       speciality: SpecialityResolve,
     },
@@ -26,7 +23,7 @@ const specialityRoute: Routes = [
   },
   {
     path: 'new',
-    component: SpecialityUpdateComponent,
+    loadComponent: () => import('./update/speciality-update.component').then(m => m.SpecialityUpdateComponent),
     resolve: {
       speciality: SpecialityResolve,
     },
@@ -34,7 +31,7 @@ const specialityRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: SpecialityUpdateComponent,
+    loadComponent: () => import('./update/speciality-update.component').then(m => m.SpecialityUpdateComponent),
     resolve: {
       speciality: SpecialityResolve,
     },

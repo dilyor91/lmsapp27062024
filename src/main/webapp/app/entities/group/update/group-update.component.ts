@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { ISpeciality } from 'app/entities/speciality/speciality.model';
 import { SpecialityService } from 'app/entities/speciality/service/speciality.service';
 import { IGroup } from '../group.model';
 import { GroupService } from '../service/group.service';
-import { GroupFormService, GroupFormGroup } from './group-form.service';
+import { GroupFormGroup, GroupFormService } from './group-form.service';
 
 @Component({
   standalone: true,

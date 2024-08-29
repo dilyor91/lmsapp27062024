@@ -17,7 +17,7 @@ describe('QuizSession Management Detail Component', () => {
           [
             {
               path: '**',
-              component: QuizSessionDetailComponent,
+              loadComponent: () => import('./quiz-session-detail.component').then(m => m.QuizSessionDetailComponent),
               resolve: { quizSession: () => of({ id: 123 }) },
             },
           ],

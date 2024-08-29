@@ -31,7 +31,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/lessons")
 public class LessonResource {
 
-    private static final Logger log = LoggerFactory.getLogger(LessonResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(LessonResource.class);
 
     private static final String ENTITY_NAME = "lesson";
 
@@ -56,7 +56,7 @@ public class LessonResource {
      */
     @PostMapping("")
     public ResponseEntity<LessonDTO> createLesson(@Valid @RequestBody LessonDTO lessonDTO) throws URISyntaxException {
-        log.debug("REST request to save Lesson : {}", lessonDTO);
+        LOG.debug("REST request to save Lesson : {}", lessonDTO);
         if (lessonDTO.getId() != null) {
             throw new BadRequestAlertException("A new lesson cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -81,7 +81,7 @@ public class LessonResource {
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody LessonDTO lessonDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update Lesson : {}, {}", id, lessonDTO);
+        LOG.debug("REST request to update Lesson : {}, {}", id, lessonDTO);
         if (lessonDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -115,7 +115,7 @@ public class LessonResource {
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody LessonDTO lessonDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Lesson partially : {}, {}", id, lessonDTO);
+        LOG.debug("REST request to partial update Lesson partially : {}, {}", id, lessonDTO);
         if (lessonDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -143,7 +143,7 @@ public class LessonResource {
      */
     @GetMapping("")
     public ResponseEntity<List<LessonDTO>> getAllLessons(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of Lessons");
+        LOG.debug("REST request to get a page of Lessons");
         Page<LessonDTO> page = lessonService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -157,7 +157,7 @@ public class LessonResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<LessonDTO> getLesson(@PathVariable("id") Long id) {
-        log.debug("REST request to get Lesson : {}", id);
+        LOG.debug("REST request to get Lesson : {}", id);
         Optional<LessonDTO> lessonDTO = lessonService.findOne(id);
         return ResponseUtil.wrapOrNotFound(lessonDTO);
     }
@@ -170,7 +170,7 @@ public class LessonResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteLesson(@PathVariable("id") Long id) {
-        log.debug("REST request to delete Lesson : {}", id);
+        LOG.debug("REST request to delete Lesson : {}", id);
         lessonService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

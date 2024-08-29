@@ -71,9 +71,8 @@ class QuestionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Question createEntity(EntityManager em) {
-        Question question = new Question().questionText(DEFAULT_QUESTION_TEXT).point(DEFAULT_POINT);
-        return question;
+    public static Question createEntity() {
+        return new Question().questionText(DEFAULT_QUESTION_TEXT).point(DEFAULT_POINT);
     }
 
     /**
@@ -82,14 +81,13 @@ class QuestionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Question createUpdatedEntity(EntityManager em) {
-        Question question = new Question().questionText(UPDATED_QUESTION_TEXT).point(UPDATED_POINT);
-        return question;
+    public static Question createUpdatedEntity() {
+        return new Question().questionText(UPDATED_QUESTION_TEXT).point(UPDATED_POINT);
     }
 
     @BeforeEach
     public void initTest() {
-        question = createEntity(em);
+        question = createEntity();
     }
 
     @AfterEach

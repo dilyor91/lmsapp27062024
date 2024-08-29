@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (attachment()) {
+    @if (attachment(); as attachmentRef) {
       <div>
         <h2 data-cy="attachmentDetailsHeading"><span jhiTranslate="lmsapp27062024App.attachment.detail.title">Attachment</span></h2>
 
@@ -13,7 +13,7 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
-            <span>{{ attachment()!.id }}</span>
+            <span>{{ attachmentRef.id }}</span>
           </dd>
         </dl>
 

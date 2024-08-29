@@ -32,7 +32,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/courses")
 public class CourseResource {
 
-    private static final Logger log = LoggerFactory.getLogger(CourseResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CourseResource.class);
 
     private static final String ENTITY_NAME = "course";
 
@@ -57,7 +57,7 @@ public class CourseResource {
      */
     @PostMapping("")
     public ResponseEntity<CourseDTO> createCourse(@Valid @RequestBody CourseDTO courseDTO) throws URISyntaxException {
-        log.debug("REST request to save Course : {}", courseDTO);
+        LOG.debug("REST request to save Course : {}", courseDTO);
         if (courseDTO.getId() != null) {
             throw new BadRequestAlertException("A new course cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -82,7 +82,7 @@ public class CourseResource {
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody CourseDTO courseDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update Course : {}, {}", id, courseDTO);
+        LOG.debug("REST request to update Course : {}, {}", id, courseDTO);
         if (courseDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -116,7 +116,7 @@ public class CourseResource {
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody CourseDTO courseDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Course partially : {}, {}", id, courseDTO);
+        LOG.debug("REST request to partial update Course partially : {}, {}", id, courseDTO);
         if (courseDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -149,10 +149,10 @@ public class CourseResource {
         @RequestParam(name = "filter", required = false) String filter
     ) {
         if ("courseweekinfo-is-null".equals(filter)) {
-            log.debug("REST request to get all Courses where courseWeekInfo is null");
+            LOG.debug("REST request to get all Courses where courseWeekInfo is null");
             return new ResponseEntity<>(courseService.findAllWhereCourseWeekInfoIsNull(), HttpStatus.OK);
         }
-        log.debug("REST request to get a page of Courses");
+        LOG.debug("REST request to get a page of Courses");
         Page<CourseDTO> page = courseService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -166,7 +166,7 @@ public class CourseResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<CourseDTO> getCourse(@PathVariable("id") Long id) {
-        log.debug("REST request to get Course : {}", id);
+        LOG.debug("REST request to get Course : {}", id);
         Optional<CourseDTO> courseDTO = courseService.findOne(id);
         return ResponseUtil.wrapOrNotFound(courseDTO);
     }
@@ -179,7 +179,7 @@ public class CourseResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCourse(@PathVariable("id") Long id) {
-        log.debug("REST request to delete Course : {}", id);
+        LOG.debug("REST request to delete Course : {}", id);
         courseService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

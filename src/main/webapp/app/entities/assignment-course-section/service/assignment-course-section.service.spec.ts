@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
-import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideHttpClient } from '@angular/common/http';
 
 import { IAssignmentCourseSection } from '../assignment-course-section.model';
 import {
-  sampleWithRequiredData,
+  sampleWithFullData,
   sampleWithNewData,
   sampleWithPartialData,
-  sampleWithFullData,
+  sampleWithRequiredData,
 } from '../assignment-course-section.test-samples';
 
 import { AssignmentCourseSectionService, RestAssignmentCourseSection } from './assignment-course-section.service';

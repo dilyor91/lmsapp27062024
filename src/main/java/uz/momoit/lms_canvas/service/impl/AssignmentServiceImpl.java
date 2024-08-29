@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.AssignmentMapper;
 @Transactional
 public class AssignmentServiceImpl implements AssignmentService {
 
-    private static final Logger log = LoggerFactory.getLogger(AssignmentServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AssignmentServiceImpl.class);
 
     private final AssignmentRepository assignmentRepository;
 
@@ -33,7 +33,7 @@ public class AssignmentServiceImpl implements AssignmentService {
 
     @Override
     public AssignmentDTO save(AssignmentDTO assignmentDTO) {
-        log.debug("Request to save Assignment : {}", assignmentDTO);
+        LOG.debug("Request to save Assignment : {}", assignmentDTO);
         Assignment assignment = assignmentMapper.toEntity(assignmentDTO);
         assignment = assignmentRepository.save(assignment);
         return assignmentMapper.toDto(assignment);
@@ -41,7 +41,7 @@ public class AssignmentServiceImpl implements AssignmentService {
 
     @Override
     public AssignmentDTO update(AssignmentDTO assignmentDTO) {
-        log.debug("Request to update Assignment : {}", assignmentDTO);
+        LOG.debug("Request to update Assignment : {}", assignmentDTO);
         Assignment assignment = assignmentMapper.toEntity(assignmentDTO);
         assignment = assignmentRepository.save(assignment);
         return assignmentMapper.toDto(assignment);
@@ -49,7 +49,7 @@ public class AssignmentServiceImpl implements AssignmentService {
 
     @Override
     public Optional<AssignmentDTO> partialUpdate(AssignmentDTO assignmentDTO) {
-        log.debug("Request to partially update Assignment : {}", assignmentDTO);
+        LOG.debug("Request to partially update Assignment : {}", assignmentDTO);
 
         return assignmentRepository
             .findById(assignmentDTO.getId())
@@ -65,20 +65,20 @@ public class AssignmentServiceImpl implements AssignmentService {
     @Override
     @Transactional(readOnly = true)
     public Page<AssignmentDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all Assignments");
+        LOG.debug("Request to get all Assignments");
         return assignmentRepository.findAll(pageable).map(assignmentMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<AssignmentDTO> findOne(Long id) {
-        log.debug("Request to get Assignment : {}", id);
+        LOG.debug("Request to get Assignment : {}", id);
         return assignmentRepository.findById(id).map(assignmentMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Assignment : {}", id);
+        LOG.debug("Request to delete Assignment : {}", id);
         assignmentRepository.deleteById(id);
     }
 }

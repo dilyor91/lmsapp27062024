@@ -100,15 +100,14 @@ class AnnouncementResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Announcement createEntity(EntityManager em) {
-        Announcement announcement = new Announcement()
+    public static Announcement createEntity() {
+        return new Announcement()
             .title(DEFAULT_TITLE)
             .content(DEFAULT_CONTENT)
             .attachmentId(DEFAULT_ATTACHMENT_ID)
             .delayPost(DEFAULT_DELAY_POST)
             .postAt(DEFAULT_POST_AT)
             .published(DEFAULT_PUBLISHED);
-        return announcement;
     }
 
     /**
@@ -117,20 +116,19 @@ class AnnouncementResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Announcement createUpdatedEntity(EntityManager em) {
-        Announcement announcement = new Announcement()
+    public static Announcement createUpdatedEntity() {
+        return new Announcement()
             .title(UPDATED_TITLE)
             .content(UPDATED_CONTENT)
             .attachmentId(UPDATED_ATTACHMENT_ID)
             .delayPost(UPDATED_DELAY_POST)
             .postAt(UPDATED_POST_AT)
             .published(UPDATED_PUBLISHED);
-        return announcement;
     }
 
     @BeforeEach
     public void initTest() {
-        announcement = createEntity(em);
+        announcement = createEntity();
     }
 
     @AfterEach
@@ -389,7 +387,7 @@ class AnnouncementResourceIT {
         Announcement partialUpdatedAnnouncement = new Announcement();
         partialUpdatedAnnouncement.setId(announcement.getId());
 
-        partialUpdatedAnnouncement.attachmentId(UPDATED_ATTACHMENT_ID).postAt(UPDATED_POST_AT).published(UPDATED_PUBLISHED);
+        partialUpdatedAnnouncement.content(UPDATED_CONTENT).attachmentId(UPDATED_ATTACHMENT_ID).delayPost(UPDATED_DELAY_POST);
 
         restAnnouncementMockMvc
             .perform(

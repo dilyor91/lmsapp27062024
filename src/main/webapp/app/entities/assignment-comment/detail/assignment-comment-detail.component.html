@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (assignmentComment()) {
+    @if (assignmentComment(); as assignmentCommentRef) {
       <div>
         <h2 data-cy="assignmentCommentDetailsHeading">
           <span jhiTranslate="lmsapp27062024App.assignmentComment.detail.title">Assignment Comment</span>
@@ -15,22 +15,22 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
-            <span>{{ assignmentComment()!.id }}</span>
+            <span>{{ assignmentCommentRef.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.assignmentComment.comment">Comment</span></dt>
           <dd>
-            <span>{{ assignmentComment()!.comment }}</span>
+            <span>{{ assignmentCommentRef.comment }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.assignmentComment.commentDate">Comment Date</span></dt>
           <dd>
-            <span>{{ assignmentComment()!.commentDate | formatMediumDatetime }}</span>
+            <span>{{ assignmentCommentRef.commentDate | formatMediumDatetime }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.assignmentComment.submissionAssignment">Submission Assignment</span></dt>
           <dd>
             @if (assignmentComment()!.submissionAssignment) {
               <div>
                 <a [routerLink]="['/submission-assignment', assignmentComment()!.submissionAssignment?.id, 'view']">{{
-                  assignmentComment()!.submissionAssignment?.id
+                  assignmentCommentRef.submissionAssignment?.id
                 }}</a>
               </div>
             }
@@ -39,7 +39,7 @@
           <dd>
             @if (assignmentComment()!.assignment) {
               <div>
-                <a [routerLink]="['/assignment', assignmentComment()!.assignment?.id, 'view']">{{ assignmentComment()!.assignment?.id }}</a>
+                <a [routerLink]="['/assignment', assignmentComment()!.assignment?.id, 'view']">{{ assignmentCommentRef.assignment?.id }}</a>
               </div>
             }
           </dd>
@@ -47,7 +47,7 @@
           <dd>
             @if (assignmentComment()!.student) {
               <div>
-                <a [routerLink]="['/student', assignmentComment()!.student?.id, 'view']">{{ assignmentComment()!.student?.id }}</a>
+                <a [routerLink]="['/student', assignmentComment()!.student?.id, 'view']">{{ assignmentCommentRef.student?.id }}</a>
               </div>
             }
           </dd>
@@ -55,7 +55,7 @@
           <dd>
             @if (assignmentComment()!.teacher) {
               <div>
-                <a [routerLink]="['/teacher', assignmentComment()!.teacher?.id, 'view']">{{ assignmentComment()!.teacher?.id }}</a>
+                <a [routerLink]="['/teacher', assignmentComment()!.teacher?.id, 'view']">{{ assignmentCommentRef.teacher?.id }}</a>
               </div>
             }
           </dd>
@@ -65,7 +65,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/assignment-comment', assignmentComment()!.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/assignment-comment', assignmentCommentRef.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

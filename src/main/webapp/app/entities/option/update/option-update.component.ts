@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { IQuestion } from 'app/entities/question/question.model';
 import { QuestionService } from 'app/entities/question/service/question.service';
 import { IOption } from '../option.model';
 import { OptionService } from '../service/option.service';
-import { OptionFormService, OptionFormGroup } from './option-form.service';
+import { OptionFormGroup, OptionFormService } from './option-form.service';
 
 @Component({
   standalone: true,

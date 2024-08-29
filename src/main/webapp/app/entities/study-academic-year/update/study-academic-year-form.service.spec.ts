@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { sampleWithRequiredData, sampleWithNewData } from '../study-academic-year.test-samples';
+import { sampleWithNewData, sampleWithRequiredData } from '../study-academic-year.test-samples';
 
 import { StudyAcademicYearFormService } from './study-academic-year-form.service';
 

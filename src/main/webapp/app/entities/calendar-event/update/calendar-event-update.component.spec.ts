@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideHttpClient, HttpResponse } from '@angular/common/http';
+import { HttpResponse, provideHttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { of, Subject, from } from 'rxjs';
+import { Subject, from, of } from 'rxjs';
 
 import { IUser } from 'app/entities/user/user.model';
 import { UserService } from 'app/entities/user/service/user.service';
@@ -49,10 +49,10 @@ describe('CalendarEvent Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call User query and add missing value', () => {
       const calendarEvent: ICalendarEvent = { id: 456 };
-      const user: IUser = { id: 26339 };
+      const user: IUser = { id: 28828 };
       calendarEvent.user = user;
 
-      const userCollection: IUser[] = [{ id: 15531 }];
+      const userCollection: IUser[] = [{ id: 29495 }];
       jest.spyOn(userService, 'query').mockReturnValue(of(new HttpResponse({ body: userCollection })));
       const additionalUsers = [user];
       const expectedCollection: IUser[] = [...additionalUsers, ...userCollection];
@@ -71,7 +71,7 @@ describe('CalendarEvent Management Update Component', () => {
 
     it('Should update editForm', () => {
       const calendarEvent: ICalendarEvent = { id: 456 };
-      const user: IUser = { id: 30026 };
+      const user: IUser = { id: 23958 };
       calendarEvent.user = user;
 
       activatedRoute.data = of({ calendarEvent });

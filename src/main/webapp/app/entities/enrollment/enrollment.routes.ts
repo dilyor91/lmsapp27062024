@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { EnrollmentComponent } from './list/enrollment.component';
-import { EnrollmentDetailComponent } from './detail/enrollment-detail.component';
-import { EnrollmentUpdateComponent } from './update/enrollment-update.component';
 import EnrollmentResolve from './route/enrollment-routing-resolve.service';
 
 const enrollmentRoute: Routes = [
   {
     path: '',
-    component: EnrollmentComponent,
+    loadComponent: () => import('./list/enrollment.component').then(m => m.EnrollmentComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: EnrollmentDetailComponent,
+    loadComponent: () => import('./detail/enrollment-detail.component').then(m => m.EnrollmentDetailComponent),
     resolve: {
       enrollment: EnrollmentResolve,
     },
@@ -26,7 +23,7 @@ const enrollmentRoute: Routes = [
   },
   {
     path: 'new',
-    component: EnrollmentUpdateComponent,
+    loadComponent: () => import('./update/enrollment-update.component').then(m => m.EnrollmentUpdateComponent),
     resolve: {
       enrollment: EnrollmentResolve,
     },
@@ -34,7 +31,7 @@ const enrollmentRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: EnrollmentUpdateComponent,
+    loadComponent: () => import('./update/enrollment-update.component').then(m => m.EnrollmentUpdateComponent),
     resolve: {
       enrollment: EnrollmentResolve,
     },

@@ -68,9 +68,8 @@ class StudentQuestionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static StudentQuestion createEntity(EntityManager em) {
-        StudentQuestion studentQuestion = new StudentQuestion().ordNum(DEFAULT_ORD_NUM);
-        return studentQuestion;
+    public static StudentQuestion createEntity() {
+        return new StudentQuestion().ordNum(DEFAULT_ORD_NUM);
     }
 
     /**
@@ -79,14 +78,13 @@ class StudentQuestionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static StudentQuestion createUpdatedEntity(EntityManager em) {
-        StudentQuestion studentQuestion = new StudentQuestion().ordNum(UPDATED_ORD_NUM);
-        return studentQuestion;
+    public static StudentQuestion createUpdatedEntity() {
+        return new StudentQuestion().ordNum(UPDATED_ORD_NUM);
     }
 
     @BeforeEach
     public void initTest() {
-        studentQuestion = createEntity(em);
+        studentQuestion = createEntity();
     }
 
     @AfterEach
@@ -277,6 +275,8 @@ class StudentQuestionResourceIT {
         // Update the studentQuestion using partial update
         StudentQuestion partialUpdatedStudentQuestion = new StudentQuestion();
         partialUpdatedStudentQuestion.setId(studentQuestion.getId());
+
+        partialUpdatedStudentQuestion.ordNum(UPDATED_ORD_NUM);
 
         restStudentQuestionMockMvc
             .perform(

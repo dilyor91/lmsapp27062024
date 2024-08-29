@@ -92,8 +92,8 @@ class WikiPageResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static WikiPage createEntity(EntityManager em) {
-        WikiPage wikiPage = new WikiPage()
+    public static WikiPage createEntity() {
+        return new WikiPage()
             .title(DEFAULT_TITLE)
             .content(DEFAULT_CONTENT)
             .whoAllowed(DEFAULT_WHO_ALLOWED)
@@ -102,7 +102,6 @@ class WikiPageResourceIT {
             .publishedAt(DEFAULT_PUBLISHED_AT)
             .published(DEFAULT_PUBLISHED)
             .notifyUsersChanges(DEFAULT_NOTIFY_USERS_CHANGES);
-        return wikiPage;
     }
 
     /**
@@ -111,8 +110,8 @@ class WikiPageResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static WikiPage createUpdatedEntity(EntityManager em) {
-        WikiPage wikiPage = new WikiPage()
+    public static WikiPage createUpdatedEntity() {
+        return new WikiPage()
             .title(UPDATED_TITLE)
             .content(UPDATED_CONTENT)
             .whoAllowed(UPDATED_WHO_ALLOWED)
@@ -121,12 +120,11 @@ class WikiPageResourceIT {
             .publishedAt(UPDATED_PUBLISHED_AT)
             .published(UPDATED_PUBLISHED)
             .notifyUsersChanges(UPDATED_NOTIFY_USERS_CHANGES);
-        return wikiPage;
     }
 
     @BeforeEach
     public void initTest() {
-        wikiPage = createEntity(em);
+        wikiPage = createEntity();
     }
 
     @AfterEach
@@ -341,12 +339,9 @@ class WikiPageResourceIT {
         partialUpdatedWikiPage.setId(wikiPage.getId());
 
         partialUpdatedWikiPage
-            .title(UPDATED_TITLE)
             .content(UPDATED_CONTENT)
             .whoAllowed(UPDATED_WHO_ALLOWED)
             .addToStudents(UPDATED_ADD_TO_STUDENTS)
-            .addToStudentsDate(UPDATED_ADD_TO_STUDENTS_DATE)
-            .publishedAt(UPDATED_PUBLISHED_AT)
             .published(UPDATED_PUBLISHED)
             .notifyUsersChanges(UPDATED_NOTIFY_USERS_CHANGES);
 

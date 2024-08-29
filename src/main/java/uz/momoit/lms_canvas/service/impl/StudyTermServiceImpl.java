@@ -21,7 +21,7 @@ import uz.momoit.lms_canvas.service.mapper.StudyTermMapper;
 @Transactional
 public class StudyTermServiceImpl implements StudyTermService {
 
-    private static final Logger log = LoggerFactory.getLogger(StudyTermServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(StudyTermServiceImpl.class);
 
     private final StudyTermRepository studyTermRepository;
 
@@ -34,7 +34,7 @@ public class StudyTermServiceImpl implements StudyTermService {
 
     @Override
     public StudyTermDTO save(StudyTermDTO studyTermDTO) {
-        log.debug("Request to save StudyTerm : {}", studyTermDTO);
+        LOG.debug("Request to save StudyTerm : {}", studyTermDTO);
         StudyTerm studyTerm = studyTermMapper.toEntity(studyTermDTO);
         studyTerm = studyTermRepository.save(studyTerm);
         return studyTermMapper.toDto(studyTerm);
@@ -42,7 +42,7 @@ public class StudyTermServiceImpl implements StudyTermService {
 
     @Override
     public StudyTermDTO update(StudyTermDTO studyTermDTO) {
-        log.debug("Request to update StudyTerm : {}", studyTermDTO);
+        LOG.debug("Request to update StudyTerm : {}", studyTermDTO);
         StudyTerm studyTerm = studyTermMapper.toEntity(studyTermDTO);
         studyTerm = studyTermRepository.save(studyTerm);
         return studyTermMapper.toDto(studyTerm);
@@ -50,7 +50,7 @@ public class StudyTermServiceImpl implements StudyTermService {
 
     @Override
     public Optional<StudyTermDTO> partialUpdate(StudyTermDTO studyTermDTO) {
-        log.debug("Request to partially update StudyTerm : {}", studyTermDTO);
+        LOG.debug("Request to partially update StudyTerm : {}", studyTermDTO);
 
         return studyTermRepository
             .findById(studyTermDTO.getId())
@@ -66,20 +66,20 @@ public class StudyTermServiceImpl implements StudyTermService {
     @Override
     @Transactional(readOnly = true)
     public List<StudyTermDTO> findAll() {
-        log.debug("Request to get all StudyTerms");
+        LOG.debug("Request to get all StudyTerms");
         return studyTermRepository.findAll().stream().map(studyTermMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<StudyTermDTO> findOne(Long id) {
-        log.debug("Request to get StudyTerm : {}", id);
+        LOG.debug("Request to get StudyTerm : {}", id);
         return studyTermRepository.findById(id).map(studyTermMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete StudyTerm : {}", id);
+        LOG.debug("Request to delete StudyTerm : {}", id);
         studyTermRepository.deleteById(id);
     }
 }

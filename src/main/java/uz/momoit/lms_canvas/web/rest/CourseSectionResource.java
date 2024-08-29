@@ -31,7 +31,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/course-sections")
 public class CourseSectionResource {
 
-    private static final Logger log = LoggerFactory.getLogger(CourseSectionResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CourseSectionResource.class);
 
     private static final String ENTITY_NAME = "courseSection";
 
@@ -57,7 +57,7 @@ public class CourseSectionResource {
     @PostMapping("")
     public ResponseEntity<CourseSectionDTO> createCourseSection(@Valid @RequestBody CourseSectionDTO courseSectionDTO)
         throws URISyntaxException {
-        log.debug("REST request to save CourseSection : {}", courseSectionDTO);
+        LOG.debug("REST request to save CourseSection : {}", courseSectionDTO);
         if (courseSectionDTO.getId() != null) {
             throw new BadRequestAlertException("A new courseSection cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -82,7 +82,7 @@ public class CourseSectionResource {
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody CourseSectionDTO courseSectionDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update CourseSection : {}, {}", id, courseSectionDTO);
+        LOG.debug("REST request to update CourseSection : {}, {}", id, courseSectionDTO);
         if (courseSectionDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -116,7 +116,7 @@ public class CourseSectionResource {
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody CourseSectionDTO courseSectionDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update CourseSection partially : {}, {}", id, courseSectionDTO);
+        LOG.debug("REST request to partial update CourseSection partially : {}, {}", id, courseSectionDTO);
         if (courseSectionDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -144,7 +144,7 @@ public class CourseSectionResource {
      */
     @GetMapping("")
     public ResponseEntity<List<CourseSectionDTO>> getAllCourseSections(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of CourseSections");
+        LOG.debug("REST request to get a page of CourseSections");
         Page<CourseSectionDTO> page = courseSectionService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -158,7 +158,7 @@ public class CourseSectionResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<CourseSectionDTO> getCourseSection(@PathVariable("id") Long id) {
-        log.debug("REST request to get CourseSection : {}", id);
+        LOG.debug("REST request to get CourseSection : {}", id);
         Optional<CourseSectionDTO> courseSectionDTO = courseSectionService.findOne(id);
         return ResponseUtil.wrapOrNotFound(courseSectionDTO);
     }
@@ -171,7 +171,7 @@ public class CourseSectionResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCourseSection(@PathVariable("id") Long id) {
-        log.debug("REST request to delete CourseSection : {}", id);
+        LOG.debug("REST request to delete CourseSection : {}", id);
         courseSectionService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

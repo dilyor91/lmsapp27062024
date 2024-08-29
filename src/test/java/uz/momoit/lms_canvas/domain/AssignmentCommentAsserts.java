@@ -60,8 +60,8 @@ public class AssignmentCommentAsserts {
     public static void assertAssignmentCommentUpdatableRelationshipsEquals(AssignmentComment expected, AssignmentComment actual) {
         assertThat(expected)
             .as("Verify AssignmentComment relationships")
-            .satisfies(
-                e -> assertThat(e.getSubmissionAssignment()).as("check submissionAssignment").isEqualTo(actual.getSubmissionAssignment())
+            .satisfies(e ->
+                assertThat(e.getSubmissionAssignment()).as("check submissionAssignment").isEqualTo(actual.getSubmissionAssignment())
             )
             .satisfies(e -> assertThat(e.getAssignment()).as("check assignment").isEqualTo(actual.getAssignment()))
             .satisfies(e -> assertThat(e.getStudent()).as("check student").isEqualTo(actual.getStudent()))

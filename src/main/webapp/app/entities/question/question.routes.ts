@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { QuestionComponent } from './list/question.component';
-import { QuestionDetailComponent } from './detail/question-detail.component';
-import { QuestionUpdateComponent } from './update/question-update.component';
 import QuestionResolve from './route/question-routing-resolve.service';
 
 const questionRoute: Routes = [
   {
     path: '',
-    component: QuestionComponent,
+    loadComponent: () => import('./list/question.component').then(m => m.QuestionComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: QuestionDetailComponent,
+    loadComponent: () => import('./detail/question-detail.component').then(m => m.QuestionDetailComponent),
     resolve: {
       question: QuestionResolve,
     },
@@ -26,7 +23,7 @@ const questionRoute: Routes = [
   },
   {
     path: 'new',
-    component: QuestionUpdateComponent,
+    loadComponent: () => import('./update/question-update.component').then(m => m.QuestionUpdateComponent),
     resolve: {
       question: QuestionResolve,
     },
@@ -34,7 +31,7 @@ const questionRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: QuestionUpdateComponent,
+    loadComponent: () => import('./update/question-update.component').then(m => m.QuestionUpdateComponent),
     resolve: {
       question: QuestionResolve,
     },

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { ICourse } from 'app/entities/course/course.model';
 import { CourseService } from 'app/entities/course/service/course.service';
 import { ICourseWeekInfo } from '../course-week-info.model';
 import { CourseWeekInfoService } from '../service/course-week-info.service';
-import { CourseWeekInfoFormService, CourseWeekInfoFormGroup } from './course-week-info-form.service';
+import { CourseWeekInfoFormGroup, CourseWeekInfoFormService } from './course-week-info-form.service';
 
 @Component({
   standalone: true,

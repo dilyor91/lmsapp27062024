@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { OptionComponent } from './list/option.component';
-import { OptionDetailComponent } from './detail/option-detail.component';
-import { OptionUpdateComponent } from './update/option-update.component';
 import OptionResolve from './route/option-routing-resolve.service';
 
 const optionRoute: Routes = [
   {
     path: '',
-    component: OptionComponent,
+    loadComponent: () => import('./list/option.component').then(m => m.OptionComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: OptionDetailComponent,
+    loadComponent: () => import('./detail/option-detail.component').then(m => m.OptionDetailComponent),
     resolve: {
       option: OptionResolve,
     },
@@ -26,7 +23,7 @@ const optionRoute: Routes = [
   },
   {
     path: 'new',
-    component: OptionUpdateComponent,
+    loadComponent: () => import('./update/option-update.component').then(m => m.OptionUpdateComponent),
     resolve: {
       option: OptionResolve,
     },
@@ -34,7 +31,7 @@ const optionRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: OptionUpdateComponent,
+    loadComponent: () => import('./update/option-update.component').then(m => m.OptionUpdateComponent),
     resolve: {
       option: OptionResolve,
     },

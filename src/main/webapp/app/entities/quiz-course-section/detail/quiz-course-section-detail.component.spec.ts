@@ -17,7 +17,7 @@ describe('QuizCourseSection Management Detail Component', () => {
           [
             {
               path: '**',
-              component: QuizCourseSectionDetailComponent,
+              loadComponent: () => import('./quiz-course-section-detail.component').then(m => m.QuizCourseSectionDetailComponent),
               resolve: { quizCourseSection: () => of({ id: 123 }) },
             },
           ],

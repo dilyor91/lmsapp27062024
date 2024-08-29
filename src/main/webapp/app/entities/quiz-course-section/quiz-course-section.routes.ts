@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { QuizCourseSectionComponent } from './list/quiz-course-section.component';
-import { QuizCourseSectionDetailComponent } from './detail/quiz-course-section-detail.component';
-import { QuizCourseSectionUpdateComponent } from './update/quiz-course-section-update.component';
 import QuizCourseSectionResolve from './route/quiz-course-section-routing-resolve.service';
 
 const quizCourseSectionRoute: Routes = [
   {
     path: '',
-    component: QuizCourseSectionComponent,
+    loadComponent: () => import('./list/quiz-course-section.component').then(m => m.QuizCourseSectionComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: QuizCourseSectionDetailComponent,
+    loadComponent: () => import('./detail/quiz-course-section-detail.component').then(m => m.QuizCourseSectionDetailComponent),
     resolve: {
       quizCourseSection: QuizCourseSectionResolve,
     },
@@ -26,7 +23,7 @@ const quizCourseSectionRoute: Routes = [
   },
   {
     path: 'new',
-    component: QuizCourseSectionUpdateComponent,
+    loadComponent: () => import('./update/quiz-course-section-update.component').then(m => m.QuizCourseSectionUpdateComponent),
     resolve: {
       quizCourseSection: QuizCourseSectionResolve,
     },
@@ -34,7 +31,7 @@ const quizCourseSectionRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: QuizCourseSectionUpdateComponent,
+    loadComponent: () => import('./update/quiz-course-section-update.component').then(m => m.QuizCourseSectionUpdateComponent),
     resolve: {
       quizCourseSection: QuizCourseSectionResolve,
     },

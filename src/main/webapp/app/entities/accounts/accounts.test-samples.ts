@@ -1,48 +1,48 @@
 import { IAccounts, NewAccounts } from './accounts.model';
 
 export const sampleWithRequiredData: IAccounts = {
-  id: 5050,
-  username: 'syrup',
-  fullName: 'on provided',
-  sortableName: 'prosecute zowie soul',
-  phone: '930-454-3127 x176',
-  gender: 'feint',
-  userType: 'TEACHER',
-  userStatus: 'BLOCKED',
-};
-
-export const sampleWithPartialData: IAccounts = {
-  id: 3740,
-  username: 'cathedral spectacles',
-  fullName: 'composed',
-  sortableName: 'original engineer gasket',
-  phone: '1-648-584-0606 x50141',
-  gender: 'drat',
+  id: 14364,
+  username: 'long',
+  fullName: 'blossom amused',
+  sortableName: 'fresh furthermore',
+  phone: '1-275-498-6367 x0935',
+  gender: 'afore assistance',
   userType: 'STUDENT',
   userStatus: 'PENDING',
 };
 
-export const sampleWithFullData: IAccounts = {
-  id: 3612,
-  username: 'wannabe slip wildly',
-  fullName: 'station unnecessarily',
-  sortableName: 'large unibody',
-  avatarImageUrl: 'into carefully',
-  phone: '737.365.8037 x8392',
-  locale: 'pheromone unveil at',
-  gender: 'physically gee',
+export const sampleWithPartialData: IAccounts = {
+  id: 8710,
+  username: 'yourself',
+  fullName: 'notation',
+  sortableName: 'valiantly even',
+  phone: '1-669-433-0277 x693',
+  gender: 'instead',
   userType: 'STUDENT',
+  userStatus: 'ACTIVE',
+};
+
+export const sampleWithFullData: IAccounts = {
+  id: 3963,
+  username: 'choosing',
+  fullName: 'composed',
+  sortableName: 'although',
+  avatarImageUrl: 'for yet glue',
+  phone: '853-518-5703',
+  locale: 'hmph hmph',
+  gender: 'over leer',
+  userType: 'TEACHER',
   userStatus: 'PENDING',
 };
 
 export const sampleWithNewData: NewAccounts = {
-  username: 'stump yippee although',
-  fullName: 'soggy unbearably aw',
-  sortableName: 'periodic',
-  phone: '(861) 805-7138',
-  gender: 'politely roughly lovable',
+  username: 'modulo ick',
+  fullName: 'equality whoever so',
+  sortableName: 'unique who how',
+  phone: '546-631-8844',
+  gender: 'afore peel belfry',
   userType: 'TEACHER',
-  userStatus: 'ACTIVE',
+  userStatus: 'BLOCKED',
   id: null,
 };
 

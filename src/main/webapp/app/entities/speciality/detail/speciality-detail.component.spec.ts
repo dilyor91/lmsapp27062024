@@ -17,7 +17,7 @@ describe('Speciality Management Detail Component', () => {
           [
             {
               path: '**',
-              component: SpecialityDetailComponent,
+              loadComponent: () => import('./speciality-detail.component').then(m => m.SpecialityDetailComponent),
               resolve: { speciality: () => of({ id: 123 }) },
             },
           ],

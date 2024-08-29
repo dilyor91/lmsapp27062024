@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (calendarEvent()) {
+    @if (calendarEvent(); as calendarEventRef) {
       <div>
         <h2 data-cy="calendarEventDetailsHeading">
           <span jhiTranslate="lmsapp27062024App.calendarEvent.detail.title">Calendar Event</span>
@@ -15,45 +15,45 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
-            <span>{{ calendarEvent()!.id }}</span>
+            <span>{{ calendarEventRef.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.calendarEvent.title">Title</span></dt>
           <dd>
-            <span>{{ calendarEvent()!.title }}</span>
+            <span>{{ calendarEventRef.title }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.calendarEvent.content">Content</span></dt>
           <dd>
-            <span>{{ calendarEvent()!.content }}</span>
+            <span>{{ calendarEventRef.content }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.calendarEvent.date">Date</span></dt>
           <dd>
-            <span>{{ calendarEvent()!.date | formatMediumDatetime }}</span>
+            <span>{{ calendarEventRef.date | formatMediumDatetime }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.calendarEvent.startTime">Start Time</span></dt>
           <dd>
-            <span>{{ calendarEvent()!.startTime }}</span>
+            <span>{{ calendarEventRef.startTime }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.calendarEvent.endTime">End Time</span></dt>
           <dd>
-            <span>{{ calendarEvent()!.endTime }}</span>
+            <span>{{ calendarEventRef.endTime }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.calendarEvent.location">Location</span></dt>
           <dd>
-            <span>{{ calendarEvent()!.location }}</span>
+            <span>{{ calendarEventRef.location }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.calendarEvent.address">Address</span></dt>
           <dd>
-            <span>{{ calendarEvent()!.address }}</span>
+            <span>{{ calendarEventRef.address }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.calendarEvent.eventFrequency">Event Frequency</span></dt>
           <dd>
-            <span [jhiTranslate]="'lmsapp27062024App.EventFrequency.' + (calendarEvent()!.eventFrequency ?? 'null')">{{
-              { null: '', NOREPEAT: 'NOREPEAT', DAILY: 'DAILY', WEEKLY: 'WEEKLY' }[calendarEvent()!.eventFrequency ?? 'null']
+            <span [jhiTranslate]="'lmsapp27062024App.EventFrequency.' + (calendarEventRef.eventFrequency ?? 'null')">{{
+              { null: '', NOREPEAT: 'NOREPEAT', DAILY: 'DAILY', WEEKLY: 'WEEKLY' }[calendarEventRef.eventFrequency ?? 'null']
             }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.calendarEvent.user">User</span></dt>
           <dd>
-            <span>{{ calendarEvent()!.user?.id }}</span>
+            <span>{{ calendarEventRef.user?.id }}</span>
           </dd>
         </dl>
 
@@ -61,7 +61,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/calendar-event', calendarEvent()!.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/calendar-event', calendarEventRef.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

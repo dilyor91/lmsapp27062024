@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (quizResult()) {
+    @if (quizResult(); as quizResultRef) {
       <div>
         <h2 data-cy="quizResultDetailsHeading"><span jhiTranslate="lmsapp27062024App.quizResult.detail.title">Quiz Result</span></h2>
 
@@ -13,29 +13,29 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
-            <span>{{ quizResult()!.id }}</span>
+            <span>{{ quizResultRef.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.quizResult.point">Point</span></dt>
           <dd>
-            <span>{{ quizResult()!.point }}</span>
+            <span>{{ quizResultRef.point }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.quizResult.totalQuestionCnt">Total Question Cnt</span></dt>
           <dd>
-            <span>{{ quizResult()!.totalQuestionCnt }}</span>
+            <span>{{ quizResultRef.totalQuestionCnt }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.quizResult.correctAnswerCnt">Correct Answer Cnt</span></dt>
           <dd>
-            <span>{{ quizResult()!.correctAnswerCnt }}</span>
+            <span>{{ quizResultRef.correctAnswerCnt }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.quizResult.wrongAnswerCnt">Wrong Answer Cnt</span></dt>
           <dd>
-            <span>{{ quizResult()!.wrongAnswerCnt }}</span>
+            <span>{{ quizResultRef.wrongAnswerCnt }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.quizResult.quiz">Quiz</span></dt>
           <dd>
             @if (quizResult()!.quiz) {
               <div>
-                <a [routerLink]="['/quiz', quizResult()!.quiz?.id, 'view']">{{ quizResult()!.quiz?.id }}</a>
+                <a [routerLink]="['/quiz', quizResult()!.quiz?.id, 'view']">{{ quizResultRef.quiz?.id }}</a>
               </div>
             }
           </dd>
@@ -43,7 +43,7 @@
           <dd>
             @if (quizResult()!.student) {
               <div>
-                <a [routerLink]="['/student', quizResult()!.student?.id, 'view']">{{ quizResult()!.student?.id }}</a>
+                <a [routerLink]="['/student', quizResult()!.student?.id, 'view']">{{ quizResultRef.student?.id }}</a>
               </div>
             }
           </dd>
@@ -51,7 +51,7 @@
           <dd>
             @if (quizResult()!.quizSession) {
               <div>
-                <a [routerLink]="['/quiz-session', quizResult()!.quizSession?.id, 'view']">{{ quizResult()!.quizSession?.id }}</a>
+                <a [routerLink]="['/quiz-session', quizResult()!.quizSession?.id, 'view']">{{ quizResultRef.quizSession?.id }}</a>
               </div>
             }
           </dd>
@@ -61,7 +61,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/quiz-result', quizResult()!.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/quiz-result', quizResultRef.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

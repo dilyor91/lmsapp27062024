@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { StudyAcademicYearComponent } from './list/study-academic-year.component';
-import { StudyAcademicYearDetailComponent } from './detail/study-academic-year-detail.component';
-import { StudyAcademicYearUpdateComponent } from './update/study-academic-year-update.component';
 import StudyAcademicYearResolve from './route/study-academic-year-routing-resolve.service';
 
 const studyAcademicYearRoute: Routes = [
   {
     path: '',
-    component: StudyAcademicYearComponent,
+    loadComponent: () => import('./list/study-academic-year.component').then(m => m.StudyAcademicYearComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: StudyAcademicYearDetailComponent,
+    loadComponent: () => import('./detail/study-academic-year-detail.component').then(m => m.StudyAcademicYearDetailComponent),
     resolve: {
       studyAcademicYear: StudyAcademicYearResolve,
     },
@@ -26,7 +23,7 @@ const studyAcademicYearRoute: Routes = [
   },
   {
     path: 'new',
-    component: StudyAcademicYearUpdateComponent,
+    loadComponent: () => import('./update/study-academic-year-update.component').then(m => m.StudyAcademicYearUpdateComponent),
     resolve: {
       studyAcademicYear: StudyAcademicYearResolve,
     },
@@ -34,7 +31,7 @@ const studyAcademicYearRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: StudyAcademicYearUpdateComponent,
+    loadComponent: () => import('./update/study-academic-year-update.component').then(m => m.StudyAcademicYearUpdateComponent),
     resolve: {
       studyAcademicYear: StudyAcademicYearResolve,
     },

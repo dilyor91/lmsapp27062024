@@ -17,7 +17,7 @@ describe('Group Management Detail Component', () => {
           [
             {
               path: '**',
-              component: GroupDetailComponent,
+              loadComponent: () => import('./group-detail.component').then(m => m.GroupDetailComponent),
               resolve: { group: () => of({ id: 123 }) },
             },
           ],

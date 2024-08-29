@@ -68,9 +68,8 @@ class StudentAnswerQuestionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static StudentAnswerQuestion createEntity(EntityManager em) {
-        StudentAnswerQuestion studentAnswerQuestion = new StudentAnswerQuestion().isCorrect(DEFAULT_IS_CORRECT);
-        return studentAnswerQuestion;
+    public static StudentAnswerQuestion createEntity() {
+        return new StudentAnswerQuestion().isCorrect(DEFAULT_IS_CORRECT);
     }
 
     /**
@@ -79,14 +78,13 @@ class StudentAnswerQuestionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static StudentAnswerQuestion createUpdatedEntity(EntityManager em) {
-        StudentAnswerQuestion studentAnswerQuestion = new StudentAnswerQuestion().isCorrect(UPDATED_IS_CORRECT);
-        return studentAnswerQuestion;
+    public static StudentAnswerQuestion createUpdatedEntity() {
+        return new StudentAnswerQuestion().isCorrect(UPDATED_IS_CORRECT);
     }
 
     @BeforeEach
     public void initTest() {
-        studentAnswerQuestion = createEntity(em);
+        studentAnswerQuestion = createEntity();
     }
 
     @AfterEach

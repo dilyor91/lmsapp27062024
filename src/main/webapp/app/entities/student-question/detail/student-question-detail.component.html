@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (studentQuestion()) {
+    @if (studentQuestion(); as studentQuestionRef) {
       <div>
         <h2 data-cy="studentQuestionDetailsHeading">
           <span jhiTranslate="lmsapp27062024App.studentQuestion.detail.title">Student Question</span>
@@ -15,17 +15,17 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
-            <span>{{ studentQuestion()!.id }}</span>
+            <span>{{ studentQuestionRef.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.studentQuestion.ordNum">Ord Num</span></dt>
           <dd>
-            <span>{{ studentQuestion()!.ordNum }}</span>
+            <span>{{ studentQuestionRef.ordNum }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.studentQuestion.quizSession">Quiz Session</span></dt>
           <dd>
             @if (studentQuestion()!.quizSession) {
               <div>
-                <a [routerLink]="['/quiz-session', studentQuestion()!.quizSession?.id, 'view']">{{ studentQuestion()!.quizSession?.id }}</a>
+                <a [routerLink]="['/quiz-session', studentQuestion()!.quizSession?.id, 'view']">{{ studentQuestionRef.quizSession?.id }}</a>
               </div>
             }
           </dd>
@@ -33,7 +33,7 @@
           <dd>
             @if (studentQuestion()!.question) {
               <div>
-                <a [routerLink]="['/question', studentQuestion()!.question?.id, 'view']">{{ studentQuestion()!.question?.id }}</a>
+                <a [routerLink]="['/question', studentQuestion()!.question?.id, 'view']">{{ studentQuestionRef.question?.id }}</a>
               </div>
             }
           </dd>
@@ -43,7 +43,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/student-question', studentQuestion()!.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/student-question', studentQuestionRef.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

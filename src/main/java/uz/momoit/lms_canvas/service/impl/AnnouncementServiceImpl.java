@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.AnnouncementMapper;
 @Transactional
 public class AnnouncementServiceImpl implements AnnouncementService {
 
-    private static final Logger log = LoggerFactory.getLogger(AnnouncementServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AnnouncementServiceImpl.class);
 
     private final AnnouncementRepository announcementRepository;
 
@@ -33,7 +33,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 
     @Override
     public AnnouncementDTO save(AnnouncementDTO announcementDTO) {
-        log.debug("Request to save Announcement : {}", announcementDTO);
+        LOG.debug("Request to save Announcement : {}", announcementDTO);
         Announcement announcement = announcementMapper.toEntity(announcementDTO);
         announcement = announcementRepository.save(announcement);
         return announcementMapper.toDto(announcement);
@@ -41,7 +41,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 
     @Override
     public AnnouncementDTO update(AnnouncementDTO announcementDTO) {
-        log.debug("Request to update Announcement : {}", announcementDTO);
+        LOG.debug("Request to update Announcement : {}", announcementDTO);
         Announcement announcement = announcementMapper.toEntity(announcementDTO);
         announcement = announcementRepository.save(announcement);
         return announcementMapper.toDto(announcement);
@@ -49,7 +49,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 
     @Override
     public Optional<AnnouncementDTO> partialUpdate(AnnouncementDTO announcementDTO) {
-        log.debug("Request to partially update Announcement : {}", announcementDTO);
+        LOG.debug("Request to partially update Announcement : {}", announcementDTO);
 
         return announcementRepository
             .findById(announcementDTO.getId())
@@ -65,7 +65,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
     @Override
     @Transactional(readOnly = true)
     public Page<AnnouncementDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all Announcements");
+        LOG.debug("Request to get all Announcements");
         return announcementRepository.findAll(pageable).map(announcementMapper::toDto);
     }
 
@@ -76,13 +76,13 @@ public class AnnouncementServiceImpl implements AnnouncementService {
     @Override
     @Transactional(readOnly = true)
     public Optional<AnnouncementDTO> findOne(Long id) {
-        log.debug("Request to get Announcement : {}", id);
+        LOG.debug("Request to get Announcement : {}", id);
         return announcementRepository.findOneWithEagerRelationships(id).map(announcementMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Announcement : {}", id);
+        LOG.debug("Request to delete Announcement : {}", id);
         announcementRepository.deleteById(id);
     }
 }

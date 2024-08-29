@@ -63,5 +63,7 @@ public class CalendarEventAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertCalendarEventUpdatableRelationshipsEquals(CalendarEvent expected, CalendarEvent actual) {}
+    public static void assertCalendarEventUpdatableRelationshipsEquals(CalendarEvent expected, CalendarEvent actual) {
+        // empty method
+    }
 }

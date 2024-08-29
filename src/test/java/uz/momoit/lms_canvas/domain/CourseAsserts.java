@@ -66,5 +66,7 @@ public class CourseAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertCourseUpdatableRelationshipsEquals(Course expected, Course actual) {}
+    public static void assertCourseUpdatableRelationshipsEquals(Course expected, Course actual) {
+        // empty method
+    }
 }

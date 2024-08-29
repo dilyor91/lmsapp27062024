@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { CourseWeekComponent } from './list/course-week.component';
-import { CourseWeekDetailComponent } from './detail/course-week-detail.component';
-import { CourseWeekUpdateComponent } from './update/course-week-update.component';
 import CourseWeekResolve from './route/course-week-routing-resolve.service';
 
 const courseWeekRoute: Routes = [
   {
     path: '',
-    component: CourseWeekComponent,
+    loadComponent: () => import('./list/course-week.component').then(m => m.CourseWeekComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: CourseWeekDetailComponent,
+    loadComponent: () => import('./detail/course-week-detail.component').then(m => m.CourseWeekDetailComponent),
     resolve: {
       courseWeek: CourseWeekResolve,
     },
@@ -26,7 +23,7 @@ const courseWeekRoute: Routes = [
   },
   {
     path: 'new',
-    component: CourseWeekUpdateComponent,
+    loadComponent: () => import('./update/course-week-update.component').then(m => m.CourseWeekUpdateComponent),
     resolve: {
       courseWeek: CourseWeekResolve,
     },
@@ -34,7 +31,7 @@ const courseWeekRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: CourseWeekUpdateComponent,
+    loadComponent: () => import('./update/course-week-update.component').then(m => m.CourseWeekUpdateComponent),
     resolve: {
       courseWeek: CourseWeekResolve,
     },

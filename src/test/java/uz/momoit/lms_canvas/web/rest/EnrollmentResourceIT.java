@@ -77,12 +77,11 @@ class EnrollmentResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Enrollment createEntity(EntityManager em) {
-        Enrollment enrollment = new Enrollment()
+    public static Enrollment createEntity() {
+        return new Enrollment()
             .enrollmentStatus(DEFAULT_ENROLLMENT_STATUS)
             .lastActivityAt(DEFAULT_LAST_ACTIVITY_AT)
             .enrollmentDate(DEFAULT_ENROLLMENT_DATE);
-        return enrollment;
     }
 
     /**
@@ -91,17 +90,16 @@ class EnrollmentResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Enrollment createUpdatedEntity(EntityManager em) {
-        Enrollment enrollment = new Enrollment()
+    public static Enrollment createUpdatedEntity() {
+        return new Enrollment()
             .enrollmentStatus(UPDATED_ENROLLMENT_STATUS)
             .lastActivityAt(UPDATED_LAST_ACTIVITY_AT)
             .enrollmentDate(UPDATED_ENROLLMENT_DATE);
-        return enrollment;
     }
 
     @BeforeEach
     public void initTest() {
-        enrollment = createEntity(em);
+        enrollment = createEntity();
     }
 
     @AfterEach
@@ -317,7 +315,10 @@ class EnrollmentResourceIT {
         Enrollment partialUpdatedEnrollment = new Enrollment();
         partialUpdatedEnrollment.setId(enrollment.getId());
 
-        partialUpdatedEnrollment.lastActivityAt(UPDATED_LAST_ACTIVITY_AT).enrollmentDate(UPDATED_ENROLLMENT_DATE);
+        partialUpdatedEnrollment
+            .enrollmentStatus(UPDATED_ENROLLMENT_STATUS)
+            .lastActivityAt(UPDATED_LAST_ACTIVITY_AT)
+            .enrollmentDate(UPDATED_ENROLLMENT_DATE);
 
         restEnrollmentMockMvc
             .perform(

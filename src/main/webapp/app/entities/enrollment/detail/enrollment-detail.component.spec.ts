@@ -17,7 +17,7 @@ describe('Enrollment Management Detail Component', () => {
           [
             {
               path: '**',
-              component: EnrollmentDetailComponent,
+              loadComponent: () => import('./enrollment-detail.component').then(m => m.EnrollmentDetailComponent),
               resolve: { enrollment: () => of({ id: 123 }) },
             },
           ],

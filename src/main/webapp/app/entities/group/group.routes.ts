@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { GroupComponent } from './list/group.component';
-import { GroupDetailComponent } from './detail/group-detail.component';
-import { GroupUpdateComponent } from './update/group-update.component';
 import GroupResolve from './route/group-routing-resolve.service';
 
 const groupRoute: Routes = [
   {
     path: '',
-    component: GroupComponent,
+    loadComponent: () => import('./list/group.component').then(m => m.GroupComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: GroupDetailComponent,
+    loadComponent: () => import('./detail/group-detail.component').then(m => m.GroupDetailComponent),
     resolve: {
       group: GroupResolve,
     },
@@ -26,7 +23,7 @@ const groupRoute: Routes = [
   },
   {
     path: 'new',
-    component: GroupUpdateComponent,
+    loadComponent: () => import('./update/group-update.component').then(m => m.GroupUpdateComponent),
     resolve: {
       group: GroupResolve,
     },
@@ -34,7 +31,7 @@ const groupRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: GroupUpdateComponent,
+    loadComponent: () => import('./update/group-update.component').then(m => m.GroupUpdateComponent),
     resolve: {
       group: GroupResolve,
     },

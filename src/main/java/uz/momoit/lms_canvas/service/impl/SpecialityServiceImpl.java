@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.SpecialityMapper;
 @Transactional
 public class SpecialityServiceImpl implements SpecialityService {
 
-    private static final Logger log = LoggerFactory.getLogger(SpecialityServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SpecialityServiceImpl.class);
 
     private final SpecialityRepository specialityRepository;
 
@@ -33,7 +33,7 @@ public class SpecialityServiceImpl implements SpecialityService {
 
     @Override
     public SpecialityDTO save(SpecialityDTO specialityDTO) {
-        log.debug("Request to save Speciality : {}", specialityDTO);
+        LOG.debug("Request to save Speciality : {}", specialityDTO);
         Speciality speciality = specialityMapper.toEntity(specialityDTO);
         speciality = specialityRepository.save(speciality);
         return specialityMapper.toDto(speciality);
@@ -41,7 +41,7 @@ public class SpecialityServiceImpl implements SpecialityService {
 
     @Override
     public SpecialityDTO update(SpecialityDTO specialityDTO) {
-        log.debug("Request to update Speciality : {}", specialityDTO);
+        LOG.debug("Request to update Speciality : {}", specialityDTO);
         Speciality speciality = specialityMapper.toEntity(specialityDTO);
         speciality = specialityRepository.save(speciality);
         return specialityMapper.toDto(speciality);
@@ -49,7 +49,7 @@ public class SpecialityServiceImpl implements SpecialityService {
 
     @Override
     public Optional<SpecialityDTO> partialUpdate(SpecialityDTO specialityDTO) {
-        log.debug("Request to partially update Speciality : {}", specialityDTO);
+        LOG.debug("Request to partially update Speciality : {}", specialityDTO);
 
         return specialityRepository
             .findById(specialityDTO.getId())
@@ -65,20 +65,20 @@ public class SpecialityServiceImpl implements SpecialityService {
     @Override
     @Transactional(readOnly = true)
     public Page<SpecialityDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all Specialities");
+        LOG.debug("Request to get all Specialities");
         return specialityRepository.findAll(pageable).map(specialityMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<SpecialityDTO> findOne(Long id) {
-        log.debug("Request to get Speciality : {}", id);
+        LOG.debug("Request to get Speciality : {}", id);
         return specialityRepository.findById(id).map(specialityMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Speciality : {}", id);
+        LOG.debug("Request to delete Speciality : {}", id);
         specialityRepository.deleteById(id);
     }
 }

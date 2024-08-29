@@ -73,9 +73,8 @@ class QuizCourseSectionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static QuizCourseSection createEntity(EntityManager em) {
-        QuizCourseSection quizCourseSection = new QuizCourseSection().startDate(DEFAULT_START_DATE).endDate(DEFAULT_END_DATE);
-        return quizCourseSection;
+    public static QuizCourseSection createEntity() {
+        return new QuizCourseSection().startDate(DEFAULT_START_DATE).endDate(DEFAULT_END_DATE);
     }
 
     /**
@@ -84,14 +83,13 @@ class QuizCourseSectionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static QuizCourseSection createUpdatedEntity(EntityManager em) {
-        QuizCourseSection quizCourseSection = new QuizCourseSection().startDate(UPDATED_START_DATE).endDate(UPDATED_END_DATE);
-        return quizCourseSection;
+    public static QuizCourseSection createUpdatedEntity() {
+        return new QuizCourseSection().startDate(UPDATED_START_DATE).endDate(UPDATED_END_DATE);
     }
 
     @BeforeEach
     public void initTest() {
-        quizCourseSection = createEntity(em);
+        quizCourseSection = createEntity();
     }
 
     @AfterEach
@@ -318,8 +316,6 @@ class QuizCourseSectionResourceIT {
         // Update the quizCourseSection using partial update
         QuizCourseSection partialUpdatedQuizCourseSection = new QuizCourseSection();
         partialUpdatedQuizCourseSection.setId(quizCourseSection.getId());
-
-        partialUpdatedQuizCourseSection.startDate(UPDATED_START_DATE);
 
         restQuizCourseSectionMockMvc
             .perform(

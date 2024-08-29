@@ -96,8 +96,8 @@ class CalendarEventResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static CalendarEvent createEntity(EntityManager em) {
-        CalendarEvent calendarEvent = new CalendarEvent()
+    public static CalendarEvent createEntity() {
+        return new CalendarEvent()
             .title(DEFAULT_TITLE)
             .content(DEFAULT_CONTENT)
             .date(DEFAULT_DATE)
@@ -106,7 +106,6 @@ class CalendarEventResourceIT {
             .location(DEFAULT_LOCATION)
             .address(DEFAULT_ADDRESS)
             .eventFrequency(DEFAULT_EVENT_FREQUENCY);
-        return calendarEvent;
     }
 
     /**
@@ -115,8 +114,8 @@ class CalendarEventResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static CalendarEvent createUpdatedEntity(EntityManager em) {
-        CalendarEvent calendarEvent = new CalendarEvent()
+    public static CalendarEvent createUpdatedEntity() {
+        return new CalendarEvent()
             .title(UPDATED_TITLE)
             .content(UPDATED_CONTENT)
             .date(UPDATED_DATE)
@@ -125,12 +124,11 @@ class CalendarEventResourceIT {
             .location(UPDATED_LOCATION)
             .address(UPDATED_ADDRESS)
             .eventFrequency(UPDATED_EVENT_FREQUENCY);
-        return calendarEvent;
     }
 
     @BeforeEach
     public void initTest() {
-        calendarEvent = createEntity(em);
+        calendarEvent = createEntity();
     }
 
     @AfterEach
@@ -344,7 +342,7 @@ class CalendarEventResourceIT {
         CalendarEvent partialUpdatedCalendarEvent = new CalendarEvent();
         partialUpdatedCalendarEvent.setId(calendarEvent.getId());
 
-        partialUpdatedCalendarEvent.title(UPDATED_TITLE).location(UPDATED_LOCATION).address(UPDATED_ADDRESS);
+        partialUpdatedCalendarEvent.title(UPDATED_TITLE).startTime(UPDATED_START_TIME);
 
         restCalendarEventMockMvc
             .perform(

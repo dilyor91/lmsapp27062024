@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideHttpClient, HttpResponse } from '@angular/common/http';
+import { HttpResponse, provideHttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { of, Subject, from } from 'rxjs';
+import { Subject, from, of } from 'rxjs';
 
 import { IStudyAcademicYear } from 'app/entities/study-academic-year/study-academic-year.model';
 import { StudyAcademicYearService } from 'app/entities/study-academic-year/service/study-academic-year.service';
@@ -49,10 +49,10 @@ describe('StudyTerm Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call StudyAcademicYear query and add missing value', () => {
       const studyTerm: IStudyTerm = { id: 456 };
-      const studyAcademicYear: IStudyAcademicYear = { id: 24202 };
+      const studyAcademicYear: IStudyAcademicYear = { id: 9646 };
       studyTerm.studyAcademicYear = studyAcademicYear;
 
-      const studyAcademicYearCollection: IStudyAcademicYear[] = [{ id: 32268 }];
+      const studyAcademicYearCollection: IStudyAcademicYear[] = [{ id: 24464 }];
       jest.spyOn(studyAcademicYearService, 'query').mockReturnValue(of(new HttpResponse({ body: studyAcademicYearCollection })));
       const additionalStudyAcademicYears = [studyAcademicYear];
       const expectedCollection: IStudyAcademicYear[] = [...additionalStudyAcademicYears, ...studyAcademicYearCollection];
@@ -71,7 +71,7 @@ describe('StudyTerm Management Update Component', () => {
 
     it('Should update editForm', () => {
       const studyTerm: IStudyTerm = { id: 456 };
-      const studyAcademicYear: IStudyAcademicYear = { id: 23782 };
+      const studyAcademicYear: IStudyAcademicYear = { id: 15755 };
       studyTerm.studyAcademicYear = studyAcademicYear;
 
       activatedRoute.data = of({ studyTerm });

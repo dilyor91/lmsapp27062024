@@ -73,11 +73,8 @@ class AssignmentCourseSectionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static AssignmentCourseSection createEntity(EntityManager em) {
-        AssignmentCourseSection assignmentCourseSection = new AssignmentCourseSection()
-            .startDate(DEFAULT_START_DATE)
-            .endDate(DEFAULT_END_DATE);
-        return assignmentCourseSection;
+    public static AssignmentCourseSection createEntity() {
+        return new AssignmentCourseSection().startDate(DEFAULT_START_DATE).endDate(DEFAULT_END_DATE);
     }
 
     /**
@@ -86,16 +83,13 @@ class AssignmentCourseSectionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static AssignmentCourseSection createUpdatedEntity(EntityManager em) {
-        AssignmentCourseSection assignmentCourseSection = new AssignmentCourseSection()
-            .startDate(UPDATED_START_DATE)
-            .endDate(UPDATED_END_DATE);
-        return assignmentCourseSection;
+    public static AssignmentCourseSection createUpdatedEntity() {
+        return new AssignmentCourseSection().startDate(UPDATED_START_DATE).endDate(UPDATED_END_DATE);
     }
 
     @BeforeEach
     public void initTest() {
-        assignmentCourseSection = createEntity(em);
+        assignmentCourseSection = createEntity();
     }
 
     @AfterEach
@@ -295,6 +289,8 @@ class AssignmentCourseSectionResourceIT {
         // Update the assignmentCourseSection using partial update
         AssignmentCourseSection partialUpdatedAssignmentCourseSection = new AssignmentCourseSection();
         partialUpdatedAssignmentCourseSection.setId(assignmentCourseSection.getId());
+
+        partialUpdatedAssignmentCourseSection.startDate(UPDATED_START_DATE).endDate(UPDATED_END_DATE);
 
         restAssignmentCourseSectionMockMvc
             .perform(

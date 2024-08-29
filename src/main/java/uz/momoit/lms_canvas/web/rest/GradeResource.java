@@ -29,7 +29,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/grades")
 public class GradeResource {
 
-    private static final Logger log = LoggerFactory.getLogger(GradeResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(GradeResource.class);
 
     private static final String ENTITY_NAME = "grade";
 
@@ -54,7 +54,7 @@ public class GradeResource {
      */
     @PostMapping("")
     public ResponseEntity<GradeDTO> createGrade(@RequestBody GradeDTO gradeDTO) throws URISyntaxException {
-        log.debug("REST request to save Grade : {}", gradeDTO);
+        LOG.debug("REST request to save Grade : {}", gradeDTO);
         if (gradeDTO.getId() != null) {
             throw new BadRequestAlertException("A new grade cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -79,7 +79,7 @@ public class GradeResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody GradeDTO gradeDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update Grade : {}, {}", id, gradeDTO);
+        LOG.debug("REST request to update Grade : {}, {}", id, gradeDTO);
         if (gradeDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -113,7 +113,7 @@ public class GradeResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody GradeDTO gradeDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Grade partially : {}, {}", id, gradeDTO);
+        LOG.debug("REST request to partial update Grade partially : {}, {}", id, gradeDTO);
         if (gradeDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -141,7 +141,7 @@ public class GradeResource {
      */
     @GetMapping("")
     public ResponseEntity<List<GradeDTO>> getAllGrades(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of Grades");
+        LOG.debug("REST request to get a page of Grades");
         Page<GradeDTO> page = gradeService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -155,7 +155,7 @@ public class GradeResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<GradeDTO> getGrade(@PathVariable("id") Long id) {
-        log.debug("REST request to get Grade : {}", id);
+        LOG.debug("REST request to get Grade : {}", id);
         Optional<GradeDTO> gradeDTO = gradeService.findOne(id);
         return ResponseUtil.wrapOrNotFound(gradeDTO);
     }
@@ -168,7 +168,7 @@ public class GradeResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteGrade(@PathVariable("id") Long id) {
-        log.debug("REST request to delete Grade : {}", id);
+        LOG.debug("REST request to delete Grade : {}", id);
         gradeService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

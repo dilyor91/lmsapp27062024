@@ -24,7 +24,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/assignment-course-sections")
 public class AssignmentCourseSectionResource {
 
-    private static final Logger log = LoggerFactory.getLogger(AssignmentCourseSectionResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AssignmentCourseSectionResource.class);
 
     private static final String ENTITY_NAME = "assignmentCourseSection";
 
@@ -54,7 +54,7 @@ public class AssignmentCourseSectionResource {
     public ResponseEntity<AssignmentCourseSectionDTO> createAssignmentCourseSection(
         @RequestBody AssignmentCourseSectionDTO assignmentCourseSectionDTO
     ) throws URISyntaxException {
-        log.debug("REST request to save AssignmentCourseSection : {}", assignmentCourseSectionDTO);
+        LOG.debug("REST request to save AssignmentCourseSection : {}", assignmentCourseSectionDTO);
         if (assignmentCourseSectionDTO.getId() != null) {
             throw new BadRequestAlertException("A new assignmentCourseSection cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -81,7 +81,7 @@ public class AssignmentCourseSectionResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody AssignmentCourseSectionDTO assignmentCourseSectionDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update AssignmentCourseSection : {}, {}", id, assignmentCourseSectionDTO);
+        LOG.debug("REST request to update AssignmentCourseSection : {}, {}", id, assignmentCourseSectionDTO);
         if (assignmentCourseSectionDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -115,7 +115,7 @@ public class AssignmentCourseSectionResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody AssignmentCourseSectionDTO assignmentCourseSectionDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update AssignmentCourseSection partially : {}, {}", id, assignmentCourseSectionDTO);
+        LOG.debug("REST request to partial update AssignmentCourseSection partially : {}, {}", id, assignmentCourseSectionDTO);
         if (assignmentCourseSectionDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -142,7 +142,7 @@ public class AssignmentCourseSectionResource {
      */
     @GetMapping("")
     public List<AssignmentCourseSectionDTO> getAllAssignmentCourseSections() {
-        log.debug("REST request to get all AssignmentCourseSections");
+        LOG.debug("REST request to get all AssignmentCourseSections");
         return assignmentCourseSectionService.findAll();
     }
 
@@ -154,7 +154,7 @@ public class AssignmentCourseSectionResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<AssignmentCourseSectionDTO> getAssignmentCourseSection(@PathVariable("id") Long id) {
-        log.debug("REST request to get AssignmentCourseSection : {}", id);
+        LOG.debug("REST request to get AssignmentCourseSection : {}", id);
         Optional<AssignmentCourseSectionDTO> assignmentCourseSectionDTO = assignmentCourseSectionService.findOne(id);
         return ResponseUtil.wrapOrNotFound(assignmentCourseSectionDTO);
     }
@@ -167,7 +167,7 @@ public class AssignmentCourseSectionResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAssignmentCourseSection(@PathVariable("id") Long id) {
-        log.debug("REST request to delete AssignmentCourseSection : {}", id);
+        LOG.debug("REST request to delete AssignmentCourseSection : {}", id);
         assignmentCourseSectionService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

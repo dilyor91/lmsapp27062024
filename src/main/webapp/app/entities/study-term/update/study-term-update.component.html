@@ -19,10 +19,11 @@
           </div>
         }
 
+        @let termNameRef = editForm.get('termName')!;
         <div class="mb-3">
           <label class="form-label" for="field_termName" jhiTranslate="lmsapp27062024App.studyTerm.termName">Term Name</label>
           <input type="text" class="form-control" name="termName" id="field_termName" data-cy="termName" formControlName="termName" />
-          @if (editForm.get('termName')!.invalid && (editForm.get('termName')!.dirty || editForm.get('termName')!.touched)) {
+          @if (termNameRef.invalid && (termNameRef.dirty || termNameRef.touched)) {
             <div>
               @if (editForm.get('termName')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
@@ -31,6 +32,7 @@
           }
         </div>
 
+        @let startDateRef = editForm.get('startDate')!;
         <div class="mb-3">
           <label class="form-label" for="field_startDate" jhiTranslate="lmsapp27062024App.studyTerm.startDate">Start Date</label>
           <div class="d-flex">
@@ -44,7 +46,7 @@
               placeholder="YYYY-MM-DD HH:mm"
             />
           </div>
-          @if (editForm.get('startDate')!.invalid && (editForm.get('startDate')!.dirty || editForm.get('startDate')!.touched)) {
+          @if (startDateRef.invalid && (startDateRef.dirty || startDateRef.touched)) {
             <div>
               @if (editForm.get('startDate')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
@@ -59,6 +61,7 @@
           }
         </div>
 
+        @let endDateRef = editForm.get('endDate')!;
         <div class="mb-3">
           <label class="form-label" for="field_endDate" jhiTranslate="lmsapp27062024App.studyTerm.endDate">End Date</label>
           <div class="d-flex">
@@ -72,7 +75,7 @@
               placeholder="YYYY-MM-DD HH:mm"
             />
           </div>
-          @if (editForm.get('endDate')!.invalid && (editForm.get('endDate')!.dirty || editForm.get('endDate')!.touched)) {
+          @if (endDateRef.invalid && (endDateRef.dirty || endDateRef.touched)) {
             <div>
               @if (editForm.get('endDate')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
@@ -87,10 +90,11 @@
           }
         </div>
 
+        @let statusRef = editForm.get('status')!;
         <div class="mb-3">
           <label class="form-label" for="field_status" jhiTranslate="lmsapp27062024App.studyTerm.status">Status</label>
           <input type="checkbox" class="form-check" name="status" id="field_status" data-cy="status" formControlName="status" />
-          @if (editForm.get('status')!.invalid && (editForm.get('status')!.dirty || editForm.get('status')!.touched)) {
+          @if (statusRef.invalid && (statusRef.dirty || statusRef.touched)) {
             <div>
               @if (editForm.get('status')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>

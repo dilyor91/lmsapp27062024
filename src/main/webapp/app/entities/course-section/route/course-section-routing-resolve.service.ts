@@ -1,14 +1,14 @@
 import { inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
-import { of, EMPTY, Observable } from 'rxjs';
+import { EMPTY, Observable, of } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 
 import { ICourseSection } from '../course-section.model';
 import { CourseSectionService } from '../service/course-section.service';
 
 const courseSectionResolve = (route: ActivatedRouteSnapshot): Observable<null | ICourseSection> => {
-  const id = route.params['id'];
+  const id = route.params.id;
   if (id) {
     return inject(CourseSectionService)
       .find(id)
@@ -16,10 +16,9 @@ const courseSectionResolve = (route: ActivatedRouteSnapshot): Observable<null | 
         mergeMap((courseSection: HttpResponse<ICourseSection>) => {
           if (courseSection.body) {
             return of(courseSection.body);
-          } else {
-            inject(Router).navigate(['404']);
-            return EMPTY;
           }
+          inject(Router).navigate(['404']);
+          return EMPTY;
         }),
       );
   }

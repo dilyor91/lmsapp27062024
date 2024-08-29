@@ -17,7 +17,7 @@ describe('Attachment Management Detail Component', () => {
           [
             {
               path: '**',
-              component: AttachmentDetailComponent,
+              loadComponent: () => import('./attachment-detail.component').then(m => m.AttachmentDetailComponent),
               resolve: { attachment: () => of({ id: 123 }) },
             },
           ],

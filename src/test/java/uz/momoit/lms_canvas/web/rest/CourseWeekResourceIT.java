@@ -76,9 +76,8 @@ class CourseWeekResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static CourseWeek createEntity(EntityManager em) {
-        CourseWeek courseWeek = new CourseWeek().name(DEFAULT_NAME).published(DEFAULT_PUBLISHED).weekDate(DEFAULT_WEEK_DATE);
-        return courseWeek;
+    public static CourseWeek createEntity() {
+        return new CourseWeek().name(DEFAULT_NAME).published(DEFAULT_PUBLISHED).weekDate(DEFAULT_WEEK_DATE);
     }
 
     /**
@@ -87,14 +86,13 @@ class CourseWeekResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static CourseWeek createUpdatedEntity(EntityManager em) {
-        CourseWeek courseWeek = new CourseWeek().name(UPDATED_NAME).published(UPDATED_PUBLISHED).weekDate(UPDATED_WEEK_DATE);
-        return courseWeek;
+    public static CourseWeek createUpdatedEntity() {
+        return new CourseWeek().name(UPDATED_NAME).published(UPDATED_PUBLISHED).weekDate(UPDATED_WEEK_DATE);
     }
 
     @BeforeEach
     public void initTest() {
-        courseWeek = createEntity(em);
+        courseWeek = createEntity();
     }
 
     @AfterEach
@@ -290,7 +288,7 @@ class CourseWeekResourceIT {
         CourseWeek partialUpdatedCourseWeek = new CourseWeek();
         partialUpdatedCourseWeek.setId(courseWeek.getId());
 
-        partialUpdatedCourseWeek.name(UPDATED_NAME).published(UPDATED_PUBLISHED);
+        partialUpdatedCourseWeek.published(UPDATED_PUBLISHED).weekDate(UPDATED_WEEK_DATE);
 
         restCourseWeekMockMvc
             .perform(

@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideHttpClient, HttpResponse } from '@angular/common/http';
+import { HttpResponse, provideHttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { of, Subject, from } from 'rxjs';
+import { Subject, from, of } from 'rxjs';
 
 import { IStudyAcademicYear } from 'app/entities/study-academic-year/study-academic-year.model';
 import { StudyAcademicYearService } from 'app/entities/study-academic-year/service/study-academic-year.service';
@@ -65,10 +65,10 @@ describe('Student Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call studyAcademicYear query and add missing value', () => {
       const student: IStudent = { id: 456 };
-      const studyAcademicYear: IStudyAcademicYear = { id: 10268 };
+      const studyAcademicYear: IStudyAcademicYear = { id: 804 };
       student.studyAcademicYear = studyAcademicYear;
 
-      const studyAcademicYearCollection: IStudyAcademicYear[] = [{ id: 11776 }];
+      const studyAcademicYearCollection: IStudyAcademicYear[] = [{ id: 16545 }];
       jest.spyOn(studyAcademicYearService, 'query').mockReturnValue(of(new HttpResponse({ body: studyAcademicYearCollection })));
       const expectedCollection: IStudyAcademicYear[] = [studyAcademicYear, ...studyAcademicYearCollection];
       jest.spyOn(studyAcademicYearService, 'addStudyAcademicYearToCollectionIfMissing').mockReturnValue(expectedCollection);
@@ -86,10 +86,10 @@ describe('Student Management Update Component', () => {
 
     it('Should call User query and add missing value', () => {
       const student: IStudent = { id: 456 };
-      const user: IUser = { id: 23659 };
+      const user: IUser = { id: 15251 };
       student.user = user;
 
-      const userCollection: IUser[] = [{ id: 8094 }];
+      const userCollection: IUser[] = [{ id: 496 }];
       jest.spyOn(userService, 'query').mockReturnValue(of(new HttpResponse({ body: userCollection })));
       const additionalUsers = [user];
       const expectedCollection: IUser[] = [...additionalUsers, ...userCollection];
@@ -108,10 +108,10 @@ describe('Student Management Update Component', () => {
 
     it('Should call Faculty query and add missing value', () => {
       const student: IStudent = { id: 456 };
-      const faculty: IFaculty = { id: 25882 };
+      const faculty: IFaculty = { id: 12476 };
       student.faculty = faculty;
 
-      const facultyCollection: IFaculty[] = [{ id: 5744 }];
+      const facultyCollection: IFaculty[] = [{ id: 7425 }];
       jest.spyOn(facultyService, 'query').mockReturnValue(of(new HttpResponse({ body: facultyCollection })));
       const additionalFaculties = [faculty];
       const expectedCollection: IFaculty[] = [...additionalFaculties, ...facultyCollection];
@@ -130,10 +130,10 @@ describe('Student Management Update Component', () => {
 
     it('Should call Speciality query and add missing value', () => {
       const student: IStudent = { id: 456 };
-      const speciality: ISpeciality = { id: 7585 };
+      const speciality: ISpeciality = { id: 18182 };
       student.speciality = speciality;
 
-      const specialityCollection: ISpeciality[] = [{ id: 13983 }];
+      const specialityCollection: ISpeciality[] = [{ id: 14158 }];
       jest.spyOn(specialityService, 'query').mockReturnValue(of(new HttpResponse({ body: specialityCollection })));
       const additionalSpecialities = [speciality];
       const expectedCollection: ISpeciality[] = [...additionalSpecialities, ...specialityCollection];
@@ -152,10 +152,10 @@ describe('Student Management Update Component', () => {
 
     it('Should call Group query and add missing value', () => {
       const student: IStudent = { id: 456 };
-      const group: IGroup = { id: 1277 };
+      const group: IGroup = { id: 20301 };
       student.group = group;
 
-      const groupCollection: IGroup[] = [{ id: 2958 }];
+      const groupCollection: IGroup[] = [{ id: 10852 }];
       jest.spyOn(groupService, 'query').mockReturnValue(of(new HttpResponse({ body: groupCollection })));
       const additionalGroups = [group];
       const expectedCollection: IGroup[] = [...additionalGroups, ...groupCollection];
@@ -174,15 +174,15 @@ describe('Student Management Update Component', () => {
 
     it('Should update editForm', () => {
       const student: IStudent = { id: 456 };
-      const studyAcademicYear: IStudyAcademicYear = { id: 274 };
+      const studyAcademicYear: IStudyAcademicYear = { id: 12669 };
       student.studyAcademicYear = studyAcademicYear;
-      const user: IUser = { id: 12616 };
+      const user: IUser = { id: 5899 };
       student.user = user;
-      const faculty: IFaculty = { id: 11460 };
+      const faculty: IFaculty = { id: 23446 };
       student.faculty = faculty;
-      const speciality: ISpeciality = { id: 8135 };
+      const speciality: ISpeciality = { id: 4442 };
       student.speciality = speciality;
-      const group: IGroup = { id: 29490 };
+      const group: IGroup = { id: 31731 };
       student.group = group;
 
       activatedRoute.data = of({ student });

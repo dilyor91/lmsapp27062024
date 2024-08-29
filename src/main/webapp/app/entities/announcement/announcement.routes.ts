@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { AnnouncementComponent } from './list/announcement.component';
-import { AnnouncementDetailComponent } from './detail/announcement-detail.component';
-import { AnnouncementUpdateComponent } from './update/announcement-update.component';
 import AnnouncementResolve from './route/announcement-routing-resolve.service';
 
 const announcementRoute: Routes = [
   {
     path: '',
-    component: AnnouncementComponent,
+    loadComponent: () => import('./list/announcement.component').then(m => m.AnnouncementComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: AnnouncementDetailComponent,
+    loadComponent: () => import('./detail/announcement-detail.component').then(m => m.AnnouncementDetailComponent),
     resolve: {
       announcement: AnnouncementResolve,
     },
@@ -26,7 +23,7 @@ const announcementRoute: Routes = [
   },
   {
     path: 'new',
-    component: AnnouncementUpdateComponent,
+    loadComponent: () => import('./update/announcement-update.component').then(m => m.AnnouncementUpdateComponent),
     resolve: {
       announcement: AnnouncementResolve,
     },
@@ -34,7 +31,7 @@ const announcementRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: AnnouncementUpdateComponent,
+    loadComponent: () => import('./update/announcement-update.component').then(m => m.AnnouncementUpdateComponent),
     resolve: {
       announcement: AnnouncementResolve,
     },

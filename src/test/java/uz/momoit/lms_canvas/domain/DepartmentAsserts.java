@@ -56,5 +56,7 @@ public class DepartmentAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertDepartmentUpdatableRelationshipsEquals(Department expected, Department actual) {}
+    public static void assertDepartmentUpdatableRelationshipsEquals(Department expected, Department actual) {
+        // empty method
+    }
 }

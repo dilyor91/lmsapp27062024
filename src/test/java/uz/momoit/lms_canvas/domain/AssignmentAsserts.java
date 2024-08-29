@@ -61,5 +61,7 @@ public class AssignmentAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertAssignmentUpdatableRelationshipsEquals(Assignment expected, Assignment actual) {}
+    public static void assertAssignmentUpdatableRelationshipsEquals(Assignment expected, Assignment actual) {
+        // empty method
+    }
 }

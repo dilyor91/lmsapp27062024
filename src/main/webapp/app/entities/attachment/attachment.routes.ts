@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { AttachmentComponent } from './list/attachment.component';
-import { AttachmentDetailComponent } from './detail/attachment-detail.component';
-import { AttachmentUpdateComponent } from './update/attachment-update.component';
 import AttachmentResolve from './route/attachment-routing-resolve.service';
 
 const attachmentRoute: Routes = [
   {
     path: '',
-    component: AttachmentComponent,
+    loadComponent: () => import('./list/attachment.component').then(m => m.AttachmentComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: AttachmentDetailComponent,
+    loadComponent: () => import('./detail/attachment-detail.component').then(m => m.AttachmentDetailComponent),
     resolve: {
       attachment: AttachmentResolve,
     },
@@ -26,7 +23,7 @@ const attachmentRoute: Routes = [
   },
   {
     path: 'new',
-    component: AttachmentUpdateComponent,
+    loadComponent: () => import('./update/attachment-update.component').then(m => m.AttachmentUpdateComponent),
     resolve: {
       attachment: AttachmentResolve,
     },

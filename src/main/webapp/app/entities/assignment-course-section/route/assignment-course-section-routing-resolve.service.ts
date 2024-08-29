@@ -1,14 +1,14 @@
 import { inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
-import { of, EMPTY, Observable } from 'rxjs';
+import { EMPTY, Observable, of } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 
 import { IAssignmentCourseSection } from '../assignment-course-section.model';
 import { AssignmentCourseSectionService } from '../service/assignment-course-section.service';
 
 const assignmentCourseSectionResolve = (route: ActivatedRouteSnapshot): Observable<null | IAssignmentCourseSection> => {
-  const id = route.params['id'];
+  const id = route.params.id;
   if (id) {
     return inject(AssignmentCourseSectionService)
       .find(id)
@@ -16,10 +16,9 @@ const assignmentCourseSectionResolve = (route: ActivatedRouteSnapshot): Observab
         mergeMap((assignmentCourseSection: HttpResponse<IAssignmentCourseSection>) => {
           if (assignmentCourseSection.body) {
             return of(assignmentCourseSection.body);
-          } else {
-            inject(Router).navigate(['404']);
-            return EMPTY;
           }
+          inject(Router).navigate(['404']);
+          return EMPTY;
         }),
       );
   }

@@ -57,5 +57,7 @@ public class StudyAcademicYearAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertStudyAcademicYearUpdatableRelationshipsEquals(StudyAcademicYear expected, StudyAcademicYear actual) {}
+    public static void assertStudyAcademicYearUpdatableRelationshipsEquals(StudyAcademicYear expected, StudyAcademicYear actual) {
+        // empty method
+    }
 }

@@ -29,7 +29,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/lesson-materials")
 public class LessonMaterialResource {
 
-    private static final Logger log = LoggerFactory.getLogger(LessonMaterialResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(LessonMaterialResource.class);
 
     private static final String ENTITY_NAME = "lessonMaterial";
 
@@ -55,7 +55,7 @@ public class LessonMaterialResource {
     @PostMapping("")
     public ResponseEntity<LessonMaterialDTO> createLessonMaterial(@RequestBody LessonMaterialDTO lessonMaterialDTO)
         throws URISyntaxException {
-        log.debug("REST request to save LessonMaterial : {}", lessonMaterialDTO);
+        LOG.debug("REST request to save LessonMaterial : {}", lessonMaterialDTO);
         if (lessonMaterialDTO.getId() != null) {
             throw new BadRequestAlertException("A new lessonMaterial cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -80,7 +80,7 @@ public class LessonMaterialResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody LessonMaterialDTO lessonMaterialDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update LessonMaterial : {}, {}", id, lessonMaterialDTO);
+        LOG.debug("REST request to update LessonMaterial : {}, {}", id, lessonMaterialDTO);
         if (lessonMaterialDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -114,7 +114,7 @@ public class LessonMaterialResource {
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody LessonMaterialDTO lessonMaterialDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update LessonMaterial partially : {}, {}", id, lessonMaterialDTO);
+        LOG.debug("REST request to partial update LessonMaterial partially : {}, {}", id, lessonMaterialDTO);
         if (lessonMaterialDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -144,7 +144,7 @@ public class LessonMaterialResource {
     public ResponseEntity<List<LessonMaterialDTO>> getAllLessonMaterials(
         @org.springdoc.core.annotations.ParameterObject Pageable pageable
     ) {
-        log.debug("REST request to get a page of LessonMaterials");
+        LOG.debug("REST request to get a page of LessonMaterials");
         Page<LessonMaterialDTO> page = lessonMaterialService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -158,7 +158,7 @@ public class LessonMaterialResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<LessonMaterialDTO> getLessonMaterial(@PathVariable("id") Long id) {
-        log.debug("REST request to get LessonMaterial : {}", id);
+        LOG.debug("REST request to get LessonMaterial : {}", id);
         Optional<LessonMaterialDTO> lessonMaterialDTO = lessonMaterialService.findOne(id);
         return ResponseUtil.wrapOrNotFound(lessonMaterialDTO);
     }
@@ -171,7 +171,7 @@ public class LessonMaterialResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteLessonMaterial(@PathVariable("id") Long id) {
-        log.debug("REST request to delete LessonMaterial : {}", id);
+        LOG.debug("REST request to delete LessonMaterial : {}", id);
         lessonMaterialService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

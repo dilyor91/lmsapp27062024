@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.TeacherMapper;
 @Transactional
 public class TeacherServiceImpl implements TeacherService {
 
-    private static final Logger log = LoggerFactory.getLogger(TeacherServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TeacherServiceImpl.class);
 
     private final TeacherRepository teacherRepository;
 
@@ -33,7 +33,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public TeacherDTO save(TeacherDTO teacherDTO) {
-        log.debug("Request to save Teacher : {}", teacherDTO);
+        LOG.debug("Request to save Teacher : {}", teacherDTO);
         Teacher teacher = teacherMapper.toEntity(teacherDTO);
         teacher = teacherRepository.save(teacher);
         return teacherMapper.toDto(teacher);
@@ -41,7 +41,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public TeacherDTO update(TeacherDTO teacherDTO) {
-        log.debug("Request to update Teacher : {}", teacherDTO);
+        LOG.debug("Request to update Teacher : {}", teacherDTO);
         Teacher teacher = teacherMapper.toEntity(teacherDTO);
         teacher = teacherRepository.save(teacher);
         return teacherMapper.toDto(teacher);
@@ -49,7 +49,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public Optional<TeacherDTO> partialUpdate(TeacherDTO teacherDTO) {
-        log.debug("Request to partially update Teacher : {}", teacherDTO);
+        LOG.debug("Request to partially update Teacher : {}", teacherDTO);
 
         return teacherRepository
             .findById(teacherDTO.getId())
@@ -65,20 +65,20 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     @Transactional(readOnly = true)
     public Page<TeacherDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all Teachers");
+        LOG.debug("Request to get all Teachers");
         return teacherRepository.findAll(pageable).map(teacherMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<TeacherDTO> findOne(Long id) {
-        log.debug("Request to get Teacher : {}", id);
+        LOG.debug("Request to get Teacher : {}", id);
         return teacherRepository.findById(id).map(teacherMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Teacher : {}", id);
+        LOG.debug("Request to delete Teacher : {}", id);
         teacherRepository.deleteById(id);
     }
 }

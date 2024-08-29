@@ -60,8 +60,8 @@ public class GradeAsserts {
     public static void assertGradeUpdatableRelationshipsEquals(Grade expected, Grade actual) {
         assertThat(expected)
             .as("Verify Grade relationships")
-            .satisfies(
-                e -> assertThat(e.getSubmissionAssignment()).as("check submissionAssignment").isEqualTo(actual.getSubmissionAssignment())
+            .satisfies(e ->
+                assertThat(e.getSubmissionAssignment()).as("check submissionAssignment").isEqualTo(actual.getSubmissionAssignment())
             )
             .satisfies(e -> assertThat(e.getTeacher()).as("check teacher").isEqualTo(actual.getTeacher()))
             .satisfies(e -> assertThat(e.getAssignment()).as("check assignment").isEqualTo(actual.getAssignment()));

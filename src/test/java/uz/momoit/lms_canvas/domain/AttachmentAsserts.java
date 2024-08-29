@@ -44,7 +44,10 @@ public class AttachmentAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertAttachmentUpdatableFieldsEquals(Attachment expected, Attachment actual) {}
+    public static void assertAttachmentUpdatableFieldsEquals(Attachment expected, Attachment actual) {
+        // empty method
+
+    }
 
     /**
      * Asserts that the entity has all the updatable relationships set.
@@ -52,5 +55,7 @@ public class AttachmentAsserts {
      * @param expected the expected entity
      * @param actual the actual entity
      */
-    public static void assertAttachmentUpdatableRelationshipsEquals(Attachment expected, Attachment actual) {}
+    public static void assertAttachmentUpdatableRelationshipsEquals(Attachment expected, Attachment actual) {
+        // empty method
+    }
 }

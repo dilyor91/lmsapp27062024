@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { sampleWithRequiredData, sampleWithNewData } from '../calendar-event.test-samples';
+import { sampleWithNewData, sampleWithRequiredData } from '../calendar-event.test-samples';
 
 import { CalendarEventFormService } from './calendar-event-form.service';
 

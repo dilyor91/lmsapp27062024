@@ -17,7 +17,7 @@ describe('StudentAnswerQuestion Management Detail Component', () => {
           [
             {
               path: '**',
-              component: StudentAnswerQuestionDetailComponent,
+              loadComponent: () => import('./student-answer-question-detail.component').then(m => m.StudentAnswerQuestionDetailComponent),
               resolve: { studentAnswerQuestion: () => of({ id: 123 }) },
             },
           ],

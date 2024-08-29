@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.DepartmentMapper;
 @Transactional
 public class DepartmentServiceImpl implements DepartmentService {
 
-    private static final Logger log = LoggerFactory.getLogger(DepartmentServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DepartmentServiceImpl.class);
 
     private final DepartmentRepository departmentRepository;
 
@@ -33,7 +33,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public DepartmentDTO save(DepartmentDTO departmentDTO) {
-        log.debug("Request to save Department : {}", departmentDTO);
+        LOG.debug("Request to save Department : {}", departmentDTO);
         Department department = departmentMapper.toEntity(departmentDTO);
         department = departmentRepository.save(department);
         return departmentMapper.toDto(department);
@@ -41,7 +41,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public DepartmentDTO update(DepartmentDTO departmentDTO) {
-        log.debug("Request to update Department : {}", departmentDTO);
+        LOG.debug("Request to update Department : {}", departmentDTO);
         Department department = departmentMapper.toEntity(departmentDTO);
         department = departmentRepository.save(department);
         return departmentMapper.toDto(department);
@@ -49,7 +49,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Optional<DepartmentDTO> partialUpdate(DepartmentDTO departmentDTO) {
-        log.debug("Request to partially update Department : {}", departmentDTO);
+        LOG.debug("Request to partially update Department : {}", departmentDTO);
 
         return departmentRepository
             .findById(departmentDTO.getId())
@@ -65,20 +65,20 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     @Transactional(readOnly = true)
     public Page<DepartmentDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all Departments");
+        LOG.debug("Request to get all Departments");
         return departmentRepository.findAll(pageable).map(departmentMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<DepartmentDTO> findOne(Long id) {
-        log.debug("Request to get Department : {}", id);
+        LOG.debug("Request to get Department : {}", id);
         return departmentRepository.findById(id).map(departmentMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Department : {}", id);
+        LOG.debug("Request to delete Department : {}", id);
         departmentRepository.deleteById(id);
     }
 }

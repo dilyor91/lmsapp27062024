@@ -17,7 +17,7 @@ describe('Announcement Management Detail Component', () => {
           [
             {
               path: '**',
-              component: AnnouncementDetailComponent,
+              loadComponent: () => import('./announcement-detail.component').then(m => m.AnnouncementDetailComponent),
               resolve: { announcement: () => of({ id: 123 }) },
             },
           ],

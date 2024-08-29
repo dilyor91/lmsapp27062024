@@ -31,7 +31,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/assignment-comments")
 public class AssignmentCommentResource {
 
-    private static final Logger log = LoggerFactory.getLogger(AssignmentCommentResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AssignmentCommentResource.class);
 
     private static final String ENTITY_NAME = "assignmentComment";
 
@@ -60,7 +60,7 @@ public class AssignmentCommentResource {
     @PostMapping("")
     public ResponseEntity<AssignmentCommentDTO> createAssignmentComment(@Valid @RequestBody AssignmentCommentDTO assignmentCommentDTO)
         throws URISyntaxException {
-        log.debug("REST request to save AssignmentComment : {}", assignmentCommentDTO);
+        LOG.debug("REST request to save AssignmentComment : {}", assignmentCommentDTO);
         if (assignmentCommentDTO.getId() != null) {
             throw new BadRequestAlertException("A new assignmentComment cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -85,7 +85,7 @@ public class AssignmentCommentResource {
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody AssignmentCommentDTO assignmentCommentDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update AssignmentComment : {}, {}", id, assignmentCommentDTO);
+        LOG.debug("REST request to update AssignmentComment : {}, {}", id, assignmentCommentDTO);
         if (assignmentCommentDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -119,7 +119,7 @@ public class AssignmentCommentResource {
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody AssignmentCommentDTO assignmentCommentDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update AssignmentComment partially : {}, {}", id, assignmentCommentDTO);
+        LOG.debug("REST request to partial update AssignmentComment partially : {}, {}", id, assignmentCommentDTO);
         if (assignmentCommentDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -149,7 +149,7 @@ public class AssignmentCommentResource {
     public ResponseEntity<List<AssignmentCommentDTO>> getAllAssignmentComments(
         @org.springdoc.core.annotations.ParameterObject Pageable pageable
     ) {
-        log.debug("REST request to get a page of AssignmentComments");
+        LOG.debug("REST request to get a page of AssignmentComments");
         Page<AssignmentCommentDTO> page = assignmentCommentService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -163,7 +163,7 @@ public class AssignmentCommentResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<AssignmentCommentDTO> getAssignmentComment(@PathVariable("id") Long id) {
-        log.debug("REST request to get AssignmentComment : {}", id);
+        LOG.debug("REST request to get AssignmentComment : {}", id);
         Optional<AssignmentCommentDTO> assignmentCommentDTO = assignmentCommentService.findOne(id);
         return ResponseUtil.wrapOrNotFound(assignmentCommentDTO);
     }
@@ -176,7 +176,7 @@ public class AssignmentCommentResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAssignmentComment(@PathVariable("id") Long id) {
-        log.debug("REST request to delete AssignmentComment : {}", id);
+        LOG.debug("REST request to delete AssignmentComment : {}", id);
         assignmentCommentService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (studentAnswerQuestion()) {
+    @if (studentAnswerQuestion(); as studentAnswerQuestionRef) {
       <div>
         <h2 data-cy="studentAnswerQuestionDetailsHeading">
           <span jhiTranslate="lmsapp27062024App.studentAnswerQuestion.detail.title">Student Answer Question</span>
@@ -15,18 +15,18 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
-            <span>{{ studentAnswerQuestion()!.id }}</span>
+            <span>{{ studentAnswerQuestionRef.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.studentAnswerQuestion.isCorrect">Is Correct</span></dt>
           <dd>
-            <span>{{ studentAnswerQuestion()!.isCorrect }}</span>
+            <span>{{ studentAnswerQuestionRef.isCorrect }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.studentAnswerQuestion.question">Question</span></dt>
           <dd>
             @if (studentAnswerQuestion()!.question) {
               <div>
                 <a [routerLink]="['/question', studentAnswerQuestion()!.question?.id, 'view']">{{
-                  studentAnswerQuestion()!.question?.id
+                  studentAnswerQuestionRef.question?.id
                 }}</a>
               </div>
             }
@@ -35,7 +35,7 @@
           <dd>
             @if (studentAnswerQuestion()!.option) {
               <div>
-                <a [routerLink]="['/option', studentAnswerQuestion()!.option?.id, 'view']">{{ studentAnswerQuestion()!.option?.id }}</a>
+                <a [routerLink]="['/option', studentAnswerQuestion()!.option?.id, 'view']">{{ studentAnswerQuestionRef.option?.id }}</a>
               </div>
             }
           </dd>
@@ -44,7 +44,7 @@
             @if (studentAnswerQuestion()!.quizSession) {
               <div>
                 <a [routerLink]="['/quiz-session', studentAnswerQuestion()!.quizSession?.id, 'view']">{{
-                  studentAnswerQuestion()!.quizSession?.id
+                  studentAnswerQuestionRef.quizSession?.id
                 }}</a>
               </div>
             }
@@ -55,7 +55,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/student-answer-question', studentAnswerQuestion()!.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/student-answer-question', studentAnswerQuestionRef.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

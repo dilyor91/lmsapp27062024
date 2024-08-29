@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -19,7 +19,7 @@ import { AcademicDegreeEnum } from 'app/entities/enumerations/academic-degree-en
 import { AcademicTitleEnum } from 'app/entities/enumerations/academic-title-enum.model';
 import { TeacherService } from '../service/teacher.service';
 import { ITeacher } from '../teacher.model';
-import { TeacherFormService, TeacherFormGroup } from './teacher-form.service';
+import { TeacherFormGroup, TeacherFormService } from './teacher-form.service';
 
 @Component({
   standalone: true,

@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { AssignmentCourseSectionComponent } from './list/assignment-course-section.component';
-import { AssignmentCourseSectionDetailComponent } from './detail/assignment-course-section-detail.component';
-import { AssignmentCourseSectionUpdateComponent } from './update/assignment-course-section-update.component';
 import AssignmentCourseSectionResolve from './route/assignment-course-section-routing-resolve.service';
 
 const assignmentCourseSectionRoute: Routes = [
   {
     path: '',
-    component: AssignmentCourseSectionComponent,
+    loadComponent: () => import('./list/assignment-course-section.component').then(m => m.AssignmentCourseSectionComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: AssignmentCourseSectionDetailComponent,
+    loadComponent: () => import('./detail/assignment-course-section-detail.component').then(m => m.AssignmentCourseSectionDetailComponent),
     resolve: {
       assignmentCourseSection: AssignmentCourseSectionResolve,
     },
@@ -26,7 +23,7 @@ const assignmentCourseSectionRoute: Routes = [
   },
   {
     path: 'new',
-    component: AssignmentCourseSectionUpdateComponent,
+    loadComponent: () => import('./update/assignment-course-section-update.component').then(m => m.AssignmentCourseSectionUpdateComponent),
     resolve: {
       assignmentCourseSection: AssignmentCourseSectionResolve,
     },
@@ -34,7 +31,7 @@ const assignmentCourseSectionRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: AssignmentCourseSectionUpdateComponent,
+    loadComponent: () => import('./update/assignment-course-section-update.component').then(m => m.AssignmentCourseSectionUpdateComponent),
     resolve: {
       assignmentCourseSection: AssignmentCourseSectionResolve,
     },

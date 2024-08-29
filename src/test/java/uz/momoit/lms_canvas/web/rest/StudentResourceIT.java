@@ -139,8 +139,8 @@ class StudentResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Student createEntity(EntityManager em) {
-        Student student = new Student()
+    public static Student createEntity() {
+        return new Student()
             .firstName(DEFAULT_FIRST_NAME)
             .lastName(DEFAULT_LAST_NAME)
             .middleName(DEFAULT_MIDDLE_NAME)
@@ -163,7 +163,6 @@ class StudentResourceIT {
             .educationLanguage(DEFAULT_EDUCATION_LANGUAGE)
             .educationType(DEFAULT_EDUCATION_TYPE)
             .educationForm(DEFAULT_EDUCATION_FORM);
-        return student;
     }
 
     /**
@@ -172,8 +171,8 @@ class StudentResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Student createUpdatedEntity(EntityManager em) {
-        Student student = new Student()
+    public static Student createUpdatedEntity() {
+        return new Student()
             .firstName(UPDATED_FIRST_NAME)
             .lastName(UPDATED_LAST_NAME)
             .middleName(UPDATED_MIDDLE_NAME)
@@ -196,12 +195,11 @@ class StudentResourceIT {
             .educationLanguage(UPDATED_EDUCATION_LANGUAGE)
             .educationType(UPDATED_EDUCATION_TYPE)
             .educationForm(UPDATED_EDUCATION_FORM);
-        return student;
     }
 
     @BeforeEach
     public void initTest() {
-        student = createEntity(em);
+        student = createEntity();
     }
 
     @AfterEach
@@ -590,14 +588,16 @@ class StudentResourceIT {
         partialUpdatedStudent.setId(student.getId());
 
         partialUpdatedStudent
-            .gender(UPDATED_GENDER)
-            .phoneNumber(UPDATED_PHONE_NUMBER)
+            .lastName(UPDATED_LAST_NAME)
+            .middleName(UPDATED_MIDDLE_NAME)
+            .birthdate(UPDATED_BIRTHDATE)
+            .hemisId(UPDATED_HEMIS_ID)
+            .passportNumber(UPDATED_PASSPORT_NUMBER)
             .isActive(UPDATED_IS_ACTIVE)
             .tutionType(UPDATED_TUTION_TYPE)
-            .nationality(UPDATED_NATIONALITY)
             .country(UPDATED_COUNTRY)
-            .region(UPDATED_REGION)
-            .course(UPDATED_COURSE);
+            .city(UPDATED_CITY)
+            .educationForm(UPDATED_EDUCATION_FORM);
 
         restStudentMockMvc
             .perform(

@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.WikiPageMapper;
 @Transactional
 public class WikiPageServiceImpl implements WikiPageService {
 
-    private static final Logger log = LoggerFactory.getLogger(WikiPageServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(WikiPageServiceImpl.class);
 
     private final WikiPageRepository wikiPageRepository;
 
@@ -33,7 +33,7 @@ public class WikiPageServiceImpl implements WikiPageService {
 
     @Override
     public WikiPageDTO save(WikiPageDTO wikiPageDTO) {
-        log.debug("Request to save WikiPage : {}", wikiPageDTO);
+        LOG.debug("Request to save WikiPage : {}", wikiPageDTO);
         WikiPage wikiPage = wikiPageMapper.toEntity(wikiPageDTO);
         wikiPage = wikiPageRepository.save(wikiPage);
         return wikiPageMapper.toDto(wikiPage);
@@ -41,7 +41,7 @@ public class WikiPageServiceImpl implements WikiPageService {
 
     @Override
     public WikiPageDTO update(WikiPageDTO wikiPageDTO) {
-        log.debug("Request to update WikiPage : {}", wikiPageDTO);
+        LOG.debug("Request to update WikiPage : {}", wikiPageDTO);
         WikiPage wikiPage = wikiPageMapper.toEntity(wikiPageDTO);
         wikiPage = wikiPageRepository.save(wikiPage);
         return wikiPageMapper.toDto(wikiPage);
@@ -49,7 +49,7 @@ public class WikiPageServiceImpl implements WikiPageService {
 
     @Override
     public Optional<WikiPageDTO> partialUpdate(WikiPageDTO wikiPageDTO) {
-        log.debug("Request to partially update WikiPage : {}", wikiPageDTO);
+        LOG.debug("Request to partially update WikiPage : {}", wikiPageDTO);
 
         return wikiPageRepository
             .findById(wikiPageDTO.getId())
@@ -65,20 +65,20 @@ public class WikiPageServiceImpl implements WikiPageService {
     @Override
     @Transactional(readOnly = true)
     public Page<WikiPageDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all WikiPages");
+        LOG.debug("Request to get all WikiPages");
         return wikiPageRepository.findAll(pageable).map(wikiPageMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<WikiPageDTO> findOne(Long id) {
-        log.debug("Request to get WikiPage : {}", id);
+        LOG.debug("Request to get WikiPage : {}", id);
         return wikiPageRepository.findById(id).map(wikiPageMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete WikiPage : {}", id);
+        LOG.debug("Request to delete WikiPage : {}", id);
         wikiPageRepository.deleteById(id);
     }
 }

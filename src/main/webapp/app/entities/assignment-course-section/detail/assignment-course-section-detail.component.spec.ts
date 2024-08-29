@@ -17,7 +17,8 @@ describe('AssignmentCourseSection Management Detail Component', () => {
           [
             {
               path: '**',
-              component: AssignmentCourseSectionDetailComponent,
+              loadComponent: () =>
+                import('./assignment-course-section-detail.component').then(m => m.AssignmentCourseSectionDetailComponent),
               resolve: { assignmentCourseSection: () => of({ id: 123 }) },
             },
           ],

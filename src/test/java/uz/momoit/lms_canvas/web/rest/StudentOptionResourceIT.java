@@ -68,9 +68,8 @@ class StudentOptionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static StudentOption createEntity(EntityManager em) {
-        StudentOption studentOption = new StudentOption().ordNum(DEFAULT_ORD_NUM);
-        return studentOption;
+    public static StudentOption createEntity() {
+        return new StudentOption().ordNum(DEFAULT_ORD_NUM);
     }
 
     /**
@@ -79,14 +78,13 @@ class StudentOptionResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static StudentOption createUpdatedEntity(EntityManager em) {
-        StudentOption studentOption = new StudentOption().ordNum(UPDATED_ORD_NUM);
-        return studentOption;
+    public static StudentOption createUpdatedEntity() {
+        return new StudentOption().ordNum(UPDATED_ORD_NUM);
     }
 
     @BeforeEach
     public void initTest() {
-        studentOption = createEntity(em);
+        studentOption = createEntity();
     }
 
     @AfterEach

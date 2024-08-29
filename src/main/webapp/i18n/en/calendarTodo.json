@@ -1,0 +1,28 @@
+{
+  "lmsapp27062024App": {
+    "calendarTodo": {
+      "home": {
+        "title": "Calendar Todos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Calendar Todo",
+        "createOrEditLabel": "Create or edit a Calendar Todo",
+        "notFound": "No Calendar Todos found"
+      },
+      "created": "A new Calendar Todo is created with identifier {{ param }}",
+      "updated": "A Calendar Todo is updated with identifier {{ param }}",
+      "deleted": "A Calendar Todo is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Calendar Todo {{ id }}?"
+      },
+      "detail": {
+        "title": "Calendar Todo"
+      },
+      "id": "ID",
+      "title": "Title",
+      "date": "Date",
+      "time": "Time",
+      "details": "Details",
+      "user": "User"
+    }
+  }
+}

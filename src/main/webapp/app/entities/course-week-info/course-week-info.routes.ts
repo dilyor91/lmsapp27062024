@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { CourseWeekInfoComponent } from './list/course-week-info.component';
-import { CourseWeekInfoDetailComponent } from './detail/course-week-info-detail.component';
-import { CourseWeekInfoUpdateComponent } from './update/course-week-info-update.component';
 import CourseWeekInfoResolve from './route/course-week-info-routing-resolve.service';
 
 const courseWeekInfoRoute: Routes = [
   {
     path: '',
-    component: CourseWeekInfoComponent,
+    loadComponent: () => import('./list/course-week-info.component').then(m => m.CourseWeekInfoComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: CourseWeekInfoDetailComponent,
+    loadComponent: () => import('./detail/course-week-info-detail.component').then(m => m.CourseWeekInfoDetailComponent),
     resolve: {
       courseWeekInfo: CourseWeekInfoResolve,
     },
@@ -26,7 +23,7 @@ const courseWeekInfoRoute: Routes = [
   },
   {
     path: 'new',
-    component: CourseWeekInfoUpdateComponent,
+    loadComponent: () => import('./update/course-week-info-update.component').then(m => m.CourseWeekInfoUpdateComponent),
     resolve: {
       courseWeekInfo: CourseWeekInfoResolve,
     },
@@ -34,7 +31,7 @@ const courseWeekInfoRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: CourseWeekInfoUpdateComponent,
+    loadComponent: () => import('./update/course-week-info-update.component').then(m => m.CourseWeekInfoUpdateComponent),
     resolve: {
       courseWeekInfo: CourseWeekInfoResolve,
     },

@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { TeacherComponent } from './list/teacher.component';
-import { TeacherDetailComponent } from './detail/teacher-detail.component';
-import { TeacherUpdateComponent } from './update/teacher-update.component';
 import TeacherResolve from './route/teacher-routing-resolve.service';
 
 const teacherRoute: Routes = [
   {
     path: '',
-    component: TeacherComponent,
+    loadComponent: () => import('./list/teacher.component').then(m => m.TeacherComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: TeacherDetailComponent,
+    loadComponent: () => import('./detail/teacher-detail.component').then(m => m.TeacherDetailComponent),
     resolve: {
       teacher: TeacherResolve,
     },
@@ -26,7 +23,7 @@ const teacherRoute: Routes = [
   },
   {
     path: 'new',
-    component: TeacherUpdateComponent,
+    loadComponent: () => import('./update/teacher-update.component').then(m => m.TeacherUpdateComponent),
     resolve: {
       teacher: TeacherResolve,
     },
@@ -34,7 +31,7 @@ const teacherRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: TeacherUpdateComponent,
+    loadComponent: () => import('./update/teacher-update.component').then(m => m.TeacherUpdateComponent),
     resolve: {
       teacher: TeacherResolve,
     },

@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { QuizResultComponent } from './list/quiz-result.component';
-import { QuizResultDetailComponent } from './detail/quiz-result-detail.component';
-import { QuizResultUpdateComponent } from './update/quiz-result-update.component';
 import QuizResultResolve from './route/quiz-result-routing-resolve.service';
 
 const quizResultRoute: Routes = [
   {
     path: '',
-    component: QuizResultComponent,
+    loadComponent: () => import('./list/quiz-result.component').then(m => m.QuizResultComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: QuizResultDetailComponent,
+    loadComponent: () => import('./detail/quiz-result-detail.component').then(m => m.QuizResultDetailComponent),
     resolve: {
       quizResult: QuizResultResolve,
     },
@@ -26,7 +23,7 @@ const quizResultRoute: Routes = [
   },
   {
     path: 'new',
-    component: QuizResultUpdateComponent,
+    loadComponent: () => import('./update/quiz-result-update.component').then(m => m.QuizResultUpdateComponent),
     resolve: {
       quizResult: QuizResultResolve,
     },
@@ -34,7 +31,7 @@ const quizResultRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: QuizResultUpdateComponent,
+    loadComponent: () => import('./update/quiz-result-update.component').then(m => m.QuizResultUpdateComponent),
     resolve: {
       quizResult: QuizResultResolve,
     },

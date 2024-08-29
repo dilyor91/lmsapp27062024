@@ -58,6 +58,13 @@ entity CalendarEvent {
     eventFrequency EventFrequency 
 }
 
+entity CalendarTodo{
+    title String
+    date Instant
+    time String
+    details String
+}
+
 entity WikiPage {
     title String 
     content String
@@ -424,6 +431,7 @@ relationship ManyToOne {
     Enrollment{course} to Course
     Announcement{course} to Course
     CalendarEvent{user} to User
+    CalendarTodo{user} to User
     WikiPage{course} to Course
     Student{user} to User
     Student{faculty} to Faculty
@@ -475,7 +483,7 @@ relationship ManyToOne {
 // Set pagination options
 paginate  Course, CourseSection, Enrollment, Accounts, 
 Assignment, Announcement, CalendarEvent, WikiPage,
-Student,
+Student, CalendarTodo,
 Faculty, Speciality, Group, StudyAcademicYear,
 Teacher, Department,
 QuestionGroup, Question, Option,

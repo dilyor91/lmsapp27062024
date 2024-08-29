@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -23,7 +23,7 @@ import { EducationType } from 'app/entities/enumerations/education-type.model';
 import { EducationForm } from 'app/entities/enumerations/education-form.model';
 import { StudentService } from '../service/student.service';
 import { IStudent } from '../student.model';
-import { StudentFormService, StudentFormGroup } from './student-form.service';
+import { StudentFormGroup, StudentFormService } from './student-form.service';
 
 @Component({
   standalone: true,

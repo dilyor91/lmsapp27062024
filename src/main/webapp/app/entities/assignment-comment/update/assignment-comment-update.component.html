@@ -19,10 +19,11 @@
           </div>
         }
 
+        @let commentRef = editForm.get('comment')!;
         <div class="mb-3">
           <label class="form-label" for="field_comment" jhiTranslate="lmsapp27062024App.assignmentComment.comment">Comment</label>
           <input type="text" class="form-control" name="comment" id="field_comment" data-cy="comment" formControlName="comment" />
-          @if (editForm.get('comment')!.invalid && (editForm.get('comment')!.dirty || editForm.get('comment')!.touched)) {
+          @if (commentRef.invalid && (commentRef.dirty || commentRef.touched)) {
             <div>
               @if (editForm.get('comment')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
@@ -31,6 +32,7 @@
           }
         </div>
 
+        @let commentDateRef = editForm.get('commentDate')!;
         <div class="mb-3">
           <label class="form-label" for="field_commentDate" jhiTranslate="lmsapp27062024App.assignmentComment.commentDate"
             >Comment Date</label
@@ -46,7 +48,7 @@
               placeholder="YYYY-MM-DD HH:mm"
             />
           </div>
-          @if (editForm.get('commentDate')!.invalid && (editForm.get('commentDate')!.dirty || editForm.get('commentDate')!.touched)) {
+          @if (commentDateRef.invalid && (commentDateRef.dirty || commentDateRef.touched)) {
             <div>
               @if (editForm.get('commentDate')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>

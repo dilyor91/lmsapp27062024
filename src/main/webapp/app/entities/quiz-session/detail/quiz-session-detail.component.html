@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
-    @if (quizSession()) {
+    @if (quizSession(); as quizSessionRef) {
       <div>
         <h2 data-cy="quizSessionDetailsHeading"><span jhiTranslate="lmsapp27062024App.quizSession.detail.title">Quiz Session</span></h2>
 
@@ -13,27 +13,27 @@
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="global.field.id">ID</span></dt>
           <dd>
-            <span>{{ quizSession()!.id }}</span>
+            <span>{{ quizSessionRef.id }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.quizSession.startTime">Start Time</span></dt>
           <dd>
-            <span>{{ quizSession()!.startTime | formatMediumDatetime }}</span>
+            <span>{{ quizSessionRef.startTime | formatMediumDatetime }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.quizSession.endTime">End Time</span></dt>
           <dd>
-            <span>{{ quizSession()!.endTime | formatMediumDatetime }}</span>
+            <span>{{ quizSessionRef.endTime | formatMediumDatetime }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.quizSession.quizSessionEnum">Quiz Session Enum</span></dt>
           <dd>
-            <span [jhiTranslate]="'lmsapp27062024App.QuizSessionEnum.' + (quizSession()!.quizSessionEnum ?? 'null')">{{
-              { null: '', IN_PROGRESS: 'IN_PROGRESS', FINISHED: 'FINISHED' }[quizSession()!.quizSessionEnum ?? 'null']
+            <span [jhiTranslate]="'lmsapp27062024App.QuizSessionEnum.' + (quizSessionRef.quizSessionEnum ?? 'null')">{{
+              { null: '', IN_PROGRESS: 'IN_PROGRESS', FINISHED: 'FINISHED' }[quizSessionRef.quizSessionEnum ?? 'null']
             }}</span>
           </dd>
           <dt><span jhiTranslate="lmsapp27062024App.quizSession.student">Student</span></dt>
           <dd>
             @if (quizSession()!.student) {
               <div>
-                <a [routerLink]="['/student', quizSession()!.student?.id, 'view']">{{ quizSession()!.student?.id }}</a>
+                <a [routerLink]="['/student', quizSession()!.student?.id, 'view']">{{ quizSessionRef.student?.id }}</a>
               </div>
             }
           </dd>
@@ -41,7 +41,7 @@
           <dd>
             @if (quizSession()!.quiz) {
               <div>
-                <a [routerLink]="['/quiz', quizSession()!.quiz?.id, 'view']">{{ quizSession()!.quiz?.id }}</a>
+                <a [routerLink]="['/quiz', quizSession()!.quiz?.id, 'view']">{{ quizSessionRef.quiz?.id }}</a>
               </div>
             }
           </dd>
@@ -51,7 +51,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/quiz-session', quizSession()!.id, 'edit']" class="btn btn-primary">
+        <button type="button" [routerLink]="['/quiz-session', quizSessionRef.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

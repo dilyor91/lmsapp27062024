@@ -80,13 +80,12 @@ class NotificationResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Notification createEntity(EntityManager em) {
-        Notification notification = new Notification()
+    public static Notification createEntity() {
+        return new Notification()
             .message(DEFAULT_MESSAGE)
             .readDate(DEFAULT_READ_DATE)
             .read(DEFAULT_READ)
             .notificationType(DEFAULT_NOTIFICATION_TYPE);
-        return notification;
     }
 
     /**
@@ -95,18 +94,17 @@ class NotificationResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Notification createUpdatedEntity(EntityManager em) {
-        Notification notification = new Notification()
+    public static Notification createUpdatedEntity() {
+        return new Notification()
             .message(UPDATED_MESSAGE)
             .readDate(UPDATED_READ_DATE)
             .read(UPDATED_READ)
             .notificationType(UPDATED_NOTIFICATION_TYPE);
-        return notification;
     }
 
     @BeforeEach
     public void initTest() {
-        notification = createEntity(em);
+        notification = createEntity();
     }
 
     @AfterEach
@@ -308,7 +306,7 @@ class NotificationResourceIT {
         Notification partialUpdatedNotification = new Notification();
         partialUpdatedNotification.setId(notification.getId());
 
-        partialUpdatedNotification.message(UPDATED_MESSAGE).readDate(UPDATED_READ_DATE).notificationType(UPDATED_NOTIFICATION_TYPE);
+        partialUpdatedNotification.message(UPDATED_MESSAGE);
 
         restNotificationMockMvc
             .perform(

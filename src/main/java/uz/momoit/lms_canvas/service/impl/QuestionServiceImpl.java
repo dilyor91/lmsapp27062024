@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.QuestionMapper;
 @Transactional
 public class QuestionServiceImpl implements QuestionService {
 
-    private static final Logger log = LoggerFactory.getLogger(QuestionServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(QuestionServiceImpl.class);
 
     private final QuestionRepository questionRepository;
 
@@ -33,7 +33,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public QuestionDTO save(QuestionDTO questionDTO) {
-        log.debug("Request to save Question : {}", questionDTO);
+        LOG.debug("Request to save Question : {}", questionDTO);
         Question question = questionMapper.toEntity(questionDTO);
         question = questionRepository.save(question);
         return questionMapper.toDto(question);
@@ -41,7 +41,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public QuestionDTO update(QuestionDTO questionDTO) {
-        log.debug("Request to update Question : {}", questionDTO);
+        LOG.debug("Request to update Question : {}", questionDTO);
         Question question = questionMapper.toEntity(questionDTO);
         question = questionRepository.save(question);
         return questionMapper.toDto(question);
@@ -49,7 +49,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public Optional<QuestionDTO> partialUpdate(QuestionDTO questionDTO) {
-        log.debug("Request to partially update Question : {}", questionDTO);
+        LOG.debug("Request to partially update Question : {}", questionDTO);
 
         return questionRepository
             .findById(questionDTO.getId())
@@ -65,20 +65,20 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     @Transactional(readOnly = true)
     public Page<QuestionDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all Questions");
+        LOG.debug("Request to get all Questions");
         return questionRepository.findAll(pageable).map(questionMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<QuestionDTO> findOne(Long id) {
-        log.debug("Request to get Question : {}", id);
+        LOG.debug("Request to get Question : {}", id);
         return questionRepository.findById(id).map(questionMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Question : {}", id);
+        LOG.debug("Request to delete Question : {}", id);
         questionRepository.deleteById(id);
     }
 }

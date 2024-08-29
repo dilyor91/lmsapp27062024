@@ -73,9 +73,8 @@ class AssignmentCommentResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static AssignmentComment createEntity(EntityManager em) {
-        AssignmentComment assignmentComment = new AssignmentComment().comment(DEFAULT_COMMENT).commentDate(DEFAULT_COMMENT_DATE);
-        return assignmentComment;
+    public static AssignmentComment createEntity() {
+        return new AssignmentComment().comment(DEFAULT_COMMENT).commentDate(DEFAULT_COMMENT_DATE);
     }
 
     /**
@@ -84,14 +83,13 @@ class AssignmentCommentResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static AssignmentComment createUpdatedEntity(EntityManager em) {
-        AssignmentComment assignmentComment = new AssignmentComment().comment(UPDATED_COMMENT).commentDate(UPDATED_COMMENT_DATE);
-        return assignmentComment;
+    public static AssignmentComment createUpdatedEntity() {
+        return new AssignmentComment().comment(UPDATED_COMMENT).commentDate(UPDATED_COMMENT_DATE);
     }
 
     @BeforeEach
     public void initTest() {
-        assignmentComment = createEntity(em);
+        assignmentComment = createEntity();
     }
 
     @AfterEach
@@ -318,6 +316,8 @@ class AssignmentCommentResourceIT {
         // Update the assignmentComment using partial update
         AssignmentComment partialUpdatedAssignmentComment = new AssignmentComment();
         partialUpdatedAssignmentComment.setId(assignmentComment.getId());
+
+        partialUpdatedAssignmentComment.commentDate(UPDATED_COMMENT_DATE);
 
         restAssignmentCommentMockMvc
             .perform(

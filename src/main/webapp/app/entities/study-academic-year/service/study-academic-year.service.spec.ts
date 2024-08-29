@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
-import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideHttpClient } from '@angular/common/http';
 
 import { IStudyAcademicYear } from '../study-academic-year.model';
-import { sampleWithRequiredData, sampleWithNewData, sampleWithPartialData, sampleWithFullData } from '../study-academic-year.test-samples';
+import { sampleWithFullData, sampleWithNewData, sampleWithPartialData, sampleWithRequiredData } from '../study-academic-year.test-samples';
 
-import { StudyAcademicYearService, RestStudyAcademicYear } from './study-academic-year.service';
+import { RestStudyAcademicYear, StudyAcademicYearService } from './study-academic-year.service';
 
 const requireRestSample: RestStudyAcademicYear = {
   ...sampleWithRequiredData,

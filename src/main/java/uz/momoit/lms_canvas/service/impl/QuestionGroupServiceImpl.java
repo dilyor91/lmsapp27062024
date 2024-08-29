@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.QuestionGroupMapper;
 @Transactional
 public class QuestionGroupServiceImpl implements QuestionGroupService {
 
-    private static final Logger log = LoggerFactory.getLogger(QuestionGroupServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(QuestionGroupServiceImpl.class);
 
     private final QuestionGroupRepository questionGroupRepository;
 
@@ -33,7 +33,7 @@ public class QuestionGroupServiceImpl implements QuestionGroupService {
 
     @Override
     public QuestionGroupDTO save(QuestionGroupDTO questionGroupDTO) {
-        log.debug("Request to save QuestionGroup : {}", questionGroupDTO);
+        LOG.debug("Request to save QuestionGroup : {}", questionGroupDTO);
         QuestionGroup questionGroup = questionGroupMapper.toEntity(questionGroupDTO);
         questionGroup = questionGroupRepository.save(questionGroup);
         return questionGroupMapper.toDto(questionGroup);
@@ -41,7 +41,7 @@ public class QuestionGroupServiceImpl implements QuestionGroupService {
 
     @Override
     public QuestionGroupDTO update(QuestionGroupDTO questionGroupDTO) {
-        log.debug("Request to update QuestionGroup : {}", questionGroupDTO);
+        LOG.debug("Request to update QuestionGroup : {}", questionGroupDTO);
         QuestionGroup questionGroup = questionGroupMapper.toEntity(questionGroupDTO);
         questionGroup = questionGroupRepository.save(questionGroup);
         return questionGroupMapper.toDto(questionGroup);
@@ -49,7 +49,7 @@ public class QuestionGroupServiceImpl implements QuestionGroupService {
 
     @Override
     public Optional<QuestionGroupDTO> partialUpdate(QuestionGroupDTO questionGroupDTO) {
-        log.debug("Request to partially update QuestionGroup : {}", questionGroupDTO);
+        LOG.debug("Request to partially update QuestionGroup : {}", questionGroupDTO);
 
         return questionGroupRepository
             .findById(questionGroupDTO.getId())
@@ -65,20 +65,20 @@ public class QuestionGroupServiceImpl implements QuestionGroupService {
     @Override
     @Transactional(readOnly = true)
     public Page<QuestionGroupDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all QuestionGroups");
+        LOG.debug("Request to get all QuestionGroups");
         return questionGroupRepository.findAll(pageable).map(questionGroupMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<QuestionGroupDTO> findOne(Long id) {
-        log.debug("Request to get QuestionGroup : {}", id);
+        LOG.debug("Request to get QuestionGroup : {}", id);
         return questionGroupRepository.findById(id).map(questionGroupMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete QuestionGroup : {}", id);
+        LOG.debug("Request to delete QuestionGroup : {}", id);
         questionGroupRepository.deleteById(id);
     }
 }

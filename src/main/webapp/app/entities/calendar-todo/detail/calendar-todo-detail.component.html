@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (calendarTodo(); as calendarTodoRef) {
+      <div>
+        <h2 data-cy="calendarTodoDetailsHeading"><span jhiTranslate="lmsapp27062024App.calendarTodo.detail.title">Calendar Todo</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ calendarTodoRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.calendarTodo.title">Title</span></dt>
+          <dd>
+            <span>{{ calendarTodoRef.title }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.calendarTodo.date">Date</span></dt>
+          <dd>
+            <span>{{ calendarTodoRef.date | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.calendarTodo.time">Time</span></dt>
+          <dd>
+            <span>{{ calendarTodoRef.time }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.calendarTodo.details">Details</span></dt>
+          <dd>
+            <span>{{ calendarTodoRef.details }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.calendarTodo.user">User</span></dt>
+          <dd>
+            <span>{{ calendarTodoRef.user?.id }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/calendar-todo', calendarTodoRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

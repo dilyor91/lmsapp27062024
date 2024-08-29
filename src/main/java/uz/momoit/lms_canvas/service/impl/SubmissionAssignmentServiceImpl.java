@@ -24,7 +24,7 @@ import uz.momoit.lms_canvas.service.mapper.SubmissionAssignmentMapper;
 @Transactional
 public class SubmissionAssignmentServiceImpl implements SubmissionAssignmentService {
 
-    private static final Logger log = LoggerFactory.getLogger(SubmissionAssignmentServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SubmissionAssignmentServiceImpl.class);
 
     private final SubmissionAssignmentRepository submissionAssignmentRepository;
 
@@ -40,7 +40,7 @@ public class SubmissionAssignmentServiceImpl implements SubmissionAssignmentServ
 
     @Override
     public SubmissionAssignmentDTO save(SubmissionAssignmentDTO submissionAssignmentDTO) {
-        log.debug("Request to save SubmissionAssignment : {}", submissionAssignmentDTO);
+        LOG.debug("Request to save SubmissionAssignment : {}", submissionAssignmentDTO);
         SubmissionAssignment submissionAssignment = submissionAssignmentMapper.toEntity(submissionAssignmentDTO);
         submissionAssignment = submissionAssignmentRepository.save(submissionAssignment);
         return submissionAssignmentMapper.toDto(submissionAssignment);
@@ -48,7 +48,7 @@ public class SubmissionAssignmentServiceImpl implements SubmissionAssignmentServ
 
     @Override
     public SubmissionAssignmentDTO update(SubmissionAssignmentDTO submissionAssignmentDTO) {
-        log.debug("Request to update SubmissionAssignment : {}", submissionAssignmentDTO);
+        LOG.debug("Request to update SubmissionAssignment : {}", submissionAssignmentDTO);
         SubmissionAssignment submissionAssignment = submissionAssignmentMapper.toEntity(submissionAssignmentDTO);
         submissionAssignment = submissionAssignmentRepository.save(submissionAssignment);
         return submissionAssignmentMapper.toDto(submissionAssignment);
@@ -56,7 +56,7 @@ public class SubmissionAssignmentServiceImpl implements SubmissionAssignmentServ
 
     @Override
     public Optional<SubmissionAssignmentDTO> partialUpdate(SubmissionAssignmentDTO submissionAssignmentDTO) {
-        log.debug("Request to partially update SubmissionAssignment : {}", submissionAssignmentDTO);
+        LOG.debug("Request to partially update SubmissionAssignment : {}", submissionAssignmentDTO);
 
         return submissionAssignmentRepository
             .findById(submissionAssignmentDTO.getId())
@@ -72,7 +72,7 @@ public class SubmissionAssignmentServiceImpl implements SubmissionAssignmentServ
     @Override
     @Transactional(readOnly = true)
     public Page<SubmissionAssignmentDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all SubmissionAssignments");
+        LOG.debug("Request to get all SubmissionAssignments");
         return submissionAssignmentRepository.findAll(pageable).map(submissionAssignmentMapper::toDto);
     }
 
@@ -82,7 +82,7 @@ public class SubmissionAssignmentServiceImpl implements SubmissionAssignmentServ
      */
     @Transactional(readOnly = true)
     public List<SubmissionAssignmentDTO> findAllWhereGradeIsNull() {
-        log.debug("Request to get all submissionAssignments where Grade is null");
+        LOG.debug("Request to get all submissionAssignments where Grade is null");
         return StreamSupport.stream(submissionAssignmentRepository.findAll().spliterator(), false)
             .filter(submissionAssignment -> submissionAssignment.getGrade() == null)
             .map(submissionAssignmentMapper::toDto)
@@ -92,13 +92,13 @@ public class SubmissionAssignmentServiceImpl implements SubmissionAssignmentServ
     @Override
     @Transactional(readOnly = true)
     public Optional<SubmissionAssignmentDTO> findOne(Long id) {
-        log.debug("Request to get SubmissionAssignment : {}", id);
+        LOG.debug("Request to get SubmissionAssignment : {}", id);
         return submissionAssignmentRepository.findById(id).map(submissionAssignmentMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete SubmissionAssignment : {}", id);
+        LOG.debug("Request to delete SubmissionAssignment : {}", id);
         submissionAssignmentRepository.deleteById(id);
     }
 }

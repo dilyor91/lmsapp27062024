@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.CourseSectionMapper;
 @Transactional
 public class CourseSectionServiceImpl implements CourseSectionService {
 
-    private static final Logger log = LoggerFactory.getLogger(CourseSectionServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CourseSectionServiceImpl.class);
 
     private final CourseSectionRepository courseSectionRepository;
 
@@ -33,7 +33,7 @@ public class CourseSectionServiceImpl implements CourseSectionService {
 
     @Override
     public CourseSectionDTO save(CourseSectionDTO courseSectionDTO) {
-        log.debug("Request to save CourseSection : {}", courseSectionDTO);
+        LOG.debug("Request to save CourseSection : {}", courseSectionDTO);
         CourseSection courseSection = courseSectionMapper.toEntity(courseSectionDTO);
         courseSection = courseSectionRepository.save(courseSection);
         return courseSectionMapper.toDto(courseSection);
@@ -41,7 +41,7 @@ public class CourseSectionServiceImpl implements CourseSectionService {
 
     @Override
     public CourseSectionDTO update(CourseSectionDTO courseSectionDTO) {
-        log.debug("Request to update CourseSection : {}", courseSectionDTO);
+        LOG.debug("Request to update CourseSection : {}", courseSectionDTO);
         CourseSection courseSection = courseSectionMapper.toEntity(courseSectionDTO);
         courseSection = courseSectionRepository.save(courseSection);
         return courseSectionMapper.toDto(courseSection);
@@ -49,7 +49,7 @@ public class CourseSectionServiceImpl implements CourseSectionService {
 
     @Override
     public Optional<CourseSectionDTO> partialUpdate(CourseSectionDTO courseSectionDTO) {
-        log.debug("Request to partially update CourseSection : {}", courseSectionDTO);
+        LOG.debug("Request to partially update CourseSection : {}", courseSectionDTO);
 
         return courseSectionRepository
             .findById(courseSectionDTO.getId())
@@ -65,20 +65,20 @@ public class CourseSectionServiceImpl implements CourseSectionService {
     @Override
     @Transactional(readOnly = true)
     public Page<CourseSectionDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all CourseSections");
+        LOG.debug("Request to get all CourseSections");
         return courseSectionRepository.findAll(pageable).map(courseSectionMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<CourseSectionDTO> findOne(Long id) {
-        log.debug("Request to get CourseSection : {}", id);
+        LOG.debug("Request to get CourseSection : {}", id);
         return courseSectionRepository.findById(id).map(courseSectionMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete CourseSection : {}", id);
+        LOG.debug("Request to delete CourseSection : {}", id);
         courseSectionRepository.deleteById(id);
     }
 }

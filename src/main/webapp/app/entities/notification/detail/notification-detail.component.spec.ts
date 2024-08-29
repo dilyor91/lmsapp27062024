@@ -17,7 +17,7 @@ describe('Notification Management Detail Component', () => {
           [
             {
               path: '**',
-              component: NotificationDetailComponent,
+              loadComponent: () => import('./notification-detail.component').then(m => m.NotificationDetailComponent),
               resolve: { notification: () => of({ id: 123 }) },
             },
           ],

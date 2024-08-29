@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.QuizResultMapper;
 @Transactional
 public class QuizResultServiceImpl implements QuizResultService {
 
-    private static final Logger log = LoggerFactory.getLogger(QuizResultServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(QuizResultServiceImpl.class);
 
     private final QuizResultRepository quizResultRepository;
 
@@ -33,7 +33,7 @@ public class QuizResultServiceImpl implements QuizResultService {
 
     @Override
     public QuizResultDTO save(QuizResultDTO quizResultDTO) {
-        log.debug("Request to save QuizResult : {}", quizResultDTO);
+        LOG.debug("Request to save QuizResult : {}", quizResultDTO);
         QuizResult quizResult = quizResultMapper.toEntity(quizResultDTO);
         quizResult = quizResultRepository.save(quizResult);
         return quizResultMapper.toDto(quizResult);
@@ -41,7 +41,7 @@ public class QuizResultServiceImpl implements QuizResultService {
 
     @Override
     public QuizResultDTO update(QuizResultDTO quizResultDTO) {
-        log.debug("Request to update QuizResult : {}", quizResultDTO);
+        LOG.debug("Request to update QuizResult : {}", quizResultDTO);
         QuizResult quizResult = quizResultMapper.toEntity(quizResultDTO);
         quizResult = quizResultRepository.save(quizResult);
         return quizResultMapper.toDto(quizResult);
@@ -49,7 +49,7 @@ public class QuizResultServiceImpl implements QuizResultService {
 
     @Override
     public Optional<QuizResultDTO> partialUpdate(QuizResultDTO quizResultDTO) {
-        log.debug("Request to partially update QuizResult : {}", quizResultDTO);
+        LOG.debug("Request to partially update QuizResult : {}", quizResultDTO);
 
         return quizResultRepository
             .findById(quizResultDTO.getId())
@@ -65,20 +65,20 @@ public class QuizResultServiceImpl implements QuizResultService {
     @Override
     @Transactional(readOnly = true)
     public Page<QuizResultDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all QuizResults");
+        LOG.debug("Request to get all QuizResults");
         return quizResultRepository.findAll(pageable).map(quizResultMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<QuizResultDTO> findOne(Long id) {
-        log.debug("Request to get QuizResult : {}", id);
+        LOG.debug("Request to get QuizResult : {}", id);
         return quizResultRepository.findById(id).map(quizResultMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete QuizResult : {}", id);
+        LOG.debug("Request to delete QuizResult : {}", id);
         quizResultRepository.deleteById(id);
     }
 }

@@ -79,13 +79,12 @@ class CourseWeekInfoResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static CourseWeekInfo createEntity(EntityManager em) {
-        CourseWeekInfo courseWeekInfo = new CourseWeekInfo()
+    public static CourseWeekInfo createEntity() {
+        return new CourseWeekInfo()
             .totalWeek(DEFAULT_TOTAL_WEEK)
             .lessonPerWeek(DEFAULT_LESSON_PER_WEEK)
             .startDate(DEFAULT_START_DATE)
             .weekDayCount(DEFAULT_WEEK_DAY_COUNT);
-        return courseWeekInfo;
     }
 
     /**
@@ -94,18 +93,17 @@ class CourseWeekInfoResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static CourseWeekInfo createUpdatedEntity(EntityManager em) {
-        CourseWeekInfo courseWeekInfo = new CourseWeekInfo()
+    public static CourseWeekInfo createUpdatedEntity() {
+        return new CourseWeekInfo()
             .totalWeek(UPDATED_TOTAL_WEEK)
             .lessonPerWeek(UPDATED_LESSON_PER_WEEK)
             .startDate(UPDATED_START_DATE)
             .weekDayCount(UPDATED_WEEK_DAY_COUNT);
-        return courseWeekInfo;
     }
 
     @BeforeEach
     public void initTest() {
-        courseWeekInfo = createEntity(em);
+        courseWeekInfo = createEntity();
     }
 
     @AfterEach
@@ -308,7 +306,6 @@ class CourseWeekInfoResourceIT {
         partialUpdatedCourseWeekInfo.setId(courseWeekInfo.getId());
 
         partialUpdatedCourseWeekInfo
-            .totalWeek(UPDATED_TOTAL_WEEK)
             .lessonPerWeek(UPDATED_LESSON_PER_WEEK)
             .startDate(UPDATED_START_DATE)
             .weekDayCount(UPDATED_WEEK_DAY_COUNT);

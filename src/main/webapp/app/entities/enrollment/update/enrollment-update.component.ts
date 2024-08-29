@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -16,7 +16,7 @@ import { CourseService } from 'app/entities/course/service/course.service';
 import { EnrollmentStatusEnum } from 'app/entities/enumerations/enrollment-status-enum.model';
 import { EnrollmentService } from '../service/enrollment.service';
 import { IEnrollment } from '../enrollment.model';
-import { EnrollmentFormService, EnrollmentFormGroup } from './enrollment-form.service';
+import { EnrollmentFormGroup, EnrollmentFormService } from './enrollment-form.service';
 
 @Component({
   standalone: true,

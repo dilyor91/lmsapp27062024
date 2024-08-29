@@ -1,14 +1,14 @@
 import { inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
-import { of, EMPTY, Observable } from 'rxjs';
+import { EMPTY, Observable, of } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 
 import { IAttachment } from '../attachment.model';
 import { AttachmentService } from '../service/attachment.service';
 
 const attachmentResolve = (route: ActivatedRouteSnapshot): Observable<null | IAttachment> => {
-  const id = route.params['id'];
+  const id = route.params.id;
   if (id) {
     return inject(AttachmentService)
       .find(id)
@@ -16,10 +16,9 @@ const attachmentResolve = (route: ActivatedRouteSnapshot): Observable<null | IAt
         mergeMap((attachment: HttpResponse<IAttachment>) => {
           if (attachment.body) {
             return of(attachment.body);
-          } else {
-            inject(Router).navigate(['404']);
-            return EMPTY;
           }
+          inject(Router).navigate(['404']);
+          return EMPTY;
         }),
       );
   }

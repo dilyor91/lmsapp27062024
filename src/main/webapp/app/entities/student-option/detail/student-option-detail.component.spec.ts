@@ -17,7 +17,7 @@ describe('StudentOption Management Detail Component', () => {
           [
             {
               path: '**',
-              component: StudentOptionDetailComponent,
+              loadComponent: () => import('./student-option-detail.component').then(m => m.StudentOptionDetailComponent),
               resolve: { studentOption: () => of({ id: 123 }) },
             },
           ],

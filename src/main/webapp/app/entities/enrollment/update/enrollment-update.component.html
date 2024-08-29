@@ -19,6 +19,7 @@
           </div>
         }
 
+        @let enrollmentStatusRef = editForm.get('enrollmentStatus')!;
         <div class="mb-3">
           <label class="form-label" for="field_enrollmentStatus" jhiTranslate="lmsapp27062024App.enrollment.enrollmentStatus"
             >Enrollment Status</label
@@ -37,10 +38,7 @@
               </option>
             }
           </select>
-          @if (
-            editForm.get('enrollmentStatus')!.invalid &&
-            (editForm.get('enrollmentStatus')!.dirty || editForm.get('enrollmentStatus')!.touched)
-          ) {
+          @if (enrollmentStatusRef.invalid && (enrollmentStatusRef.dirty || enrollmentStatusRef.touched)) {
             <div>
               @if (editForm.get('enrollmentStatus')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>

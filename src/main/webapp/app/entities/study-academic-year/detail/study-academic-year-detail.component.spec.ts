@@ -17,7 +17,7 @@ describe('StudyAcademicYear Management Detail Component', () => {
           [
             {
               path: '**',
-              component: StudyAcademicYearDetailComponent,
+              loadComponent: () => import('./study-academic-year-detail.component').then(m => m.StudyAcademicYearDetailComponent),
               resolve: { studyAcademicYear: () => of({ id: 123 }) },
             },
           ],

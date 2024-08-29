@@ -15,10 +15,11 @@
           </div>
         }
 
+        @let firstNameRef = editForm.get('firstName')!;
         <div class="mb-3">
           <label class="form-label" for="field_firstName" jhiTranslate="lmsapp27062024App.student.firstName">First Name</label>
           <input type="text" class="form-control" name="firstName" id="field_firstName" data-cy="firstName" formControlName="firstName" />
-          @if (editForm.get('firstName')!.invalid && (editForm.get('firstName')!.dirty || editForm.get('firstName')!.touched)) {
+          @if (firstNameRef.invalid && (firstNameRef.dirty || firstNameRef.touched)) {
             <div>
               @if (editForm.get('firstName')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
@@ -27,10 +28,11 @@
           }
         </div>
 
+        @let lastNameRef = editForm.get('lastName')!;
         <div class="mb-3">
           <label class="form-label" for="field_lastName" jhiTranslate="lmsapp27062024App.student.lastName">Last Name</label>
           <input type="text" class="form-control" name="lastName" id="field_lastName" data-cy="lastName" formControlName="lastName" />
-          @if (editForm.get('lastName')!.invalid && (editForm.get('lastName')!.dirty || editForm.get('lastName')!.touched)) {
+          @if (lastNameRef.invalid && (lastNameRef.dirty || lastNameRef.touched)) {
             <div>
               @if (editForm.get('lastName')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
@@ -39,6 +41,7 @@
           }
         </div>
 
+        @let middleNameRef = editForm.get('middleName')!;
         <div class="mb-3">
           <label class="form-label" for="field_middleName" jhiTranslate="lmsapp27062024App.student.middleName">Middle Name</label>
           <input
@@ -49,7 +52,7 @@
             data-cy="middleName"
             formControlName="middleName"
           />
-          @if (editForm.get('middleName')!.invalid && (editForm.get('middleName')!.dirty || editForm.get('middleName')!.touched)) {
+          @if (middleNameRef.invalid && (middleNameRef.dirty || middleNameRef.touched)) {
             <div>
               @if (editForm.get('middleName')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
@@ -58,10 +61,11 @@
           }
         </div>
 
+        @let genderRef = editForm.get('gender')!;
         <div class="mb-3">
           <label class="form-label" for="field_gender" jhiTranslate="lmsapp27062024App.student.gender">Gender</label>
           <input type="text" class="form-control" name="gender" id="field_gender" data-cy="gender" formControlName="gender" />
-          @if (editForm.get('gender')!.invalid && (editForm.get('gender')!.dirty || editForm.get('gender')!.touched)) {
+          @if (genderRef.invalid && (genderRef.dirty || genderRef.touched)) {
             <div>
               @if (editForm.get('gender')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
@@ -70,10 +74,11 @@
           }
         </div>
 
+        @let birthdateRef = editForm.get('birthdate')!;
         <div class="mb-3">
           <label class="form-label" for="field_birthdate" jhiTranslate="lmsapp27062024App.student.birthdate">Birthdate</label>
           <input type="text" class="form-control" name="birthdate" id="field_birthdate" data-cy="birthdate" formControlName="birthdate" />
-          @if (editForm.get('birthdate')!.invalid && (editForm.get('birthdate')!.dirty || editForm.get('birthdate')!.touched)) {
+          @if (birthdateRef.invalid && (birthdateRef.dirty || birthdateRef.touched)) {
             <div>
               @if (editForm.get('birthdate')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
@@ -94,10 +99,11 @@
           />
         </div>
 
+        @let emailRef = editForm.get('email')!;
         <div class="mb-3">
           <label class="form-label" for="field_email" jhiTranslate="lmsapp27062024App.student.email">Email</label>
           <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
-          @if (editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)) {
+          @if (emailRef.invalid && (emailRef.dirty || emailRef.touched)) {
             <div>
               @if (editForm.get('email')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
@@ -111,6 +117,7 @@
           <input type="number" class="form-control" name="hemisId" id="field_hemisId" data-cy="hemisId" formControlName="hemisId" />
         </div>
 
+        @let passportNumberRef = editForm.get('passportNumber')!;
         <div class="mb-3">
           <label class="form-label" for="field_passportNumber" jhiTranslate="lmsapp27062024App.student.passportNumber"
             >Passport Number</label
@@ -123,9 +130,7 @@
             data-cy="passportNumber"
             formControlName="passportNumber"
           />
-          @if (
-            editForm.get('passportNumber')!.invalid && (editForm.get('passportNumber')!.dirty || editForm.get('passportNumber')!.touched)
-          ) {
+          @if (passportNumberRef.invalid && (passportNumberRef.dirty || passportNumberRef.touched)) {
             <div>
               @if (editForm.get('passportNumber')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
@@ -134,10 +139,11 @@
           }
         </div>
 
+        @let jshshirRef = editForm.get('jshshir')!;
         <div class="mb-3">
           <label class="form-label" for="field_jshshir" jhiTranslate="lmsapp27062024App.student.jshshir">Jshshir</label>
           <input type="text" class="form-control" name="jshshir" id="field_jshshir" data-cy="jshshir" formControlName="jshshir" />
-          @if (editForm.get('jshshir')!.invalid && (editForm.get('jshshir')!.dirty || editForm.get('jshshir')!.touched)) {
+          @if (jshshirRef.invalid && (jshshirRef.dirty || jshshirRef.touched)) {
             <div>
               @if (editForm.get('jshshir')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>

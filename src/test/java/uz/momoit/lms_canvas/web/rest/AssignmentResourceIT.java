@@ -84,15 +84,14 @@ class AssignmentResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Assignment createEntity(EntityManager em) {
-        Assignment assignment = new Assignment()
+    public static Assignment createEntity() {
+        return new Assignment()
             .name(DEFAULT_NAME)
             .content(DEFAULT_CONTENT)
             .points(DEFAULT_POINTS)
             .submissionType(DEFAULT_SUBMISSION_TYPE)
             .allowedAttempts(DEFAULT_ALLOWED_ATTEMPTS)
             .published(DEFAULT_PUBLISHED);
-        return assignment;
     }
 
     /**
@@ -101,20 +100,19 @@ class AssignmentResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Assignment createUpdatedEntity(EntityManager em) {
-        Assignment assignment = new Assignment()
+    public static Assignment createUpdatedEntity() {
+        return new Assignment()
             .name(UPDATED_NAME)
             .content(UPDATED_CONTENT)
             .points(UPDATED_POINTS)
             .submissionType(UPDATED_SUBMISSION_TYPE)
             .allowedAttempts(UPDATED_ALLOWED_ATTEMPTS)
             .published(UPDATED_PUBLISHED);
-        return assignment;
     }
 
     @BeforeEach
     public void initTest() {
-        assignment = createEntity(em);
+        assignment = createEntity();
     }
 
     @AfterEach
@@ -343,7 +341,8 @@ class AssignmentResourceIT {
             .name(UPDATED_NAME)
             .content(UPDATED_CONTENT)
             .points(UPDATED_POINTS)
-            .allowedAttempts(UPDATED_ALLOWED_ATTEMPTS);
+            .submissionType(UPDATED_SUBMISSION_TYPE)
+            .published(UPDATED_PUBLISHED);
 
         restAssignmentMockMvc
             .perform(

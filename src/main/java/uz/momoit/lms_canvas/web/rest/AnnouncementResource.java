@@ -31,7 +31,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/announcements")
 public class AnnouncementResource {
 
-    private static final Logger log = LoggerFactory.getLogger(AnnouncementResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AnnouncementResource.class);
 
     private static final String ENTITY_NAME = "announcement";
 
@@ -57,7 +57,7 @@ public class AnnouncementResource {
     @PostMapping("")
     public ResponseEntity<AnnouncementDTO> createAnnouncement(@Valid @RequestBody AnnouncementDTO announcementDTO)
         throws URISyntaxException {
-        log.debug("REST request to save Announcement : {}", announcementDTO);
+        LOG.debug("REST request to save Announcement : {}", announcementDTO);
         if (announcementDTO.getId() != null) {
             throw new BadRequestAlertException("A new announcement cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -82,7 +82,7 @@ public class AnnouncementResource {
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody AnnouncementDTO announcementDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update Announcement : {}, {}", id, announcementDTO);
+        LOG.debug("REST request to update Announcement : {}, {}", id, announcementDTO);
         if (announcementDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -116,7 +116,7 @@ public class AnnouncementResource {
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody AnnouncementDTO announcementDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Announcement partially : {}, {}", id, announcementDTO);
+        LOG.debug("REST request to partial update Announcement partially : {}, {}", id, announcementDTO);
         if (announcementDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -148,7 +148,7 @@ public class AnnouncementResource {
         @org.springdoc.core.annotations.ParameterObject Pageable pageable,
         @RequestParam(name = "eagerload", required = false, defaultValue = "true") boolean eagerload
     ) {
-        log.debug("REST request to get a page of Announcements");
+        LOG.debug("REST request to get a page of Announcements");
         Page<AnnouncementDTO> page;
         if (eagerload) {
             page = announcementService.findAllWithEagerRelationships(pageable);
@@ -167,7 +167,7 @@ public class AnnouncementResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<AnnouncementDTO> getAnnouncement(@PathVariable("id") Long id) {
-        log.debug("REST request to get Announcement : {}", id);
+        LOG.debug("REST request to get Announcement : {}", id);
         Optional<AnnouncementDTO> announcementDTO = announcementService.findOne(id);
         return ResponseUtil.wrapOrNotFound(announcementDTO);
     }
@@ -180,7 +180,7 @@ public class AnnouncementResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAnnouncement(@PathVariable("id") Long id) {
-        log.debug("REST request to delete Announcement : {}", id);
+        LOG.debug("REST request to delete Announcement : {}", id);
         announcementService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { SubmissionAssignmentComponent } from './list/submission-assignment.component';
-import { SubmissionAssignmentDetailComponent } from './detail/submission-assignment-detail.component';
-import { SubmissionAssignmentUpdateComponent } from './update/submission-assignment-update.component';
 import SubmissionAssignmentResolve from './route/submission-assignment-routing-resolve.service';
 
 const submissionAssignmentRoute: Routes = [
   {
     path: '',
-    component: SubmissionAssignmentComponent,
+    loadComponent: () => import('./list/submission-assignment.component').then(m => m.SubmissionAssignmentComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: SubmissionAssignmentDetailComponent,
+    loadComponent: () => import('./detail/submission-assignment-detail.component').then(m => m.SubmissionAssignmentDetailComponent),
     resolve: {
       submissionAssignment: SubmissionAssignmentResolve,
     },
@@ -26,7 +23,7 @@ const submissionAssignmentRoute: Routes = [
   },
   {
     path: 'new',
-    component: SubmissionAssignmentUpdateComponent,
+    loadComponent: () => import('./update/submission-assignment-update.component').then(m => m.SubmissionAssignmentUpdateComponent),
     resolve: {
       submissionAssignment: SubmissionAssignmentResolve,
     },
@@ -34,7 +31,7 @@ const submissionAssignmentRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: SubmissionAssignmentUpdateComponent,
+    loadComponent: () => import('./update/submission-assignment-update.component').then(m => m.SubmissionAssignmentUpdateComponent),
     resolve: {
       submissionAssignment: SubmissionAssignmentResolve,
     },

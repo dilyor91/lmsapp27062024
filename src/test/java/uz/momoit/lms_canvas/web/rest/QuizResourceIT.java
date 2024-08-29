@@ -74,9 +74,8 @@ class QuizResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Quiz createEntity(EntityManager em) {
-        Quiz quiz = new Quiz().quizName(DEFAULT_QUIZ_NAME).timeInMinute(DEFAULT_TIME_IN_MINUTE).published(DEFAULT_PUBLISHED);
-        return quiz;
+    public static Quiz createEntity() {
+        return new Quiz().quizName(DEFAULT_QUIZ_NAME).timeInMinute(DEFAULT_TIME_IN_MINUTE).published(DEFAULT_PUBLISHED);
     }
 
     /**
@@ -85,14 +84,13 @@ class QuizResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Quiz createUpdatedEntity(EntityManager em) {
-        Quiz quiz = new Quiz().quizName(UPDATED_QUIZ_NAME).timeInMinute(UPDATED_TIME_IN_MINUTE).published(UPDATED_PUBLISHED);
-        return quiz;
+    public static Quiz createUpdatedEntity() {
+        return new Quiz().quizName(UPDATED_QUIZ_NAME).timeInMinute(UPDATED_TIME_IN_MINUTE).published(UPDATED_PUBLISHED);
     }
 
     @BeforeEach
     public void initTest() {
-        quiz = createEntity(em);
+        quiz = createEntity();
     }
 
     @AfterEach
@@ -313,8 +311,6 @@ class QuizResourceIT {
         // Update the quiz using partial update
         Quiz partialUpdatedQuiz = new Quiz();
         partialUpdatedQuiz.setId(quiz.getId());
-
-        partialUpdatedQuiz.quizName(UPDATED_QUIZ_NAME).timeInMinute(UPDATED_TIME_IN_MINUTE);
 
         restQuizMockMvc
             .perform(

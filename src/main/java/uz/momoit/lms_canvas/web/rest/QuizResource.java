@@ -31,7 +31,7 @@ import uz.momoit.lms_canvas.web.rest.errors.BadRequestAlertException;
 @RequestMapping("/api/quizzes")
 public class QuizResource {
 
-    private static final Logger log = LoggerFactory.getLogger(QuizResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(QuizResource.class);
 
     private static final String ENTITY_NAME = "quiz";
 
@@ -56,7 +56,7 @@ public class QuizResource {
      */
     @PostMapping("")
     public ResponseEntity<QuizDTO> createQuiz(@Valid @RequestBody QuizDTO quizDTO) throws URISyntaxException {
-        log.debug("REST request to save Quiz : {}", quizDTO);
+        LOG.debug("REST request to save Quiz : {}", quizDTO);
         if (quizDTO.getId() != null) {
             throw new BadRequestAlertException("A new quiz cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -81,7 +81,7 @@ public class QuizResource {
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody QuizDTO quizDTO
     ) throws URISyntaxException {
-        log.debug("REST request to update Quiz : {}, {}", id, quizDTO);
+        LOG.debug("REST request to update Quiz : {}, {}", id, quizDTO);
         if (quizDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -115,7 +115,7 @@ public class QuizResource {
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody QuizDTO quizDTO
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Quiz partially : {}, {}", id, quizDTO);
+        LOG.debug("REST request to partial update Quiz partially : {}, {}", id, quizDTO);
         if (quizDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -143,7 +143,7 @@ public class QuizResource {
      */
     @GetMapping("")
     public ResponseEntity<List<QuizDTO>> getAllQuizzes(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of Quizzes");
+        LOG.debug("REST request to get a page of Quizzes");
         Page<QuizDTO> page = quizService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -157,7 +157,7 @@ public class QuizResource {
      */
     @GetMapping("/{id}")
     public ResponseEntity<QuizDTO> getQuiz(@PathVariable("id") Long id) {
-        log.debug("REST request to get Quiz : {}", id);
+        LOG.debug("REST request to get Quiz : {}", id);
         Optional<QuizDTO> quizDTO = quizService.findOne(id);
         return ResponseUtil.wrapOrNotFound(quizDTO);
     }
@@ -170,7 +170,7 @@ public class QuizResource {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteQuiz(@PathVariable("id") Long id) {
-        log.debug("REST request to delete Quiz : {}", id);
+        LOG.debug("REST request to delete Quiz : {}", id);
         quizService.delete(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

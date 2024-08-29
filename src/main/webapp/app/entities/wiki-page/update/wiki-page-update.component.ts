@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -12,7 +12,7 @@ import { CourseService } from 'app/entities/course/service/course.service';
 import { WhoAllowed } from 'app/entities/enumerations/who-allowed.model';
 import { WikiPageService } from '../service/wiki-page.service';
 import { IWikiPage } from '../wiki-page.model';
-import { WikiPageFormService, WikiPageFormGroup } from './wiki-page-form.service';
+import { WikiPageFormGroup, WikiPageFormService } from './wiki-page-form.service';
 
 @Component({
   standalone: true,

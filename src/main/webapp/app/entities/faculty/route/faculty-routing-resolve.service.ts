@@ -1,14 +1,14 @@
 import { inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
-import { of, EMPTY, Observable } from 'rxjs';
+import { EMPTY, Observable, of } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 
 import { IFaculty } from '../faculty.model';
 import { FacultyService } from '../service/faculty.service';
 
 const facultyResolve = (route: ActivatedRouteSnapshot): Observable<null | IFaculty> => {
-  const id = route.params['id'];
+  const id = route.params.id;
   if (id) {
     return inject(FacultyService)
       .find(id)
@@ -16,10 +16,9 @@ const facultyResolve = (route: ActivatedRouteSnapshot): Observable<null | IFacul
         mergeMap((faculty: HttpResponse<IFaculty>) => {
           if (faculty.body) {
             return of(faculty.body);
-          } else {
-            inject(Router).navigate(['404']);
-            return EMPTY;
           }
+          inject(Router).navigate(['404']);
+          return EMPTY;
         }),
       );
   }

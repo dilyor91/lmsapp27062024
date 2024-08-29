@@ -69,9 +69,8 @@ class AttendanceResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Attendance createEntity(EntityManager em) {
-        Attendance attendance = new Attendance().attendanceEnum(DEFAULT_ATTENDANCE_ENUM);
-        return attendance;
+    public static Attendance createEntity() {
+        return new Attendance().attendanceEnum(DEFAULT_ATTENDANCE_ENUM);
     }
 
     /**
@@ -80,14 +79,13 @@ class AttendanceResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Attendance createUpdatedEntity(EntityManager em) {
-        Attendance attendance = new Attendance().attendanceEnum(UPDATED_ATTENDANCE_ENUM);
-        return attendance;
+    public static Attendance createUpdatedEntity() {
+        return new Attendance().attendanceEnum(UPDATED_ATTENDANCE_ENUM);
     }
 
     @BeforeEach
     public void initTest() {
-        attendance = createEntity(em);
+        attendance = createEntity();
     }
 
     @AfterEach

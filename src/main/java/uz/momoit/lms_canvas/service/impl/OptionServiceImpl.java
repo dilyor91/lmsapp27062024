@@ -20,7 +20,7 @@ import uz.momoit.lms_canvas.service.mapper.OptionMapper;
 @Transactional
 public class OptionServiceImpl implements OptionService {
 
-    private static final Logger log = LoggerFactory.getLogger(OptionServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(OptionServiceImpl.class);
 
     private final OptionRepository optionRepository;
 
@@ -33,7 +33,7 @@ public class OptionServiceImpl implements OptionService {
 
     @Override
     public OptionDTO save(OptionDTO optionDTO) {
-        log.debug("Request to save Option : {}", optionDTO);
+        LOG.debug("Request to save Option : {}", optionDTO);
         Option option = optionMapper.toEntity(optionDTO);
         option = optionRepository.save(option);
         return optionMapper.toDto(option);
@@ -41,7 +41,7 @@ public class OptionServiceImpl implements OptionService {
 
     @Override
     public OptionDTO update(OptionDTO optionDTO) {
-        log.debug("Request to update Option : {}", optionDTO);
+        LOG.debug("Request to update Option : {}", optionDTO);
         Option option = optionMapper.toEntity(optionDTO);
         option = optionRepository.save(option);
         return optionMapper.toDto(option);
@@ -49,7 +49,7 @@ public class OptionServiceImpl implements OptionService {
 
     @Override
     public Optional<OptionDTO> partialUpdate(OptionDTO optionDTO) {
-        log.debug("Request to partially update Option : {}", optionDTO);
+        LOG.debug("Request to partially update Option : {}", optionDTO);
 
         return optionRepository
             .findById(optionDTO.getId())
@@ -65,20 +65,20 @@ public class OptionServiceImpl implements OptionService {
     @Override
     @Transactional(readOnly = true)
     public Page<OptionDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all Options");
+        LOG.debug("Request to get all Options");
         return optionRepository.findAll(pageable).map(optionMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<OptionDTO> findOne(Long id) {
-        log.debug("Request to get Option : {}", id);
+        LOG.debug("Request to get Option : {}", id);
         return optionRepository.findById(id).map(optionMapper::toDto);
     }
 
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Option : {}", id);
+        LOG.debug("Request to delete Option : {}", id);
         optionRepository.deleteById(id);
     }
 }

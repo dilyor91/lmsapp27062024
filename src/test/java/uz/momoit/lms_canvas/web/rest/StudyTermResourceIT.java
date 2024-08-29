@@ -79,13 +79,8 @@ class StudyTermResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static StudyTerm createEntity(EntityManager em) {
-        StudyTerm studyTerm = new StudyTerm()
-            .termName(DEFAULT_TERM_NAME)
-            .startDate(DEFAULT_START_DATE)
-            .endDate(DEFAULT_END_DATE)
-            .status(DEFAULT_STATUS);
-        return studyTerm;
+    public static StudyTerm createEntity() {
+        return new StudyTerm().termName(DEFAULT_TERM_NAME).startDate(DEFAULT_START_DATE).endDate(DEFAULT_END_DATE).status(DEFAULT_STATUS);
     }
 
     /**
@@ -94,18 +89,13 @@ class StudyTermResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static StudyTerm createUpdatedEntity(EntityManager em) {
-        StudyTerm studyTerm = new StudyTerm()
-            .termName(UPDATED_TERM_NAME)
-            .startDate(UPDATED_START_DATE)
-            .endDate(UPDATED_END_DATE)
-            .status(UPDATED_STATUS);
-        return studyTerm;
+    public static StudyTerm createUpdatedEntity() {
+        return new StudyTerm().termName(UPDATED_TERM_NAME).startDate(UPDATED_START_DATE).endDate(UPDATED_END_DATE).status(UPDATED_STATUS);
     }
 
     @BeforeEach
     public void initTest() {
-        studyTerm = createEntity(em);
+        studyTerm = createEntity();
     }
 
     @AfterEach
@@ -371,7 +361,7 @@ class StudyTermResourceIT {
         StudyTerm partialUpdatedStudyTerm = new StudyTerm();
         partialUpdatedStudyTerm.setId(studyTerm.getId());
 
-        partialUpdatedStudyTerm.status(UPDATED_STATUS);
+        partialUpdatedStudyTerm.termName(UPDATED_TERM_NAME).startDate(UPDATED_START_DATE);
 
         restStudyTermMockMvc
             .perform(

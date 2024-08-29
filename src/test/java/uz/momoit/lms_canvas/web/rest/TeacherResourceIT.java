@@ -127,8 +127,8 @@ class TeacherResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Teacher createEntity(EntityManager em) {
-        Teacher teacher = new Teacher()
+    public static Teacher createEntity() {
+        return new Teacher()
             .firstName(DEFAULT_FIRST_NAME)
             .lastName(DEFAULT_LAST_NAME)
             .middleName(DEFAULT_MIDDLE_NAME)
@@ -147,7 +147,6 @@ class TeacherResourceIT {
             .position(DEFAULT_POSITION)
             .academicDegree(DEFAULT_ACADEMIC_DEGREE)
             .academicTitle(DEFAULT_ACADEMIC_TITLE);
-        return teacher;
     }
 
     /**
@@ -156,8 +155,8 @@ class TeacherResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Teacher createUpdatedEntity(EntityManager em) {
-        Teacher teacher = new Teacher()
+    public static Teacher createUpdatedEntity() {
+        return new Teacher()
             .firstName(UPDATED_FIRST_NAME)
             .lastName(UPDATED_LAST_NAME)
             .middleName(UPDATED_MIDDLE_NAME)
@@ -176,12 +175,11 @@ class TeacherResourceIT {
             .position(UPDATED_POSITION)
             .academicDegree(UPDATED_ACADEMIC_DEGREE)
             .academicTitle(UPDATED_ACADEMIC_TITLE);
-        return teacher;
     }
 
     @BeforeEach
     public void initTest() {
-        teacher = createEntity(em);
+        teacher = createEntity();
     }
 
     @AfterEach
@@ -541,15 +539,17 @@ class TeacherResourceIT {
         partialUpdatedTeacher.setId(teacher.getId());
 
         partialUpdatedTeacher
+            .firstName(UPDATED_FIRST_NAME)
             .lastName(UPDATED_LAST_NAME)
-            .gender(UPDATED_GENDER)
-            .birthdate(UPDATED_BIRTHDATE)
-            .email(UPDATED_EMAIL)
+            .phoneNumber(UPDATED_PHONE_NUMBER)
             .passportNumber(UPDATED_PASSPORT_NUMBER)
             .jshshir(UPDATED_JSHSHIR)
             .isActive(UPDATED_IS_ACTIVE)
+            .country(UPDATED_COUNTRY)
             .city(UPDATED_CITY)
-            .academicTitle(UPDATED_ACADEMIC_TITLE);
+            .region(UPDATED_REGION)
+            .addressLine(UPDATED_ADDRESS_LINE)
+            .academicDegree(UPDATED_ACADEMIC_DEGREE);
 
         restTeacherMockMvc
             .perform(

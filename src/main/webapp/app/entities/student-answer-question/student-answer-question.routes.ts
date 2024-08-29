@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { StudentAnswerQuestionComponent } from './list/student-answer-question.component';
-import { StudentAnswerQuestionDetailComponent } from './detail/student-answer-question-detail.component';
-import { StudentAnswerQuestionUpdateComponent } from './update/student-answer-question-update.component';
 import StudentAnswerQuestionResolve from './route/student-answer-question-routing-resolve.service';
 
 const studentAnswerQuestionRoute: Routes = [
   {
     path: '',
-    component: StudentAnswerQuestionComponent,
+    loadComponent: () => import('./list/student-answer-question.component').then(m => m.StudentAnswerQuestionComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: StudentAnswerQuestionDetailComponent,
+    loadComponent: () => import('./detail/student-answer-question-detail.component').then(m => m.StudentAnswerQuestionDetailComponent),
     resolve: {
       studentAnswerQuestion: StudentAnswerQuestionResolve,
     },
@@ -26,7 +23,7 @@ const studentAnswerQuestionRoute: Routes = [
   },
   {
     path: 'new',
-    component: StudentAnswerQuestionUpdateComponent,
+    loadComponent: () => import('./update/student-answer-question-update.component').then(m => m.StudentAnswerQuestionUpdateComponent),
     resolve: {
       studentAnswerQuestion: StudentAnswerQuestionResolve,
     },
@@ -34,7 +31,7 @@ const studentAnswerQuestionRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: StudentAnswerQuestionUpdateComponent,
+    loadComponent: () => import('./update/student-answer-question-update.component').then(m => m.StudentAnswerQuestionUpdateComponent),
     resolve: {
       studentAnswerQuestion: StudentAnswerQuestionResolve,
     },

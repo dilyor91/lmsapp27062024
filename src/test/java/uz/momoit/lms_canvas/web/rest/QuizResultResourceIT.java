@@ -77,13 +77,12 @@ class QuizResultResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static QuizResult createEntity(EntityManager em) {
-        QuizResult quizResult = new QuizResult()
+    public static QuizResult createEntity() {
+        return new QuizResult()
             .point(DEFAULT_POINT)
             .totalQuestionCnt(DEFAULT_TOTAL_QUESTION_CNT)
             .correctAnswerCnt(DEFAULT_CORRECT_ANSWER_CNT)
             .wrongAnswerCnt(DEFAULT_WRONG_ANSWER_CNT);
-        return quizResult;
     }
 
     /**
@@ -92,18 +91,17 @@ class QuizResultResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static QuizResult createUpdatedEntity(EntityManager em) {
-        QuizResult quizResult = new QuizResult()
+    public static QuizResult createUpdatedEntity() {
+        return new QuizResult()
             .point(UPDATED_POINT)
             .totalQuestionCnt(UPDATED_TOTAL_QUESTION_CNT)
             .correctAnswerCnt(UPDATED_CORRECT_ANSWER_CNT)
             .wrongAnswerCnt(UPDATED_WRONG_ANSWER_CNT);
-        return quizResult;
     }
 
     @BeforeEach
     public void initTest() {
-        quizResult = createEntity(em);
+        quizResult = createEntity();
     }
 
     @AfterEach

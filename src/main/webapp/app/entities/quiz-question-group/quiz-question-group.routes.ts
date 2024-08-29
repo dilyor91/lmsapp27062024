@@ -2,23 +2,20 @@ import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 import { ASC } from 'app/config/navigation.constants';
-import { QuizQuestionGroupComponent } from './list/quiz-question-group.component';
-import { QuizQuestionGroupDetailComponent } from './detail/quiz-question-group-detail.component';
-import { QuizQuestionGroupUpdateComponent } from './update/quiz-question-group-update.component';
 import QuizQuestionGroupResolve from './route/quiz-question-group-routing-resolve.service';
 
 const quizQuestionGroupRoute: Routes = [
   {
     path: '',
-    component: QuizQuestionGroupComponent,
+    loadComponent: () => import('./list/quiz-question-group.component').then(m => m.QuizQuestionGroupComponent),
     data: {
-      defaultSort: 'id,' + ASC,
+      defaultSort: `id,${ASC}`,
     },
     canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
-    component: QuizQuestionGroupDetailComponent,
+    loadComponent: () => import('./detail/quiz-question-group-detail.component').then(m => m.QuizQuestionGroupDetailComponent),
     resolve: {
       quizQuestionGroup: QuizQuestionGroupResolve,
     },
@@ -26,7 +23,7 @@ const quizQuestionGroupRoute: Routes = [
   },
   {
     path: 'new',
-    component: QuizQuestionGroupUpdateComponent,
+    loadComponent: () => import('./update/quiz-question-group-update.component').then(m => m.QuizQuestionGroupUpdateComponent),
     resolve: {
       quizQuestionGroup: QuizQuestionGroupResolve,
     },
@@ -34,7 +31,7 @@ const quizQuestionGroupRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: QuizQuestionGroupUpdateComponent,
+    loadComponent: () => import('./update/quiz-question-group-update.component').then(m => m.QuizQuestionGroupUpdateComponent),
     resolve: {
       quizQuestionGroup: QuizQuestionGroupResolve,
     },

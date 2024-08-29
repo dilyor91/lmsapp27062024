@@ -17,7 +17,7 @@ describe('Grade Management Detail Component', () => {
           [
             {
               path: '**',
-              component: GradeDetailComponent,
+              loadComponent: () => import('./grade-detail.component').then(m => m.GradeDetailComponent),
               resolve: { grade: () => of({ id: 123 }) },
             },
           ],

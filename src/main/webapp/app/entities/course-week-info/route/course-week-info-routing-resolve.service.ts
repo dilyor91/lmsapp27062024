@@ -1,14 +1,14 @@
 import { inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
-import { of, EMPTY, Observable } from 'rxjs';
+import { EMPTY, Observable, of } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 
 import { ICourseWeekInfo } from '../course-week-info.model';
 import { CourseWeekInfoService } from '../service/course-week-info.service';
 
 const courseWeekInfoResolve = (route: ActivatedRouteSnapshot): Observable<null | ICourseWeekInfo> => {
-  const id = route.params['id'];
+  const id = route.params.id;
   if (id) {
     return inject(CourseWeekInfoService)
       .find(id)
@@ -16,10 +16,9 @@ const courseWeekInfoResolve = (route: ActivatedRouteSnapshot): Observable<null |
         mergeMap((courseWeekInfo: HttpResponse<ICourseWeekInfo>) => {
           if (courseWeekInfo.body) {
             return of(courseWeekInfo.body);
-          } else {
-            inject(Router).navigate(['404']);
-            return EMPTY;
           }
+          inject(Router).navigate(['404']);
+          return EMPTY;
         }),
       );
   }
