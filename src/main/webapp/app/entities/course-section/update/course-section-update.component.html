@@ -55,23 +55,6 @@
             }
           </select>
         </div>
-
-        <div class="mb-3">
-          <label for="field_announcements" jhiTranslate="lmsapp27062024App.courseSection.announcement">Announcement</label>
-          <select
-            class="form-control"
-            id="field_announcements"
-            data-cy="announcement"
-            multiple
-            name="announcements"
-            formControlName="announcements"
-            [compareWith]="compareAnnouncement"
-          >
-            @for (announcementOption of announcementsSharedCollection; track $index) {
-              <option [ngValue]="announcementOption">{{ announcementOption.id }}</option>
-            }
-          </select>
-        </div>
       </div>
 
       <div>

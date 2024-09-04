@@ -16,15 +16,11 @@
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "attachmentId",
-      "fieldType": "Long"
+      "fieldName": "availableFromDate",
+      "fieldType": "Instant"
     },
     {
-      "fieldName": "delayPost",
-      "fieldType": "Boolean"
-    },
-    {
-      "fieldName": "postAt",
+      "fieldName": "availableUntilDate",
       "fieldType": "Instant"
     },
     {
@@ -36,17 +32,16 @@
   "pagination": "pagination",
   "relationships": [
     {
-      "otherEntityName": "course",
-      "relationshipName": "course",
+      "otherEntityName": "attachment",
+      "relationshipName": "attachment",
       "relationshipSide": "left",
       "relationshipType": "many-to-one"
     },
     {
-      "otherEntityName": "courseSection",
-      "otherEntityRelationshipName": "announcement",
-      "relationshipName": "courseSection",
+      "otherEntityName": "course",
+      "relationshipName": "course",
       "relationshipSide": "left",
-      "relationshipType": "many-to-many"
+      "relationshipType": "many-to-one"
     }
   ],
   "searchEngine": "no",

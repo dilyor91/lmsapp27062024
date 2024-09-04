@@ -2,7 +2,6 @@ package uz.momoit.lms_canvas.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
-import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static uz.momoit.lms_canvas.domain.AnnouncementAsserts.*;
@@ -12,19 +11,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.EntityManager;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -32,7 +25,6 @@ import org.springframework.transaction.annotation.Transactional;
 import uz.momoit.lms_canvas.IntegrationTest;
 import uz.momoit.lms_canvas.domain.Announcement;
 import uz.momoit.lms_canvas.repository.AnnouncementRepository;
-import uz.momoit.lms_canvas.service.AnnouncementService;
 import uz.momoit.lms_canvas.service.dto.AnnouncementDTO;
 import uz.momoit.lms_canvas.service.mapper.AnnouncementMapper;
 
@@ -40,7 +32,6 @@ import uz.momoit.lms_canvas.service.mapper.AnnouncementMapper;
  * Integration tests for the {@link AnnouncementResource} REST controller.
  */
 @IntegrationTest
-@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @WithMockUser
 class AnnouncementResourceIT {
@@ -51,14 +42,11 @@ class AnnouncementResourceIT {
     private static final String DEFAULT_CONTENT = "AAAAAAAAAA";
     private static final String UPDATED_CONTENT = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_ATTACHMENT_ID = 1L;
-    private static final Long UPDATED_ATTACHMENT_ID = 2L;
+    private static final Instant DEFAULT_AVAILABLE_FROM_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_AVAILABLE_FROM_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final Boolean DEFAULT_DELAY_POST = false;
-    private static final Boolean UPDATED_DELAY_POST = true;
-
-    private static final Instant DEFAULT_POST_AT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_POST_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_AVAILABLE_UNTIL_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_AVAILABLE_UNTIL_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
@@ -75,14 +63,8 @@ class AnnouncementResourceIT {
     @Autowired
     private AnnouncementRepository announcementRepository;
 
-    @Mock
-    private AnnouncementRepository announcementRepositoryMock;
-
     @Autowired
     private AnnouncementMapper announcementMapper;
-
-    @Mock
-    private AnnouncementService announcementServiceMock;
 
     @Autowired
     private EntityManager em;
@@ -104,9 +86,8 @@ class AnnouncementResourceIT {
         return new Announcement()
             .title(DEFAULT_TITLE)
             .content(DEFAULT_CONTENT)
-            .attachmentId(DEFAULT_ATTACHMENT_ID)
-            .delayPost(DEFAULT_DELAY_POST)
-            .postAt(DEFAULT_POST_AT)
+            .availableFromDate(DEFAULT_AVAILABLE_FROM_DATE)
+            .availableUntilDate(DEFAULT_AVAILABLE_UNTIL_DATE)
             .published(DEFAULT_PUBLISHED);
     }
 
@@ -120,9 +101,8 @@ class AnnouncementResourceIT {
         return new Announcement()
             .title(UPDATED_TITLE)
             .content(UPDATED_CONTENT)
-            .attachmentId(UPDATED_ATTACHMENT_ID)
-            .delayPost(UPDATED_DELAY_POST)
-            .postAt(UPDATED_POST_AT)
+            .availableFromDate(UPDATED_AVAILABLE_FROM_DATE)
+            .availableUntilDate(UPDATED_AVAILABLE_UNTIL_DATE)
             .published(UPDATED_PUBLISHED);
     }
 
@@ -229,27 +209,9 @@ class AnnouncementResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(announcement.getId().intValue())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
             .andExpect(jsonPath("$.[*].content").value(hasItem(DEFAULT_CONTENT)))
-            .andExpect(jsonPath("$.[*].attachmentId").value(hasItem(DEFAULT_ATTACHMENT_ID.intValue())))
-            .andExpect(jsonPath("$.[*].delayPost").value(hasItem(DEFAULT_DELAY_POST.booleanValue())))
-            .andExpect(jsonPath("$.[*].postAt").value(hasItem(DEFAULT_POST_AT.toString())))
+            .andExpect(jsonPath("$.[*].availableFromDate").value(hasItem(DEFAULT_AVAILABLE_FROM_DATE.toString())))
+            .andExpect(jsonPath("$.[*].availableUntilDate").value(hasItem(DEFAULT_AVAILABLE_UNTIL_DATE.toString())))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())));
-    }
-
-    @SuppressWarnings({ "unchecked" })
-    void getAllAnnouncementsWithEagerRelationshipsIsEnabled() throws Exception {
-        when(announcementServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-
-        restAnnouncementMockMvc.perform(get(ENTITY_API_URL + "?eagerload=true")).andExpect(status().isOk());
-
-        verify(announcementServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
-
-    @SuppressWarnings({ "unchecked" })
-    void getAllAnnouncementsWithEagerRelationshipsIsNotEnabled() throws Exception {
-        when(announcementServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-
-        restAnnouncementMockMvc.perform(get(ENTITY_API_URL + "?eagerload=false")).andExpect(status().isOk());
-        verify(announcementRepositoryMock, times(1)).findAll(any(Pageable.class));
     }
 
     @Test
@@ -266,9 +228,8 @@ class AnnouncementResourceIT {
             .andExpect(jsonPath("$.id").value(announcement.getId().intValue()))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
             .andExpect(jsonPath("$.content").value(DEFAULT_CONTENT))
-            .andExpect(jsonPath("$.attachmentId").value(DEFAULT_ATTACHMENT_ID.intValue()))
-            .andExpect(jsonPath("$.delayPost").value(DEFAULT_DELAY_POST.booleanValue()))
-            .andExpect(jsonPath("$.postAt").value(DEFAULT_POST_AT.toString()))
+            .andExpect(jsonPath("$.availableFromDate").value(DEFAULT_AVAILABLE_FROM_DATE.toString()))
+            .andExpect(jsonPath("$.availableUntilDate").value(DEFAULT_AVAILABLE_UNTIL_DATE.toString()))
             .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()));
     }
 
@@ -294,9 +255,8 @@ class AnnouncementResourceIT {
         updatedAnnouncement
             .title(UPDATED_TITLE)
             .content(UPDATED_CONTENT)
-            .attachmentId(UPDATED_ATTACHMENT_ID)
-            .delayPost(UPDATED_DELAY_POST)
-            .postAt(UPDATED_POST_AT)
+            .availableFromDate(UPDATED_AVAILABLE_FROM_DATE)
+            .availableUntilDate(UPDATED_AVAILABLE_UNTIL_DATE)
             .published(UPDATED_PUBLISHED);
         AnnouncementDTO announcementDTO = announcementMapper.toDto(updatedAnnouncement);
 
@@ -387,7 +347,7 @@ class AnnouncementResourceIT {
         Announcement partialUpdatedAnnouncement = new Announcement();
         partialUpdatedAnnouncement.setId(announcement.getId());
 
-        partialUpdatedAnnouncement.content(UPDATED_CONTENT).attachmentId(UPDATED_ATTACHMENT_ID).delayPost(UPDATED_DELAY_POST);
+        partialUpdatedAnnouncement.title(UPDATED_TITLE).availableUntilDate(UPDATED_AVAILABLE_UNTIL_DATE).published(UPDATED_PUBLISHED);
 
         restAnnouncementMockMvc
             .perform(
@@ -421,9 +381,8 @@ class AnnouncementResourceIT {
         partialUpdatedAnnouncement
             .title(UPDATED_TITLE)
             .content(UPDATED_CONTENT)
-            .attachmentId(UPDATED_ATTACHMENT_ID)
-            .delayPost(UPDATED_DELAY_POST)
-            .postAt(UPDATED_POST_AT)
+            .availableFromDate(UPDATED_AVAILABLE_FROM_DATE)
+            .availableUntilDate(UPDATED_AVAILABLE_UNTIL_DATE)
             .published(UPDATED_PUBLISHED);
 
         restAnnouncementMockMvc

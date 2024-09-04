@@ -140,21 +140,12 @@ public class AnnouncementResource {
      * {@code GET  /announcements} : get all the announcements.
      *
      * @param pageable the pagination information.
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of announcements in body.
      */
     @GetMapping("")
-    public ResponseEntity<List<AnnouncementDTO>> getAllAnnouncements(
-        @org.springdoc.core.annotations.ParameterObject Pageable pageable,
-        @RequestParam(name = "eagerload", required = false, defaultValue = "true") boolean eagerload
-    ) {
+    public ResponseEntity<List<AnnouncementDTO>> getAllAnnouncements(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
         LOG.debug("REST request to get a page of Announcements");
-        Page<AnnouncementDTO> page;
-        if (eagerload) {
-            page = announcementService.findAllWithEagerRelationships(pageable);
-        } else {
-            page = announcementService.findAll(pageable);
-        }
+        Page<AnnouncementDTO> page = announcementService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

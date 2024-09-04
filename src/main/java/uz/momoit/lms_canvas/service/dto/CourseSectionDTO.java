@@ -2,9 +2,7 @@ package uz.momoit.lms_canvas.service.dto;
 
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 /**
  * A DTO for the {@link uz.momoit.lms_canvas.domain.CourseSection} entity.
@@ -18,8 +16,6 @@ public class CourseSectionDTO implements Serializable {
     private String sectionName;
 
     private CourseDTO course;
-
-    private Set<AnnouncementDTO> announcements = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -43,14 +39,6 @@ public class CourseSectionDTO implements Serializable {
 
     public void setCourse(CourseDTO course) {
         this.course = course;
-    }
-
-    public Set<AnnouncementDTO> getAnnouncements() {
-        return announcements;
-    }
-
-    public void setAnnouncements(Set<AnnouncementDTO> announcements) {
-        this.announcements = announcements;
     }
 
     @Override
@@ -81,7 +69,6 @@ public class CourseSectionDTO implements Serializable {
             "id=" + getId() +
             ", sectionName='" + getSectionName() + "'" +
             ", course=" + getCourse() +
-            ", announcements=" + getAnnouncements() +
             "}";
     }
 }

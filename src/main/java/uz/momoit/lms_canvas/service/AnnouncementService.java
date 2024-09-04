@@ -42,14 +42,6 @@ public interface AnnouncementService {
     Page<AnnouncementDTO> findAll(Pageable pageable);
 
     /**
-     * Get all the announcements with eager load of many-to-many relationships.
-     *
-     * @param pageable the pagination information.
-     * @return the list of entities.
-     */
-    Page<AnnouncementDTO> findAllWithEagerRelationships(Pageable pageable);
-
-    /**
      * Get the "id" announcement.
      *
      * @param id the id of the entity.

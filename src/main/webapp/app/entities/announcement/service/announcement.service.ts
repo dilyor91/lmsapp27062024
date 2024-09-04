@@ -11,8 +11,9 @@ import { IAnnouncement, NewAnnouncement } from '../announcement.model';
 
 export type PartialUpdateAnnouncement = Partial<IAnnouncement> & Pick<IAnnouncement, 'id'>;
 
-type RestOf<T extends IAnnouncement | NewAnnouncement> = Omit<T, 'postAt'> & {
-  postAt?: string | null;
+type RestOf<T extends IAnnouncement | NewAnnouncement> = Omit<T, 'availableFromDate' | 'availableUntilDate'> & {
+  availableFromDate?: string | null;
+  availableUntilDate?: string | null;
 };
 
 export type RestAnnouncement = RestOf<IAnnouncement>;
@@ -102,14 +103,16 @@ export class AnnouncementService {
   protected convertDateFromClient<T extends IAnnouncement | NewAnnouncement | PartialUpdateAnnouncement>(announcement: T): RestOf<T> {
     return {
       ...announcement,
-      postAt: announcement.postAt?.toJSON() ?? null,
+      availableFromDate: announcement.availableFromDate?.toJSON() ?? null,
+      availableUntilDate: announcement.availableUntilDate?.toJSON() ?? null,
     };
   }
 
   protected convertDateFromServer(restAnnouncement: RestAnnouncement): IAnnouncement {
     return {
       ...restAnnouncement,
-      postAt: restAnnouncement.postAt ? dayjs(restAnnouncement.postAt) : undefined,
+      availableFromDate: restAnnouncement.availableFromDate ? dayjs(restAnnouncement.availableFromDate) : undefined,
+      availableUntilDate: restAnnouncement.availableUntilDate ? dayjs(restAnnouncement.availableUntilDate) : undefined,
     };
   }
 

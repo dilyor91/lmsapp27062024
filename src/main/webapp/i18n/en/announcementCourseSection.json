@@ -1,0 +1,26 @@
+{
+  "lmsapp27062024App": {
+    "announcementCourseSection": {
+      "home": {
+        "title": "Announcement Course Sections",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Announcement Course Section",
+        "createOrEditLabel": "Create or edit a Announcement Course Section",
+        "notFound": "No Announcement Course Sections found"
+      },
+      "created": "A new Announcement Course Section is created with identifier {{ param }}",
+      "updated": "A Announcement Course Section is updated with identifier {{ param }}",
+      "deleted": "A Announcement Course Section is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Announcement Course Section {{ id }}?"
+      },
+      "detail": {
+        "title": "Announcement Course Section"
+      },
+      "id": "ID",
+      "announcement": "Announcement",
+      "course": "Course",
+      "courseSection": "Course Section"
+    }
+  }
+}

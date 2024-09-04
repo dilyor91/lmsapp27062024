@@ -10,25 +10,18 @@
     -->
     <changeSet id="20240627062108-2" author="jhipster">
 
+        <addForeignKeyConstraint baseColumnNames="attachment_id"
+                                 baseTableName="announcement"
+                                 constraintName="fk_announcement__attachment_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="attachment"
+                                 />
+
         <addForeignKeyConstraint baseColumnNames="course_id"
                                  baseTableName="announcement"
                                  constraintName="fk_announcement__course_id"
                                  referencedColumnNames="id"
                                  referencedTableName="course"
-                                 />
-
-        <addForeignKeyConstraint baseColumnNames="announcement_id"
-                                 baseTableName="rel_announcement__course_section"
-                                 constraintName="fk_rel_announcement__course_section__announcement_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="announcement"
-                                 />
-
-        <addForeignKeyConstraint baseColumnNames="course_section_id"
-                                 baseTableName="rel_announcement__course_section"
-                                 constraintName="fk_rel_announcement__course_section__course_section_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="course_section"
                                  />
     </changeSet>
 </databaseChangeLog>

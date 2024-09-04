@@ -49,10 +49,10 @@ describe('StudyTerm Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call StudyAcademicYear query and add missing value', () => {
       const studyTerm: IStudyTerm = { id: 456 };
-      const studyAcademicYear: IStudyAcademicYear = { id: 9646 };
+      const studyAcademicYear: IStudyAcademicYear = { id: 25788 };
       studyTerm.studyAcademicYear = studyAcademicYear;
 
-      const studyAcademicYearCollection: IStudyAcademicYear[] = [{ id: 24464 }];
+      const studyAcademicYearCollection: IStudyAcademicYear[] = [{ id: 3184 }];
       jest.spyOn(studyAcademicYearService, 'query').mockReturnValue(of(new HttpResponse({ body: studyAcademicYearCollection })));
       const additionalStudyAcademicYears = [studyAcademicYear];
       const expectedCollection: IStudyAcademicYear[] = [...additionalStudyAcademicYears, ...studyAcademicYearCollection];
@@ -71,7 +71,7 @@ describe('StudyTerm Management Update Component', () => {
 
     it('Should update editForm', () => {
       const studyTerm: IStudyTerm = { id: 456 };
-      const studyAcademicYear: IStudyAcademicYear = { id: 15755 };
+      const studyAcademicYear: IStudyAcademicYear = { id: 25340 };
       studyTerm.studyAcademicYear = studyAcademicYear;
 
       activatedRoute.data = of({ studyTerm });

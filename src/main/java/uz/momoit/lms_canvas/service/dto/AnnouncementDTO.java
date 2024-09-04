@@ -3,9 +3,7 @@ package uz.momoit.lms_canvas.service.dto;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 /**
  * A DTO for the {@link uz.momoit.lms_canvas.domain.Announcement} entity.
@@ -21,17 +19,15 @@ public class AnnouncementDTO implements Serializable {
     @NotNull
     private String content;
 
-    private Long attachmentId;
+    private Instant availableFromDate;
 
-    private Boolean delayPost;
-
-    private Instant postAt;
+    private Instant availableUntilDate;
 
     private Boolean published;
 
-    private CourseDTO course;
+    private AttachmentDTO attachment;
 
-    private Set<CourseSectionDTO> courseSections = new HashSet<>();
+    private CourseDTO course;
 
     public Long getId() {
         return id;
@@ -57,28 +53,20 @@ public class AnnouncementDTO implements Serializable {
         this.content = content;
     }
 
-    public Long getAttachmentId() {
-        return attachmentId;
+    public Instant getAvailableFromDate() {
+        return availableFromDate;
     }
 
-    public void setAttachmentId(Long attachmentId) {
-        this.attachmentId = attachmentId;
+    public void setAvailableFromDate(Instant availableFromDate) {
+        this.availableFromDate = availableFromDate;
     }
 
-    public Boolean getDelayPost() {
-        return delayPost;
+    public Instant getAvailableUntilDate() {
+        return availableUntilDate;
     }
 
-    public void setDelayPost(Boolean delayPost) {
-        this.delayPost = delayPost;
-    }
-
-    public Instant getPostAt() {
-        return postAt;
-    }
-
-    public void setPostAt(Instant postAt) {
-        this.postAt = postAt;
+    public void setAvailableUntilDate(Instant availableUntilDate) {
+        this.availableUntilDate = availableUntilDate;
     }
 
     public Boolean getPublished() {
@@ -89,20 +77,20 @@ public class AnnouncementDTO implements Serializable {
         this.published = published;
     }
 
+    public AttachmentDTO getAttachment() {
+        return attachment;
+    }
+
+    public void setAttachment(AttachmentDTO attachment) {
+        this.attachment = attachment;
+    }
+
     public CourseDTO getCourse() {
         return course;
     }
 
     public void setCourse(CourseDTO course) {
         this.course = course;
-    }
-
-    public Set<CourseSectionDTO> getCourseSections() {
-        return courseSections;
-    }
-
-    public void setCourseSections(Set<CourseSectionDTO> courseSections) {
-        this.courseSections = courseSections;
     }
 
     @Override
@@ -133,12 +121,11 @@ public class AnnouncementDTO implements Serializable {
             "id=" + getId() +
             ", title='" + getTitle() + "'" +
             ", content='" + getContent() + "'" +
-            ", attachmentId=" + getAttachmentId() +
-            ", delayPost='" + getDelayPost() + "'" +
-            ", postAt='" + getPostAt() + "'" +
+            ", availableFromDate='" + getAvailableFromDate() + "'" +
+            ", availableUntilDate='" + getAvailableUntilDate() + "'" +
             ", published='" + getPublished() + "'" +
+            ", attachment=" + getAttachment() +
             ", course=" + getCourse() +
-            ", courseSections=" + getCourseSections() +
             "}";
     }
 }

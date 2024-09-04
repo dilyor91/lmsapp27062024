@@ -65,10 +65,10 @@ describe('Notification Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Quiz query and add missing value', () => {
       const notification: INotification = { id: 456 };
-      const quiz: IQuiz = { id: 16820 };
+      const quiz: IQuiz = { id: 19553 };
       notification.quiz = quiz;
 
-      const quizCollection: IQuiz[] = [{ id: 13857 }];
+      const quizCollection: IQuiz[] = [{ id: 23109 }];
       jest.spyOn(quizService, 'query').mockReturnValue(of(new HttpResponse({ body: quizCollection })));
       const additionalQuizzes = [quiz];
       const expectedCollection: IQuiz[] = [...additionalQuizzes, ...quizCollection];
@@ -87,10 +87,10 @@ describe('Notification Management Update Component', () => {
 
     it('Should call Assignment query and add missing value', () => {
       const notification: INotification = { id: 456 };
-      const assignment: IAssignment = { id: 18616 };
+      const assignment: IAssignment = { id: 13510 };
       notification.assignment = assignment;
 
-      const assignmentCollection: IAssignment[] = [{ id: 11160 }];
+      const assignmentCollection: IAssignment[] = [{ id: 22492 }];
       jest.spyOn(assignmentService, 'query').mockReturnValue(of(new HttpResponse({ body: assignmentCollection })));
       const additionalAssignments = [assignment];
       const expectedCollection: IAssignment[] = [...additionalAssignments, ...assignmentCollection];
@@ -109,10 +109,10 @@ describe('Notification Management Update Component', () => {
 
     it('Should call SubmissionAssignment query and add missing value', () => {
       const notification: INotification = { id: 456 };
-      const submissionAssignment: ISubmissionAssignment = { id: 2839 };
+      const submissionAssignment: ISubmissionAssignment = { id: 11762 };
       notification.submissionAssignment = submissionAssignment;
 
-      const submissionAssignmentCollection: ISubmissionAssignment[] = [{ id: 4112 }];
+      const submissionAssignmentCollection: ISubmissionAssignment[] = [{ id: 10476 }];
       jest.spyOn(submissionAssignmentService, 'query').mockReturnValue(of(new HttpResponse({ body: submissionAssignmentCollection })));
       const additionalSubmissionAssignments = [submissionAssignment];
       const expectedCollection: ISubmissionAssignment[] = [...additionalSubmissionAssignments, ...submissionAssignmentCollection];
@@ -131,10 +131,10 @@ describe('Notification Management Update Component', () => {
 
     it('Should call Student query and add missing value', () => {
       const notification: INotification = { id: 456 };
-      const student: IStudent = { id: 20716 };
+      const student: IStudent = { id: 26190 };
       notification.student = student;
 
-      const studentCollection: IStudent[] = [{ id: 26733 }];
+      const studentCollection: IStudent[] = [{ id: 13217 }];
       jest.spyOn(studentService, 'query').mockReturnValue(of(new HttpResponse({ body: studentCollection })));
       const additionalStudents = [student];
       const expectedCollection: IStudent[] = [...additionalStudents, ...studentCollection];
@@ -153,10 +153,10 @@ describe('Notification Management Update Component', () => {
 
     it('Should call Teacher query and add missing value', () => {
       const notification: INotification = { id: 456 };
-      const teacher: ITeacher = { id: 16646 };
+      const teacher: ITeacher = { id: 10660 };
       notification.teacher = teacher;
 
-      const teacherCollection: ITeacher[] = [{ id: 17946 }];
+      const teacherCollection: ITeacher[] = [{ id: 5874 }];
       jest.spyOn(teacherService, 'query').mockReturnValue(of(new HttpResponse({ body: teacherCollection })));
       const additionalTeachers = [teacher];
       const expectedCollection: ITeacher[] = [...additionalTeachers, ...teacherCollection];
@@ -175,15 +175,15 @@ describe('Notification Management Update Component', () => {
 
     it('Should update editForm', () => {
       const notification: INotification = { id: 456 };
-      const quiz: IQuiz = { id: 26385 };
+      const quiz: IQuiz = { id: 21402 };
       notification.quiz = quiz;
-      const assignment: IAssignment = { id: 19112 };
+      const assignment: IAssignment = { id: 24593 };
       notification.assignment = assignment;
-      const submissionAssignment: ISubmissionAssignment = { id: 31626 };
+      const submissionAssignment: ISubmissionAssignment = { id: 15367 };
       notification.submissionAssignment = submissionAssignment;
-      const student: IStudent = { id: 25481 };
+      const student: IStudent = { id: 7191 };
       notification.student = student;
-      const teacher: ITeacher = { id: 2794 };
+      const teacher: ITeacher = { id: 32338 };
       notification.teacher = teacher;
 
       activatedRoute.data = of({ notification });
