@@ -20,12 +20,11 @@
       "id": "ID",
       "title": "Title",
       "content": "Content",
-      "attachmentId": "Attachment Id",
-      "delayPost": "Delay Post",
-      "postAt": "Post At",
+      "availableFromDate": "Available From Date",
+      "availableUntilDate": "Available Until Date",
       "published": "Published",
-      "course": "Course",
-      "courseSection": "Course Section"
+      "attachment": "Attachment",
+      "course": "Course"
     }
   }
 }

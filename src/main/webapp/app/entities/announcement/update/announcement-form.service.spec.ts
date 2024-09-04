@@ -22,12 +22,11 @@ describe('Announcement Form Service', () => {
             id: expect.any(Object),
             title: expect.any(Object),
             content: expect.any(Object),
-            attachmentId: expect.any(Object),
-            delayPost: expect.any(Object),
-            postAt: expect.any(Object),
+            availableFromDate: expect.any(Object),
+            availableUntilDate: expect.any(Object),
             published: expect.any(Object),
+            attachment: expect.any(Object),
             course: expect.any(Object),
-            courseSections: expect.any(Object),
           }),
         );
       });
@@ -40,12 +39,11 @@ describe('Announcement Form Service', () => {
             id: expect.any(Object),
             title: expect.any(Object),
             content: expect.any(Object),
-            attachmentId: expect.any(Object),
-            delayPost: expect.any(Object),
-            postAt: expect.any(Object),
+            availableFromDate: expect.any(Object),
+            availableUntilDate: expect.any(Object),
             published: expect.any(Object),
+            attachment: expect.any(Object),
             course: expect.any(Object),
-            courseSections: expect.any(Object),
           }),
         );
       });

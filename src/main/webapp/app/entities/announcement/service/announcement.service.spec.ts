@@ -9,7 +9,8 @@ import { AnnouncementService, RestAnnouncement } from './announcement.service';
 
 const requireRestSample: RestAnnouncement = {
   ...sampleWithRequiredData,
-  postAt: sampleWithRequiredData.postAt?.toJSON(),
+  availableFromDate: sampleWithRequiredData.availableFromDate?.toJSON(),
+  availableUntilDate: sampleWithRequiredData.availableUntilDate?.toJSON(),
 };
 
 describe('Announcement Service', () => {

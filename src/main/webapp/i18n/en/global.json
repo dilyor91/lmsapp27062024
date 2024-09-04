@@ -46,7 +46,8 @@
         "grade": "Grade",
         "assignmentComment": "Assignment Comment",
         "notification": "Notification",
-        "calendarTodo": "Calendar Todo"
+        "calendarTodo": "Calendar Todo",
+        "announcementCourseSection": "Announcement Course Section"
       },
       "account": {
         "main": "Account",

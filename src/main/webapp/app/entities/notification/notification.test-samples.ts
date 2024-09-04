@@ -3,21 +3,21 @@ import dayjs from 'dayjs/esm';
 import { INotification, NewNotification } from './notification.model';
 
 export const sampleWithRequiredData: INotification = {
-  id: 19684,
+  id: 911,
 };
 
 export const sampleWithPartialData: INotification = {
-  id: 1881,
-  message: 'thrifty',
-  notificationType: 'SUBMISSION_ASSIGNMENT',
+  id: 30861,
+  readDate: dayjs('2024-07-31T06:00'),
+  notificationType: 'ASSIGNMENT',
 };
 
 export const sampleWithFullData: INotification = {
-  id: 21545,
-  message: 'pasture counter so',
-  readDate: dayjs('2024-07-30T15:47'),
-  read: false,
-  notificationType: 'SUBMISSION_ASSIGNMENT',
+  id: 29078,
+  message: 'yahoo likely',
+  readDate: dayjs('2024-07-31T01:27'),
+  read: true,
+  notificationType: 'ASSIGNMENT',
 };
 
 export const sampleWithNewData: NewNotification = {

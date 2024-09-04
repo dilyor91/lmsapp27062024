@@ -49,9 +49,8 @@ public class AnnouncementAsserts {
             .as("Verify Announcement relevant properties")
             .satisfies(e -> assertThat(e.getTitle()).as("check title").isEqualTo(actual.getTitle()))
             .satisfies(e -> assertThat(e.getContent()).as("check content").isEqualTo(actual.getContent()))
-            .satisfies(e -> assertThat(e.getAttachmentId()).as("check attachmentId").isEqualTo(actual.getAttachmentId()))
-            .satisfies(e -> assertThat(e.getDelayPost()).as("check delayPost").isEqualTo(actual.getDelayPost()))
-            .satisfies(e -> assertThat(e.getPostAt()).as("check postAt").isEqualTo(actual.getPostAt()))
+            .satisfies(e -> assertThat(e.getAvailableFromDate()).as("check availableFromDate").isEqualTo(actual.getAvailableFromDate()))
+            .satisfies(e -> assertThat(e.getAvailableUntilDate()).as("check availableUntilDate").isEqualTo(actual.getAvailableUntilDate()))
             .satisfies(e -> assertThat(e.getPublished()).as("check published").isEqualTo(actual.getPublished()));
     }
 
@@ -64,7 +63,7 @@ public class AnnouncementAsserts {
     public static void assertAnnouncementUpdatableRelationshipsEquals(Announcement expected, Announcement actual) {
         assertThat(expected)
             .as("Verify Announcement relationships")
-            .satisfies(e -> assertThat(e.getCourse()).as("check course").isEqualTo(actual.getCourse()))
-            .satisfies(e -> assertThat(e.getCourseSections()).as("check courseSections").isEqualTo(actual.getCourseSections()));
+            .satisfies(e -> assertThat(e.getAttachment()).as("check attachment").isEqualTo(actual.getAttachment()))
+            .satisfies(e -> assertThat(e.getCourse()).as("check course").isEqualTo(actual.getCourse()));
     }
 }

@@ -283,8 +283,6 @@ class StudentAnswerQuestionResourceIT {
         StudentAnswerQuestion partialUpdatedStudentAnswerQuestion = new StudentAnswerQuestion();
         partialUpdatedStudentAnswerQuestion.setId(studentAnswerQuestion.getId());
 
-        partialUpdatedStudentAnswerQuestion.isCorrect(UPDATED_IS_CORRECT);
-
         restStudentAnswerQuestionMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedStudentAnswerQuestion.getId())

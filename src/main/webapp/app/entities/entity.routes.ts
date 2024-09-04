@@ -206,6 +206,11 @@ const routes: Routes = [
     data: { pageTitle: 'lmsapp27062024App.calendarTodo.home.title' },
     loadChildren: () => import('./calendar-todo/calendar-todo.routes'),
   },
+  {
+    path: 'announcement-course-section',
+    data: { pageTitle: 'lmsapp27062024App.announcementCourseSection.home.title' },
+    loadChildren: () => import('./announcement-course-section/announcement-course-section.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 

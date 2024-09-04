@@ -5,8 +5,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -35,31 +33,22 @@ public class Announcement implements Serializable {
     @Column(name = "content", nullable = false)
     private String content;
 
-    @Column(name = "attachment_id")
-    private Long attachmentId;
+    @Column(name = "available_from_date")
+    private Instant availableFromDate;
 
-    @Column(name = "delay_post")
-    private Boolean delayPost;
-
-    @Column(name = "post_at")
-    private Instant postAt;
+    @Column(name = "available_until_date")
+    private Instant availableUntilDate;
 
     @Column(name = "published")
     private Boolean published;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = { "lessonMaterial" }, allowSetters = true)
+    private Attachment attachment;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "user", "courseWeekInfo" }, allowSetters = true)
     private Course course;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-        name = "rel_announcement__course_section",
-        joinColumns = @JoinColumn(name = "announcement_id"),
-        inverseJoinColumns = @JoinColumn(name = "course_section_id")
-    )
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "course", "announcements" }, allowSetters = true)
-    private Set<CourseSection> courseSections = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -102,43 +91,30 @@ public class Announcement implements Serializable {
         this.content = content;
     }
 
-    public Long getAttachmentId() {
-        return this.attachmentId;
+    public Instant getAvailableFromDate() {
+        return this.availableFromDate;
     }
 
-    public Announcement attachmentId(Long attachmentId) {
-        this.setAttachmentId(attachmentId);
+    public Announcement availableFromDate(Instant availableFromDate) {
+        this.setAvailableFromDate(availableFromDate);
         return this;
     }
 
-    public void setAttachmentId(Long attachmentId) {
-        this.attachmentId = attachmentId;
+    public void setAvailableFromDate(Instant availableFromDate) {
+        this.availableFromDate = availableFromDate;
     }
 
-    public Boolean getDelayPost() {
-        return this.delayPost;
+    public Instant getAvailableUntilDate() {
+        return this.availableUntilDate;
     }
 
-    public Announcement delayPost(Boolean delayPost) {
-        this.setDelayPost(delayPost);
+    public Announcement availableUntilDate(Instant availableUntilDate) {
+        this.setAvailableUntilDate(availableUntilDate);
         return this;
     }
 
-    public void setDelayPost(Boolean delayPost) {
-        this.delayPost = delayPost;
-    }
-
-    public Instant getPostAt() {
-        return this.postAt;
-    }
-
-    public Announcement postAt(Instant postAt) {
-        this.setPostAt(postAt);
-        return this;
-    }
-
-    public void setPostAt(Instant postAt) {
-        this.postAt = postAt;
+    public void setAvailableUntilDate(Instant availableUntilDate) {
+        this.availableUntilDate = availableUntilDate;
     }
 
     public Boolean getPublished() {
@@ -154,6 +130,19 @@ public class Announcement implements Serializable {
         this.published = published;
     }
 
+    public Attachment getAttachment() {
+        return this.attachment;
+    }
+
+    public void setAttachment(Attachment attachment) {
+        this.attachment = attachment;
+    }
+
+    public Announcement attachment(Attachment attachment) {
+        this.setAttachment(attachment);
+        return this;
+    }
+
     public Course getCourse() {
         return this.course;
     }
@@ -164,29 +153,6 @@ public class Announcement implements Serializable {
 
     public Announcement course(Course course) {
         this.setCourse(course);
-        return this;
-    }
-
-    public Set<CourseSection> getCourseSections() {
-        return this.courseSections;
-    }
-
-    public void setCourseSections(Set<CourseSection> courseSections) {
-        this.courseSections = courseSections;
-    }
-
-    public Announcement courseSections(Set<CourseSection> courseSections) {
-        this.setCourseSections(courseSections);
-        return this;
-    }
-
-    public Announcement addCourseSection(CourseSection courseSection) {
-        this.courseSections.add(courseSection);
-        return this;
-    }
-
-    public Announcement removeCourseSection(CourseSection courseSection) {
-        this.courseSections.remove(courseSection);
         return this;
     }
 
@@ -216,9 +182,8 @@ public class Announcement implements Serializable {
             "id=" + getId() +
             ", title='" + getTitle() + "'" +
             ", content='" + getContent() + "'" +
-            ", attachmentId=" + getAttachmentId() +
-            ", delayPost='" + getDelayPost() + "'" +
-            ", postAt='" + getPostAt() + "'" +
+            ", availableFromDate='" + getAvailableFromDate() + "'" +
+            ", availableUntilDate='" + getAvailableUntilDate() + "'" +
             ", published='" + getPublished() + "'" +
             "}";
     }

@@ -19,26 +19,26 @@ type AnnouncementFormGroupInput = IAnnouncement | PartialWithRequiredKeyOf<NewAn
 /**
  * Type that converts some properties for forms.
  */
-type FormValueOf<T extends IAnnouncement | NewAnnouncement> = Omit<T, 'postAt'> & {
-  postAt?: string | null;
+type FormValueOf<T extends IAnnouncement | NewAnnouncement> = Omit<T, 'availableFromDate' | 'availableUntilDate'> & {
+  availableFromDate?: string | null;
+  availableUntilDate?: string | null;
 };
 
 type AnnouncementFormRawValue = FormValueOf<IAnnouncement>;
 
 type NewAnnouncementFormRawValue = FormValueOf<NewAnnouncement>;
 
-type AnnouncementFormDefaults = Pick<NewAnnouncement, 'id' | 'delayPost' | 'postAt' | 'published' | 'courseSections'>;
+type AnnouncementFormDefaults = Pick<NewAnnouncement, 'id' | 'availableFromDate' | 'availableUntilDate' | 'published'>;
 
 type AnnouncementFormGroupContent = {
   id: FormControl<AnnouncementFormRawValue['id'] | NewAnnouncement['id']>;
   title: FormControl<AnnouncementFormRawValue['title']>;
   content: FormControl<AnnouncementFormRawValue['content']>;
-  attachmentId: FormControl<AnnouncementFormRawValue['attachmentId']>;
-  delayPost: FormControl<AnnouncementFormRawValue['delayPost']>;
-  postAt: FormControl<AnnouncementFormRawValue['postAt']>;
+  availableFromDate: FormControl<AnnouncementFormRawValue['availableFromDate']>;
+  availableUntilDate: FormControl<AnnouncementFormRawValue['availableUntilDate']>;
   published: FormControl<AnnouncementFormRawValue['published']>;
+  attachment: FormControl<AnnouncementFormRawValue['attachment']>;
   course: FormControl<AnnouncementFormRawValue['course']>;
-  courseSections: FormControl<AnnouncementFormRawValue['courseSections']>;
 };
 
 export type AnnouncementFormGroup = FormGroup<AnnouncementFormGroupContent>;
@@ -64,12 +64,11 @@ export class AnnouncementFormService {
       content: new FormControl(announcementRawValue.content, {
         validators: [Validators.required],
       }),
-      attachmentId: new FormControl(announcementRawValue.attachmentId),
-      delayPost: new FormControl(announcementRawValue.delayPost),
-      postAt: new FormControl(announcementRawValue.postAt),
+      availableFromDate: new FormControl(announcementRawValue.availableFromDate),
+      availableUntilDate: new FormControl(announcementRawValue.availableUntilDate),
       published: new FormControl(announcementRawValue.published),
+      attachment: new FormControl(announcementRawValue.attachment),
       course: new FormControl(announcementRawValue.course),
-      courseSections: new FormControl(announcementRawValue.courseSections ?? []),
     });
   }
 
@@ -92,10 +91,9 @@ export class AnnouncementFormService {
 
     return {
       id: null,
-      delayPost: false,
-      postAt: currentTime,
+      availableFromDate: currentTime,
+      availableUntilDate: currentTime,
       published: false,
-      courseSections: [],
     };
   }
 
@@ -104,7 +102,8 @@ export class AnnouncementFormService {
   ): IAnnouncement | NewAnnouncement {
     return {
       ...rawAnnouncement,
-      postAt: dayjs(rawAnnouncement.postAt, DATE_TIME_FORMAT),
+      availableFromDate: dayjs(rawAnnouncement.availableFromDate, DATE_TIME_FORMAT),
+      availableUntilDate: dayjs(rawAnnouncement.availableUntilDate, DATE_TIME_FORMAT),
     };
   }
 
@@ -113,8 +112,8 @@ export class AnnouncementFormService {
   ): AnnouncementFormRawValue | PartialWithRequiredKeyOf<NewAnnouncementFormRawValue> {
     return {
       ...announcement,
-      postAt: announcement.postAt ? announcement.postAt.format(DATE_TIME_FORMAT) : undefined,
-      courseSections: announcement.courseSections ?? [],
+      availableFromDate: announcement.availableFromDate ? announcement.availableFromDate.format(DATE_TIME_FORMAT) : undefined,
+      availableUntilDate: announcement.availableUntilDate ? announcement.availableUntilDate.format(DATE_TIME_FORMAT) : undefined,
     };
   }
 }

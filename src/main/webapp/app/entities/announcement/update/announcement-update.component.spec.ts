@@ -4,10 +4,10 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, from, of } from 'rxjs';
 
+import { IAttachment } from 'app/entities/attachment/attachment.model';
+import { AttachmentService } from 'app/entities/attachment/service/attachment.service';
 import { ICourse } from 'app/entities/course/course.model';
 import { CourseService } from 'app/entities/course/service/course.service';
-import { ICourseSection } from 'app/entities/course-section/course-section.model';
-import { CourseSectionService } from 'app/entities/course-section/service/course-section.service';
 import { IAnnouncement } from '../announcement.model';
 import { AnnouncementService } from '../service/announcement.service';
 import { AnnouncementFormService } from './announcement-form.service';
@@ -20,8 +20,8 @@ describe('Announcement Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let announcementFormService: AnnouncementFormService;
   let announcementService: AnnouncementService;
+  let attachmentService: AttachmentService;
   let courseService: CourseService;
-  let courseSectionService: CourseSectionService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -44,19 +44,41 @@ describe('Announcement Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     announcementFormService = TestBed.inject(AnnouncementFormService);
     announcementService = TestBed.inject(AnnouncementService);
+    attachmentService = TestBed.inject(AttachmentService);
     courseService = TestBed.inject(CourseService);
-    courseSectionService = TestBed.inject(CourseSectionService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
+    it('Should call Attachment query and add missing value', () => {
+      const announcement: IAnnouncement = { id: 456 };
+      const attachment: IAttachment = { id: 6418 };
+      announcement.attachment = attachment;
+
+      const attachmentCollection: IAttachment[] = [{ id: 25651 }];
+      jest.spyOn(attachmentService, 'query').mockReturnValue(of(new HttpResponse({ body: attachmentCollection })));
+      const additionalAttachments = [attachment];
+      const expectedCollection: IAttachment[] = [...additionalAttachments, ...attachmentCollection];
+      jest.spyOn(attachmentService, 'addAttachmentToCollectionIfMissing').mockReturnValue(expectedCollection);
+
+      activatedRoute.data = of({ announcement });
+      comp.ngOnInit();
+
+      expect(attachmentService.query).toHaveBeenCalled();
+      expect(attachmentService.addAttachmentToCollectionIfMissing).toHaveBeenCalledWith(
+        attachmentCollection,
+        ...additionalAttachments.map(expect.objectContaining),
+      );
+      expect(comp.attachmentsSharedCollection).toEqual(expectedCollection);
+    });
+
     it('Should call Course query and add missing value', () => {
       const announcement: IAnnouncement = { id: 456 };
-      const course: ICourse = { id: 4381 };
+      const course: ICourse = { id: 15709 };
       announcement.course = course;
 
-      const courseCollection: ICourse[] = [{ id: 22322 }];
+      const courseCollection: ICourse[] = [{ id: 14496 }];
       jest.spyOn(courseService, 'query').mockReturnValue(of(new HttpResponse({ body: courseCollection })));
       const additionalCourses = [course];
       const expectedCollection: ICourse[] = [...additionalCourses, ...courseCollection];
@@ -73,40 +95,18 @@ describe('Announcement Management Update Component', () => {
       expect(comp.coursesSharedCollection).toEqual(expectedCollection);
     });
 
-    it('Should call CourseSection query and add missing value', () => {
-      const announcement: IAnnouncement = { id: 456 };
-      const courseSections: ICourseSection[] = [{ id: 18497 }];
-      announcement.courseSections = courseSections;
-
-      const courseSectionCollection: ICourseSection[] = [{ id: 25786 }];
-      jest.spyOn(courseSectionService, 'query').mockReturnValue(of(new HttpResponse({ body: courseSectionCollection })));
-      const additionalCourseSections = [...courseSections];
-      const expectedCollection: ICourseSection[] = [...additionalCourseSections, ...courseSectionCollection];
-      jest.spyOn(courseSectionService, 'addCourseSectionToCollectionIfMissing').mockReturnValue(expectedCollection);
-
-      activatedRoute.data = of({ announcement });
-      comp.ngOnInit();
-
-      expect(courseSectionService.query).toHaveBeenCalled();
-      expect(courseSectionService.addCourseSectionToCollectionIfMissing).toHaveBeenCalledWith(
-        courseSectionCollection,
-        ...additionalCourseSections.map(expect.objectContaining),
-      );
-      expect(comp.courseSectionsSharedCollection).toEqual(expectedCollection);
-    });
-
     it('Should update editForm', () => {
       const announcement: IAnnouncement = { id: 456 };
-      const course: ICourse = { id: 579 };
+      const attachment: IAttachment = { id: 23463 };
+      announcement.attachment = attachment;
+      const course: ICourse = { id: 2702 };
       announcement.course = course;
-      const courseSection: ICourseSection = { id: 3436 };
-      announcement.courseSections = [courseSection];
 
       activatedRoute.data = of({ announcement });
       comp.ngOnInit();
 
+      expect(comp.attachmentsSharedCollection).toContain(attachment);
       expect(comp.coursesSharedCollection).toContain(course);
-      expect(comp.courseSectionsSharedCollection).toContain(courseSection);
       expect(comp.announcement).toEqual(announcement);
     });
   });
@@ -180,6 +180,16 @@ describe('Announcement Management Update Component', () => {
   });
 
   describe('Compare relationships', () => {
+    describe('compareAttachment', () => {
+      it('Should forward to attachmentService', () => {
+        const entity = { id: 123 };
+        const entity2 = { id: 456 };
+        jest.spyOn(attachmentService, 'compareAttachment');
+        comp.compareAttachment(entity, entity2);
+        expect(attachmentService.compareAttachment).toHaveBeenCalledWith(entity, entity2);
+      });
+    });
+
     describe('compareCourse', () => {
       it('Should forward to courseService', () => {
         const entity = { id: 123 };
@@ -187,16 +197,6 @@ describe('Announcement Management Update Component', () => {
         jest.spyOn(courseService, 'compareCourse');
         comp.compareCourse(entity, entity2);
         expect(courseService.compareCourse).toHaveBeenCalledWith(entity, entity2);
-      });
-    });
-
-    describe('compareCourseSection', () => {
-      it('Should forward to courseSectionService', () => {
-        const entity = { id: 123 };
-        const entity2 = { id: 456 };
-        jest.spyOn(courseSectionService, 'compareCourseSection');
-        comp.compareCourseSection(entity, entity2);
-        expect(courseSectionService.compareCourseSection).toHaveBeenCalledWith(entity, entity2);
       });
     });
   });

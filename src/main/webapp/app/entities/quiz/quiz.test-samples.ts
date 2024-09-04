@@ -1,28 +1,27 @@
 import { IQuiz, NewQuiz } from './quiz.model';
 
 export const sampleWithRequiredData: IQuiz = {
-  id: 28448,
-  quizName: 'finally',
-  timeInMinute: 23458,
+  id: 21134,
+  quizName: 'ew deck since',
+  timeInMinute: 32163,
 };
 
 export const sampleWithPartialData: IQuiz = {
-  id: 32236,
-  quizName: 'phooey hallucinate',
-  timeInMinute: 27560,
-  published: false,
+  id: 19047,
+  quizName: 'gee however near',
+  timeInMinute: 3801,
 };
 
 export const sampleWithFullData: IQuiz = {
-  id: 1396,
-  quizName: 'acidly supposing pace',
-  timeInMinute: 456,
-  published: false,
+  id: 24938,
+  quizName: 'waterlogged knavishly',
+  timeInMinute: 24123,
+  published: true,
 };
 
 export const sampleWithNewData: NewQuiz = {
-  quizName: 'fatally',
-  timeInMinute: 12171,
+  quizName: 'hovercraft',
+  timeInMinute: 15186,
   id: null,
 };
 

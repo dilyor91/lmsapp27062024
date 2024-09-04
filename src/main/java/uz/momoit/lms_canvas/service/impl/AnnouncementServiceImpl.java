@@ -69,15 +69,11 @@ public class AnnouncementServiceImpl implements AnnouncementService {
         return announcementRepository.findAll(pageable).map(announcementMapper::toDto);
     }
 
-    public Page<AnnouncementDTO> findAllWithEagerRelationships(Pageable pageable) {
-        return announcementRepository.findAllWithEagerRelationships(pageable).map(announcementMapper::toDto);
-    }
-
     @Override
     @Transactional(readOnly = true)
     public Optional<AnnouncementDTO> findOne(Long id) {
         LOG.debug("Request to get Announcement : {}", id);
-        return announcementRepository.findOneWithEagerRelationships(id).map(announcementMapper::toDto);
+        return announcementRepository.findById(id).map(announcementMapper::toDto);
     }
 
     @Override

@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (announcementCourseSection(); as announcementCourseSectionRef) {
+      <div>
+        <h2 data-cy="announcementCourseSectionDetailsHeading">
+          <span jhiTranslate="lmsapp27062024App.announcementCourseSection.detail.title">Announcement Course Section</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ announcementCourseSectionRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.announcementCourseSection.announcement">Announcement</span></dt>
+          <dd>
+            @if (announcementCourseSection()!.announcement) {
+              <div>
+                <a [routerLink]="['/announcement', announcementCourseSection()!.announcement?.id, 'view']">{{
+                  announcementCourseSectionRef.announcement?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.announcementCourseSection.course">Course</span></dt>
+          <dd>
+            @if (announcementCourseSection()!.course) {
+              <div>
+                <a [routerLink]="['/course', announcementCourseSection()!.course?.id, 'view']">{{
+                  announcementCourseSectionRef.course?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.announcementCourseSection.courseSection">Course Section</span></dt>
+          <dd>
+            @if (announcementCourseSection()!.courseSection) {
+              <div>
+                <a [routerLink]="['/course-section', announcementCourseSection()!.courseSection?.id, 'view']">{{
+                  announcementCourseSectionRef.courseSection?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button
+          type="button"
+          [routerLink]="['/announcement-course-section', announcementCourseSectionRef.id, 'edit']"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,12 +1,9 @@
 package uz.momoit.lms_canvas.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static uz.momoit.lms_canvas.domain.AnnouncementTestSamples.*;
 import static uz.momoit.lms_canvas.domain.CourseSectionTestSamples.*;
 import static uz.momoit.lms_canvas.domain.CourseTestSamples.*;
 
-import java.util.HashSet;
-import java.util.Set;
 import org.junit.jupiter.api.Test;
 import uz.momoit.lms_canvas.web.rest.TestUtil;
 
@@ -36,27 +33,5 @@ class CourseSectionTest {
 
         courseSection.course(null);
         assertThat(courseSection.getCourse()).isNull();
-    }
-
-    @Test
-    void announcementTest() {
-        CourseSection courseSection = getCourseSectionRandomSampleGenerator();
-        Announcement announcementBack = getAnnouncementRandomSampleGenerator();
-
-        courseSection.addAnnouncement(announcementBack);
-        assertThat(courseSection.getAnnouncements()).containsOnly(announcementBack);
-        assertThat(announcementBack.getCourseSections()).containsOnly(courseSection);
-
-        courseSection.removeAnnouncement(announcementBack);
-        assertThat(courseSection.getAnnouncements()).doesNotContain(announcementBack);
-        assertThat(announcementBack.getCourseSections()).doesNotContain(courseSection);
-
-        courseSection.announcements(new HashSet<>(Set.of(announcementBack)));
-        assertThat(courseSection.getAnnouncements()).containsOnly(announcementBack);
-        assertThat(announcementBack.getCourseSections()).containsOnly(courseSection);
-
-        courseSection.setAnnouncements(new HashSet<>());
-        assertThat(courseSection.getAnnouncements()).doesNotContain(announcementBack);
-        assertThat(announcementBack.getCourseSections()).doesNotContain(courseSection);
     }
 }

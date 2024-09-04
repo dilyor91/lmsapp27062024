@@ -2,11 +2,9 @@ package uz.momoit.lms_canvas.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static uz.momoit.lms_canvas.domain.AnnouncementTestSamples.*;
-import static uz.momoit.lms_canvas.domain.CourseSectionTestSamples.*;
+import static uz.momoit.lms_canvas.domain.AttachmentTestSamples.*;
 import static uz.momoit.lms_canvas.domain.CourseTestSamples.*;
 
-import java.util.HashSet;
-import java.util.Set;
 import org.junit.jupiter.api.Test;
 import uz.momoit.lms_canvas.web.rest.TestUtil;
 
@@ -27,6 +25,18 @@ class AnnouncementTest {
     }
 
     @Test
+    void attachmentTest() {
+        Announcement announcement = getAnnouncementRandomSampleGenerator();
+        Attachment attachmentBack = getAttachmentRandomSampleGenerator();
+
+        announcement.setAttachment(attachmentBack);
+        assertThat(announcement.getAttachment()).isEqualTo(attachmentBack);
+
+        announcement.attachment(null);
+        assertThat(announcement.getAttachment()).isNull();
+    }
+
+    @Test
     void courseTest() {
         Announcement announcement = getAnnouncementRandomSampleGenerator();
         Course courseBack = getCourseRandomSampleGenerator();
@@ -36,23 +46,5 @@ class AnnouncementTest {
 
         announcement.course(null);
         assertThat(announcement.getCourse()).isNull();
-    }
-
-    @Test
-    void courseSectionTest() {
-        Announcement announcement = getAnnouncementRandomSampleGenerator();
-        CourseSection courseSectionBack = getCourseSectionRandomSampleGenerator();
-
-        announcement.addCourseSection(courseSectionBack);
-        assertThat(announcement.getCourseSections()).containsOnly(courseSectionBack);
-
-        announcement.removeCourseSection(courseSectionBack);
-        assertThat(announcement.getCourseSections()).doesNotContain(courseSectionBack);
-
-        announcement.courseSections(new HashSet<>(Set.of(courseSectionBack)));
-        assertThat(announcement.getCourseSections()).containsOnly(courseSectionBack);
-
-        announcement.setCourseSections(new HashSet<>());
-        assertThat(announcement.getCourseSections()).doesNotContain(courseSectionBack);
     }
 }

@@ -20,16 +20,16 @@
             <column name="content" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="attachment_id" type="bigint">
+            <column name="available_from_date" type="${datetimeType}">
                 <constraints nullable="true" />
             </column>
-            <column name="delay_post" type="boolean">
-                <constraints nullable="true" />
-            </column>
-            <column name="post_at" type="${datetimeType}">
+            <column name="available_until_date" type="${datetimeType}">
                 <constraints nullable="true" />
             </column>
             <column name="published" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="attachment_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <column name="course_id" type="bigint">
@@ -37,21 +37,8 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
-        <dropDefaultValue tableName="announcement" columnName="post_at" columnDataType="${datetimeType}"/>
-    </changeSet>
-
-    <changeSet id="20240627062108-1-relations" author="jhipster">
-
-        <createTable tableName="rel_announcement__course_section">
-            <column name="course_section_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="announcement_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="announcement_id, course_section_id" tableName="rel_announcement__course_section"/>
+        <dropDefaultValue tableName="announcement" columnName="available_from_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="announcement" columnName="available_until_date" columnDataType="${datetimeType}"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
@@ -73,9 +60,8 @@
             <column name="id" type="numeric"/>
             <column name="title" type="string"/>
             <column name="content" type="string"/>
-            <column name="attachment_id" type="numeric"/>
-            <column name="delay_post" type="boolean"/>
-            <column name="post_at" type="date"/>
+            <column name="available_from_date" type="date"/>
+            <column name="available_until_date" type="date"/>
             <column name="published" type="boolean"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>

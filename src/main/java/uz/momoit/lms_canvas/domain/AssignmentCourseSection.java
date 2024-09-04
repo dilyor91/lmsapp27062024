@@ -38,7 +38,7 @@ public class AssignmentCourseSection implements Serializable {
     private Course course;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "course", "announcements" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "course" }, allowSetters = true)
     private CourseSection courseSection;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

@@ -7,10 +7,10 @@ import { finalize, map } from 'rxjs/operators';
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { IAttachment } from 'app/entities/attachment/attachment.model';
+import { AttachmentService } from 'app/entities/attachment/service/attachment.service';
 import { ICourse } from 'app/entities/course/course.model';
 import { CourseService } from 'app/entities/course/service/course.service';
-import { ICourseSection } from 'app/entities/course-section/course-section.model';
-import { CourseSectionService } from 'app/entities/course-section/service/course-section.service';
 import { AnnouncementService } from '../service/announcement.service';
 import { IAnnouncement } from '../announcement.model';
 import { AnnouncementFormGroup, AnnouncementFormService } from './announcement-form.service';
@@ -25,22 +25,21 @@ export class AnnouncementUpdateComponent implements OnInit {
   isSaving = false;
   announcement: IAnnouncement | null = null;
 
+  attachmentsSharedCollection: IAttachment[] = [];
   coursesSharedCollection: ICourse[] = [];
-  courseSectionsSharedCollection: ICourseSection[] = [];
 
   protected announcementService = inject(AnnouncementService);
   protected announcementFormService = inject(AnnouncementFormService);
+  protected attachmentService = inject(AttachmentService);
   protected courseService = inject(CourseService);
-  protected courseSectionService = inject(CourseSectionService);
   protected activatedRoute = inject(ActivatedRoute);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   editForm: AnnouncementFormGroup = this.announcementFormService.createAnnouncementFormGroup();
 
-  compareCourse = (o1: ICourse | null, o2: ICourse | null): boolean => this.courseService.compareCourse(o1, o2);
+  compareAttachment = (o1: IAttachment | null, o2: IAttachment | null): boolean => this.attachmentService.compareAttachment(o1, o2);
 
-  compareCourseSection = (o1: ICourseSection | null, o2: ICourseSection | null): boolean =>
-    this.courseSectionService.compareCourseSection(o1, o2);
+  compareCourse = (o1: ICourse | null, o2: ICourse | null): boolean => this.courseService.compareCourse(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ announcement }) => {
@@ -90,34 +89,31 @@ export class AnnouncementUpdateComponent implements OnInit {
     this.announcement = announcement;
     this.announcementFormService.resetForm(this.editForm, announcement);
 
+    this.attachmentsSharedCollection = this.attachmentService.addAttachmentToCollectionIfMissing<IAttachment>(
+      this.attachmentsSharedCollection,
+      announcement.attachment,
+    );
     this.coursesSharedCollection = this.courseService.addCourseToCollectionIfMissing<ICourse>(
       this.coursesSharedCollection,
       announcement.course,
     );
-    this.courseSectionsSharedCollection = this.courseSectionService.addCourseSectionToCollectionIfMissing<ICourseSection>(
-      this.courseSectionsSharedCollection,
-      ...(announcement.courseSections ?? []),
-    );
   }
 
   protected loadRelationshipsOptions(): void {
+    this.attachmentService
+      .query()
+      .pipe(map((res: HttpResponse<IAttachment[]>) => res.body ?? []))
+      .pipe(
+        map((attachments: IAttachment[]) =>
+          this.attachmentService.addAttachmentToCollectionIfMissing<IAttachment>(attachments, this.announcement?.attachment),
+        ),
+      )
+      .subscribe((attachments: IAttachment[]) => (this.attachmentsSharedCollection = attachments));
+
     this.courseService
       .query()
       .pipe(map((res: HttpResponse<ICourse[]>) => res.body ?? []))
       .pipe(map((courses: ICourse[]) => this.courseService.addCourseToCollectionIfMissing<ICourse>(courses, this.announcement?.course)))
       .subscribe((courses: ICourse[]) => (this.coursesSharedCollection = courses));
-
-    this.courseSectionService
-      .query()
-      .pipe(map((res: HttpResponse<ICourseSection[]>) => res.body ?? []))
-      .pipe(
-        map((courseSections: ICourseSection[]) =>
-          this.courseSectionService.addCourseSectionToCollectionIfMissing<ICourseSection>(
-            courseSections,
-            ...(this.announcement?.courseSections ?? []),
-          ),
-        ),
-      )
-      .subscribe((courseSections: ICourseSection[]) => (this.courseSectionsSharedCollection = courseSections));
   }
 }

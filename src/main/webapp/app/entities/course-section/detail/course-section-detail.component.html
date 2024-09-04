@@ -29,15 +29,6 @@
               </div>
             }
           </dd>
-          <dt><span jhiTranslate="lmsapp27062024App.courseSection.announcement">Announcement</span></dt>
-          <dd>
-            @for (announcement of courseSectionRef.announcements; track $index; let last = $last) {
-              <span>
-                <a [routerLink]="['/announcement', announcement.id, 'view']">{{ announcement?.id }}</a
-                >{{ last ? '' : ', ' }}
-              </span>
-            }
-          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

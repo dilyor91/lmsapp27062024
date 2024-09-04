@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -33,11 +31,6 @@ public class CourseSection implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "user", "courseWeekInfo" }, allowSetters = true)
     private Course course;
-
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "courseSections")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "course", "courseSections" }, allowSetters = true)
-    private Set<Announcement> announcements = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -77,37 +70,6 @@ public class CourseSection implements Serializable {
 
     public CourseSection course(Course course) {
         this.setCourse(course);
-        return this;
-    }
-
-    public Set<Announcement> getAnnouncements() {
-        return this.announcements;
-    }
-
-    public void setAnnouncements(Set<Announcement> announcements) {
-        if (this.announcements != null) {
-            this.announcements.forEach(i -> i.removeCourseSection(this));
-        }
-        if (announcements != null) {
-            announcements.forEach(i -> i.addCourseSection(this));
-        }
-        this.announcements = announcements;
-    }
-
-    public CourseSection announcements(Set<Announcement> announcements) {
-        this.setAnnouncements(announcements);
-        return this;
-    }
-
-    public CourseSection addAnnouncement(Announcement announcement) {
-        this.announcements.add(announcement);
-        announcement.getCourseSections().add(this);
-        return this;
-    }
-
-    public CourseSection removeAnnouncement(Announcement announcement) {
-        this.announcements.remove(announcement);
-        announcement.getCourseSections().remove(this);
         return this;
     }
 
