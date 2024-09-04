@@ -41,9 +41,8 @@ entity User{
 entity Announcement {
    title String required
    content String required
-   attachmentId Long
-   delayPost Boolean
-   postAt Instant
+   availableFromDate Instant
+   availableUntilDate Instant
    published Boolean
 }
 
@@ -312,6 +311,10 @@ entity AssignmentCourseSection {
     endDate Instant
 }
 
+entity AnnouncementCourseSection {
+    
+}
+
 entity SubmissionAssignment {
    submissionDate Instant
    content String
@@ -344,6 +347,11 @@ relationship ManyToOne {
    AssignmentCourseSection{assignment} to Assignment
    AssignmentCourseSection{course} to Course
    AssignmentCourseSection{courseSection} to CourseSection
+   
+   AnnouncementCourseSection{announcement} to Announcement
+   AnnouncementCourseSection{course} to Course
+   AnnouncementCourseSection{courseSection} to CourseSection
+   Announcement{attachment} to Attachment
 }
 
 
@@ -443,10 +451,6 @@ relationship ManyToOne {
     Teacher{department} to Department
 }
 
-relationship ManyToMany {
-    Announcement{courseSection} to CourseSection{announcement}
-}
-
 entity AssignmentComment {
    comment String required
    commentDate Instant required
@@ -490,7 +494,8 @@ QuestionGroup, Question, Option,
 Quiz, QuizQuestionGroup, QuizCourseSection,
 QuizSession, StudentOption, StudentQuestion,
 StudentAnswerQuestion, QuizResult, Lesson, Attendance,
-CourseWeekInfo, CourseWeek, LessonMaterial, SubmissionAssignment, Grade, AssignmentComment with pagination
+CourseWeekInfo, CourseWeek, LessonMaterial, SubmissionAssignment, Grade, AssignmentComment, 
+AnnouncementCourseSection with pagination
 
 // Use Data Transfer Objects (DTO)
 dto * with mapstruct
