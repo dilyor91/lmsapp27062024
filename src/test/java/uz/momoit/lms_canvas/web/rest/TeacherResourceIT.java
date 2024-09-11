@@ -540,11 +540,13 @@ class TeacherResourceIT {
 
         partialUpdatedTeacher
             .firstName(UPDATED_FIRST_NAME)
+            .lastName(UPDATED_LAST_NAME)
+            .middleName(UPDATED_MIDDLE_NAME)
+            .email(UPDATED_EMAIL)
             .passportNumber(UPDATED_PASSPORT_NUMBER)
-            .jshshir(UPDATED_JSHSHIR)
-            .region(UPDATED_REGION)
-            .addressLine(UPDATED_ADDRESS_LINE)
-            .position(UPDATED_POSITION)
+            .isActive(UPDATED_IS_ACTIVE)
+            .country(UPDATED_COUNTRY)
+            .city(UPDATED_CITY)
             .academicDegree(UPDATED_ACADEMIC_DEGREE)
             .academicTitle(UPDATED_ACADEMIC_TITLE);
 

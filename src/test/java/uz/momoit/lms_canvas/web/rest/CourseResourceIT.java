@@ -499,10 +499,10 @@ class CourseResourceIT {
 
         partialUpdatedCourse
             .courseName(UPDATED_COURSE_NAME)
-            .courseImagePath(UPDATED_COURSE_IMAGE_PATH)
+            .courseCode(UPDATED_COURSE_CODE)
             .published(UPDATED_PUBLISHED)
             .selfEnrollment(UPDATED_SELF_ENROLLMENT)
-            .status(UPDATED_STATUS);
+            .selfEnrollmentCode(UPDATED_SELF_ENROLLMENT_CODE);
 
         restCourseMockMvc
             .perform(

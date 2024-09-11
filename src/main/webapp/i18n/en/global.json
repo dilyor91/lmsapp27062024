@@ -47,7 +47,9 @@
         "assignmentComment": "Assignment Comment",
         "notification": "Notification",
         "calendarTodo": "Calendar Todo",
-        "announcementCourseSection": "Announcement Course Section"
+        "announcementCourseSection": "Announcement Course Section",
+        "building": "Building",
+        "room": "Room"
       },
       "account": {
         "main": "Account",

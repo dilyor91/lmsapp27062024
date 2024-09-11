@@ -57,10 +57,10 @@ describe('AnnouncementCourseSection Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Announcement query and add missing value', () => {
       const announcementCourseSection: IAnnouncementCourseSection = { id: 456 };
-      const announcement: IAnnouncement = { id: 14617 };
+      const announcement: IAnnouncement = { id: 9307 };
       announcementCourseSection.announcement = announcement;
 
-      const announcementCollection: IAnnouncement[] = [{ id: 32107 }];
+      const announcementCollection: IAnnouncement[] = [{ id: 23709 }];
       jest.spyOn(announcementService, 'query').mockReturnValue(of(new HttpResponse({ body: announcementCollection })));
       const additionalAnnouncements = [announcement];
       const expectedCollection: IAnnouncement[] = [...additionalAnnouncements, ...announcementCollection];
@@ -79,10 +79,10 @@ describe('AnnouncementCourseSection Management Update Component', () => {
 
     it('Should call Course query and add missing value', () => {
       const announcementCourseSection: IAnnouncementCourseSection = { id: 456 };
-      const course: ICourse = { id: 235 };
+      const course: ICourse = { id: 28205 };
       announcementCourseSection.course = course;
 
-      const courseCollection: ICourse[] = [{ id: 29312 }];
+      const courseCollection: ICourse[] = [{ id: 7419 }];
       jest.spyOn(courseService, 'query').mockReturnValue(of(new HttpResponse({ body: courseCollection })));
       const additionalCourses = [course];
       const expectedCollection: ICourse[] = [...additionalCourses, ...courseCollection];
@@ -101,10 +101,10 @@ describe('AnnouncementCourseSection Management Update Component', () => {
 
     it('Should call CourseSection query and add missing value', () => {
       const announcementCourseSection: IAnnouncementCourseSection = { id: 456 };
-      const courseSection: ICourseSection = { id: 8610 };
+      const courseSection: ICourseSection = { id: 26377 };
       announcementCourseSection.courseSection = courseSection;
 
-      const courseSectionCollection: ICourseSection[] = [{ id: 23741 }];
+      const courseSectionCollection: ICourseSection[] = [{ id: 17202 }];
       jest.spyOn(courseSectionService, 'query').mockReturnValue(of(new HttpResponse({ body: courseSectionCollection })));
       const additionalCourseSections = [courseSection];
       const expectedCollection: ICourseSection[] = [...additionalCourseSections, ...courseSectionCollection];
@@ -123,11 +123,11 @@ describe('AnnouncementCourseSection Management Update Component', () => {
 
     it('Should update editForm', () => {
       const announcementCourseSection: IAnnouncementCourseSection = { id: 456 };
-      const announcement: IAnnouncement = { id: 14811 };
+      const announcement: IAnnouncement = { id: 29503 };
       announcementCourseSection.announcement = announcement;
-      const course: ICourse = { id: 873 };
+      const course: ICourse = { id: 9022 };
       announcementCourseSection.course = course;
-      const courseSection: ICourseSection = { id: 16851 };
+      const courseSection: ICourseSection = { id: 16616 };
       announcementCourseSection.courseSection = courseSection;
 
       activatedRoute.data = of({ announcementCourseSection });
