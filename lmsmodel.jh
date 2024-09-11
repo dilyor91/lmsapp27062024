@@ -416,6 +416,26 @@ entity LessonMaterial {
    lessonFileType LessonFileTypeEnum
 }
 
+entity Building {
+   name String required
+   description String
+   address String
+   status Boolean
+}
+
+entity Room {
+   name String
+   description String
+   capacity Integer
+   status Boolean
+}
+
+relationship ManyToOne {
+  Building{faculty} to Faculty
+  Room{building} to Building
+}
+
+
 relationship ManyToOne {
    LessonMaterial {lesson} to Lesson
 }
@@ -495,7 +515,7 @@ Quiz, QuizQuestionGroup, QuizCourseSection,
 QuizSession, StudentOption, StudentQuestion,
 StudentAnswerQuestion, QuizResult, Lesson, Attendance,
 CourseWeekInfo, CourseWeek, LessonMaterial, SubmissionAssignment, Grade, AssignmentComment, 
-AnnouncementCourseSection with pagination
+AnnouncementCourseSection, Building, Room with pagination
 
 // Use Data Transfer Objects (DTO)
 dto * with mapstruct

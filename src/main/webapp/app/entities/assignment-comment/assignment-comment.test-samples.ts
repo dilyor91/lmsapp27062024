@@ -3,26 +3,26 @@ import dayjs from 'dayjs/esm';
 import { IAssignmentComment, NewAssignmentComment } from './assignment-comment.model';
 
 export const sampleWithRequiredData: IAssignmentComment = {
-  id: 25353,
-  comment: 'hm in realistic',
-  commentDate: dayjs('2024-07-12T06:36'),
+  id: 30677,
+  comment: 'well-to-do fooey',
+  commentDate: dayjs('2024-07-11T10:26'),
 };
 
 export const sampleWithPartialData: IAssignmentComment = {
-  id: 16125,
-  comment: 'supposing aware mid',
-  commentDate: dayjs('2024-07-11T14:38'),
+  id: 26454,
+  comment: 'meaty onto mask',
+  commentDate: dayjs('2024-07-11T16:56'),
 };
 
 export const sampleWithFullData: IAssignmentComment = {
-  id: 6284,
-  comment: 'rotten rude',
-  commentDate: dayjs('2024-07-11T08:11'),
+  id: 17363,
+  comment: 'excluding hm ordinary',
+  commentDate: dayjs('2024-07-12T02:06'),
 };
 
 export const sampleWithNewData: NewAssignmentComment = {
-  comment: 'yippee',
-  commentDate: dayjs('2024-07-11T13:00'),
+  comment: 'score topsail likewise',
+  commentDate: dayjs('2024-07-11T22:16'),
   id: null,
 };
 

@@ -1,47 +1,47 @@
 import { IAccounts, NewAccounts } from './accounts.model';
 
 export const sampleWithRequiredData: IAccounts = {
-  id: 12096,
-  username: 'afterwards outhouse',
-  fullName: 'woot dimly',
-  sortableName: 'for beyond whereas',
-  phone: '(366) 799-3774 x49907',
-  gender: 'inside uh-huh',
+  id: 17961,
+  username: 'until yum',
+  fullName: 'big',
+  sortableName: 'till sternly overconfidently',
+  phone: '(441) 851-5982 x1819',
+  gender: 'carefully ick',
+  userType: 'TEACHER',
+  userStatus: 'BLOCKED',
+};
+
+export const sampleWithPartialData: IAccounts = {
+  id: 27706,
+  username: 'huzzah sans forebear',
+  fullName: 'oh repeatedly',
+  sortableName: 'unless',
+  phone: '(992) 647-9168 x207',
+  gender: 'meanwhile',
   userType: 'TEACHER',
   userStatus: 'ACTIVE',
 };
 
-export const sampleWithPartialData: IAccounts = {
-  id: 32326,
-  username: 'hungrily gargantuan',
-  fullName: 'hmph neatly silt',
-  sortableName: 'um bacterium elegantly',
-  phone: '293.248.0609',
-  gender: 'phew inasmuch',
-  userType: 'STUDENT',
-  userStatus: 'BLOCKED',
-};
-
 export const sampleWithFullData: IAccounts = {
-  id: 18739,
-  username: 'sympathetically',
-  fullName: 'in unsteady',
-  sortableName: 'gee human bold',
-  avatarImageUrl: 'before',
-  phone: '1-990-311-1322 x3492',
-  locale: 'beach hammer store',
-  gender: 'amidst',
-  userType: 'TEACHER',
+  id: 23209,
+  username: 'muddy',
+  fullName: 'runny up',
+  sortableName: 'oh after belt',
+  avatarImageUrl: 'provided afore',
+  phone: '(510) 368-8724',
+  locale: 'patrol',
+  gender: 'certainly',
+  userType: 'STUDENT',
   userStatus: 'BLOCKED',
 };
 
 export const sampleWithNewData: NewAccounts = {
-  username: 'yahoo',
-  fullName: 'truly unbearably',
-  sortableName: 'fast yet',
-  phone: '429.934.2701 x819',
-  gender: 'qualified wretched',
-  userType: 'STUDENT',
+  username: 'yowza huzzah',
+  fullName: 'validate',
+  sortableName: 'including because',
+  phone: '1-726-848-4084 x338',
+  gender: 'with although smooch',
+  userType: 'TEACHER',
   userStatus: 'ACTIVE',
   id: null,
 };

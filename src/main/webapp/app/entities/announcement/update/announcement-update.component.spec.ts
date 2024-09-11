@@ -53,10 +53,10 @@ describe('Announcement Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Attachment query and add missing value', () => {
       const announcement: IAnnouncement = { id: 456 };
-      const attachment: IAttachment = { id: 6418 };
+      const attachment: IAttachment = { id: 325 };
       announcement.attachment = attachment;
 
-      const attachmentCollection: IAttachment[] = [{ id: 25651 }];
+      const attachmentCollection: IAttachment[] = [{ id: 21920 }];
       jest.spyOn(attachmentService, 'query').mockReturnValue(of(new HttpResponse({ body: attachmentCollection })));
       const additionalAttachments = [attachment];
       const expectedCollection: IAttachment[] = [...additionalAttachments, ...attachmentCollection];
@@ -75,10 +75,10 @@ describe('Announcement Management Update Component', () => {
 
     it('Should call Course query and add missing value', () => {
       const announcement: IAnnouncement = { id: 456 };
-      const course: ICourse = { id: 15709 };
+      const course: ICourse = { id: 22739 };
       announcement.course = course;
 
-      const courseCollection: ICourse[] = [{ id: 14496 }];
+      const courseCollection: ICourse[] = [{ id: 11038 }];
       jest.spyOn(courseService, 'query').mockReturnValue(of(new HttpResponse({ body: courseCollection })));
       const additionalCourses = [course];
       const expectedCollection: ICourse[] = [...additionalCourses, ...courseCollection];
@@ -97,9 +97,9 @@ describe('Announcement Management Update Component', () => {
 
     it('Should update editForm', () => {
       const announcement: IAnnouncement = { id: 456 };
-      const attachment: IAttachment = { id: 23463 };
+      const attachment: IAttachment = { id: 22933 };
       announcement.attachment = attachment;
-      const course: ICourse = { id: 2702 };
+      const course: ICourse = { id: 31244 };
       announcement.course = course;
 
       activatedRoute.data = of({ announcement });

@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (building(); as buildingRef) {
+      <div>
+        <h2 data-cy="buildingDetailsHeading"><span jhiTranslate="lmsapp27062024App.building.detail.title">Building</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ buildingRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.building.name">Name</span></dt>
+          <dd>
+            <span>{{ buildingRef.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.building.description">Description</span></dt>
+          <dd>
+            <span>{{ buildingRef.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.building.address">Address</span></dt>
+          <dd>
+            <span>{{ buildingRef.address }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.building.status">Status</span></dt>
+          <dd>
+            <span>{{ buildingRef.status }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.building.faculty">Faculty</span></dt>
+          <dd>
+            @if (building()!.faculty) {
+              <div>
+                <a [routerLink]="['/faculty', building()!.faculty?.id, 'view']">{{ buildingRef.faculty?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/building', buildingRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

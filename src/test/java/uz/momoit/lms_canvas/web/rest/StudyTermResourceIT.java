@@ -361,7 +361,7 @@ class StudyTermResourceIT {
         StudyTerm partialUpdatedStudyTerm = new StudyTerm();
         partialUpdatedStudyTerm.setId(studyTerm.getId());
 
-        partialUpdatedStudyTerm.startDate(UPDATED_START_DATE);
+        partialUpdatedStudyTerm.termName(UPDATED_TERM_NAME).startDate(UPDATED_START_DATE).endDate(UPDATED_END_DATE);
 
         restStudyTermMockMvc
             .perform(

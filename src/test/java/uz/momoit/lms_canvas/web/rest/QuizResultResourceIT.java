@@ -303,7 +303,7 @@ class QuizResultResourceIT {
         QuizResult partialUpdatedQuizResult = new QuizResult();
         partialUpdatedQuizResult.setId(quizResult.getId());
 
-        partialUpdatedQuizResult.wrongAnswerCnt(UPDATED_WRONG_ANSWER_CNT);
+        partialUpdatedQuizResult.point(UPDATED_POINT).correctAnswerCnt(UPDATED_CORRECT_ANSWER_CNT).wrongAnswerCnt(UPDATED_WRONG_ANSWER_CNT);
 
         restQuizResultMockMvc
             .perform(
