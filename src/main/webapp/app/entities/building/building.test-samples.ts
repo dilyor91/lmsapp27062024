@@ -1,26 +1,25 @@
 import { IBuilding, NewBuilding } from './building.model';
 
 export const sampleWithRequiredData: IBuilding = {
-  id: 2906,
-  name: 'privacy extremely hence',
+  id: 17266,
+  name: 'cooperation whoever powerfully',
 };
 
 export const sampleWithPartialData: IBuilding = {
-  id: 100,
-  name: 'identical option',
-  description: 'upwardly drat sunset',
+  id: 25700,
+  name: 'ransack',
 };
 
 export const sampleWithFullData: IBuilding = {
-  id: 22382,
-  name: 'avaricious sans',
-  description: 'rigid',
-  address: 'though',
+  id: 15880,
+  name: 'painfully as shrilly',
+  description: 'worm hmph although',
+  address: 'plume promptly mockingly',
   status: true,
 };
 
 export const sampleWithNewData: NewBuilding = {
-  name: 'throughout physically',
+  name: 'lest ouch broadly',
   id: null,
 };
 

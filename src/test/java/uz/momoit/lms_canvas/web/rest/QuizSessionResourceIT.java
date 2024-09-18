@@ -289,7 +289,7 @@ class QuizSessionResourceIT {
         QuizSession partialUpdatedQuizSession = new QuizSession();
         partialUpdatedQuizSession.setId(quizSession.getId());
 
-        partialUpdatedQuizSession.startTime(UPDATED_START_TIME).endTime(UPDATED_END_TIME);
+        partialUpdatedQuizSession.startTime(UPDATED_START_TIME);
 
         restQuizSessionMockMvc
             .perform(

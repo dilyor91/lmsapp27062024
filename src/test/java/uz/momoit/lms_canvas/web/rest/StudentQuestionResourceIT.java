@@ -276,6 +276,8 @@ class StudentQuestionResourceIT {
         StudentQuestion partialUpdatedStudentQuestion = new StudentQuestion();
         partialUpdatedStudentQuestion.setId(studentQuestion.getId());
 
+        partialUpdatedStudentQuestion.ordNum(UPDATED_ORD_NUM);
+
         restStudentQuestionMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedStudentQuestion.getId())

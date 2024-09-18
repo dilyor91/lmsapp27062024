@@ -347,10 +347,7 @@ class AnnouncementResourceIT {
         Announcement partialUpdatedAnnouncement = new Announcement();
         partialUpdatedAnnouncement.setId(announcement.getId());
 
-        partialUpdatedAnnouncement
-            .availableFromDate(UPDATED_AVAILABLE_FROM_DATE)
-            .availableUntilDate(UPDATED_AVAILABLE_UNTIL_DATE)
-            .published(UPDATED_PUBLISHED);
+        partialUpdatedAnnouncement.availableFromDate(UPDATED_AVAILABLE_FROM_DATE).published(UPDATED_PUBLISHED);
 
         restAnnouncementMockMvc
             .perform(

@@ -496,6 +496,16 @@ entity Notification {
     notificationType NotificationType
 }
 
+entity AnnouncementStudentRead {
+   read Boolean
+   readAt Instant
+}
+
+relationship ManyToOne {
+   AnnouncementStudentRead{announcement} to Announcement
+   AnnouncementStudentRead{student} to Student
+}
+
 relationship ManyToOne {
     Notification{quiz} to Quiz
     Notification{assignment} to Assignment
@@ -515,7 +525,7 @@ Quiz, QuizQuestionGroup, QuizCourseSection,
 QuizSession, StudentOption, StudentQuestion,
 StudentAnswerQuestion, QuizResult, Lesson, Attendance,
 CourseWeekInfo, CourseWeek, LessonMaterial, SubmissionAssignment, Grade, AssignmentComment, 
-AnnouncementCourseSection, Building, Room with pagination
+AnnouncementCourseSection, Building, Room, AnnouncementStudentRead with pagination
 
 // Use Data Transfer Objects (DTO)
 dto * with mapstruct

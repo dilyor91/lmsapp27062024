@@ -3,21 +3,21 @@ import dayjs from 'dayjs/esm';
 import { ICalendarTodo, NewCalendarTodo } from './calendar-todo.model';
 
 export const sampleWithRequiredData: ICalendarTodo = {
-  id: 18966,
+  id: 26031,
 };
 
 export const sampleWithPartialData: ICalendarTodo = {
-  id: 2440,
-  title: 'mmm gracefully nor',
-  date: dayjs('2024-08-29T01:24'),
+  id: 19932,
+  title: 'widen very flub',
+  details: 'cuddly',
 };
 
 export const sampleWithFullData: ICalendarTodo = {
-  id: 24683,
-  title: 'of psst er',
-  date: dayjs('2024-08-29T05:26'),
-  time: 'gadzooks',
-  details: 'briskly knowingly',
+  id: 17538,
+  title: 'consequently woot per',
+  date: dayjs('2024-08-28T18:55'),
+  time: 'concerning',
+  details: 'monasticism',
 };
 
 export const sampleWithNewData: NewCalendarTodo = {

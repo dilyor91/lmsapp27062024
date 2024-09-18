@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (announcementStudentRead(); as announcementStudentReadRef) {
+      <div>
+        <h2 data-cy="announcementStudentReadDetailsHeading">
+          <span jhiTranslate="lmsapp27062024App.announcementStudentRead.detail.title">Announcement Student Read</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ announcementStudentReadRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.announcementStudentRead.read">Read</span></dt>
+          <dd>
+            <span>{{ announcementStudentReadRef.read }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.announcementStudentRead.readAt">Read At</span></dt>
+          <dd>
+            <span>{{ announcementStudentReadRef.readAt | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.announcementStudentRead.announcement">Announcement</span></dt>
+          <dd>
+            @if (announcementStudentRead()!.announcement) {
+              <div>
+                <a [routerLink]="['/announcement', announcementStudentRead()!.announcement?.id, 'view']">{{
+                  announcementStudentReadRef.announcement?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.announcementStudentRead.student">Student</span></dt>
+          <dd>
+            @if (announcementStudentRead()!.student) {
+              <div>
+                <a [routerLink]="['/student', announcementStudentRead()!.student?.id, 'view']">{{
+                  announcementStudentReadRef.student?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/announcement-student-read', announcementStudentReadRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

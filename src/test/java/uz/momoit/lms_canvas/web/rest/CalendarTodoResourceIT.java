@@ -297,7 +297,7 @@ class CalendarTodoResourceIT {
         CalendarTodo partialUpdatedCalendarTodo = new CalendarTodo();
         partialUpdatedCalendarTodo.setId(calendarTodo.getId());
 
-        partialUpdatedCalendarTodo.time(UPDATED_TIME).details(UPDATED_DETAILS);
+        partialUpdatedCalendarTodo.date(UPDATED_DATE).details(UPDATED_DETAILS);
 
         restCalendarTodoMockMvc
             .perform(

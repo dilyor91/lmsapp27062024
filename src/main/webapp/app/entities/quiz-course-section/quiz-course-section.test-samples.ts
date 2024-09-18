@@ -3,26 +3,26 @@ import dayjs from 'dayjs/esm';
 import { IQuizCourseSection, NewQuizCourseSection } from './quiz-course-section.model';
 
 export const sampleWithRequiredData: IQuizCourseSection = {
-  id: 10174,
-  startDate: dayjs('2024-06-26T19:19'),
-  endDate: dayjs('2024-06-26T20:32'),
+  id: 2850,
+  startDate: dayjs('2024-06-26T07:26'),
+  endDate: dayjs('2024-06-26T21:15'),
 };
 
 export const sampleWithPartialData: IQuizCourseSection = {
-  id: 12392,
-  startDate: dayjs('2024-06-26T15:10'),
-  endDate: dayjs('2024-06-26T21:26'),
+  id: 6106,
+  startDate: dayjs('2024-06-26T07:43'),
+  endDate: dayjs('2024-06-26T07:58'),
 };
 
 export const sampleWithFullData: IQuizCourseSection = {
-  id: 22311,
-  startDate: dayjs('2024-06-26T16:25'),
-  endDate: dayjs('2024-06-27T04:40'),
+  id: 24526,
+  startDate: dayjs('2024-06-26T21:21'),
+  endDate: dayjs('2024-06-26T11:37'),
 };
 
 export const sampleWithNewData: NewQuizCourseSection = {
-  startDate: dayjs('2024-06-27T05:47'),
-  endDate: dayjs('2024-06-26T20:58'),
+  startDate: dayjs('2024-06-26T08:01'),
+  endDate: dayjs('2024-06-26T15:10'),
   id: null,
 };
 

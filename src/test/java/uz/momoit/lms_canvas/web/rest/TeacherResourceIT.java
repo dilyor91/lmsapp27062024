@@ -542,13 +542,11 @@ class TeacherResourceIT {
             .firstName(UPDATED_FIRST_NAME)
             .lastName(UPDATED_LAST_NAME)
             .middleName(UPDATED_MIDDLE_NAME)
+            .birthdate(UPDATED_BIRTHDATE)
+            .phoneNumber(UPDATED_PHONE_NUMBER)
             .email(UPDATED_EMAIL)
             .passportNumber(UPDATED_PASSPORT_NUMBER)
-            .isActive(UPDATED_IS_ACTIVE)
-            .country(UPDATED_COUNTRY)
-            .city(UPDATED_CITY)
-            .academicDegree(UPDATED_ACADEMIC_DEGREE)
-            .academicTitle(UPDATED_ACADEMIC_TITLE);
+            .region(UPDATED_REGION);
 
         restTeacherMockMvc
             .perform(

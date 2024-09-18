@@ -1,46 +1,46 @@
 import { IAccounts, NewAccounts } from './accounts.model';
 
 export const sampleWithRequiredData: IAccounts = {
-  id: 17961,
-  username: 'until yum',
-  fullName: 'big',
-  sortableName: 'till sternly overconfidently',
-  phone: '(441) 851-5982 x1819',
-  gender: 'carefully ick',
-  userType: 'TEACHER',
-  userStatus: 'BLOCKED',
-};
-
-export const sampleWithPartialData: IAccounts = {
-  id: 27706,
-  username: 'huzzah sans forebear',
-  fullName: 'oh repeatedly',
-  sortableName: 'unless',
-  phone: '(992) 647-9168 x207',
-  gender: 'meanwhile',
+  id: 20651,
+  username: 'revascularization or qua',
+  fullName: 'dissent gurn jubilantly',
+  sortableName: 'rightfully duh past',
+  phone: '201-958-8640',
+  gender: 'fooey for atop',
   userType: 'TEACHER',
   userStatus: 'ACTIVE',
 };
 
-export const sampleWithFullData: IAccounts = {
-  id: 23209,
-  username: 'muddy',
-  fullName: 'runny up',
-  sortableName: 'oh after belt',
-  avatarImageUrl: 'provided afore',
-  phone: '(510) 368-8724',
-  locale: 'patrol',
-  gender: 'certainly',
+export const sampleWithPartialData: IAccounts = {
+  id: 7525,
+  username: 'strictly quick fooey',
+  fullName: 'intensely honestly sad',
+  sortableName: 'whether',
+  phone: '928-386-5700 x84952',
+  gender: 'when acidly what',
   userType: 'STUDENT',
   userStatus: 'BLOCKED',
 };
 
+export const sampleWithFullData: IAccounts = {
+  id: 26095,
+  username: 'save pirate',
+  fullName: 'highly out grab-bag',
+  sortableName: 'yelp',
+  avatarImageUrl: 'handsaw unpleasant vacantly',
+  phone: '1-218-210-2177 x6865',
+  locale: 'wholly distorted',
+  gender: 'slowly glimpse',
+  userType: 'TEACHER',
+  userStatus: 'ACTIVE',
+};
+
 export const sampleWithNewData: NewAccounts = {
-  username: 'yowza huzzah',
-  fullName: 'validate',
-  sortableName: 'including because',
-  phone: '1-726-848-4084 x338',
-  gender: 'with although smooch',
+  username: 'klutzy furthermore',
+  fullName: 'allocate revalue sympathetically',
+  sortableName: 'terribly woefully oatmeal',
+  phone: '934-657-2457 x8858',
+  gender: 'lovingly whenever',
   userType: 'TEACHER',
   userStatus: 'ACTIVE',
   id: null,

@@ -588,15 +588,19 @@ class StudentResourceIT {
         partialUpdatedStudent.setId(student.getId());
 
         partialUpdatedStudent
+            .firstName(UPDATED_FIRST_NAME)
+            .lastName(UPDATED_LAST_NAME)
             .gender(UPDATED_GENDER)
-            .birthdate(UPDATED_BIRTHDATE)
             .phoneNumber(UPDATED_PHONE_NUMBER)
             .passportNumber(UPDATED_PASSPORT_NUMBER)
             .jshshir(UPDATED_JSHSHIR)
-            .country(UPDATED_COUNTRY)
             .city(UPDATED_CITY)
-            .course(UPDATED_COURSE)
-            .educationLanguage(UPDATED_EDUCATION_LANGUAGE);
+            .region(UPDATED_REGION)
+            .addressLine(UPDATED_ADDRESS_LINE)
+            .semester(UPDATED_SEMESTER)
+            .educationLanguage(UPDATED_EDUCATION_LANGUAGE)
+            .educationType(UPDATED_EDUCATION_TYPE)
+            .educationForm(UPDATED_EDUCATION_FORM);
 
         restStudentMockMvc
             .perform(

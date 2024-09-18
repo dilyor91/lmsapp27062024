@@ -49,10 +49,10 @@ describe('Course Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call User query and add missing value', () => {
       const course: ICourse = { id: 456 };
-      const user: IUser = { id: 2071 };
+      const user: IUser = { id: 8695 };
       course.user = user;
 
-      const userCollection: IUser[] = [{ id: 30826 }];
+      const userCollection: IUser[] = [{ id: 32675 }];
       jest.spyOn(userService, 'query').mockReturnValue(of(new HttpResponse({ body: userCollection })));
       const additionalUsers = [user];
       const expectedCollection: IUser[] = [...additionalUsers, ...userCollection];
@@ -71,7 +71,7 @@ describe('Course Management Update Component', () => {
 
     it('Should update editForm', () => {
       const course: ICourse = { id: 456 };
-      const user: IUser = { id: 23842 };
+      const user: IUser = { id: 21670 };
       course.user = user;
 
       activatedRoute.data = of({ course });

@@ -342,7 +342,7 @@ class CalendarEventResourceIT {
         CalendarEvent partialUpdatedCalendarEvent = new CalendarEvent();
         partialUpdatedCalendarEvent.setId(calendarEvent.getId());
 
-        partialUpdatedCalendarEvent.title(UPDATED_TITLE).startTime(UPDATED_START_TIME);
+        partialUpdatedCalendarEvent.address(UPDATED_ADDRESS);
 
         restCalendarEventMockMvc
             .perform(
