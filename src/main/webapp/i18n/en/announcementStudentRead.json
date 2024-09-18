@@ -1,0 +1,27 @@
+{
+  "lmsapp27062024App": {
+    "announcementStudentRead": {
+      "home": {
+        "title": "Announcement Student Reads",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Announcement Student Read",
+        "createOrEditLabel": "Create or edit a Announcement Student Read",
+        "notFound": "No Announcement Student Reads found"
+      },
+      "created": "A new Announcement Student Read is created with identifier {{ param }}",
+      "updated": "A Announcement Student Read is updated with identifier {{ param }}",
+      "deleted": "A Announcement Student Read is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Announcement Student Read {{ id }}?"
+      },
+      "detail": {
+        "title": "Announcement Student Read"
+      },
+      "id": "ID",
+      "read": "Read",
+      "readAt": "Read At",
+      "announcement": "Announcement",
+      "student": "Student"
+    }
+  }
+}

@@ -1,0 +1,96 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-announcement-student-read-heading"
+        data-cy="AnnouncementStudentReadCreateUpdateHeading"
+        jhiTranslate="lmsapp27062024App.announcementStudentRead.home.createOrEditLabel"
+      >
+        Create or edit a Announcement Student Read
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="lmsapp27062024App.announcementStudentRead.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_read" jhiTranslate="lmsapp27062024App.announcementStudentRead.read">Read</label>
+          <input type="checkbox" class="form-check" name="read" id="field_read" data-cy="read" formControlName="read" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_readAt" jhiTranslate="lmsapp27062024App.announcementStudentRead.readAt">Read At</label>
+          <div class="d-flex">
+            <input
+              id="field_readAt"
+              data-cy="readAt"
+              type="datetime-local"
+              class="form-control"
+              name="readAt"
+              formControlName="readAt"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_announcement" jhiTranslate="lmsapp27062024App.announcementStudentRead.announcement"
+            >Announcement</label
+          >
+          <select
+            class="form-control"
+            id="field_announcement"
+            data-cy="announcement"
+            name="announcement"
+            formControlName="announcement"
+            [compareWith]="compareAnnouncement"
+          >
+            <option [ngValue]="null"></option>
+            @for (announcementOption of announcementsSharedCollection; track $index) {
+              <option [ngValue]="announcementOption">{{ announcementOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_student" jhiTranslate="lmsapp27062024App.announcementStudentRead.student">Student</label>
+          <select
+            class="form-control"
+            id="field_student"
+            data-cy="student"
+            name="student"
+            formControlName="student"
+            [compareWith]="compareStudent"
+          >
+            <option [ngValue]="null"></option>
+            @for (studentOption of studentsSharedCollection; track $index) {
+              <option [ngValue]="studentOption">{{ studentOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

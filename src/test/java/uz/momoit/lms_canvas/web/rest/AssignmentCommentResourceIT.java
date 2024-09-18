@@ -317,6 +317,8 @@ class AssignmentCommentResourceIT {
         AssignmentComment partialUpdatedAssignmentComment = new AssignmentComment();
         partialUpdatedAssignmentComment.setId(assignmentComment.getId());
 
+        partialUpdatedAssignmentComment.commentDate(UPDATED_COMMENT_DATE);
+
         restAssignmentCommentMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedAssignmentComment.getId())

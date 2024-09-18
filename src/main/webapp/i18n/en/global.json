@@ -49,7 +49,8 @@
         "calendarTodo": "Calendar Todo",
         "announcementCourseSection": "Announcement Course Section",
         "building": "Building",
-        "room": "Room"
+        "room": "Room",
+        "announcementStudentRead": "Announcement Student Read"
       },
       "account": {
         "main": "Account",
