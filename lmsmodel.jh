@@ -430,6 +430,21 @@ entity Room {
    status Boolean
 }
 
+entity TimeTable{
+    weekNumber Integer
+    weekDayNumber Integer
+    pairNumber Integer
+    actialDate Instant
+}
+relationship ManyToOne {
+    TimeTable{course} to Course
+    TimeTable{teacher} to Teacher
+    TimeTable{building} to Building
+    TimeTable{room} to Room
+    TimeTable{studyTerm} to StudyTerm
+}
+
+
 relationship ManyToOne {
   Building{faculty} to Faculty
   Room{building} to Building
@@ -525,7 +540,7 @@ Quiz, QuizQuestionGroup, QuizCourseSection,
 QuizSession, StudentOption, StudentQuestion,
 StudentAnswerQuestion, QuizResult, Lesson, Attendance,
 CourseWeekInfo, CourseWeek, LessonMaterial, SubmissionAssignment, Grade, AssignmentComment, 
-AnnouncementCourseSection, Building, Room, AnnouncementStudentRead with pagination
+AnnouncementCourseSection, Building, Room, AnnouncementStudentRead, TimeTable with pagination
 
 // Use Data Transfer Objects (DTO)
 dto * with mapstruct
