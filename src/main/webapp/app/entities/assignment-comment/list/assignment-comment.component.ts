@@ -50,7 +50,7 @@ export class AssignmentCommentComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: IAssignmentComment): number => this.assignmentCommentService.getAssignmentCommentIdentifier(item);
+  trackId = (item: IAssignmentComment): number => this.assignmentCommentService.getAssignmentCommentIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

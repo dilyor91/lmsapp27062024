@@ -41,7 +41,7 @@ export class StudyTermComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: IStudyTerm): number => this.studyTermService.getStudyTermIdentifier(item);
+  trackId = (item: IStudyTerm): number => this.studyTermService.getStudyTermIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

@@ -50,7 +50,8 @@
         "announcementCourseSection": "Announcement Course Section",
         "building": "Building",
         "room": "Room",
-        "announcementStudentRead": "Announcement Student Read"
+        "announcementStudentRead": "Announcement Student Read",
+        "timeTable": "Time Table"
       },
       "account": {
         "main": "Account",

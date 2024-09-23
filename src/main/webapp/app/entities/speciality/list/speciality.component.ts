@@ -50,7 +50,7 @@ export class SpecialityComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: ISpeciality): number => this.specialityService.getSpecialityIdentifier(item);
+  trackId = (item: ISpeciality): number => this.specialityService.getSpecialityIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

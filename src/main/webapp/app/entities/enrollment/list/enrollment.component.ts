@@ -50,7 +50,7 @@ export class EnrollmentComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: IEnrollment): number => this.enrollmentService.getEnrollmentIdentifier(item);
+  trackId = (item: IEnrollment): number => this.enrollmentService.getEnrollmentIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

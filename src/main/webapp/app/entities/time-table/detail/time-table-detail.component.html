@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (timeTable(); as timeTableRef) {
+      <div>
+        <h2 data-cy="timeTableDetailsHeading"><span jhiTranslate="lmsapp27062024App.timeTable.detail.title">Time Table</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ timeTableRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.timeTable.weekNumber">Week Number</span></dt>
+          <dd>
+            <span>{{ timeTableRef.weekNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.timeTable.weekDayNumber">Week Day Number</span></dt>
+          <dd>
+            <span>{{ timeTableRef.weekDayNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.timeTable.pairNumber">Pair Number</span></dt>
+          <dd>
+            <span>{{ timeTableRef.pairNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.timeTable.actialDate">Actial Date</span></dt>
+          <dd>
+            <span>{{ timeTableRef.actialDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.timeTable.course">Course</span></dt>
+          <dd>
+            @if (timeTable()!.course) {
+              <div>
+                <a [routerLink]="['/course', timeTable()!.course?.id, 'view']">{{ timeTableRef.course?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.timeTable.teacher">Teacher</span></dt>
+          <dd>
+            @if (timeTable()!.teacher) {
+              <div>
+                <a [routerLink]="['/teacher', timeTable()!.teacher?.id, 'view']">{{ timeTableRef.teacher?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.timeTable.building">Building</span></dt>
+          <dd>
+            @if (timeTable()!.building) {
+              <div>
+                <a [routerLink]="['/building', timeTable()!.building?.id, 'view']">{{ timeTableRef.building?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.timeTable.room">Room</span></dt>
+          <dd>
+            @if (timeTable()!.room) {
+              <div>
+                <a [routerLink]="['/room', timeTable()!.room?.id, 'view']">{{ timeTableRef.room?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.timeTable.studyTerm">Study Term</span></dt>
+          <dd>
+            @if (timeTable()!.studyTerm) {
+              <div>
+                <a [routerLink]="['/study-term', timeTable()!.studyTerm?.id, 'view']">{{ timeTableRef.studyTerm?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/time-table', timeTableRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

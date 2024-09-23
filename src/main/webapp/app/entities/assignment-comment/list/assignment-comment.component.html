@@ -84,7 +84,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (assignmentComment of assignmentComments; track trackId) {
+          @for (assignmentComment of assignmentComments; track trackId(assignmentComment)) {
             <tr data-cy="entityTable">
               <td>
                 <a [routerLink]="['/assignment-comment', assignmentComment.id, 'view']">{{ assignmentComment.id }}</a>

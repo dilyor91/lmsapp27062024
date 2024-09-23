@@ -50,7 +50,7 @@ export class BuildingComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: IBuilding): number => this.buildingService.getBuildingIdentifier(item);
+  trackId = (item: IBuilding): number => this.buildingService.getBuildingIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

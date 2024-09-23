@@ -50,7 +50,7 @@ export class AnnouncementCourseSectionComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: IAnnouncementCourseSection): number =>
+  trackId = (item: IAnnouncementCourseSection): number =>
     this.announcementCourseSectionService.getAnnouncementCourseSectionIdentifier(item);
 
   ngOnInit(): void {

@@ -41,7 +41,7 @@ export class AttachmentComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: IAttachment): number => this.attachmentService.getAttachmentIdentifier(item);
+  trackId = (item: IAttachment): number => this.attachmentService.getAttachmentIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

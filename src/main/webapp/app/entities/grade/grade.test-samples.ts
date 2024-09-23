@@ -3,18 +3,18 @@ import dayjs from 'dayjs/esm';
 import { IGrade, NewGrade } from './grade.model';
 
 export const sampleWithRequiredData: IGrade = {
-  id: 10790,
+  id: 17105,
 };
 
 export const sampleWithPartialData: IGrade = {
-  id: 28573,
-  point: 15441,
+  id: 14077,
+  point: 17724,
 };
 
 export const sampleWithFullData: IGrade = {
-  id: 22332,
-  point: 29246,
-  gradedDate: dayjs('2024-07-09T21:20'),
+  id: 12910,
+  point: 4713,
+  gradedDate: dayjs('2024-07-09T11:35'),
 };
 
 export const sampleWithNewData: NewGrade = {

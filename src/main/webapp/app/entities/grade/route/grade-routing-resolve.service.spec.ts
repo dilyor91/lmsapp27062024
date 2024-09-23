@@ -70,7 +70,7 @@ describe('Grade routing resolve service', () => {
       });
 
       // THEN
-      expect(service.find).not.toBeCalled();
+      expect(service.find).not.toHaveBeenCalled();
       expect(resultGrade).toEqual(null);
     });
 

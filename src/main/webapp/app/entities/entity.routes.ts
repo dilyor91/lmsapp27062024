@@ -226,6 +226,11 @@ const routes: Routes = [
     data: { pageTitle: 'lmsapp27062024App.announcementStudentRead.home.title' },
     loadChildren: () => import('./announcement-student-read/announcement-student-read.routes'),
   },
+  {
+    path: 'time-table',
+    data: { pageTitle: 'lmsapp27062024App.timeTable.home.title' },
+    loadChildren: () => import('./time-table/time-table.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 

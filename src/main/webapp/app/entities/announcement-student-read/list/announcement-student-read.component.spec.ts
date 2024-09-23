@@ -91,7 +91,7 @@ describe('AnnouncementStudentRead Management Component', () => {
     it('Should forward to announcementStudentReadService', () => {
       const entity = { id: 123 };
       jest.spyOn(service, 'getAnnouncementStudentReadIdentifier');
-      const id = comp.trackId(0, entity);
+      const id = comp.trackId(entity);
       expect(service.getAnnouncementStudentReadIdentifier).toHaveBeenCalledWith(entity);
       expect(id).toBe(entity.id);
     });

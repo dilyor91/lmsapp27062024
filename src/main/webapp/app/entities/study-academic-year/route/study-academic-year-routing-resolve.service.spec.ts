@@ -70,7 +70,7 @@ describe('StudyAcademicYear routing resolve service', () => {
       });
 
       // THEN
-      expect(service.find).not.toBeCalled();
+      expect(service.find).not.toHaveBeenCalled();
       expect(resultStudyAcademicYear).toEqual(null);
     });
 

@@ -70,7 +70,7 @@ describe('CalendarTodo routing resolve service', () => {
       });
 
       // THEN
-      expect(service.find).not.toBeCalled();
+      expect(service.find).not.toHaveBeenCalled();
       expect(resultCalendarTodo).toEqual(null);
     });
 
