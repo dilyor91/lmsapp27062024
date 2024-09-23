@@ -430,6 +430,21 @@ entity Room {
    status Boolean
 }
 
+entity TimeTable{
+    weekNumber Integer
+    weekDayNumber Integer
+    pairNumber Integer
+    actialDate Instant
+}
+relationship ManyToOne {
+    TimeTable{course} to Course
+    TimeTable{teacher} to Teacher
+    TimeTable{building} to Building
+    TimeTable{room} to Room
+    TimeTable{studyTerm} to StudyTerm
+}
+
+
 relationship ManyToOne {
   Building{faculty} to Faculty
   Room{building} to Building
