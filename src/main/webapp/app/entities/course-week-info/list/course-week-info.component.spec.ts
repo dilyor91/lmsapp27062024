@@ -91,7 +91,7 @@ describe('CourseWeekInfo Management Component', () => {
     it('Should forward to courseWeekInfoService', () => {
       const entity = { id: 123 };
       jest.spyOn(service, 'getCourseWeekInfoIdentifier');
-      const id = comp.trackId(0, entity);
+      const id = comp.trackId(entity);
       expect(service.getCourseWeekInfoIdentifier).toHaveBeenCalledWith(entity);
       expect(id).toBe(entity.id);
     });

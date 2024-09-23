@@ -190,7 +190,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (teacher of teachers; track trackId) {
+          @for (teacher of teachers; track trackId(teacher)) {
             <tr data-cy="entityTable">
               <td>
                 <a [routerLink]="['/teacher', teacher.id, 'view']">{{ teacher.id }}</a>

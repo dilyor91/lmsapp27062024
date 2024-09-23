@@ -540,13 +540,14 @@ class TeacherResourceIT {
 
         partialUpdatedTeacher
             .firstName(UPDATED_FIRST_NAME)
-            .lastName(UPDATED_LAST_NAME)
-            .middleName(UPDATED_MIDDLE_NAME)
-            .birthdate(UPDATED_BIRTHDATE)
+            .gender(UPDATED_GENDER)
             .phoneNumber(UPDATED_PHONE_NUMBER)
             .email(UPDATED_EMAIL)
-            .passportNumber(UPDATED_PASSPORT_NUMBER)
-            .region(UPDATED_REGION);
+            .isActive(UPDATED_IS_ACTIVE)
+            .nationality(UPDATED_NATIONALITY)
+            .country(UPDATED_COUNTRY)
+            .city(UPDATED_CITY)
+            .position(UPDATED_POSITION);
 
         restTeacherMockMvc
             .perform(

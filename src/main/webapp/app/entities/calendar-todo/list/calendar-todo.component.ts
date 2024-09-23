@@ -50,7 +50,7 @@ export class CalendarTodoComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: ICalendarTodo): number => this.calendarTodoService.getCalendarTodoIdentifier(item);
+  trackId = (item: ICalendarTodo): number => this.calendarTodoService.getCalendarTodoIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

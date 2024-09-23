@@ -91,7 +91,7 @@ describe('WikiPage Management Component', () => {
     it('Should forward to wikiPageService', () => {
       const entity = { id: 123 };
       jest.spyOn(service, 'getWikiPageIdentifier');
-      const id = comp.trackId(0, entity);
+      const id = comp.trackId(entity);
       expect(service.getWikiPageIdentifier).toHaveBeenCalledWith(entity);
       expect(id).toBe(entity.id);
     });

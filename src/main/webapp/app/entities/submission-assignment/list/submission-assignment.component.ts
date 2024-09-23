@@ -50,8 +50,7 @@ export class SubmissionAssignmentComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: ISubmissionAssignment): number =>
-    this.submissionAssignmentService.getSubmissionAssignmentIdentifier(item);
+  trackId = (item: ISubmissionAssignment): number => this.submissionAssignmentService.getSubmissionAssignmentIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

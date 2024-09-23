@@ -98,7 +98,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (submissionAssignment of submissionAssignments; track trackId) {
+          @for (submissionAssignment of submissionAssignments; track trackId(submissionAssignment)) {
             <tr data-cy="entityTable">
               <td>
                 <a [routerLink]="['/submission-assignment', submissionAssignment.id, 'view']">{{ submissionAssignment.id }}</a>

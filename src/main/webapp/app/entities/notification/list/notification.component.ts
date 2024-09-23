@@ -41,7 +41,7 @@ export class NotificationComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: INotification): number => this.notificationService.getNotificationIdentifier(item);
+  trackId = (item: INotification): number => this.notificationService.getNotificationIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

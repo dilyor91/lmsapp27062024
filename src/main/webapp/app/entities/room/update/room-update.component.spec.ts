@@ -49,10 +49,10 @@ describe('Room Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Building query and add missing value', () => {
       const room: IRoom = { id: 456 };
-      const building: IBuilding = { id: 31445 };
+      const building: IBuilding = { id: 17129 };
       room.building = building;
 
-      const buildingCollection: IBuilding[] = [{ id: 12649 }];
+      const buildingCollection: IBuilding[] = [{ id: 1789 }];
       jest.spyOn(buildingService, 'query').mockReturnValue(of(new HttpResponse({ body: buildingCollection })));
       const additionalBuildings = [building];
       const expectedCollection: IBuilding[] = [...additionalBuildings, ...buildingCollection];
@@ -71,7 +71,7 @@ describe('Room Management Update Component', () => {
 
     it('Should update editForm', () => {
       const room: IRoom = { id: 456 };
-      const building: IBuilding = { id: 1829 };
+      const building: IBuilding = { id: 3172 };
       room.building = building;
 
       activatedRoute.data = of({ room });

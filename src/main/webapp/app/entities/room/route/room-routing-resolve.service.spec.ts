@@ -70,7 +70,7 @@ describe('Room routing resolve service', () => {
       });
 
       // THEN
-      expect(service.find).not.toBeCalled();
+      expect(service.find).not.toHaveBeenCalled();
       expect(resultRoom).toEqual(null);
     });
 

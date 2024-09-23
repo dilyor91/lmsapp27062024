@@ -49,10 +49,10 @@ describe('Option Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Question query and add missing value', () => {
       const option: IOption = { id: 456 };
-      const question: IQuestion = { id: 21979 };
+      const question: IQuestion = { id: 11212 };
       option.question = question;
 
-      const questionCollection: IQuestion[] = [{ id: 32183 }];
+      const questionCollection: IQuestion[] = [{ id: 14637 }];
       jest.spyOn(questionService, 'query').mockReturnValue(of(new HttpResponse({ body: questionCollection })));
       const additionalQuestions = [question];
       const expectedCollection: IQuestion[] = [...additionalQuestions, ...questionCollection];
@@ -71,7 +71,7 @@ describe('Option Management Update Component', () => {
 
     it('Should update editForm', () => {
       const option: IOption = { id: 456 };
-      const question: IQuestion = { id: 4880 };
+      const question: IQuestion = { id: 29264 };
       option.question = question;
 
       activatedRoute.data = of({ option });

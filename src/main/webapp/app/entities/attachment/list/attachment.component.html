@@ -46,7 +46,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (attachment of attachments; track trackId) {
+          @for (attachment of attachments; track trackId(attachment)) {
             <tr data-cy="entityTable">
               <td>
                 <a [routerLink]="['/attachment', attachment.id, 'view']">{{ attachment.id }}</a>

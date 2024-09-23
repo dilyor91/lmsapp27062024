@@ -70,7 +70,7 @@ describe('LessonMaterial routing resolve service', () => {
       });
 
       // THEN
-      expect(service.find).not.toBeCalled();
+      expect(service.find).not.toHaveBeenCalled();
       expect(resultLessonMaterial).toEqual(null);
     });
 

@@ -50,7 +50,7 @@ export class StudentOptionComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: IStudentOption): number => this.studentOptionService.getStudentOptionIdentifier(item);
+  trackId = (item: IStudentOption): number => this.studentOptionService.getStudentOptionIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

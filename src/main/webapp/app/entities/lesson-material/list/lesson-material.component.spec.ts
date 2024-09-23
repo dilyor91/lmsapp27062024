@@ -91,7 +91,7 @@ describe('LessonMaterial Management Component', () => {
     it('Should forward to lessonMaterialService', () => {
       const entity = { id: 123 };
       jest.spyOn(service, 'getLessonMaterialIdentifier');
-      const id = comp.trackId(0, entity);
+      const id = comp.trackId(entity);
       expect(service.getLessonMaterialIdentifier).toHaveBeenCalledWith(entity);
       expect(id).toBe(entity.id);
     });

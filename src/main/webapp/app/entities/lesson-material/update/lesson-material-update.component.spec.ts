@@ -53,10 +53,10 @@ describe('LessonMaterial Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call attachment query and add missing value', () => {
       const lessonMaterial: ILessonMaterial = { id: 456 };
-      const attachment: IAttachment = { id: 29445 };
+      const attachment: IAttachment = { id: 4884 };
       lessonMaterial.attachment = attachment;
 
-      const attachmentCollection: IAttachment[] = [{ id: 24273 }];
+      const attachmentCollection: IAttachment[] = [{ id: 6800 }];
       jest.spyOn(attachmentService, 'query').mockReturnValue(of(new HttpResponse({ body: attachmentCollection })));
       const expectedCollection: IAttachment[] = [attachment, ...attachmentCollection];
       jest.spyOn(attachmentService, 'addAttachmentToCollectionIfMissing').mockReturnValue(expectedCollection);
@@ -71,10 +71,10 @@ describe('LessonMaterial Management Update Component', () => {
 
     it('Should call Lesson query and add missing value', () => {
       const lessonMaterial: ILessonMaterial = { id: 456 };
-      const lesson: ILesson = { id: 9242 };
+      const lesson: ILesson = { id: 19407 };
       lessonMaterial.lesson = lesson;
 
-      const lessonCollection: ILesson[] = [{ id: 18541 }];
+      const lessonCollection: ILesson[] = [{ id: 27450 }];
       jest.spyOn(lessonService, 'query').mockReturnValue(of(new HttpResponse({ body: lessonCollection })));
       const additionalLessons = [lesson];
       const expectedCollection: ILesson[] = [...additionalLessons, ...lessonCollection];
@@ -93,9 +93,9 @@ describe('LessonMaterial Management Update Component', () => {
 
     it('Should update editForm', () => {
       const lessonMaterial: ILessonMaterial = { id: 456 };
-      const attachment: IAttachment = { id: 10471 };
+      const attachment: IAttachment = { id: 4191 };
       lessonMaterial.attachment = attachment;
-      const lesson: ILesson = { id: 10172 };
+      const lesson: ILesson = { id: 8565 };
       lessonMaterial.lesson = lesson;
 
       activatedRoute.data = of({ lessonMaterial });

@@ -50,7 +50,7 @@ export class AttendanceComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: IAttendance): number => this.attendanceService.getAttendanceIdentifier(item);
+  trackId = (item: IAttendance): number => this.attendanceService.getAttendanceIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

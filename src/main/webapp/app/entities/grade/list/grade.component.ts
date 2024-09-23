@@ -50,7 +50,7 @@ export class GradeComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: IGrade): number => this.gradeService.getGradeIdentifier(item);
+  trackId = (item: IGrade): number => this.gradeService.getGradeIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])
