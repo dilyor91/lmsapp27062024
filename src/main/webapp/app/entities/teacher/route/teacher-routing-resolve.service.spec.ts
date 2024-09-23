@@ -70,7 +70,7 @@ describe('Teacher routing resolve service', () => {
       });
 
       // THEN
-      expect(service.find).not.toBeCalled();
+      expect(service.find).not.toHaveBeenCalled();
       expect(resultTeacher).toEqual(null);
     });
 

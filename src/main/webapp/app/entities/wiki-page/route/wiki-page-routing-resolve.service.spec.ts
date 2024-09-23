@@ -70,7 +70,7 @@ describe('WikiPage routing resolve service', () => {
       });
 
       // THEN
-      expect(service.find).not.toBeCalled();
+      expect(service.find).not.toHaveBeenCalled();
       expect(resultWikiPage).toEqual(null);
     });
 

@@ -108,7 +108,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (wikiPage of wikiPages; track trackId) {
+          @for (wikiPage of wikiPages; track trackId(wikiPage)) {
             <tr data-cy="entityTable">
               <td>
                 <a [routerLink]="['/wiki-page', wikiPage.id, 'view']">{{ wikiPage.id }}</a>

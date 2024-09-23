@@ -70,7 +70,7 @@ describe('Announcement routing resolve service', () => {
       });
 
       // THEN
-      expect(service.find).not.toBeCalled();
+      expect(service.find).not.toHaveBeenCalled();
       expect(resultAnnouncement).toEqual(null);
     });
 

@@ -91,7 +91,7 @@ describe('Group Management Component', () => {
     it('Should forward to groupService', () => {
       const entity = { id: 123 };
       jest.spyOn(service, 'getGroupIdentifier');
-      const id = comp.trackId(0, entity);
+      const id = comp.trackId(entity);
       expect(service.getGroupIdentifier).toHaveBeenCalledWith(entity);
       expect(id).toBe(entity.id);
     });

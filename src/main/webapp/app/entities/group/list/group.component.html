@@ -59,7 +59,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (group of groups; track trackId) {
+          @for (group of groups; track trackId(group)) {
             <tr data-cy="entityTable">
               <td>
                 <a [routerLink]="['/group', group.id, 'view']">{{ group.id }}</a>

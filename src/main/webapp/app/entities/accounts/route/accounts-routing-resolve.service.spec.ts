@@ -70,7 +70,7 @@ describe('Accounts routing resolve service', () => {
       });
 
       // THEN
-      expect(service.find).not.toBeCalled();
+      expect(service.find).not.toHaveBeenCalled();
       expect(resultAccounts).toEqual(null);
     });
 

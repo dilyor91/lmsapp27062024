@@ -1,0 +1,175 @@
+<div>
+  <h2 id="page-heading" data-cy="TimeTableHeading">
+    <span jhiTranslate="lmsapp27062024App.timeTable.home.title">Time Tables</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.timeTable.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-time-table"
+        [routerLink]="['/time-table/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.timeTable.home.createLabel">Create a new Time Table</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (timeTables?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="lmsapp27062024App.timeTable.home.notFound">No Time Tables found</span>
+    </div>
+  }
+
+  @if (timeTables && timeTables.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="weekNumber">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.timeTable.weekNumber">Week Number</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="weekDayNumber">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.timeTable.weekDayNumber">Week Day Number</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pairNumber">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.timeTable.pairNumber">Pair Number</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="actialDate">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.timeTable.actialDate">Actial Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="course.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.timeTable.course">Course</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="teacher.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.timeTable.teacher">Teacher</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="building.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.timeTable.building">Building</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="room.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.timeTable.room">Room</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="studyTerm.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.timeTable.studyTerm">Study Term</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (timeTable of timeTables; track trackId(timeTable)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/time-table', timeTable.id, 'view']">{{ timeTable.id }}</a>
+              </td>
+              <td>{{ timeTable.weekNumber }}</td>
+              <td>{{ timeTable.weekDayNumber }}</td>
+              <td>{{ timeTable.pairNumber }}</td>
+              <td>{{ timeTable.actialDate | formatMediumDatetime }}</td>
+              <td>
+                @if (timeTable.course) {
+                  <div>
+                    <a [routerLink]="['/course', timeTable.course.id, 'view']">{{ timeTable.course.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (timeTable.teacher) {
+                  <div>
+                    <a [routerLink]="['/teacher', timeTable.teacher.id, 'view']">{{ timeTable.teacher.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (timeTable.building) {
+                  <div>
+                    <a [routerLink]="['/building', timeTable.building.id, 'view']">{{ timeTable.building.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (timeTable.room) {
+                  <div>
+                    <a [routerLink]="['/room', timeTable.room.id, 'view']">{{ timeTable.room.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (timeTable.studyTerm) {
+                  <div>
+                    <a [routerLink]="['/study-term', timeTable.studyTerm.id, 'view']">{{ timeTable.studyTerm.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/time-table', timeTable.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/time-table', timeTable.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(timeTable)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

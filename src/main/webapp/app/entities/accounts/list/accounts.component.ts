@@ -50,7 +50,7 @@ export class AccountsComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: IAccounts): number => this.accountsService.getAccountsIdentifier(item);
+  trackId = (item: IAccounts): number => this.accountsService.getAccountsIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])
