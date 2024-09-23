@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity TimeTable.
+    -->
+    <changeSet id="20240923055036-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="course_id"
+                                 baseTableName="time_table"
+                                 constraintName="fk_time_table__course_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="course"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="teacher_id"
+                                 baseTableName="time_table"
+                                 constraintName="fk_time_table__teacher_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="teacher"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="building_id"
+                                 baseTableName="time_table"
+                                 constraintName="fk_time_table__building_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="building"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="room_id"
+                                 baseTableName="time_table"
+                                 constraintName="fk_time_table__room_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="room"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="study_term_id"
+                                 baseTableName="time_table"
+                                 constraintName="fk_time_table__study_term_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="study_term"
+                                 />
+    </changeSet>
+</databaseChangeLog>

@@ -91,7 +91,7 @@ describe('Grade Management Component', () => {
     it('Should forward to gradeService', () => {
       const entity = { id: 123 };
       jest.spyOn(service, 'getGradeIdentifier');
-      const id = comp.trackId(0, entity);
+      const id = comp.trackId(entity);
       expect(service.getGradeIdentifier).toHaveBeenCalledWith(entity);
       expect(id).toBe(entity.id);
     });

@@ -3,19 +3,17 @@ import dayjs from 'dayjs/esm';
 import { IAssignmentCourseSection, NewAssignmentCourseSection } from './assignment-course-section.model';
 
 export const sampleWithRequiredData: IAssignmentCourseSection = {
-  id: 19203,
+  id: 31071,
 };
 
 export const sampleWithPartialData: IAssignmentCourseSection = {
-  id: 8823,
-  startDate: dayjs('2024-07-02T02:17'),
-  endDate: dayjs('2024-07-02T04:38'),
+  id: 8317,
 };
 
 export const sampleWithFullData: IAssignmentCourseSection = {
-  id: 4519,
-  startDate: dayjs('2024-07-02T01:32'),
-  endDate: dayjs('2024-07-01T18:22'),
+  id: 11740,
+  startDate: dayjs('2024-07-02T09:22'),
+  endDate: dayjs('2024-07-01T16:25'),
 };
 
 export const sampleWithNewData: NewAssignmentCourseSection = {

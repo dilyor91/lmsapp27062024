@@ -91,7 +91,7 @@ describe('CalendarTodo Management Component', () => {
     it('Should forward to calendarTodoService', () => {
       const entity = { id: 123 };
       jest.spyOn(service, 'getCalendarTodoIdentifier');
-      const id = comp.trackId(0, entity);
+      const id = comp.trackId(entity);
       expect(service.getCalendarTodoIdentifier).toHaveBeenCalledWith(entity);
       expect(id).toBe(entity.id);
     });

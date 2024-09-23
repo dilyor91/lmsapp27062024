@@ -1,16 +1,16 @@
 import { IStudentOption, NewStudentOption } from './student-option.model';
 
 export const sampleWithRequiredData: IStudentOption = {
-  id: 6339,
+  id: 24431,
 };
 
 export const sampleWithPartialData: IStudentOption = {
-  id: 17949,
+  id: 30053,
 };
 
 export const sampleWithFullData: IStudentOption = {
-  id: 12775,
-  ordNum: 15838,
+  id: 19452,
+  ordNum: 25064,
 };
 
 export const sampleWithNewData: NewStudentOption = {

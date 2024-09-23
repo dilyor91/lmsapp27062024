@@ -91,7 +91,7 @@ describe('Attachment Management Component', () => {
     it('Should forward to attachmentService', () => {
       const entity = { id: 123 };
       jest.spyOn(service, 'getAttachmentIdentifier');
-      const id = comp.trackId(0, entity);
+      const id = comp.trackId(entity);
       expect(service.getAttachmentIdentifier).toHaveBeenCalledWith(entity);
       expect(id).toBe(entity.id);
     });

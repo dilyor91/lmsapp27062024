@@ -70,7 +70,7 @@ describe('AssignmentComment routing resolve service', () => {
       });
 
       // THEN
-      expect(service.find).not.toBeCalled();
+      expect(service.find).not.toHaveBeenCalled();
       expect(resultAssignmentComment).toEqual(null);
     });
 

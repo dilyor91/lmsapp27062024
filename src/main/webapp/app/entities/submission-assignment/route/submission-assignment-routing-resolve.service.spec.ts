@@ -70,7 +70,7 @@ describe('SubmissionAssignment routing resolve service', () => {
       });
 
       // THEN
-      expect(service.find).not.toBeCalled();
+      expect(service.find).not.toHaveBeenCalled();
       expect(resultSubmissionAssignment).toEqual(null);
     });
 

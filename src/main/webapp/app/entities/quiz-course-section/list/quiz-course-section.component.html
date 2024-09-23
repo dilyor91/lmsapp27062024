@@ -78,7 +78,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (quizCourseSection of quizCourseSections; track trackId) {
+          @for (quizCourseSection of quizCourseSections; track trackId(quizCourseSection)) {
             <tr data-cy="entityTable">
               <td>
                 <a [routerLink]="['/quiz-course-section', quizCourseSection.id, 'view']">{{ quizCourseSection.id }}</a>

@@ -108,7 +108,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (calendarEvent of calendarEvents; track trackId) {
+          @for (calendarEvent of calendarEvents; track trackId(calendarEvent)) {
             <tr data-cy="entityTable">
               <td>
                 <a [routerLink]="['/calendar-event', calendarEvent.id, 'view']">{{ calendarEvent.id }}</a>

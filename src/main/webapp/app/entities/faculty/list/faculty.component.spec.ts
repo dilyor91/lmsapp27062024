@@ -91,7 +91,7 @@ describe('Faculty Management Component', () => {
     it('Should forward to facultyService', () => {
       const entity = { id: 123 };
       jest.spyOn(service, 'getFacultyIdentifier');
-      const id = comp.trackId(0, entity);
+      const id = comp.trackId(entity);
       expect(service.getFacultyIdentifier).toHaveBeenCalledWith(entity);
       expect(id).toBe(entity.id);
     });

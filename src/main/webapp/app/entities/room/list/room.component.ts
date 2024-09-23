@@ -50,7 +50,7 @@ export class RoomComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: IRoom): number => this.roomService.getRoomIdentifier(item);
+  trackId = (item: IRoom): number => this.roomService.getRoomIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

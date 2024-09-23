@@ -1,0 +1,60 @@
+{
+  "annotations": {
+    "changelogDate": "20240923055036"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "weekNumber",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "weekDayNumber",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "pairNumber",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "actialDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "TimeTable",
+  "relationships": [
+    {
+      "otherEntityName": "course",
+      "relationshipName": "course",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "teacher",
+      "relationshipName": "teacher",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "building",
+      "relationshipName": "building",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "room",
+      "relationshipName": "room",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "studyTerm",
+      "relationshipName": "studyTerm",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

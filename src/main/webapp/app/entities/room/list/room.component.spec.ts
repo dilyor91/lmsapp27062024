@@ -91,7 +91,7 @@ describe('Room Management Component', () => {
     it('Should forward to roomService', () => {
       const entity = { id: 123 };
       jest.spyOn(service, 'getRoomIdentifier');
-      const id = comp.trackId(0, entity);
+      const id = comp.trackId(entity);
       expect(service.getRoomIdentifier).toHaveBeenCalledWith(entity);
       expect(id).toBe(entity.id);
     });
