@@ -53,10 +53,10 @@ describe('AnnouncementStudentRead Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Announcement query and add missing value', () => {
       const announcementStudentRead: IAnnouncementStudentRead = { id: 456 };
-      const announcement: IAnnouncement = { id: 18653 };
+      const announcement: IAnnouncement = { id: 19781 };
       announcementStudentRead.announcement = announcement;
 
-      const announcementCollection: IAnnouncement[] = [{ id: 19501 }];
+      const announcementCollection: IAnnouncement[] = [{ id: 4261 }];
       jest.spyOn(announcementService, 'query').mockReturnValue(of(new HttpResponse({ body: announcementCollection })));
       const additionalAnnouncements = [announcement];
       const expectedCollection: IAnnouncement[] = [...additionalAnnouncements, ...announcementCollection];
@@ -75,10 +75,10 @@ describe('AnnouncementStudentRead Management Update Component', () => {
 
     it('Should call Student query and add missing value', () => {
       const announcementStudentRead: IAnnouncementStudentRead = { id: 456 };
-      const student: IStudent = { id: 343 };
+      const student: IStudent = { id: 10150 };
       announcementStudentRead.student = student;
 
-      const studentCollection: IStudent[] = [{ id: 24960 }];
+      const studentCollection: IStudent[] = [{ id: 14400 }];
       jest.spyOn(studentService, 'query').mockReturnValue(of(new HttpResponse({ body: studentCollection })));
       const additionalStudents = [student];
       const expectedCollection: IStudent[] = [...additionalStudents, ...studentCollection];
@@ -97,9 +97,9 @@ describe('AnnouncementStudentRead Management Update Component', () => {
 
     it('Should update editForm', () => {
       const announcementStudentRead: IAnnouncementStudentRead = { id: 456 };
-      const announcement: IAnnouncement = { id: 9958 };
+      const announcement: IAnnouncement = { id: 28456 };
       announcementStudentRead.announcement = announcement;
-      const student: IStudent = { id: 24842 };
+      const student: IStudent = { id: 29895 };
       announcementStudentRead.student = student;
 
       activatedRoute.data = of({ announcementStudentRead });

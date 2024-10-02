@@ -589,17 +589,20 @@ class StudentResourceIT {
 
         partialUpdatedStudent
             .firstName(UPDATED_FIRST_NAME)
+            .lastName(UPDATED_LAST_NAME)
             .middleName(UPDATED_MIDDLE_NAME)
             .gender(UPDATED_GENDER)
-            .birthdate(UPDATED_BIRTHDATE)
+            .phoneNumber(UPDATED_PHONE_NUMBER)
+            .email(UPDATED_EMAIL)
+            .hemisId(UPDATED_HEMIS_ID)
             .passportNumber(UPDATED_PASSPORT_NUMBER)
             .jshshir(UPDATED_JSHSHIR)
             .isActive(UPDATED_IS_ACTIVE)
-            .country(UPDATED_COUNTRY)
-            .city(UPDATED_CITY)
+            .tutionType(UPDATED_TUTION_TYPE)
+            .nationality(UPDATED_NATIONALITY)
             .region(UPDATED_REGION)
-            .educationLanguage(UPDATED_EDUCATION_LANGUAGE)
-            .educationType(UPDATED_EDUCATION_TYPE);
+            .educationType(UPDATED_EDUCATION_TYPE)
+            .educationForm(UPDATED_EDUCATION_FORM);
 
         restStudentMockMvc
             .perform(

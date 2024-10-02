@@ -1,0 +1,112 @@
+<div>
+  <h2 id="page-heading" data-cy="MessageAttachmentHeading">
+    <span jhiTranslate="lmsapp27062024App.messageAttachment.home.title">Message Attachments</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.messageAttachment.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-message-attachment"
+        [routerLink]="['/message-attachment/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.messageAttachment.home.createLabel">Create a new Message Attachment</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (messageAttachments?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="lmsapp27062024App.messageAttachment.home.notFound">No Message Attachments found</span>
+    </div>
+  }
+
+  @if (messageAttachments && messageAttachments.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="message.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.messageAttachment.message">Message</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="attachment.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.messageAttachment.attachment">Attachment</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (messageAttachment of messageAttachments; track trackId(messageAttachment)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/message-attachment', messageAttachment.id, 'view']">{{ messageAttachment.id }}</a>
+              </td>
+              <td>
+                @if (messageAttachment.message) {
+                  <div>
+                    <a [routerLink]="['/message', messageAttachment.message.id, 'view']">{{ messageAttachment.message.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (messageAttachment.attachment) {
+                  <div>
+                    <a [routerLink]="['/attachment', messageAttachment.attachment.id, 'view']">{{ messageAttachment.attachment.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/message-attachment', messageAttachment.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/message-attachment', messageAttachment.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(messageAttachment)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

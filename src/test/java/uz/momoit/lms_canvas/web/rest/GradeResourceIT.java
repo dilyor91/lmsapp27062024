@@ -279,6 +279,8 @@ class GradeResourceIT {
         Grade partialUpdatedGrade = new Grade();
         partialUpdatedGrade.setId(grade.getId());
 
+        partialUpdatedGrade.point(UPDATED_POINT);
+
         restGradeMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedGrade.getId())

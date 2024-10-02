@@ -272,8 +272,6 @@ class FacultyResourceIT {
         Faculty partialUpdatedFaculty = new Faculty();
         partialUpdatedFaculty.setId(faculty.getId());
 
-        partialUpdatedFaculty.name(UPDATED_NAME);
-
         restFacultyMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedFaculty.getId())

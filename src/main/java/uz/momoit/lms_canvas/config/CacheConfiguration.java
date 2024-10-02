@@ -99,6 +99,9 @@ public class CacheConfiguration {
             createCache(cm, uz.momoit.lms_canvas.domain.Room.class.getName());
             createCache(cm, uz.momoit.lms_canvas.domain.AnnouncementStudentRead.class.getName());
             createCache(cm, uz.momoit.lms_canvas.domain.TimeTable.class.getName());
+            createCache(cm, uz.momoit.lms_canvas.domain.Message.class.getName());
+            createCache(cm, uz.momoit.lms_canvas.domain.MessageToUser.class.getName());
+            createCache(cm, uz.momoit.lms_canvas.domain.MessageAttachment.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

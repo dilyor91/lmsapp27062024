@@ -1,0 +1,99 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-message-to-user-heading"
+        data-cy="MessageToUserCreateUpdateHeading"
+        jhiTranslate="lmsapp27062024App.messageToUser.home.createOrEditLabel"
+      >
+        Create or edit a Message To User
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="lmsapp27062024App.messageToUser.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_read" jhiTranslate="lmsapp27062024App.messageToUser.read">Read</label>
+          <input type="checkbox" class="form-check" name="read" id="field_read" data-cy="read" formControlName="read" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_readAt" jhiTranslate="lmsapp27062024App.messageToUser.readAt">Read At</label>
+          <div class="d-flex">
+            <input
+              id="field_readAt"
+              data-cy="readAt"
+              type="datetime-local"
+              class="form-control"
+              name="readAt"
+              formControlName="readAt"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_deleted" jhiTranslate="lmsapp27062024App.messageToUser.deleted">Deleted</label>
+          <input type="checkbox" class="form-check" name="deleted" id="field_deleted" data-cy="deleted" formControlName="deleted" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_message" jhiTranslate="lmsapp27062024App.messageToUser.message">Message</label>
+          <select
+            class="form-control"
+            id="field_message"
+            data-cy="message"
+            name="message"
+            formControlName="message"
+            [compareWith]="compareMessage"
+          >
+            <option [ngValue]="null"></option>
+            @for (messageOption of messagesSharedCollection; track $index) {
+              <option [ngValue]="messageOption">{{ messageOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_receiver" jhiTranslate="lmsapp27062024App.messageToUser.receiver">Receiver</label>
+          <select
+            class="form-control"
+            id="field_receiver"
+            data-cy="receiver"
+            name="receiver"
+            formControlName="receiver"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            @for (userOption of usersSharedCollection; track $index) {
+              <option [ngValue]="userOption">{{ userOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

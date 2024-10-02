@@ -315,7 +315,7 @@ class EnrollmentResourceIT {
         Enrollment partialUpdatedEnrollment = new Enrollment();
         partialUpdatedEnrollment.setId(enrollment.getId());
 
-        partialUpdatedEnrollment.enrollmentDate(UPDATED_ENROLLMENT_DATE);
+        partialUpdatedEnrollment.enrollmentStatus(UPDATED_ENROLLMENT_STATUS).enrollmentDate(UPDATED_ENROLLMENT_DATE);
 
         restEnrollmentMockMvc
             .perform(

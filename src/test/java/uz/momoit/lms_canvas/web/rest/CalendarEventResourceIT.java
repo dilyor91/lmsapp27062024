@@ -343,7 +343,7 @@ class CalendarEventResourceIT {
         partialUpdatedCalendarEvent.setId(calendarEvent.getId());
 
         partialUpdatedCalendarEvent
-            .title(UPDATED_TITLE)
+            .content(UPDATED_CONTENT)
             .date(UPDATED_DATE)
             .startTime(UPDATED_START_TIME)
             .endTime(UPDATED_END_TIME)

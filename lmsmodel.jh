@@ -516,6 +516,36 @@ entity AnnouncementStudentRead {
    readAt Instant
 }
 
+entity Message {
+   subject String
+   body String
+   toAllCourseStudents Boolean
+   toSectionIds String
+   senderDate Instant
+   deleted Boolean
+}
+
+entity MessageToUser {
+   read Boolean
+   readAt Instant
+   deleted Boolean
+}
+
+entity MessageAttachment {
+    
+}
+
+relationship ManyToOne {
+   Message{course} to Course
+   Message{sender} to User
+   MessageToUser{message} to Message
+   MessageToUser{receiver} to User
+   MessageAttachment{message} to Message
+   MessageAttachment{attachment} to Attachment
+}
+
+
+
 relationship ManyToOne {
    AnnouncementStudentRead{announcement} to Announcement
    AnnouncementStudentRead{student} to Student

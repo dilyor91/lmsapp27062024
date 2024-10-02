@@ -3,21 +3,20 @@ import dayjs from 'dayjs/esm';
 import { ITimeTable, NewTimeTable } from './time-table.model';
 
 export const sampleWithRequiredData: ITimeTable = {
-  id: 14983,
+  id: 10861,
 };
 
 export const sampleWithPartialData: ITimeTable = {
-  id: 15155,
-  pairNumber: 28031,
-  actialDate: dayjs('2024-09-22T13:58'),
+  id: 29910,
+  weekNumber: 15900,
 };
 
 export const sampleWithFullData: ITimeTable = {
-  id: 5314,
-  weekNumber: 27308,
-  weekDayNumber: 31156,
-  pairNumber: 13490,
-  actialDate: dayjs('2024-09-22T16:11'),
+  id: 2898,
+  weekNumber: 32386,
+  weekDayNumber: 13318,
+  pairNumber: 15837,
+  actialDate: dayjs('2024-09-22T18:16'),
 };
 
 export const sampleWithNewData: NewTimeTable = {

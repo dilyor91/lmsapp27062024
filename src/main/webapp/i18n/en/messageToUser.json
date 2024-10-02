@@ -1,0 +1,28 @@
+{
+  "lmsapp27062024App": {
+    "messageToUser": {
+      "home": {
+        "title": "Message To Users",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Message To User",
+        "createOrEditLabel": "Create or edit a Message To User",
+        "notFound": "No Message To Users found"
+      },
+      "created": "A new Message To User is created with identifier {{ param }}",
+      "updated": "A Message To User is updated with identifier {{ param }}",
+      "deleted": "A Message To User is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Message To User {{ id }}?"
+      },
+      "detail": {
+        "title": "Message To User"
+      },
+      "id": "ID",
+      "read": "Read",
+      "readAt": "Read At",
+      "deleted": "Deleted",
+      "message": "Message",
+      "receiver": "Receiver"
+    }
+  }
+}

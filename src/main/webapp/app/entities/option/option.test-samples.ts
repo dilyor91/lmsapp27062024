@@ -1,25 +1,25 @@
 import { IOption, NewOption } from './option.model';
 
 export const sampleWithRequiredData: IOption = {
-  id: 11375,
-  optionText: 'owlishly',
+  id: 14750,
+  optionText: 'hm',
   isCorrect: false,
 };
 
 export const sampleWithPartialData: IOption = {
-  id: 11389,
-  optionText: 'since',
+  id: 9055,
+  optionText: 'violent',
   isCorrect: false,
 };
 
 export const sampleWithFullData: IOption = {
-  id: 28901,
-  optionText: 'meadow opposite banish',
+  id: 6215,
+  optionText: 'vice whether up',
   isCorrect: false,
 };
 
 export const sampleWithNewData: NewOption = {
-  optionText: 'doubtfully',
+  optionText: 'recent throughout eek',
   isCorrect: false,
   id: null,
 };
