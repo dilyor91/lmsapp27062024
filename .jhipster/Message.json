@@ -1,0 +1,50 @@
+{
+  "annotations": {
+    "changelogDate": "20241002055702"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "subject",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "body",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "toAllCourseStudents",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "toSectionIds",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "senderDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "deleted",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "Message",
+  "relationships": [
+    {
+      "otherEntityName": "course",
+      "relationshipName": "course",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "relationshipName": "sender",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

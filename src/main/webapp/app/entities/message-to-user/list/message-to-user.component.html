@@ -1,0 +1,132 @@
+<div>
+  <h2 id="page-heading" data-cy="MessageToUserHeading">
+    <span jhiTranslate="lmsapp27062024App.messageToUser.home.title">Message To Users</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.messageToUser.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-message-to-user"
+        [routerLink]="['/message-to-user/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="lmsapp27062024App.messageToUser.home.createLabel">Create a new Message To User</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (messageToUsers?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="lmsapp27062024App.messageToUser.home.notFound">No Message To Users found</span>
+    </div>
+  }
+
+  @if (messageToUsers && messageToUsers.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="read">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.messageToUser.read">Read</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="readAt">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.messageToUser.readAt">Read At</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="deleted">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.messageToUser.deleted">Deleted</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="message.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.messageToUser.message">Message</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="receiver.id">
+              <div class="d-flex">
+                <span jhiTranslate="lmsapp27062024App.messageToUser.receiver">Receiver</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (messageToUser of messageToUsers; track trackId(messageToUser)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/message-to-user', messageToUser.id, 'view']">{{ messageToUser.id }}</a>
+              </td>
+              <td>{{ messageToUser.read }}</td>
+              <td>{{ messageToUser.readAt | formatMediumDatetime }}</td>
+              <td>{{ messageToUser.deleted }}</td>
+              <td>
+                @if (messageToUser.message) {
+                  <div>
+                    <a [routerLink]="['/message', messageToUser.message.id, 'view']">{{ messageToUser.message.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                {{ messageToUser.receiver?.id }}
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/message-to-user', messageToUser.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/message-to-user', messageToUser.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(messageToUser)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

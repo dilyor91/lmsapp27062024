@@ -464,7 +464,7 @@ class AccountsResourceIT {
         Accounts partialUpdatedAccounts = new Accounts();
         partialUpdatedAccounts.setId(accounts.getId());
 
-        partialUpdatedAccounts.username(UPDATED_USERNAME).avatarImageUrl(UPDATED_AVATAR_IMAGE_URL).userStatus(UPDATED_USER_STATUS);
+        partialUpdatedAccounts.avatarImageUrl(UPDATED_AVATAR_IMAGE_URL);
 
         restAccountsMockMvc
             .perform(

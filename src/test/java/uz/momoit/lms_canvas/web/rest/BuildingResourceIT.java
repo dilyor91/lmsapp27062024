@@ -308,7 +308,7 @@ class BuildingResourceIT {
         Building partialUpdatedBuilding = new Building();
         partialUpdatedBuilding.setId(building.getId());
 
-        partialUpdatedBuilding.name(UPDATED_NAME).address(UPDATED_ADDRESS).status(UPDATED_STATUS);
+        partialUpdatedBuilding.description(UPDATED_DESCRIPTION).address(UPDATED_ADDRESS).status(UPDATED_STATUS);
 
         restBuildingMockMvc
             .perform(

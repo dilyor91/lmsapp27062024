@@ -231,6 +231,21 @@ const routes: Routes = [
     data: { pageTitle: 'lmsapp27062024App.timeTable.home.title' },
     loadChildren: () => import('./time-table/time-table.routes'),
   },
+  {
+    path: 'message',
+    data: { pageTitle: 'lmsapp27062024App.message.home.title' },
+    loadChildren: () => import('./message/message.routes'),
+  },
+  {
+    path: 'message-to-user',
+    data: { pageTitle: 'lmsapp27062024App.messageToUser.home.title' },
+    loadChildren: () => import('./message-to-user/message-to-user.routes'),
+  },
+  {
+    path: 'message-attachment',
+    data: { pageTitle: 'lmsapp27062024App.messageAttachment.home.title' },
+    loadChildren: () => import('./message-attachment/message-attachment.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 

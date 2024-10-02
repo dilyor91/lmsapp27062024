@@ -51,7 +51,10 @@
         "building": "Building",
         "room": "Room",
         "announcementStudentRead": "Announcement Student Read",
-        "timeTable": "Time Table"
+        "timeTable": "Time Table",
+        "message": "Message",
+        "messageToUser": "Message To User",
+        "messageAttachment": "Message Attachment"
       },
       "account": {
         "main": "Account",

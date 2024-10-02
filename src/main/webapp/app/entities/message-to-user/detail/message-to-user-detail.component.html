@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (messageToUser(); as messageToUserRef) {
+      <div>
+        <h2 data-cy="messageToUserDetailsHeading">
+          <span jhiTranslate="lmsapp27062024App.messageToUser.detail.title">Message To User</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ messageToUserRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.messageToUser.read">Read</span></dt>
+          <dd>
+            <span>{{ messageToUserRef.read }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.messageToUser.readAt">Read At</span></dt>
+          <dd>
+            <span>{{ messageToUserRef.readAt | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.messageToUser.deleted">Deleted</span></dt>
+          <dd>
+            <span>{{ messageToUserRef.deleted }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.messageToUser.message">Message</span></dt>
+          <dd>
+            @if (messageToUser()!.message) {
+              <div>
+                <a [routerLink]="['/message', messageToUser()!.message?.id, 'view']">{{ messageToUserRef.message?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.messageToUser.receiver">Receiver</span></dt>
+          <dd>
+            <span>{{ messageToUserRef.receiver?.id }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/message-to-user', messageToUserRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

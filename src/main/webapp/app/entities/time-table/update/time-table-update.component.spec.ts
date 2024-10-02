@@ -65,10 +65,10 @@ describe('TimeTable Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Course query and add missing value', () => {
       const timeTable: ITimeTable = { id: 456 };
-      const course: ICourse = { id: 12988 };
+      const course: ICourse = { id: 15128 };
       timeTable.course = course;
 
-      const courseCollection: ICourse[] = [{ id: 4232 }];
+      const courseCollection: ICourse[] = [{ id: 519 }];
       jest.spyOn(courseService, 'query').mockReturnValue(of(new HttpResponse({ body: courseCollection })));
       const additionalCourses = [course];
       const expectedCollection: ICourse[] = [...additionalCourses, ...courseCollection];
@@ -87,10 +87,10 @@ describe('TimeTable Management Update Component', () => {
 
     it('Should call Teacher query and add missing value', () => {
       const timeTable: ITimeTable = { id: 456 };
-      const teacher: ITeacher = { id: 16950 };
+      const teacher: ITeacher = { id: 22462 };
       timeTable.teacher = teacher;
 
-      const teacherCollection: ITeacher[] = [{ id: 21580 }];
+      const teacherCollection: ITeacher[] = [{ id: 29875 }];
       jest.spyOn(teacherService, 'query').mockReturnValue(of(new HttpResponse({ body: teacherCollection })));
       const additionalTeachers = [teacher];
       const expectedCollection: ITeacher[] = [...additionalTeachers, ...teacherCollection];
@@ -109,10 +109,10 @@ describe('TimeTable Management Update Component', () => {
 
     it('Should call Building query and add missing value', () => {
       const timeTable: ITimeTable = { id: 456 };
-      const building: IBuilding = { id: 189 };
+      const building: IBuilding = { id: 29847 };
       timeTable.building = building;
 
-      const buildingCollection: IBuilding[] = [{ id: 8801 }];
+      const buildingCollection: IBuilding[] = [{ id: 20376 }];
       jest.spyOn(buildingService, 'query').mockReturnValue(of(new HttpResponse({ body: buildingCollection })));
       const additionalBuildings = [building];
       const expectedCollection: IBuilding[] = [...additionalBuildings, ...buildingCollection];
@@ -131,10 +131,10 @@ describe('TimeTable Management Update Component', () => {
 
     it('Should call Room query and add missing value', () => {
       const timeTable: ITimeTable = { id: 456 };
-      const room: IRoom = { id: 18427 };
+      const room: IRoom = { id: 12483 };
       timeTable.room = room;
 
-      const roomCollection: IRoom[] = [{ id: 27616 }];
+      const roomCollection: IRoom[] = [{ id: 13141 }];
       jest.spyOn(roomService, 'query').mockReturnValue(of(new HttpResponse({ body: roomCollection })));
       const additionalRooms = [room];
       const expectedCollection: IRoom[] = [...additionalRooms, ...roomCollection];
@@ -153,10 +153,10 @@ describe('TimeTable Management Update Component', () => {
 
     it('Should call StudyTerm query and add missing value', () => {
       const timeTable: ITimeTable = { id: 456 };
-      const studyTerm: IStudyTerm = { id: 21485 };
+      const studyTerm: IStudyTerm = { id: 583 };
       timeTable.studyTerm = studyTerm;
 
-      const studyTermCollection: IStudyTerm[] = [{ id: 12438 }];
+      const studyTermCollection: IStudyTerm[] = [{ id: 3655 }];
       jest.spyOn(studyTermService, 'query').mockReturnValue(of(new HttpResponse({ body: studyTermCollection })));
       const additionalStudyTerms = [studyTerm];
       const expectedCollection: IStudyTerm[] = [...additionalStudyTerms, ...studyTermCollection];
@@ -175,15 +175,15 @@ describe('TimeTable Management Update Component', () => {
 
     it('Should update editForm', () => {
       const timeTable: ITimeTable = { id: 456 };
-      const course: ICourse = { id: 25878 };
+      const course: ICourse = { id: 30497 };
       timeTable.course = course;
-      const teacher: ITeacher = { id: 8064 };
+      const teacher: ITeacher = { id: 20242 };
       timeTable.teacher = teacher;
-      const building: IBuilding = { id: 30832 };
+      const building: IBuilding = { id: 24740 };
       timeTable.building = building;
-      const room: IRoom = { id: 7985 };
+      const room: IRoom = { id: 28241 };
       timeTable.room = room;
-      const studyTerm: IStudyTerm = { id: 31251 };
+      const studyTerm: IStudyTerm = { id: 19981 };
       timeTable.studyTerm = studyTerm;
 
       activatedRoute.data = of({ timeTable });

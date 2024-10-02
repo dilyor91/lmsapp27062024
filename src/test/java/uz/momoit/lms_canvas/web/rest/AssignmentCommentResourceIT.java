@@ -317,7 +317,7 @@ class AssignmentCommentResourceIT {
         AssignmentComment partialUpdatedAssignmentComment = new AssignmentComment();
         partialUpdatedAssignmentComment.setId(assignmentComment.getId());
 
-        partialUpdatedAssignmentComment.comment(UPDATED_COMMENT);
+        partialUpdatedAssignmentComment.comment(UPDATED_COMMENT).commentDate(UPDATED_COMMENT_DATE);
 
         restAssignmentCommentMockMvc
             .perform(
