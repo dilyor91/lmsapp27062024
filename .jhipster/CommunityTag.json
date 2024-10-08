@@ -1,0 +1,25 @@
+{
+  "annotations": {
+    "changelogDate": "20241008062654"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [],
+  "name": "CommunityTag",
+  "relationships": [
+    {
+      "otherEntityName": "community",
+      "relationshipName": "community",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "tag",
+      "relationshipName": "tag",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

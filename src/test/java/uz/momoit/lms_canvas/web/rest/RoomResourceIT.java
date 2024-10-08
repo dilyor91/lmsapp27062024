@@ -283,6 +283,8 @@ class RoomResourceIT {
         Room partialUpdatedRoom = new Room();
         partialUpdatedRoom.setId(room.getId());
 
+        partialUpdatedRoom.name(UPDATED_NAME).description(UPDATED_DESCRIPTION).capacity(UPDATED_CAPACITY);
+
         restRoomMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedRoom.getId())

@@ -306,8 +306,6 @@ class NotificationResourceIT {
         Notification partialUpdatedNotification = new Notification();
         partialUpdatedNotification.setId(notification.getId());
 
-        partialUpdatedNotification.notificationType(UPDATED_NOTIFICATION_TYPE);
-
         restNotificationMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedNotification.getId())

@@ -54,7 +54,12 @@
         "timeTable": "Time Table",
         "message": "Message",
         "messageToUser": "Message To User",
-        "messageAttachment": "Message Attachment"
+        "messageAttachment": "Message Attachment",
+        "community": "Community",
+        "tag": "Tag",
+        "communityAttachment": "Community Attachment",
+        "communityCourse": "Community Course",
+        "communityTag": "Community Tag"
       },
       "account": {
         "main": "Account",

@@ -1,17 +1,16 @@
 import { IDepartment, NewDepartment } from './department.model';
 
 export const sampleWithRequiredData: IDepartment = {
-  id: 11833,
+  id: 19448,
 };
 
 export const sampleWithPartialData: IDepartment = {
-  id: 27841,
-  name: 'bug joyfully',
+  id: 7446,
 };
 
 export const sampleWithFullData: IDepartment = {
-  id: 23769,
-  name: 'blink continually boohoo',
+  id: 28265,
+  name: 'emphasize fiddle',
 };
 
 export const sampleWithNewData: NewDepartment = {

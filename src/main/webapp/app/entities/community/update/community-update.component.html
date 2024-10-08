@@ -1,0 +1,98 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-community-heading"
+        data-cy="CommunityCreateUpdateHeading"
+        jhiTranslate="lmsapp27062024App.community.home.createOrEditLabel"
+      >
+        Create or edit a Community
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="lmsapp27062024App.community.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_title" jhiTranslate="lmsapp27062024App.community.title">Title</label>
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_body" jhiTranslate="lmsapp27062024App.community.body">Body</label>
+          <input type="text" class="form-control" name="body" id="field_body" data-cy="body" formControlName="body" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_setAsAnonymous" jhiTranslate="lmsapp27062024App.community.setAsAnonymous"
+            >Set As Anonymous</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="setAsAnonymous"
+            id="field_setAsAnonymous"
+            data-cy="setAsAnonymous"
+            formControlName="setAsAnonymous"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_onlyMe" jhiTranslate="lmsapp27062024App.community.onlyMe">Only Me</label>
+          <input type="checkbox" class="form-check" name="onlyMe" id="field_onlyMe" data-cy="onlyMe" formControlName="onlyMe" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_toAllStudents" jhiTranslate="lmsapp27062024App.community.toAllStudents"
+            >To All Students</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="toAllStudents"
+            id="field_toAllStudents"
+            data-cy="toAllStudents"
+            formControlName="toAllStudents"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_status" jhiTranslate="lmsapp27062024App.community.status">Status</label>
+          <input type="checkbox" class="form-check" name="status" id="field_status" data-cy="status" formControlName="status" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_user" jhiTranslate="lmsapp27062024App.community.user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user" [compareWith]="compareUser">
+            <option [ngValue]="null"></option>
+            @for (userOption of usersSharedCollection; track $index) {
+              <option [ngValue]="userOption">{{ userOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
