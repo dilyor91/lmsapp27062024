@@ -593,16 +593,13 @@ class StudentResourceIT {
             .middleName(UPDATED_MIDDLE_NAME)
             .gender(UPDATED_GENDER)
             .phoneNumber(UPDATED_PHONE_NUMBER)
-            .email(UPDATED_EMAIL)
             .hemisId(UPDATED_HEMIS_ID)
-            .passportNumber(UPDATED_PASSPORT_NUMBER)
-            .jshshir(UPDATED_JSHSHIR)
-            .isActive(UPDATED_IS_ACTIVE)
             .tutionType(UPDATED_TUTION_TYPE)
             .nationality(UPDATED_NATIONALITY)
             .region(UPDATED_REGION)
-            .educationType(UPDATED_EDUCATION_TYPE)
-            .educationForm(UPDATED_EDUCATION_FORM);
+            .addressLine(UPDATED_ADDRESS_LINE)
+            .educationLanguage(UPDATED_EDUCATION_LANGUAGE)
+            .educationType(UPDATED_EDUCATION_TYPE);
 
         restStudentMockMvc
             .perform(

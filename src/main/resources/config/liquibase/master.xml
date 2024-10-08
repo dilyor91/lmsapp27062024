@@ -66,6 +66,11 @@
     <include file="config/liquibase/changelog/20241002055702_added_entity_Message.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20241002055703_added_entity_MessageToUser.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20241002055704_added_entity_MessageAttachment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20241008062650_added_entity_Community.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20241008062651_added_entity_Tag.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20241008062652_added_entity_CommunityAttachment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20241008062653_added_entity_CommunityCourse.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20241008062654_added_entity_CommunityTag.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20240627062103_added_entity_constraints_Course.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240627062104_added_entity_constraints_CourseSection.xml" relativeToChangelogFile="false"/>
@@ -110,6 +115,10 @@
     <include file="config/liquibase/changelog/20241002055702_added_entity_constraints_Message.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20241002055703_added_entity_constraints_MessageToUser.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20241002055704_added_entity_constraints_MessageAttachment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20241008062650_added_entity_constraints_Community.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20241008062652_added_entity_constraints_CommunityAttachment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20241008062653_added_entity_constraints_CommunityCourse.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20241008062654_added_entity_constraints_CommunityTag.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

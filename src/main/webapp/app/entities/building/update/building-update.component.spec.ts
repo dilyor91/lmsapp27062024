@@ -49,10 +49,10 @@ describe('Building Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Faculty query and add missing value', () => {
       const building: IBuilding = { id: 456 };
-      const faculty: IFaculty = { id: 29720 };
+      const faculty: IFaculty = { id: 32449 };
       building.faculty = faculty;
 
-      const facultyCollection: IFaculty[] = [{ id: 29239 }];
+      const facultyCollection: IFaculty[] = [{ id: 18073 }];
       jest.spyOn(facultyService, 'query').mockReturnValue(of(new HttpResponse({ body: facultyCollection })));
       const additionalFaculties = [faculty];
       const expectedCollection: IFaculty[] = [...additionalFaculties, ...facultyCollection];
@@ -71,7 +71,7 @@ describe('Building Management Update Component', () => {
 
     it('Should update editForm', () => {
       const building: IBuilding = { id: 456 };
-      const faculty: IFaculty = { id: 13528 };
+      const faculty: IFaculty = { id: 27164 };
       building.faculty = faculty;
 
       activatedRoute.data = of({ building });

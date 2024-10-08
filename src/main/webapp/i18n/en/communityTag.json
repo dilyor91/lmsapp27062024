@@ -1,0 +1,25 @@
+{
+  "lmsapp27062024App": {
+    "communityTag": {
+      "home": {
+        "title": "Community Tags",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Community Tag",
+        "createOrEditLabel": "Create or edit a Community Tag",
+        "notFound": "No Community Tags found"
+      },
+      "created": "A new Community Tag is created with identifier {{ param }}",
+      "updated": "A Community Tag is updated with identifier {{ param }}",
+      "deleted": "A Community Tag is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Community Tag {{ id }}?"
+      },
+      "detail": {
+        "title": "Community Tag"
+      },
+      "id": "ID",
+      "community": "Community",
+      "tag": "Tag"
+    }
+  }
+}

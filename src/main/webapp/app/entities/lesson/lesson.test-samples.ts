@@ -3,31 +3,33 @@ import dayjs from 'dayjs/esm';
 import { ILesson, NewLesson } from './lesson.model';
 
 export const sampleWithRequiredData: ILesson = {
-  id: 7897,
-  lessonTitle: 'executor ameliorate',
-  startPlanDate: dayjs('2024-06-26T12:40'),
-  lessonType: 'Lecture',
+  id: 32053,
+  lessonTitle: 'pfft innocently schematise',
+  startPlanDate: dayjs('2024-06-26T09:41'),
+  lessonType: 'Practice',
 };
 
 export const sampleWithPartialData: ILesson = {
-  id: 1332,
-  lessonTitle: 'annex generously',
-  startPlanDate: dayjs('2024-06-26T13:10'),
+  id: 22321,
+  lessonTitle: 'shyly bakeware until',
+  startPlanDate: dayjs('2024-06-27T05:25'),
+  actualLessonDate: dayjs('2024-06-26T09:39'),
   lessonType: 'Lab',
+  videoUrl: 'newsprint',
 };
 
 export const sampleWithFullData: ILesson = {
-  id: 25792,
-  lessonTitle: 'idealistic mechanic so',
-  startPlanDate: dayjs('2024-06-26T13:28'),
-  actualLessonDate: dayjs('2024-06-26T23:28'),
-  lessonType: 'Lab',
-  videoUrl: 'ew',
+  id: 13869,
+  lessonTitle: 'polarisation disk amongst',
+  startPlanDate: dayjs('2024-06-26T14:05'),
+  actualLessonDate: dayjs('2024-06-26T12:17'),
+  lessonType: 'Lecture',
+  videoUrl: 'coordinated pish',
 };
 
 export const sampleWithNewData: NewLesson = {
-  lessonTitle: 'including',
-  startPlanDate: dayjs('2024-06-26T11:09'),
+  lessonTitle: 'quarrelsomely how',
+  startPlanDate: dayjs('2024-06-27T00:16'),
   lessonType: 'Seminar',
   id: null,
 };

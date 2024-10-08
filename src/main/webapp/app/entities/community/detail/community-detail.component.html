@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (community(); as communityRef) {
+      <div>
+        <h2 data-cy="communityDetailsHeading"><span jhiTranslate="lmsapp27062024App.community.detail.title">Community</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ communityRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.community.title">Title</span></dt>
+          <dd>
+            <span>{{ communityRef.title }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.community.body">Body</span></dt>
+          <dd>
+            <span>{{ communityRef.body }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.community.setAsAnonymous">Set As Anonymous</span></dt>
+          <dd>
+            <span>{{ communityRef.setAsAnonymous }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.community.onlyMe">Only Me</span></dt>
+          <dd>
+            <span>{{ communityRef.onlyMe }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.community.toAllStudents">To All Students</span></dt>
+          <dd>
+            <span>{{ communityRef.toAllStudents }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.community.status">Status</span></dt>
+          <dd>
+            <span>{{ communityRef.status }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.community.user">User</span></dt>
+          <dd>
+            <span>{{ communityRef.user?.id }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/community', communityRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

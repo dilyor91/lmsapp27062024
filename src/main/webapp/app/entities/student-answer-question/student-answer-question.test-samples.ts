@@ -1,16 +1,17 @@
 import { IStudentAnswerQuestion, NewStudentAnswerQuestion } from './student-answer-question.model';
 
 export const sampleWithRequiredData: IStudentAnswerQuestion = {
-  id: 20464,
+  id: 7100,
 };
 
 export const sampleWithPartialData: IStudentAnswerQuestion = {
-  id: 30066,
+  id: 2197,
+  isCorrect: false,
 };
 
 export const sampleWithFullData: IStudentAnswerQuestion = {
-  id: 32274,
-  isCorrect: false,
+  id: 9004,
+  isCorrect: true,
 };
 
 export const sampleWithNewData: NewStudentAnswerQuestion = {

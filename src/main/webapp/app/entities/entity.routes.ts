@@ -246,6 +246,31 @@ const routes: Routes = [
     data: { pageTitle: 'lmsapp27062024App.messageAttachment.home.title' },
     loadChildren: () => import('./message-attachment/message-attachment.routes'),
   },
+  {
+    path: 'community',
+    data: { pageTitle: 'lmsapp27062024App.community.home.title' },
+    loadChildren: () => import('./community/community.routes'),
+  },
+  {
+    path: 'tag',
+    data: { pageTitle: 'lmsapp27062024App.tag.home.title' },
+    loadChildren: () => import('./tag/tag.routes'),
+  },
+  {
+    path: 'community-attachment',
+    data: { pageTitle: 'lmsapp27062024App.communityAttachment.home.title' },
+    loadChildren: () => import('./community-attachment/community-attachment.routes'),
+  },
+  {
+    path: 'community-course',
+    data: { pageTitle: 'lmsapp27062024App.communityCourse.home.title' },
+    loadChildren: () => import('./community-course/community-course.routes'),
+  },
+  {
+    path: 'community-tag',
+    data: { pageTitle: 'lmsapp27062024App.communityTag.home.title' },
+    loadChildren: () => import('./community-tag/community-tag.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 

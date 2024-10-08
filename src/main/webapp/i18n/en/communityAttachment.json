@@ -1,0 +1,25 @@
+{
+  "lmsapp27062024App": {
+    "communityAttachment": {
+      "home": {
+        "title": "Community Attachments",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Community Attachment",
+        "createOrEditLabel": "Create or edit a Community Attachment",
+        "notFound": "No Community Attachments found"
+      },
+      "created": "A new Community Attachment is created with identifier {{ param }}",
+      "updated": "A Community Attachment is updated with identifier {{ param }}",
+      "deleted": "A Community Attachment is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Community Attachment {{ id }}?"
+      },
+      "detail": {
+        "title": "Community Attachment"
+      },
+      "id": "ID",
+      "community": "Community",
+      "attachment": "Attachment"
+    }
+  }
+}

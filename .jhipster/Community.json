@@ -1,0 +1,44 @@
+{
+  "annotations": {
+    "changelogDate": "20241008062650"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "body",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "setAsAnonymous",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "onlyMe",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "toAllStudents",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "Community",
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

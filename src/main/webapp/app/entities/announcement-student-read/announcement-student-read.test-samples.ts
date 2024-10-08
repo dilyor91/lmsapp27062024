@@ -3,17 +3,17 @@ import dayjs from 'dayjs/esm';
 import { IAnnouncementStudentRead, NewAnnouncementStudentRead } from './announcement-student-read.model';
 
 export const sampleWithRequiredData: IAnnouncementStudentRead = {
-  id: 4219,
+  id: 26390,
 };
 
 export const sampleWithPartialData: IAnnouncementStudentRead = {
-  id: 7226,
+  id: 22274,
 };
 
 export const sampleWithFullData: IAnnouncementStudentRead = {
-  id: 22049,
-  read: true,
-  readAt: dayjs('2024-09-17T15:34'),
+  id: 15627,
+  read: false,
+  readAt: dayjs('2024-09-18T06:12'),
 };
 
 export const sampleWithNewData: NewAnnouncementStudentRead = {

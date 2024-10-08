@@ -535,6 +535,42 @@ entity MessageAttachment {
     
 }
 
+entity Community {
+   title String
+   body String
+   setAsAnonymous Boolean
+   onlyMe Boolean
+   toAllStudents Boolean
+   status Boolean
+}
+
+entity Tag {
+   name String
+}
+
+entity CommunityAttachment {
+   
+}
+
+entity CommunityCourse {
+   
+}
+
+entity CommunityTag {
+  
+}
+
+relationship ManyToOne {
+   Community{user} to User
+   CommunityAttachment{community} to Community
+   CommunityAttachment{attachment} to Attachment
+   CommunityCourse{community} to Community
+   CommunityCourse{course} to Course
+   CommunityTag{community} to Community
+   CommunityTag{tag} to Tag
+}
+
+
 relationship ManyToOne {
    Message{course} to Course
    Message{sender} to User
