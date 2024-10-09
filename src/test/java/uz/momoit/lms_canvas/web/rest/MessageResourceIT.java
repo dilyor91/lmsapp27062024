@@ -321,7 +321,7 @@ class MessageResourceIT {
         Message partialUpdatedMessage = new Message();
         partialUpdatedMessage.setId(message.getId());
 
-        partialUpdatedMessage.subject(UPDATED_SUBJECT).toSectionIds(UPDATED_TO_SECTION_IDS).senderDate(UPDATED_SENDER_DATE);
+        partialUpdatedMessage.body(UPDATED_BODY).toAllCourseStudents(UPDATED_TO_ALL_COURSE_STUDENTS);
 
         restMessageMockMvc
             .perform(

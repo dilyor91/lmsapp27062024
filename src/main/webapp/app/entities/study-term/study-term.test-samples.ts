@@ -3,34 +3,34 @@ import dayjs from 'dayjs/esm';
 import { IStudyTerm, NewStudyTerm } from './study-term.model';
 
 export const sampleWithRequiredData: IStudyTerm = {
-  id: 17296,
-  termName: 'oh comb',
-  startDate: dayjs('2024-06-28T10:13'),
-  endDate: dayjs('2024-06-27T13:15'),
+  id: 3570,
+  termName: 'athwart schematise everlasting',
+  startDate: dayjs('2024-06-27T22:50'),
+  endDate: dayjs('2024-06-28T02:29'),
   status: false,
 };
 
 export const sampleWithPartialData: IStudyTerm = {
-  id: 19931,
-  termName: 'once shout afore',
-  startDate: dayjs('2024-06-28T07:36'),
-  endDate: dayjs('2024-06-28T12:21'),
+  id: 26099,
+  termName: 'greatly',
+  startDate: dayjs('2024-06-28T12:00'),
+  endDate: dayjs('2024-06-28T10:01'),
   status: true,
 };
 
 export const sampleWithFullData: IStudyTerm = {
-  id: 28545,
-  termName: 'gosh whereas',
-  startDate: dayjs('2024-06-28T11:18'),
-  endDate: dayjs('2024-06-27T18:26'),
+  id: 11961,
+  termName: 'furlough',
+  startDate: dayjs('2024-06-27T19:48'),
+  endDate: dayjs('2024-06-28T05:12'),
   status: true,
 };
 
 export const sampleWithNewData: NewStudyTerm = {
-  termName: 'platter when',
-  startDate: dayjs('2024-06-28T05:10'),
-  endDate: dayjs('2024-06-27T20:16'),
-  status: false,
+  termName: 'rise handle',
+  startDate: dayjs('2024-06-28T03:15'),
+  endDate: dayjs('2024-06-28T00:56'),
+  status: true,
   id: null,
 };
 

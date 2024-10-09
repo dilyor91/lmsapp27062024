@@ -1,22 +1,22 @@
 import { ICourseSection, NewCourseSection } from './course-section.model';
 
 export const sampleWithRequiredData: ICourseSection = {
-  id: 27241,
-  sectionName: 'posh duh',
+  id: 4358,
+  sectionName: 'questioningly',
 };
 
 export const sampleWithPartialData: ICourseSection = {
-  id: 14227,
-  sectionName: 'gift ah alienated',
+  id: 3822,
+  sectionName: 'during worth',
 };
 
 export const sampleWithFullData: ICourseSection = {
-  id: 14247,
-  sectionName: 'among trust',
+  id: 1567,
+  sectionName: 'furiously',
 };
 
 export const sampleWithNewData: NewCourseSection = {
-  sectionName: 'dead oof',
+  sectionName: 'toward',
   id: null,
 };
 

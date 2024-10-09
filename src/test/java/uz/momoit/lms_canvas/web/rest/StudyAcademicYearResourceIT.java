@@ -283,7 +283,7 @@ class StudyAcademicYearResourceIT {
         StudyAcademicYear partialUpdatedStudyAcademicYear = new StudyAcademicYear();
         partialUpdatedStudyAcademicYear.setId(studyAcademicYear.getId());
 
-        partialUpdatedStudyAcademicYear.fromDate(UPDATED_FROM_DATE);
+        partialUpdatedStudyAcademicYear.endDate(UPDATED_END_DATE);
 
         restStudyAcademicYearMockMvc
             .perform(

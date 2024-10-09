@@ -1,22 +1,19 @@
 import { IRoom, NewRoom } from './room.model';
 
 export const sampleWithRequiredData: IRoom = {
-  id: 21015,
+  id: 8954,
 };
 
 export const sampleWithPartialData: IRoom = {
-  id: 17774,
-  name: 'gosh',
-  description: 'urgently not',
-  capacity: 14621,
-  status: true,
+  id: 5690,
+  description: 'er',
 };
 
 export const sampleWithFullData: IRoom = {
-  id: 22395,
-  name: 'each devise even',
-  description: 'super underneath which',
-  capacity: 15563,
+  id: 28450,
+  name: 'sonnet procurement',
+  description: 'duh',
+  capacity: 28807,
   status: true,
 };
 

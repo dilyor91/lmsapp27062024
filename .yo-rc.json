@@ -69,14 +69,15 @@
       "Tag",
       "CommunityAttachment",
       "CommunityCourse",
-      "CommunityTag"
+      "CommunityTag",
+      "CommunityMessage"
     ],
     "gitCompany": "",
     "jhiPrefix": "jhi",
     "jhipsterVersion": "8.7.1",
     "jwtSecretKey": "NTc4NjIxNjdjNDQ2MjU3YmEwMTM2OWIzY2E5NmVlZTRkOGZiZmRjNjg0ZDEyYjVhNmY5MDA4NmM3MTZjZjE4Y2IwZjdmYTBjMTU0ODYxY2RmYWYzMzdlMTFiMmYyZDBmNTUxMWNlNWI4NTk1Y2YxYjA5N2RlZTIzYjUxOGM3NDc=",
     "languages": ["en"],
-    "lastLiquibaseTimestamp": 1728368814000,
+    "lastLiquibaseTimestamp": 1728470367000,
     "messageBroker": false,
     "nativeLanguage": "en",
     "packageFolder": "uz/momoit/lms_canvas",

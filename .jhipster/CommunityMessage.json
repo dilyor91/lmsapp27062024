@@ -1,0 +1,35 @@
+{
+  "annotations": {
+    "changelogDate": "20241009103927"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "message",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "senderDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "CommunityMessage",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "community",
+      "relationshipName": "community",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "relationshipName": "sender",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -3,19 +3,18 @@ import dayjs from 'dayjs/esm';
 import { INotification, NewNotification } from './notification.model';
 
 export const sampleWithRequiredData: INotification = {
-  id: 16649,
+  id: 18516,
 };
 
 export const sampleWithPartialData: INotification = {
-  id: 31567,
-  read: false,
-  notificationType: 'SUBMISSION_ASSIGNMENT',
+  id: 26154,
+  message: 'incidentally thorn',
 };
 
 export const sampleWithFullData: INotification = {
-  id: 19913,
-  message: 'incidentally times',
-  readDate: dayjs('2024-07-31T05:25'),
+  id: 9906,
+  message: 'urgently',
+  readDate: dayjs('2024-07-30T14:49'),
   read: true,
   notificationType: 'SUBMISSION_ASSIGNMENT',
 };

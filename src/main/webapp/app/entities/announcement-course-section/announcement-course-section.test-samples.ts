@@ -1,15 +1,15 @@
 import { IAnnouncementCourseSection, NewAnnouncementCourseSection } from './announcement-course-section.model';
 
 export const sampleWithRequiredData: IAnnouncementCourseSection = {
-  id: 3224,
+  id: 17681,
 };
 
 export const sampleWithPartialData: IAnnouncementCourseSection = {
-  id: 7949,
+  id: 2130,
 };
 
 export const sampleWithFullData: IAnnouncementCourseSection = {
-  id: 28191,
+  id: 320,
 };
 
 export const sampleWithNewData: NewAnnouncementCourseSection = {

@@ -59,7 +59,8 @@
         "tag": "Tag",
         "communityAttachment": "Community Attachment",
         "communityCourse": "Community Course",
-        "communityTag": "Community Tag"
+        "communityTag": "Community Tag",
+        "communityMessage": "Community Message"
       },
       "account": {
         "main": "Account",

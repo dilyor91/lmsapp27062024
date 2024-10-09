@@ -3,18 +3,20 @@ import dayjs from 'dayjs/esm';
 import { IMessageToUser, NewMessageToUser } from './message-to-user.model';
 
 export const sampleWithRequiredData: IMessageToUser = {
-  id: 18107,
+  id: 20863,
 };
 
 export const sampleWithPartialData: IMessageToUser = {
-  id: 21080,
-  read: false,
+  id: 25085,
+  read: true,
+  readAt: dayjs('2024-10-01T23:56'),
+  deleted: true,
 };
 
 export const sampleWithFullData: IMessageToUser = {
-  id: 30513,
+  id: 31099,
   read: false,
-  readAt: dayjs('2024-10-01T18:05'),
+  readAt: dayjs('2024-10-01T07:14'),
   deleted: false,
 };
 

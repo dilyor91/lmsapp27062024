@@ -499,10 +499,10 @@ class CourseResourceIT {
 
         partialUpdatedCourse
             .courseName(UPDATED_COURSE_NAME)
+            .courseStartDate(UPDATED_COURSE_START_DATE)
             .courseEndDate(UPDATED_COURSE_END_DATE)
-            .published(UPDATED_PUBLISHED)
-            .selfEnrollmentCode(UPDATED_SELF_ENROLLMENT_CODE)
-            .status(UPDATED_STATUS);
+            .courseFormat(UPDATED_COURSE_FORMAT)
+            .storageQuota(UPDATED_STORAGE_QUOTA);
 
         restCourseMockMvc
             .perform(
