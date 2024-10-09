@@ -570,6 +570,16 @@ relationship ManyToOne {
    CommunityTag{tag} to Tag
 }
 
+entity CommunityMessage {
+   message String
+   senderDate Instant
+}
+
+relationship ManyToOne {
+   CommunityMessage{community} to Community
+   CommunityMessage{sender} to User
+}
+
 
 relationship ManyToOne {
    Message{course} to Course
@@ -606,7 +616,7 @@ Quiz, QuizQuestionGroup, QuizCourseSection,
 QuizSession, StudentOption, StudentQuestion,
 StudentAnswerQuestion, QuizResult, Lesson, Attendance,
 CourseWeekInfo, CourseWeek, LessonMaterial, SubmissionAssignment, Grade, AssignmentComment, 
-AnnouncementCourseSection, Building, Room, AnnouncementStudentRead, TimeTable with pagination
+AnnouncementCourseSection, Building, Room, AnnouncementStudentRead, TimeTable, CommunityMessage with pagination
 
 // Use Data Transfer Objects (DTO)
 dto * with mapstruct
