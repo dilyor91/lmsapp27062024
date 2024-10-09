@@ -464,7 +464,7 @@ class AccountsResourceIT {
         Accounts partialUpdatedAccounts = new Accounts();
         partialUpdatedAccounts.setId(accounts.getId());
 
-        partialUpdatedAccounts.phone(UPDATED_PHONE).userStatus(UPDATED_USER_STATUS);
+        partialUpdatedAccounts.username(UPDATED_USERNAME).sortableName(UPDATED_SORTABLE_NAME).userStatus(UPDATED_USER_STATUS);
 
         restAccountsMockMvc
             .perform(

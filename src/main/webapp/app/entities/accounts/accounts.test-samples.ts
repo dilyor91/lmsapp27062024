@@ -1,50 +1,48 @@
 import { IAccounts, NewAccounts } from './accounts.model';
 
 export const sampleWithRequiredData: IAccounts = {
-  id: 24411,
-  username: 'torn',
-  fullName: 'bug',
-  sortableName: 'legging whole hmph',
-  phone: '1-711-672-9462 x71400',
-  gender: 'daintily',
+  id: 6618,
+  username: 'from for',
+  fullName: 'volleyball deeply',
+  sortableName: 'poorly ruin psst',
+  phone: '362.892.8925 x1087',
+  gender: 'ah',
   userType: 'TEACHER',
   userStatus: 'BLOCKED',
 };
 
 export const sampleWithPartialData: IAccounts = {
-  id: 2834,
-  username: 'plumber gee',
-  fullName: 'defiantly equal editor',
-  sortableName: 'instance solvency',
-  avatarImageUrl: 'meh',
-  phone: '483.226.2031 x24176',
-  locale: 'license litter meaningfully',
-  gender: 'eek',
+  id: 11426,
+  username: 'but',
+  fullName: 'nippy wombat',
+  sortableName: 'superb',
+  phone: '(237) 453-7495 x368',
+  gender: 'remand',
   userType: 'TEACHER',
   userStatus: 'BLOCKED',
 };
 
 export const sampleWithFullData: IAccounts = {
-  id: 2954,
-  username: 'around restfully tragic',
-  fullName: 'instead er develop',
-  sortableName: 'than upward',
-  avatarImageUrl: 'within boo easily',
-  phone: '(570) 702-0165',
-  locale: 'leading',
-  gender: 'provided structure energetically',
-  userType: 'TEACHER',
-  userStatus: 'ACTIVE',
+  id: 10131,
+  username: 'dusk',
+  fullName: 'psst um until',
+  sortableName: 'overwork yuck amongst',
+  avatarImageUrl: 'degenerate but fooey',
+  phone: '439.704.7221',
+  locale: 'hydrolyse',
+  gender: 'truly',
+  userType: 'STUDENT',
+  userStatus: 'BLOCKED',
 };
 
 export const sampleWithNewData: NewAccounts = {
-  username: 'colligate boo',
-  fullName: 'irritably',
-  sortableName: 'save under dim',
-  phone: '(240) 348-6017 x226',
-  gender: 'following intermesh worth',
+  username: 'making penalise',
+  fullName: 'yuck why',
+  sortableName: 'low',
+  phone: '698-945-7880 x4066',
+  gender: 'approach intervention',
   userType: 'STUDENT',
-  userStatus: 'PENDING',
+  userStatus: 'BLOCKED',
   id: null,
 };
 

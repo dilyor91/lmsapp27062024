@@ -1,15 +1,15 @@
 import { ICommunityTag, NewCommunityTag } from './community-tag.model';
 
 export const sampleWithRequiredData: ICommunityTag = {
-  id: 27157,
+  id: 24444,
 };
 
 export const sampleWithPartialData: ICommunityTag = {
-  id: 16716,
+  id: 19447,
 };
 
 export const sampleWithFullData: ICommunityTag = {
-  id: 27088,
+  id: 17806,
 };
 
 export const sampleWithNewData: NewCommunityTag = {

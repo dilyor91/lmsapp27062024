@@ -61,10 +61,10 @@ describe('AssignmentComment Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call SubmissionAssignment query and add missing value', () => {
       const assignmentComment: IAssignmentComment = { id: 456 };
-      const submissionAssignment: ISubmissionAssignment = { id: 4836 };
+      const submissionAssignment: ISubmissionAssignment = { id: 20706 };
       assignmentComment.submissionAssignment = submissionAssignment;
 
-      const submissionAssignmentCollection: ISubmissionAssignment[] = [{ id: 16207 }];
+      const submissionAssignmentCollection: ISubmissionAssignment[] = [{ id: 10427 }];
       jest.spyOn(submissionAssignmentService, 'query').mockReturnValue(of(new HttpResponse({ body: submissionAssignmentCollection })));
       const additionalSubmissionAssignments = [submissionAssignment];
       const expectedCollection: ISubmissionAssignment[] = [...additionalSubmissionAssignments, ...submissionAssignmentCollection];
@@ -83,10 +83,10 @@ describe('AssignmentComment Management Update Component', () => {
 
     it('Should call Assignment query and add missing value', () => {
       const assignmentComment: IAssignmentComment = { id: 456 };
-      const assignment: IAssignment = { id: 19147 };
+      const assignment: IAssignment = { id: 16846 };
       assignmentComment.assignment = assignment;
 
-      const assignmentCollection: IAssignment[] = [{ id: 17330 }];
+      const assignmentCollection: IAssignment[] = [{ id: 10404 }];
       jest.spyOn(assignmentService, 'query').mockReturnValue(of(new HttpResponse({ body: assignmentCollection })));
       const additionalAssignments = [assignment];
       const expectedCollection: IAssignment[] = [...additionalAssignments, ...assignmentCollection];
@@ -105,10 +105,10 @@ describe('AssignmentComment Management Update Component', () => {
 
     it('Should call Student query and add missing value', () => {
       const assignmentComment: IAssignmentComment = { id: 456 };
-      const student: IStudent = { id: 20226 };
+      const student: IStudent = { id: 22578 };
       assignmentComment.student = student;
 
-      const studentCollection: IStudent[] = [{ id: 1782 }];
+      const studentCollection: IStudent[] = [{ id: 21660 }];
       jest.spyOn(studentService, 'query').mockReturnValue(of(new HttpResponse({ body: studentCollection })));
       const additionalStudents = [student];
       const expectedCollection: IStudent[] = [...additionalStudents, ...studentCollection];
@@ -127,10 +127,10 @@ describe('AssignmentComment Management Update Component', () => {
 
     it('Should call Teacher query and add missing value', () => {
       const assignmentComment: IAssignmentComment = { id: 456 };
-      const teacher: ITeacher = { id: 13388 };
+      const teacher: ITeacher = { id: 30443 };
       assignmentComment.teacher = teacher;
 
-      const teacherCollection: ITeacher[] = [{ id: 17064 }];
+      const teacherCollection: ITeacher[] = [{ id: 28764 }];
       jest.spyOn(teacherService, 'query').mockReturnValue(of(new HttpResponse({ body: teacherCollection })));
       const additionalTeachers = [teacher];
       const expectedCollection: ITeacher[] = [...additionalTeachers, ...teacherCollection];
@@ -149,13 +149,13 @@ describe('AssignmentComment Management Update Component', () => {
 
     it('Should update editForm', () => {
       const assignmentComment: IAssignmentComment = { id: 456 };
-      const submissionAssignment: ISubmissionAssignment = { id: 26519 };
+      const submissionAssignment: ISubmissionAssignment = { id: 3790 };
       assignmentComment.submissionAssignment = submissionAssignment;
-      const assignment: IAssignment = { id: 8516 };
+      const assignment: IAssignment = { id: 8582 };
       assignmentComment.assignment = assignment;
-      const student: IStudent = { id: 534 };
+      const student: IStudent = { id: 6328 };
       assignmentComment.student = student;
-      const teacher: ITeacher = { id: 30153 };
+      const teacher: ITeacher = { id: 21887 };
       assignmentComment.teacher = teacher;
 
       activatedRoute.data = of({ assignmentComment });

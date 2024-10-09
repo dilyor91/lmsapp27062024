@@ -1,15 +1,15 @@
 import { ICommunityCourse, NewCommunityCourse } from './community-course.model';
 
 export const sampleWithRequiredData: ICommunityCourse = {
-  id: 3469,
+  id: 13427,
 };
 
 export const sampleWithPartialData: ICommunityCourse = {
-  id: 5361,
+  id: 1474,
 };
 
 export const sampleWithFullData: ICommunityCourse = {
-  id: 13080,
+  id: 18191,
 };
 
 export const sampleWithNewData: NewCommunityCourse = {

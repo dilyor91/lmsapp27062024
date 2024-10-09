@@ -1,15 +1,15 @@
 import { IMessageAttachment, NewMessageAttachment } from './message-attachment.model';
 
 export const sampleWithRequiredData: IMessageAttachment = {
-  id: 5224,
+  id: 15688,
 };
 
 export const sampleWithPartialData: IMessageAttachment = {
-  id: 24402,
+  id: 19136,
 };
 
 export const sampleWithFullData: IMessageAttachment = {
-  id: 28875,
+  id: 12106,
 };
 
 export const sampleWithNewData: NewMessageAttachment = {

@@ -350,8 +350,8 @@ class AnnouncementResourceIT {
         partialUpdatedAnnouncement
             .title(UPDATED_TITLE)
             .content(UPDATED_CONTENT)
-            .availableUntilDate(UPDATED_AVAILABLE_UNTIL_DATE)
-            .published(UPDATED_PUBLISHED);
+            .availableFromDate(UPDATED_AVAILABLE_FROM_DATE)
+            .availableUntilDate(UPDATED_AVAILABLE_UNTIL_DATE);
 
         restAnnouncementMockMvc
             .perform(

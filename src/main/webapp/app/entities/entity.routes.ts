@@ -271,6 +271,11 @@ const routes: Routes = [
     data: { pageTitle: 'lmsapp27062024App.communityTag.home.title' },
     loadChildren: () => import('./community-tag/community-tag.routes'),
   },
+  {
+    path: 'community-message',
+    data: { pageTitle: 'lmsapp27062024App.communityMessage.home.title' },
+    loadChildren: () => import('./community-message/community-message.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 

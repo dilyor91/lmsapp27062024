@@ -1,19 +1,17 @@
 import { ILessonMaterial, NewLessonMaterial } from './lesson-material.model';
 
 export const sampleWithRequiredData: ILessonMaterial = {
-  id: 6036,
+  id: 31740,
 };
 
 export const sampleWithPartialData: ILessonMaterial = {
-  id: 31790,
-  title: 'immediate boohoo',
-  lessonFileType: 'TEXT',
+  id: 30481,
 };
 
 export const sampleWithFullData: ILessonMaterial = {
-  id: 26893,
-  title: 'woefully vainly rapidly',
-  description: 'aha exhausted',
+  id: 25139,
+  title: 'round scramble',
+  description: 'international save aha',
   lessonFileType: 'WEB_LINK',
 };
 

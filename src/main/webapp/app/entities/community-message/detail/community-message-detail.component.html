@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (communityMessage(); as communityMessageRef) {
+      <div>
+        <h2 data-cy="communityMessageDetailsHeading">
+          <span jhiTranslate="lmsapp27062024App.communityMessage.detail.title">Community Message</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ communityMessageRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.communityMessage.message">Message</span></dt>
+          <dd>
+            <span>{{ communityMessageRef.message }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.communityMessage.senderDate">Sender Date</span></dt>
+          <dd>
+            <span>{{ communityMessageRef.senderDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.communityMessage.community">Community</span></dt>
+          <dd>
+            @if (communityMessage()!.community) {
+              <div>
+                <a [routerLink]="['/community', communityMessage()!.community?.id, 'view']">{{ communityMessageRef.community?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.communityMessage.sender">Sender</span></dt>
+          <dd>
+            <span>{{ communityMessageRef.sender?.id }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/community-message', communityMessageRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
