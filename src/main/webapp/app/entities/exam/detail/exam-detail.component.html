@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (exam(); as examRef) {
+      <div>
+        <h2 data-cy="examDetailsHeading"><span jhiTranslate="lmsapp27062024App.exam.detail.title">Exam</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ examRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.exam.type">Type</span></dt>
+          <dd>
+            <span [jhiTranslate]="'lmsapp27062024App.ExamTypeEnum.' + (examRef.type ?? 'null')">{{
+              { null: '', INTERIM: 'INTERIM', FINAL: 'FINAL' }[examRef.type ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.exam.maxPoint">Max Point</span></dt>
+          <dd>
+            <span>{{ examRef.maxPoint }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.exam.course">Course</span></dt>
+          <dd>
+            @if (exam()!.course) {
+              <div>
+                <a [routerLink]="['/course', exam()!.course?.id, 'view']">{{ examRef.course?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/exam', examRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

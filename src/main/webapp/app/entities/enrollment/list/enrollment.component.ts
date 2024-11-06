@@ -43,10 +43,10 @@ export class EnrollmentComponent implements OnInit {
   totalItems = 0;
   page = 1;
 
-  public router = inject(Router);
-  protected enrollmentService = inject(EnrollmentService);
-  protected activatedRoute = inject(ActivatedRoute);
-  protected sortService = inject(SortService);
+  public readonly router = inject(Router);
+  protected readonly enrollmentService = inject(EnrollmentService);
+  protected readonly activatedRoute = inject(ActivatedRoute);
+  protected readonly sortService = inject(SortService);
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 

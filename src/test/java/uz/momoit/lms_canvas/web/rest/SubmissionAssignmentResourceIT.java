@@ -312,7 +312,7 @@ class SubmissionAssignmentResourceIT {
         SubmissionAssignment partialUpdatedSubmissionAssignment = new SubmissionAssignment();
         partialUpdatedSubmissionAssignment.setId(submissionAssignment.getId());
 
-        partialUpdatedSubmissionAssignment.content(UPDATED_CONTENT);
+        partialUpdatedSubmissionAssignment.submissionDate(UPDATED_SUBMISSION_DATE);
 
         restSubmissionAssignmentMockMvc
             .perform(

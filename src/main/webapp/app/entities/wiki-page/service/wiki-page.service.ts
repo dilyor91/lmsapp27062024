@@ -27,8 +27,8 @@ export type EntityArrayResponseType = HttpResponse<IWikiPage[]>;
 
 @Injectable({ providedIn: 'root' })
 export class WikiPageService {
-  protected http = inject(HttpClient);
-  protected applicationConfigService = inject(ApplicationConfigService);
+  protected readonly http = inject(HttpClient);
+  protected readonly applicationConfigService = inject(ApplicationConfigService);
 
   protected resourceUrl = this.applicationConfigService.getEndpointFor('api/wiki-pages');
 

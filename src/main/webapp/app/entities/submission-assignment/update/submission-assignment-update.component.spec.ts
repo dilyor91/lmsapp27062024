@@ -61,10 +61,10 @@ describe('SubmissionAssignment Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Student query and add missing value', () => {
       const submissionAssignment: ISubmissionAssignment = { id: 456 };
-      const student: IStudent = { id: 18792 };
+      const student: IStudent = { id: 23551 };
       submissionAssignment.student = student;
 
-      const studentCollection: IStudent[] = [{ id: 6865 }];
+      const studentCollection: IStudent[] = [{ id: 21724 }];
       jest.spyOn(studentService, 'query').mockReturnValue(of(new HttpResponse({ body: studentCollection })));
       const additionalStudents = [student];
       const expectedCollection: IStudent[] = [...additionalStudents, ...studentCollection];
@@ -83,10 +83,10 @@ describe('SubmissionAssignment Management Update Component', () => {
 
     it('Should call Course query and add missing value', () => {
       const submissionAssignment: ISubmissionAssignment = { id: 456 };
-      const course: ICourse = { id: 8144 };
+      const course: ICourse = { id: 2424 };
       submissionAssignment.course = course;
 
-      const courseCollection: ICourse[] = [{ id: 18986 }];
+      const courseCollection: ICourse[] = [{ id: 23792 }];
       jest.spyOn(courseService, 'query').mockReturnValue(of(new HttpResponse({ body: courseCollection })));
       const additionalCourses = [course];
       const expectedCollection: ICourse[] = [...additionalCourses, ...courseCollection];
@@ -105,10 +105,10 @@ describe('SubmissionAssignment Management Update Component', () => {
 
     it('Should call Assignment query and add missing value', () => {
       const submissionAssignment: ISubmissionAssignment = { id: 456 };
-      const assignment: IAssignment = { id: 13699 };
+      const assignment: IAssignment = { id: 4170 };
       submissionAssignment.assignment = assignment;
 
-      const assignmentCollection: IAssignment[] = [{ id: 31996 }];
+      const assignmentCollection: IAssignment[] = [{ id: 24281 }];
       jest.spyOn(assignmentService, 'query').mockReturnValue(of(new HttpResponse({ body: assignmentCollection })));
       const additionalAssignments = [assignment];
       const expectedCollection: IAssignment[] = [...additionalAssignments, ...assignmentCollection];
@@ -127,10 +127,10 @@ describe('SubmissionAssignment Management Update Component', () => {
 
     it('Should call Attachment query and add missing value', () => {
       const submissionAssignment: ISubmissionAssignment = { id: 456 };
-      const attachment: IAttachment = { id: 4087 };
+      const attachment: IAttachment = { id: 11309 };
       submissionAssignment.attachment = attachment;
 
-      const attachmentCollection: IAttachment[] = [{ id: 4881 }];
+      const attachmentCollection: IAttachment[] = [{ id: 13256 }];
       jest.spyOn(attachmentService, 'query').mockReturnValue(of(new HttpResponse({ body: attachmentCollection })));
       const additionalAttachments = [attachment];
       const expectedCollection: IAttachment[] = [...additionalAttachments, ...attachmentCollection];
@@ -149,13 +149,13 @@ describe('SubmissionAssignment Management Update Component', () => {
 
     it('Should update editForm', () => {
       const submissionAssignment: ISubmissionAssignment = { id: 456 };
-      const student: IStudent = { id: 22367 };
+      const student: IStudent = { id: 29544 };
       submissionAssignment.student = student;
-      const course: ICourse = { id: 15741 };
+      const course: ICourse = { id: 910 };
       submissionAssignment.course = course;
-      const assignment: IAssignment = { id: 22922 };
+      const assignment: IAssignment = { id: 30820 };
       submissionAssignment.assignment = assignment;
-      const attachment: IAttachment = { id: 2669 };
+      const attachment: IAttachment = { id: 31367 };
       submissionAssignment.attachment = attachment;
 
       activatedRoute.data = of({ submissionAssignment });

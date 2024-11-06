@@ -1,26 +1,28 @@
 import { IBuilding, NewBuilding } from './building.model';
 
 export const sampleWithRequiredData: IBuilding = {
-  id: 31612,
-  name: 'dowse',
+  id: 8865,
+  name: 'intermesh while only',
 };
 
 export const sampleWithPartialData: IBuilding = {
-  id: 31391,
-  name: 'even',
-  address: 'pish colligate nocturnal',
+  id: 29217,
+  name: 'after',
+  description: 'oh',
+  address: 'lid rule',
+  status: true,
 };
 
 export const sampleWithFullData: IBuilding = {
-  id: 7551,
-  name: 'astride provided',
-  description: 'nifty',
-  address: 'into typewriter devastation',
-  status: false,
+  id: 17066,
+  name: 'yuck mystify',
+  description: 'while function',
+  address: 'bah',
+  status: true,
 };
 
 export const sampleWithNewData: NewBuilding = {
-  name: 'even',
+  name: 'unruly',
   id: null,
 };
 

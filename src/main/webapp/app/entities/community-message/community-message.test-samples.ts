@@ -3,18 +3,18 @@ import dayjs from 'dayjs/esm';
 import { ICommunityMessage, NewCommunityMessage } from './community-message.model';
 
 export const sampleWithRequiredData: ICommunityMessage = {
-  id: 9042,
+  id: 18080,
 };
 
 export const sampleWithPartialData: ICommunityMessage = {
-  id: 30345,
-  message: 'better',
+  id: 14606,
+  message: 'lazily minister finally',
 };
 
 export const sampleWithFullData: ICommunityMessage = {
-  id: 19964,
-  message: 'technologist now drat',
-  senderDate: dayjs('2024-10-08T19:07'),
+  id: 2256,
+  message: 'husband',
+  senderDate: dayjs('2024-10-08T22:28'),
 };
 
 export const sampleWithNewData: NewCommunityMessage = {

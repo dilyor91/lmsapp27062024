@@ -12,8 +12,8 @@ export type EntityArrayResponseType = HttpResponse<IAttachment[]>;
 
 @Injectable({ providedIn: 'root' })
 export class AttachmentService {
-  protected http = inject(HttpClient);
-  protected applicationConfigService = inject(ApplicationConfigService);
+  protected readonly http = inject(HttpClient);
+  protected readonly applicationConfigService = inject(ApplicationConfigService);
 
   protected resourceUrl = this.applicationConfigService.getEndpointFor('api/attachments');
 

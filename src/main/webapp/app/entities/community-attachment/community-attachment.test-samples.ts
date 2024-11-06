@@ -1,15 +1,15 @@
 import { ICommunityAttachment, NewCommunityAttachment } from './community-attachment.model';
 
 export const sampleWithRequiredData: ICommunityAttachment = {
-  id: 11757,
+  id: 3849,
 };
 
 export const sampleWithPartialData: ICommunityAttachment = {
-  id: 18850,
+  id: 3854,
 };
 
 export const sampleWithFullData: ICommunityAttachment = {
-  id: 6993,
+  id: 3168,
 };
 
 export const sampleWithNewData: NewCommunityAttachment = {

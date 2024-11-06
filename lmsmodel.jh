@@ -12,6 +12,28 @@ entity Course {
     status Boolean required
 }
 
+
+enum ExamTypeEnum {
+   INTERIM, FINAL
+}
+
+entity Exam {
+   type ExamTypeEnum,
+   maxPoint Float
+}
+
+entity ExamResult {
+   point Float
+   gradedDate Instant
+}
+
+relationship ManyToOne {
+   Exam{course} to Course
+   ExamResult{student} to Student
+   ExamResult{exam} to Exam
+   ExamResult{course} to Course
+}
+
 entity CourseSection {
     sectionName String required
 }
@@ -616,7 +638,7 @@ Quiz, QuizQuestionGroup, QuizCourseSection,
 QuizSession, StudentOption, StudentQuestion,
 StudentAnswerQuestion, QuizResult, Lesson, Attendance,
 CourseWeekInfo, CourseWeek, LessonMaterial, SubmissionAssignment, Grade, AssignmentComment, 
-AnnouncementCourseSection, Building, Room, AnnouncementStudentRead, TimeTable, CommunityMessage with pagination
+AnnouncementCourseSection, Building, Room, AnnouncementStudentRead, TimeTable, CommunityMessage, ExamResult, Exam with pagination
 
 // Use Data Transfer Objects (DTO)
 dto * with mapstruct

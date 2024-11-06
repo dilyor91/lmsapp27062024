@@ -72,6 +72,8 @@
     <include file="config/liquibase/changelog/20241008062653_added_entity_CommunityCourse.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20241008062654_added_entity_CommunityTag.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20241009103927_added_entity_CommunityMessage.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20241106063047_added_entity_Exam.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20241106063048_added_entity_ExamResult.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20240627062103_added_entity_constraints_Course.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240627062104_added_entity_constraints_CourseSection.xml" relativeToChangelogFile="false"/>
@@ -121,6 +123,8 @@
     <include file="config/liquibase/changelog/20241008062653_added_entity_constraints_CommunityCourse.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20241008062654_added_entity_constraints_CommunityTag.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20241009103927_added_entity_constraints_CommunityMessage.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20241106063047_added_entity_constraints_Exam.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20241106063048_added_entity_constraints_ExamResult.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>
