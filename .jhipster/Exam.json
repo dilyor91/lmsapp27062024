@@ -1,0 +1,30 @@
+{
+  "annotations": {
+    "changelogDate": "20241106063047"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "ExamTypeEnum",
+      "fieldValues": "INTERIM,FINAL"
+    },
+    {
+      "fieldName": "maxPoint",
+      "fieldType": "Float"
+    }
+  ],
+  "name": "Exam",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "course",
+      "relationshipName": "course",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

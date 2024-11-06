@@ -27,8 +27,8 @@ export type EntityArrayResponseType = HttpResponse<IStudyTerm[]>;
 
 @Injectable({ providedIn: 'root' })
 export class StudyTermService {
-  protected http = inject(HttpClient);
-  protected applicationConfigService = inject(ApplicationConfigService);
+  protected readonly http = inject(HttpClient);
+  protected readonly applicationConfigService = inject(ApplicationConfigService);
 
   protected resourceUrl = this.applicationConfigService.getEndpointFor('api/study-terms');
 

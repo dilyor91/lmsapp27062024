@@ -34,10 +34,10 @@ export class MessageAttachmentComponent implements OnInit {
 
   sortState = sortStateSignal({});
 
-  public router = inject(Router);
-  protected messageAttachmentService = inject(MessageAttachmentService);
-  protected activatedRoute = inject(ActivatedRoute);
-  protected sortService = inject(SortService);
+  public readonly router = inject(Router);
+  protected readonly messageAttachmentService = inject(MessageAttachmentService);
+  protected readonly activatedRoute = inject(ActivatedRoute);
+  protected readonly sortService = inject(SortService);
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 

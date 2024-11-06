@@ -57,10 +57,10 @@ describe('Grade Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call submissionAssignment query and add missing value', () => {
       const grade: IGrade = { id: 456 };
-      const submissionAssignment: ISubmissionAssignment = { id: 14939 };
+      const submissionAssignment: ISubmissionAssignment = { id: 32425 };
       grade.submissionAssignment = submissionAssignment;
 
-      const submissionAssignmentCollection: ISubmissionAssignment[] = [{ id: 19683 }];
+      const submissionAssignmentCollection: ISubmissionAssignment[] = [{ id: 29311 }];
       jest.spyOn(submissionAssignmentService, 'query').mockReturnValue(of(new HttpResponse({ body: submissionAssignmentCollection })));
       const expectedCollection: ISubmissionAssignment[] = [submissionAssignment, ...submissionAssignmentCollection];
       jest.spyOn(submissionAssignmentService, 'addSubmissionAssignmentToCollectionIfMissing').mockReturnValue(expectedCollection);
@@ -78,10 +78,10 @@ describe('Grade Management Update Component', () => {
 
     it('Should call Teacher query and add missing value', () => {
       const grade: IGrade = { id: 456 };
-      const teacher: ITeacher = { id: 21512 };
+      const teacher: ITeacher = { id: 23628 };
       grade.teacher = teacher;
 
-      const teacherCollection: ITeacher[] = [{ id: 13272 }];
+      const teacherCollection: ITeacher[] = [{ id: 1411 }];
       jest.spyOn(teacherService, 'query').mockReturnValue(of(new HttpResponse({ body: teacherCollection })));
       const additionalTeachers = [teacher];
       const expectedCollection: ITeacher[] = [...additionalTeachers, ...teacherCollection];
@@ -100,10 +100,10 @@ describe('Grade Management Update Component', () => {
 
     it('Should call Assignment query and add missing value', () => {
       const grade: IGrade = { id: 456 };
-      const assignment: IAssignment = { id: 2028 };
+      const assignment: IAssignment = { id: 1186 };
       grade.assignment = assignment;
 
-      const assignmentCollection: IAssignment[] = [{ id: 11668 }];
+      const assignmentCollection: IAssignment[] = [{ id: 21259 }];
       jest.spyOn(assignmentService, 'query').mockReturnValue(of(new HttpResponse({ body: assignmentCollection })));
       const additionalAssignments = [assignment];
       const expectedCollection: IAssignment[] = [...additionalAssignments, ...assignmentCollection];
@@ -122,11 +122,11 @@ describe('Grade Management Update Component', () => {
 
     it('Should update editForm', () => {
       const grade: IGrade = { id: 456 };
-      const submissionAssignment: ISubmissionAssignment = { id: 17737 };
+      const submissionAssignment: ISubmissionAssignment = { id: 11458 };
       grade.submissionAssignment = submissionAssignment;
-      const teacher: ITeacher = { id: 15810 };
+      const teacher: ITeacher = { id: 21402 };
       grade.teacher = teacher;
-      const assignment: IAssignment = { id: 934 };
+      const assignment: IAssignment = { id: 31551 };
       grade.assignment = assignment;
 
       activatedRoute.data = of({ grade });

@@ -1,0 +1,9 @@
+{
+  "lmsapp27062024App": {
+    "ExamTypeEnum": {
+      "null": "",
+      "INTERIM": "INTERIM",
+      "FINAL": "FINAL"
+    }
+  }
+}

@@ -34,10 +34,10 @@ export class MessageToUserComponent implements OnInit {
 
   sortState = sortStateSignal({});
 
-  public router = inject(Router);
-  protected messageToUserService = inject(MessageToUserService);
-  protected activatedRoute = inject(ActivatedRoute);
-  protected sortService = inject(SortService);
+  public readonly router = inject(Router);
+  protected readonly messageToUserService = inject(MessageToUserService);
+  protected readonly activatedRoute = inject(ActivatedRoute);
+  protected readonly sortService = inject(SortService);
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 

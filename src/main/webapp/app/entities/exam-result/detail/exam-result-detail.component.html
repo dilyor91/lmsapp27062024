@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (examResult(); as examResultRef) {
+      <div>
+        <h2 data-cy="examResultDetailsHeading"><span jhiTranslate="lmsapp27062024App.examResult.detail.title">Exam Result</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ examResultRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.examResult.point">Point</span></dt>
+          <dd>
+            <span>{{ examResultRef.point }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.examResult.gradedDate">Graded Date</span></dt>
+          <dd>
+            <span>{{ examResultRef.gradedDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.examResult.student">Student</span></dt>
+          <dd>
+            @if (examResult()!.student) {
+              <div>
+                <a [routerLink]="['/student', examResult()!.student?.id, 'view']">{{ examResultRef.student?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.examResult.exam">Exam</span></dt>
+          <dd>
+            @if (examResult()!.exam) {
+              <div>
+                <a [routerLink]="['/exam', examResult()!.exam?.id, 'view']">{{ examResultRef.exam?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="lmsapp27062024App.examResult.course">Course</span></dt>
+          <dd>
+            @if (examResult()!.course) {
+              <div>
+                <a [routerLink]="['/course', examResult()!.course?.id, 'view']">{{ examResultRef.course?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/exam-result', examResultRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

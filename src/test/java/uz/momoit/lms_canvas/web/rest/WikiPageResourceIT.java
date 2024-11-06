@@ -338,12 +338,7 @@ class WikiPageResourceIT {
         WikiPage partialUpdatedWikiPage = new WikiPage();
         partialUpdatedWikiPage.setId(wikiPage.getId());
 
-        partialUpdatedWikiPage
-            .content(UPDATED_CONTENT)
-            .whoAllowed(UPDATED_WHO_ALLOWED)
-            .addToStudents(UPDATED_ADD_TO_STUDENTS)
-            .addToStudentsDate(UPDATED_ADD_TO_STUDENTS_DATE)
-            .notifyUsersChanges(UPDATED_NOTIFY_USERS_CHANGES);
+        partialUpdatedWikiPage.content(UPDATED_CONTENT).whoAllowed(UPDATED_WHO_ALLOWED).addToStudents(UPDATED_ADD_TO_STUDENTS);
 
         restWikiPageMockMvc
             .perform(

@@ -287,8 +287,6 @@ class CommunityMessageResourceIT {
         CommunityMessage partialUpdatedCommunityMessage = new CommunityMessage();
         partialUpdatedCommunityMessage.setId(communityMessage.getId());
 
-        partialUpdatedCommunityMessage.message(UPDATED_MESSAGE).senderDate(UPDATED_SENDER_DATE);
-
         restCommunityMessageMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedCommunityMessage.getId())

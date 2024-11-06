@@ -49,10 +49,10 @@ describe('Question Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call QuestionGroup query and add missing value', () => {
       const question: IQuestion = { id: 456 };
-      const questionGroup: IQuestionGroup = { id: 15030 };
+      const questionGroup: IQuestionGroup = { id: 13403 };
       question.questionGroup = questionGroup;
 
-      const questionGroupCollection: IQuestionGroup[] = [{ id: 29135 }];
+      const questionGroupCollection: IQuestionGroup[] = [{ id: 19961 }];
       jest.spyOn(questionGroupService, 'query').mockReturnValue(of(new HttpResponse({ body: questionGroupCollection })));
       const additionalQuestionGroups = [questionGroup];
       const expectedCollection: IQuestionGroup[] = [...additionalQuestionGroups, ...questionGroupCollection];
@@ -71,7 +71,7 @@ describe('Question Management Update Component', () => {
 
     it('Should update editForm', () => {
       const question: IQuestion = { id: 456 };
-      const questionGroup: IQuestionGroup = { id: 21580 };
+      const questionGroup: IQuestionGroup = { id: 23895 };
       question.questionGroup = questionGroup;
 
       activatedRoute.data = of({ question });

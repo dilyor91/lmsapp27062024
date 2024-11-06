@@ -311,8 +311,6 @@ class OptionResourceIT {
         Option partialUpdatedOption = new Option();
         partialUpdatedOption.setId(option.getId());
 
-        partialUpdatedOption.isCorrect(UPDATED_IS_CORRECT);
-
         restOptionMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedOption.getId())

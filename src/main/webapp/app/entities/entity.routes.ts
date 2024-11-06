@@ -276,6 +276,16 @@ const routes: Routes = [
     data: { pageTitle: 'lmsapp27062024App.communityMessage.home.title' },
     loadChildren: () => import('./community-message/community-message.routes'),
   },
+  {
+    path: 'exam',
+    data: { pageTitle: 'lmsapp27062024App.exam.home.title' },
+    loadChildren: () => import('./exam/exam.routes'),
+  },
+  {
+    path: 'exam-result',
+    data: { pageTitle: 'lmsapp27062024App.examResult.home.title' },
+    loadChildren: () => import('./exam-result/exam-result.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 

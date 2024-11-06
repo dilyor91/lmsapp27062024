@@ -277,8 +277,6 @@ class AttendanceResourceIT {
         Attendance partialUpdatedAttendance = new Attendance();
         partialUpdatedAttendance.setId(attendance.getId());
 
-        partialUpdatedAttendance.attendanceEnum(UPDATED_ATTENDANCE_ENUM);
-
         restAttendanceMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedAttendance.getId())

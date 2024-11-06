@@ -323,7 +323,7 @@ class CommunityResourceIT {
         Community partialUpdatedCommunity = new Community();
         partialUpdatedCommunity.setId(community.getId());
 
-        partialUpdatedCommunity.title(UPDATED_TITLE).onlyMe(UPDATED_ONLY_ME).toAllStudents(UPDATED_TO_ALL_STUDENTS);
+        partialUpdatedCommunity.status(UPDATED_STATUS);
 
         restCommunityMockMvc
             .perform(

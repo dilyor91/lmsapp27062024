@@ -60,7 +60,9 @@
         "communityAttachment": "Community Attachment",
         "communityCourse": "Community Course",
         "communityTag": "Community Tag",
-        "communityMessage": "Community Message"
+        "communityMessage": "Community Message",
+        "exam": "Exam",
+        "examResult": "Exam Result"
       },
       "account": {
         "main": "Account",
