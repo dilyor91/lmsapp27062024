@@ -1,20 +1,21 @@
 import { ICommunity, NewCommunity } from './community.model';
 
 export const sampleWithRequiredData: ICommunity = {
-  id: 18565,
+  id: 31295,
 };
 
 export const sampleWithPartialData: ICommunity = {
-  id: 20610,
-  body: 'celebrated other pish',
+  id: 26194,
+  body: 'anenst whole',
   setAsAnonymous: false,
-  status: true,
+  onlyMe: true,
+  toAllStudents: true,
 };
 
 export const sampleWithFullData: ICommunity = {
-  id: 29925,
-  title: 'shrilly',
-  body: 'crumble after',
+  id: 15547,
+  title: 'between following',
+  body: 'resource as coal',
   setAsAnonymous: false,
   onlyMe: false,
   toAllStudents: true,

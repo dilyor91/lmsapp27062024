@@ -3,28 +3,28 @@ import dayjs from 'dayjs/esm';
 import { IWikiPage, NewWikiPage } from './wiki-page.model';
 
 export const sampleWithRequiredData: IWikiPage = {
-  id: 3612,
+  id: 26133,
 };
 
 export const sampleWithPartialData: IWikiPage = {
-  id: 13791,
-  content: 'besmirch mentor brood',
-  whoAllowed: 'ANYONE',
-  addToStudentsDate: dayjs('2024-06-26T14:26'),
-  publishedAt: dayjs('2024-06-26T15:13'),
-  published: true,
+  id: 20837,
+  title: 'gust',
+  content: 'uncover creaking',
+  whoAllowed: 'ONLY_TEACHERS',
+  addToStudents: false,
+  published: false,
   notifyUsersChanges: true,
 };
 
 export const sampleWithFullData: IWikiPage = {
-  id: 29413,
-  title: 'vibrant lighthearted obedient',
-  content: 'ha politely blah',
-  whoAllowed: 'ONLY_TEACHERS',
-  addToStudents: true,
-  addToStudentsDate: dayjs('2024-06-26T14:05'),
-  publishedAt: dayjs('2024-06-27T05:13'),
-  published: true,
+  id: 25072,
+  title: 'phew respectful plus',
+  content: 'duffel if',
+  whoAllowed: 'ANYONE',
+  addToStudents: false,
+  addToStudentsDate: dayjs('2024-06-26T07:44'),
+  publishedAt: dayjs('2024-06-27T04:56'),
+  published: false,
   notifyUsersChanges: false,
 };
 

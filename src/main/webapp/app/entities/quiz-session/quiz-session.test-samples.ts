@@ -3,18 +3,20 @@ import dayjs from 'dayjs/esm';
 import { IQuizSession, NewQuizSession } from './quiz-session.model';
 
 export const sampleWithRequiredData: IQuizSession = {
-  id: 29586,
+  id: 29161,
 };
 
 export const sampleWithPartialData: IQuizSession = {
-  id: 32333,
+  id: 13960,
+  endTime: dayjs('2024-06-27T05:54'),
+  quizSessionEnum: 'FINISHED',
 };
 
 export const sampleWithFullData: IQuizSession = {
-  id: 31680,
-  startTime: dayjs('2024-06-27T00:33'),
-  endTime: dayjs('2024-06-26T16:03'),
-  quizSessionEnum: 'IN_PROGRESS',
+  id: 28173,
+  startTime: dayjs('2024-06-26T06:25'),
+  endTime: dayjs('2024-06-26T06:29'),
+  quizSessionEnum: 'FINISHED',
 };
 
 export const sampleWithNewData: NewQuizSession = {

@@ -274,6 +274,8 @@ class ExamResourceIT {
         Exam partialUpdatedExam = new Exam();
         partialUpdatedExam.setId(exam.getId());
 
+        partialUpdatedExam.type(UPDATED_TYPE);
+
         restExamMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedExam.getId())

@@ -288,8 +288,6 @@ class CourseWeekResourceIT {
         CourseWeek partialUpdatedCourseWeek = new CourseWeek();
         partialUpdatedCourseWeek.setId(courseWeek.getId());
 
-        partialUpdatedCourseWeek.name(UPDATED_NAME).published(UPDATED_PUBLISHED);
-
         restCourseWeekMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedCourseWeek.getId())

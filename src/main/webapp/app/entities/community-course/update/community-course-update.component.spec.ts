@@ -53,10 +53,10 @@ describe('CommunityCourse Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Community query and add missing value', () => {
       const communityCourse: ICommunityCourse = { id: 456 };
-      const community: ICommunity = { id: 8246 };
+      const community: ICommunity = { id: 18187 };
       communityCourse.community = community;
 
-      const communityCollection: ICommunity[] = [{ id: 12040 }];
+      const communityCollection: ICommunity[] = [{ id: 14997 }];
       jest.spyOn(communityService, 'query').mockReturnValue(of(new HttpResponse({ body: communityCollection })));
       const additionalCommunities = [community];
       const expectedCollection: ICommunity[] = [...additionalCommunities, ...communityCollection];
@@ -75,10 +75,10 @@ describe('CommunityCourse Management Update Component', () => {
 
     it('Should call Course query and add missing value', () => {
       const communityCourse: ICommunityCourse = { id: 456 };
-      const course: ICourse = { id: 16793 };
+      const course: ICourse = { id: 28394 };
       communityCourse.course = course;
 
-      const courseCollection: ICourse[] = [{ id: 24185 }];
+      const courseCollection: ICourse[] = [{ id: 21621 }];
       jest.spyOn(courseService, 'query').mockReturnValue(of(new HttpResponse({ body: courseCollection })));
       const additionalCourses = [course];
       const expectedCollection: ICourse[] = [...additionalCourses, ...courseCollection];
@@ -97,9 +97,9 @@ describe('CommunityCourse Management Update Component', () => {
 
     it('Should update editForm', () => {
       const communityCourse: ICommunityCourse = { id: 456 };
-      const community: ICommunity = { id: 14795 };
+      const community: ICommunity = { id: 13273 };
       communityCourse.community = community;
-      const course: ICourse = { id: 12788 };
+      const course: ICourse = { id: 26997 };
       communityCourse.course = course;
 
       activatedRoute.data = of({ communityCourse });

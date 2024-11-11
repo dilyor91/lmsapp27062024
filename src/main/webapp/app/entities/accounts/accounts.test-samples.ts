@@ -1,49 +1,48 @@
 import { IAccounts, NewAccounts } from './accounts.model';
 
 export const sampleWithRequiredData: IAccounts = {
-  id: 30653,
-  username: 'underneath considering word',
-  fullName: 'loose and',
-  sortableName: 'promptly supposing dividend',
-  phone: '1-989-478-1525 x7347',
-  gender: 'when earth assail',
+  id: 15175,
+  username: 'fast',
+  fullName: 'since that transplant',
+  sortableName: 'pliers coolly',
+  phone: '751-249-5923 x4190',
+  gender: 'consistency scuttle',
   userType: 'TEACHER',
-  userStatus: 'ACTIVE',
-};
-
-export const sampleWithPartialData: IAccounts = {
-  id: 4839,
-  username: 'sensitize oof oh',
-  fullName: 'solace gleefully',
-  sortableName: 'throughout',
-  avatarImageUrl: 'simplistic tarragon service',
-  phone: '361.981.0221 x2335',
-  gender: 'grizzled phew badly',
-  userType: 'STUDENT',
-  userStatus: 'PENDING',
-};
-
-export const sampleWithFullData: IAccounts = {
-  id: 18589,
-  username: 'cap ugh',
-  fullName: 'scented',
-  sortableName: 'deafening since hm',
-  avatarImageUrl: 'clinch handy',
-  phone: '740.748.8403 x820',
-  locale: 'times duster rim',
-  gender: 'where',
-  userType: 'STUDENT',
   userStatus: 'BLOCKED',
 };
 
-export const sampleWithNewData: NewAccounts = {
-  username: 'extremely swing',
-  fullName: 'well-made',
-  sortableName: 'elevator until huzzah',
-  phone: '1-453-248-2223',
-  gender: 'knickers till',
+export const sampleWithPartialData: IAccounts = {
+  id: 28436,
+  username: 'meh disadvantage gentle',
+  fullName: 'glider uproot',
+  sortableName: 'hornet',
+  phone: '583.891.1353 x91905',
+  gender: 'subtract whoa',
   userType: 'TEACHER',
-  userStatus: 'ACTIVE',
+  userStatus: 'BLOCKED',
+};
+
+export const sampleWithFullData: IAccounts = {
+  id: 26729,
+  username: 'gosh',
+  fullName: 'representation oh forgather',
+  sortableName: 'though pfft howl',
+  avatarImageUrl: 'duh outbid',
+  phone: '1-744-820-7504 x57635',
+  locale: 'uh-huh rue',
+  gender: 'average',
+  userType: 'TEACHER',
+  userStatus: 'PENDING',
+};
+
+export const sampleWithNewData: NewAccounts = {
+  username: 'section incline whoa',
+  fullName: 'forenenst',
+  sortableName: 'iridescence over',
+  phone: '(573) 400-2159 x96598',
+  gender: 'because',
+  userType: 'STUDENT',
+  userStatus: 'BLOCKED',
   id: null,
 };
 

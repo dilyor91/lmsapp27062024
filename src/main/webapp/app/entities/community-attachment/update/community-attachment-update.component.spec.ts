@@ -53,10 +53,10 @@ describe('CommunityAttachment Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Community query and add missing value', () => {
       const communityAttachment: ICommunityAttachment = { id: 456 };
-      const community: ICommunity = { id: 29654 };
+      const community: ICommunity = { id: 11738 };
       communityAttachment.community = community;
 
-      const communityCollection: ICommunity[] = [{ id: 20280 }];
+      const communityCollection: ICommunity[] = [{ id: 26113 }];
       jest.spyOn(communityService, 'query').mockReturnValue(of(new HttpResponse({ body: communityCollection })));
       const additionalCommunities = [community];
       const expectedCollection: ICommunity[] = [...additionalCommunities, ...communityCollection];
@@ -75,10 +75,10 @@ describe('CommunityAttachment Management Update Component', () => {
 
     it('Should call Attachment query and add missing value', () => {
       const communityAttachment: ICommunityAttachment = { id: 456 };
-      const attachment: IAttachment = { id: 21818 };
+      const attachment: IAttachment = { id: 13689 };
       communityAttachment.attachment = attachment;
 
-      const attachmentCollection: IAttachment[] = [{ id: 13327 }];
+      const attachmentCollection: IAttachment[] = [{ id: 5188 }];
       jest.spyOn(attachmentService, 'query').mockReturnValue(of(new HttpResponse({ body: attachmentCollection })));
       const additionalAttachments = [attachment];
       const expectedCollection: IAttachment[] = [...additionalAttachments, ...attachmentCollection];
@@ -97,9 +97,9 @@ describe('CommunityAttachment Management Update Component', () => {
 
     it('Should update editForm', () => {
       const communityAttachment: ICommunityAttachment = { id: 456 };
-      const community: ICommunity = { id: 22928 };
+      const community: ICommunity = { id: 174 };
       communityAttachment.community = community;
-      const attachment: IAttachment = { id: 15088 };
+      const attachment: IAttachment = { id: 11543 };
       communityAttachment.attachment = attachment;
 
       activatedRoute.data = of({ communityAttachment });

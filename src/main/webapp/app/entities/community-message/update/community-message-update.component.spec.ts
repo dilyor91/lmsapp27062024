@@ -53,10 +53,10 @@ describe('CommunityMessage Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Community query and add missing value', () => {
       const communityMessage: ICommunityMessage = { id: 456 };
-      const community: ICommunity = { id: 9778 };
+      const community: ICommunity = { id: 28431 };
       communityMessage.community = community;
 
-      const communityCollection: ICommunity[] = [{ id: 4538 }];
+      const communityCollection: ICommunity[] = [{ id: 15866 }];
       jest.spyOn(communityService, 'query').mockReturnValue(of(new HttpResponse({ body: communityCollection })));
       const additionalCommunities = [community];
       const expectedCollection: ICommunity[] = [...additionalCommunities, ...communityCollection];
@@ -75,10 +75,10 @@ describe('CommunityMessage Management Update Component', () => {
 
     it('Should call User query and add missing value', () => {
       const communityMessage: ICommunityMessage = { id: 456 };
-      const sender: IUser = { id: 16911 };
+      const sender: IUser = { id: 221 };
       communityMessage.sender = sender;
 
-      const userCollection: IUser[] = [{ id: 440 }];
+      const userCollection: IUser[] = [{ id: 22865 }];
       jest.spyOn(userService, 'query').mockReturnValue(of(new HttpResponse({ body: userCollection })));
       const additionalUsers = [sender];
       const expectedCollection: IUser[] = [...additionalUsers, ...userCollection];
@@ -97,9 +97,9 @@ describe('CommunityMessage Management Update Component', () => {
 
     it('Should update editForm', () => {
       const communityMessage: ICommunityMessage = { id: 456 };
-      const community: ICommunity = { id: 22379 };
+      const community: ICommunity = { id: 25956 };
       communityMessage.community = community;
-      const sender: IUser = { id: 11546 };
+      const sender: IUser = { id: 16516 };
       communityMessage.sender = sender;
 
       activatedRoute.data = of({ communityMessage });

@@ -53,10 +53,10 @@ describe('Message Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Course query and add missing value', () => {
       const message: IMessage = { id: 456 };
-      const course: ICourse = { id: 23662 };
+      const course: ICourse = { id: 31756 };
       message.course = course;
 
-      const courseCollection: ICourse[] = [{ id: 6736 }];
+      const courseCollection: ICourse[] = [{ id: 32000 }];
       jest.spyOn(courseService, 'query').mockReturnValue(of(new HttpResponse({ body: courseCollection })));
       const additionalCourses = [course];
       const expectedCollection: ICourse[] = [...additionalCourses, ...courseCollection];
@@ -75,10 +75,10 @@ describe('Message Management Update Component', () => {
 
     it('Should call User query and add missing value', () => {
       const message: IMessage = { id: 456 };
-      const sender: IUser = { id: 4683 };
+      const sender: IUser = { id: 31109 };
       message.sender = sender;
 
-      const userCollection: IUser[] = [{ id: 16222 }];
+      const userCollection: IUser[] = [{ id: 20886 }];
       jest.spyOn(userService, 'query').mockReturnValue(of(new HttpResponse({ body: userCollection })));
       const additionalUsers = [sender];
       const expectedCollection: IUser[] = [...additionalUsers, ...userCollection];
@@ -97,9 +97,9 @@ describe('Message Management Update Component', () => {
 
     it('Should update editForm', () => {
       const message: IMessage = { id: 456 };
-      const course: ICourse = { id: 17245 };
+      const course: ICourse = { id: 21267 };
       message.course = course;
-      const sender: IUser = { id: 12115 };
+      const sender: IUser = { id: 26299 };
       message.sender = sender;
 
       activatedRoute.data = of({ message });

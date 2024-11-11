@@ -49,10 +49,10 @@ describe('CalendarTodo Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call User query and add missing value', () => {
       const calendarTodo: ICalendarTodo = { id: 456 };
-      const user: IUser = { id: 27905 };
+      const user: IUser = { id: 4916 };
       calendarTodo.user = user;
 
-      const userCollection: IUser[] = [{ id: 9747 }];
+      const userCollection: IUser[] = [{ id: 4511 }];
       jest.spyOn(userService, 'query').mockReturnValue(of(new HttpResponse({ body: userCollection })));
       const additionalUsers = [user];
       const expectedCollection: IUser[] = [...additionalUsers, ...userCollection];
@@ -71,7 +71,7 @@ describe('CalendarTodo Management Update Component', () => {
 
     it('Should update editForm', () => {
       const calendarTodo: ICalendarTodo = { id: 456 };
-      const user: IUser = { id: 19051 };
+      const user: IUser = { id: 11863 };
       calendarTodo.user = user;
 
       activatedRoute.data = of({ calendarTodo });

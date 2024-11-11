@@ -53,10 +53,10 @@ describe('MessageToUser Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Message query and add missing value', () => {
       const messageToUser: IMessageToUser = { id: 456 };
-      const message: IMessage = { id: 30917 };
+      const message: IMessage = { id: 11612 };
       messageToUser.message = message;
 
-      const messageCollection: IMessage[] = [{ id: 22861 }];
+      const messageCollection: IMessage[] = [{ id: 2227 }];
       jest.spyOn(messageService, 'query').mockReturnValue(of(new HttpResponse({ body: messageCollection })));
       const additionalMessages = [message];
       const expectedCollection: IMessage[] = [...additionalMessages, ...messageCollection];
@@ -75,10 +75,10 @@ describe('MessageToUser Management Update Component', () => {
 
     it('Should call User query and add missing value', () => {
       const messageToUser: IMessageToUser = { id: 456 };
-      const receiver: IUser = { id: 19113 };
+      const receiver: IUser = { id: 31150 };
       messageToUser.receiver = receiver;
 
-      const userCollection: IUser[] = [{ id: 362 }];
+      const userCollection: IUser[] = [{ id: 1268 }];
       jest.spyOn(userService, 'query').mockReturnValue(of(new HttpResponse({ body: userCollection })));
       const additionalUsers = [receiver];
       const expectedCollection: IUser[] = [...additionalUsers, ...userCollection];
@@ -97,9 +97,9 @@ describe('MessageToUser Management Update Component', () => {
 
     it('Should update editForm', () => {
       const messageToUser: IMessageToUser = { id: 456 };
-      const message: IMessage = { id: 30946 };
+      const message: IMessage = { id: 940 };
       messageToUser.message = message;
-      const receiver: IUser = { id: 24674 };
+      const receiver: IUser = { id: 11938 };
       messageToUser.receiver = receiver;
 
       activatedRoute.data = of({ messageToUser });
