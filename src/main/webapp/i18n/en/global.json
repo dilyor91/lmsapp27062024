@@ -62,7 +62,8 @@
         "communityTag": "Community Tag",
         "communityMessage": "Community Message",
         "exam": "Exam",
-        "examResult": "Exam Result"
+        "examResult": "Exam Result",
+        "activity": "Activity"
       },
       "account": {
         "main": "Account",

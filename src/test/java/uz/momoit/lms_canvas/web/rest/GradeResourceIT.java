@@ -279,7 +279,7 @@ class GradeResourceIT {
         Grade partialUpdatedGrade = new Grade();
         partialUpdatedGrade.setId(grade.getId());
 
-        partialUpdatedGrade.gradedDate(UPDATED_GRADED_DATE);
+        partialUpdatedGrade.point(UPDATED_POINT);
 
         restGradeMockMvc
             .perform(

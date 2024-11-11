@@ -1,20 +1,20 @@
 import { IQuizResult, NewQuizResult } from './quiz-result.model';
 
 export const sampleWithRequiredData: IQuizResult = {
-  id: 21273,
+  id: 32451,
 };
 
 export const sampleWithPartialData: IQuizResult = {
-  id: 2653,
-  point: 23878,
+  id: 21958,
+  correctAnswerCnt: 14787,
 };
 
 export const sampleWithFullData: IQuizResult = {
-  id: 26506,
-  point: 27671,
-  totalQuestionCnt: 12109,
-  correctAnswerCnt: 726,
-  wrongAnswerCnt: 4053,
+  id: 4934,
+  point: 11052,
+  totalQuestionCnt: 27464,
+  correctAnswerCnt: 14268,
+  wrongAnswerCnt: 25303,
 };
 
 export const sampleWithNewData: NewQuizResult = {

@@ -53,10 +53,10 @@ describe('CommunityTag Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Community query and add missing value', () => {
       const communityTag: ICommunityTag = { id: 456 };
-      const community: ICommunity = { id: 28827 };
+      const community: ICommunity = { id: 6872 };
       communityTag.community = community;
 
-      const communityCollection: ICommunity[] = [{ id: 24902 }];
+      const communityCollection: ICommunity[] = [{ id: 31128 }];
       jest.spyOn(communityService, 'query').mockReturnValue(of(new HttpResponse({ body: communityCollection })));
       const additionalCommunities = [community];
       const expectedCollection: ICommunity[] = [...additionalCommunities, ...communityCollection];
@@ -75,10 +75,10 @@ describe('CommunityTag Management Update Component', () => {
 
     it('Should call Tag query and add missing value', () => {
       const communityTag: ICommunityTag = { id: 456 };
-      const tag: ITag = { id: 14476 };
+      const tag: ITag = { id: 23843 };
       communityTag.tag = tag;
 
-      const tagCollection: ITag[] = [{ id: 3777 }];
+      const tagCollection: ITag[] = [{ id: 31854 }];
       jest.spyOn(tagService, 'query').mockReturnValue(of(new HttpResponse({ body: tagCollection })));
       const additionalTags = [tag];
       const expectedCollection: ITag[] = [...additionalTags, ...tagCollection];
@@ -94,9 +94,9 @@ describe('CommunityTag Management Update Component', () => {
 
     it('Should update editForm', () => {
       const communityTag: ICommunityTag = { id: 456 };
-      const community: ICommunity = { id: 9960 };
+      const community: ICommunity = { id: 32738 };
       communityTag.community = community;
-      const tag: ITag = { id: 3932 };
+      const tag: ITag = { id: 18601 };
       communityTag.tag = tag;
 
       activatedRoute.data = of({ communityTag });

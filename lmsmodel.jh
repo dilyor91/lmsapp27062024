@@ -627,6 +627,14 @@ relationship ManyToOne {
     Notification{teacher} to Teacher
 }
 
+entity Activity {
+    activityDate Instant
+}
+
+relationship ManyToOne {
+   Activity{user} to User
+}
+
 // Set pagination options
 paginate  Course, CourseSection, Enrollment, Accounts, 
 Assignment, Announcement, CalendarEvent, WikiPage,

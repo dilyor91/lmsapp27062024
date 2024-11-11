@@ -1,18 +1,17 @@
 import { IExam, NewExam } from './exam.model';
 
 export const sampleWithRequiredData: IExam = {
-  id: 13939,
+  id: 26694,
 };
 
 export const sampleWithPartialData: IExam = {
-  id: 19748,
-  type: 'INTERIM',
+  id: 27459,
 };
 
 export const sampleWithFullData: IExam = {
-  id: 2253,
-  type: 'INTERIM',
-  maxPoint: 8577.6,
+  id: 16800,
+  type: 'FINAL',
+  maxPoint: 7098.34,
 };
 
 export const sampleWithNewData: NewExam = {

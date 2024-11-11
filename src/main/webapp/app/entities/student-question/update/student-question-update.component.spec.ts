@@ -53,10 +53,10 @@ describe('StudentQuestion Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call QuizSession query and add missing value', () => {
       const studentQuestion: IStudentQuestion = { id: 456 };
-      const quizSession: IQuizSession = { id: 30765 };
+      const quizSession: IQuizSession = { id: 6377 };
       studentQuestion.quizSession = quizSession;
 
-      const quizSessionCollection: IQuizSession[] = [{ id: 10526 }];
+      const quizSessionCollection: IQuizSession[] = [{ id: 25006 }];
       jest.spyOn(quizSessionService, 'query').mockReturnValue(of(new HttpResponse({ body: quizSessionCollection })));
       const additionalQuizSessions = [quizSession];
       const expectedCollection: IQuizSession[] = [...additionalQuizSessions, ...quizSessionCollection];
@@ -75,10 +75,10 @@ describe('StudentQuestion Management Update Component', () => {
 
     it('Should call Question query and add missing value', () => {
       const studentQuestion: IStudentQuestion = { id: 456 };
-      const question: IQuestion = { id: 10187 };
+      const question: IQuestion = { id: 24877 };
       studentQuestion.question = question;
 
-      const questionCollection: IQuestion[] = [{ id: 11624 }];
+      const questionCollection: IQuestion[] = [{ id: 28624 }];
       jest.spyOn(questionService, 'query').mockReturnValue(of(new HttpResponse({ body: questionCollection })));
       const additionalQuestions = [question];
       const expectedCollection: IQuestion[] = [...additionalQuestions, ...questionCollection];
@@ -97,9 +97,9 @@ describe('StudentQuestion Management Update Component', () => {
 
     it('Should update editForm', () => {
       const studentQuestion: IStudentQuestion = { id: 456 };
-      const quizSession: IQuizSession = { id: 14503 };
+      const quizSession: IQuizSession = { id: 20591 };
       studentQuestion.quizSession = quizSession;
-      const question: IQuestion = { id: 13532 };
+      const question: IQuestion = { id: 32610 };
       studentQuestion.question = question;
 
       activatedRoute.data = of({ studentQuestion });

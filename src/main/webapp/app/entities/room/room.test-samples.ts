@@ -1,22 +1,23 @@
 import { IRoom, NewRoom } from './room.model';
 
 export const sampleWithRequiredData: IRoom = {
-  id: 32025,
+  id: 32670,
 };
 
 export const sampleWithPartialData: IRoom = {
-  id: 12222,
-  description: 'pish rationalize',
-  capacity: 29209,
-  status: true,
+  id: 20265,
+  name: 'finished towards excitedly',
+  description: 'lounge',
+  capacity: 30645,
+  status: false,
 };
 
 export const sampleWithFullData: IRoom = {
-  id: 24922,
-  name: 'whenever',
-  description: 'yuck',
-  capacity: 7310,
-  status: false,
+  id: 14003,
+  name: 'sleepily anticodon physically',
+  description: 'importance inwardly keel',
+  capacity: 12130,
+  status: true,
 };
 
 export const sampleWithNewData: NewRoom = {

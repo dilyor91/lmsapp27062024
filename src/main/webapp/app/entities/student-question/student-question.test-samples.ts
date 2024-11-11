@@ -1,17 +1,17 @@
 import { IStudentQuestion, NewStudentQuestion } from './student-question.model';
 
 export const sampleWithRequiredData: IStudentQuestion = {
-  id: 27870,
+  id: 5364,
 };
 
 export const sampleWithPartialData: IStudentQuestion = {
-  id: 13794,
-  ordNum: 13504,
+  id: 3949,
+  ordNum: 9678,
 };
 
 export const sampleWithFullData: IStudentQuestion = {
-  id: 594,
-  ordNum: 7112,
+  id: 10070,
+  ordNum: 28807,
 };
 
 export const sampleWithNewData: NewStudentQuestion = {

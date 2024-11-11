@@ -292,7 +292,7 @@ class MessageToUserResourceIT {
         MessageToUser partialUpdatedMessageToUser = new MessageToUser();
         partialUpdatedMessageToUser.setId(messageToUser.getId());
 
-        partialUpdatedMessageToUser.readAt(UPDATED_READ_AT).deleted(UPDATED_DELETED);
+        partialUpdatedMessageToUser.read(UPDATED_READ).deleted(UPDATED_DELETED);
 
         restMessageToUserMockMvc
             .perform(

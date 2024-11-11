@@ -57,10 +57,10 @@ describe('ExamResult Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Student query and add missing value', () => {
       const examResult: IExamResult = { id: 456 };
-      const student: IStudent = { id: 12067 };
+      const student: IStudent = { id: 13107 };
       examResult.student = student;
 
-      const studentCollection: IStudent[] = [{ id: 29095 }];
+      const studentCollection: IStudent[] = [{ id: 12866 }];
       jest.spyOn(studentService, 'query').mockReturnValue(of(new HttpResponse({ body: studentCollection })));
       const additionalStudents = [student];
       const expectedCollection: IStudent[] = [...additionalStudents, ...studentCollection];
@@ -79,10 +79,10 @@ describe('ExamResult Management Update Component', () => {
 
     it('Should call Exam query and add missing value', () => {
       const examResult: IExamResult = { id: 456 };
-      const exam: IExam = { id: 5315 };
+      const exam: IExam = { id: 22323 };
       examResult.exam = exam;
 
-      const examCollection: IExam[] = [{ id: 26737 }];
+      const examCollection: IExam[] = [{ id: 8293 }];
       jest.spyOn(examService, 'query').mockReturnValue(of(new HttpResponse({ body: examCollection })));
       const additionalExams = [exam];
       const expectedCollection: IExam[] = [...additionalExams, ...examCollection];
@@ -101,10 +101,10 @@ describe('ExamResult Management Update Component', () => {
 
     it('Should call Course query and add missing value', () => {
       const examResult: IExamResult = { id: 456 };
-      const course: ICourse = { id: 3537 };
+      const course: ICourse = { id: 31369 };
       examResult.course = course;
 
-      const courseCollection: ICourse[] = [{ id: 9775 }];
+      const courseCollection: ICourse[] = [{ id: 3929 }];
       jest.spyOn(courseService, 'query').mockReturnValue(of(new HttpResponse({ body: courseCollection })));
       const additionalCourses = [course];
       const expectedCollection: ICourse[] = [...additionalCourses, ...courseCollection];
@@ -123,11 +123,11 @@ describe('ExamResult Management Update Component', () => {
 
     it('Should update editForm', () => {
       const examResult: IExamResult = { id: 456 };
-      const student: IStudent = { id: 15200 };
+      const student: IStudent = { id: 18826 };
       examResult.student = student;
-      const exam: IExam = { id: 5091 };
+      const exam: IExam = { id: 2439 };
       examResult.exam = exam;
-      const course: ICourse = { id: 30150 };
+      const course: ICourse = { id: 28272 };
       examResult.course = course;
 
       activatedRoute.data = of({ examResult });

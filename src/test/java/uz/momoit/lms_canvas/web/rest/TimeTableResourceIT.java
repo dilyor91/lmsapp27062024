@@ -305,7 +305,7 @@ class TimeTableResourceIT {
         TimeTable partialUpdatedTimeTable = new TimeTable();
         partialUpdatedTimeTable.setId(timeTable.getId());
 
-        partialUpdatedTimeTable.weekNumber(UPDATED_WEEK_NUMBER).weekDayNumber(UPDATED_WEEK_DAY_NUMBER).actialDate(UPDATED_ACTIAL_DATE);
+        partialUpdatedTimeTable.weekDayNumber(UPDATED_WEEK_DAY_NUMBER);
 
         restTimeTableMockMvc
             .perform(

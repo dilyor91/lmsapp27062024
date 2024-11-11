@@ -499,7 +499,7 @@ class CourseResourceIT {
 
         partialUpdatedCourse
             .courseEndDate(UPDATED_COURSE_END_DATE)
-            .courseFormat(UPDATED_COURSE_FORMAT)
+            .published(UPDATED_PUBLISHED)
             .selfEnrollment(UPDATED_SELF_ENROLLMENT)
             .status(UPDATED_STATUS);
 

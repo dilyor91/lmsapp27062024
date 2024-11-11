@@ -3,24 +3,21 @@ import dayjs from 'dayjs/esm';
 import { IMessage, NewMessage } from './message.model';
 
 export const sampleWithRequiredData: IMessage = {
-  id: 18153,
+  id: 17002,
 };
 
 export const sampleWithPartialData: IMessage = {
-  id: 17795,
-  subject: 'fooey yearly colossal',
+  id: 26987,
   toAllCourseStudents: false,
-  toSectionIds: 'supposing like ew',
-  senderDate: dayjs('2024-10-01T23:49'),
 };
 
 export const sampleWithFullData: IMessage = {
-  id: 2837,
-  subject: 'whoever',
-  body: 'institute',
+  id: 23518,
+  subject: 'cram',
+  body: 'annually nor convalesce',
   toAllCourseStudents: false,
-  toSectionIds: 'bracelet content',
-  senderDate: dayjs('2024-10-01T22:18'),
+  toSectionIds: 'meatloaf lightly',
+  senderDate: dayjs('2024-10-01T06:18'),
   deleted: true,
 };
 

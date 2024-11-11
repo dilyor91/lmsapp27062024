@@ -49,10 +49,10 @@ describe('Community Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call User query and add missing value', () => {
       const community: ICommunity = { id: 456 };
-      const user: IUser = { id: 31259 };
+      const user: IUser = { id: 16513 };
       community.user = user;
 
-      const userCollection: IUser[] = [{ id: 26834 }];
+      const userCollection: IUser[] = [{ id: 11737 }];
       jest.spyOn(userService, 'query').mockReturnValue(of(new HttpResponse({ body: userCollection })));
       const additionalUsers = [user];
       const expectedCollection: IUser[] = [...additionalUsers, ...userCollection];
@@ -71,7 +71,7 @@ describe('Community Management Update Component', () => {
 
     it('Should update editForm', () => {
       const community: ICommunity = { id: 456 };
-      const user: IUser = { id: 13531 };
+      const user: IUser = { id: 11723 };
       community.user = user;
 
       activatedRoute.data = of({ community });

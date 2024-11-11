@@ -1,24 +1,24 @@
 import { IQuestion, NewQuestion } from './question.model';
 
 export const sampleWithRequiredData: IQuestion = {
-  id: 12756,
-  questionText: 'joyfully',
+  id: 15416,
+  questionText: 'fooey quaintly lovingly',
 };
 
 export const sampleWithPartialData: IQuestion = {
-  id: 930,
-  questionText: 'defiantly freely er',
-  point: 25700,
+  id: 18967,
+  questionText: 'loosely hmph',
+  point: 25882,
 };
 
 export const sampleWithFullData: IQuestion = {
-  id: 24386,
-  questionText: 'minus',
-  point: 12560,
+  id: 3348,
+  questionText: 'nun wherever',
+  point: 22813,
 };
 
 export const sampleWithNewData: NewQuestion = {
-  questionText: 'dependable',
+  questionText: 'whenever waterlogged eek',
   id: null,
 };
 

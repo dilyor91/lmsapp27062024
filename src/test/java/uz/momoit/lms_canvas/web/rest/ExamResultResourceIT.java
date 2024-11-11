@@ -283,6 +283,8 @@ class ExamResultResourceIT {
         ExamResult partialUpdatedExamResult = new ExamResult();
         partialUpdatedExamResult.setId(examResult.getId());
 
+        partialUpdatedExamResult.point(UPDATED_POINT);
+
         restExamResultMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedExamResult.getId())

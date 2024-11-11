@@ -53,10 +53,10 @@ describe('MessageAttachment Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Message query and add missing value', () => {
       const messageAttachment: IMessageAttachment = { id: 456 };
-      const message: IMessage = { id: 3336 };
+      const message: IMessage = { id: 7485 };
       messageAttachment.message = message;
 
-      const messageCollection: IMessage[] = [{ id: 25313 }];
+      const messageCollection: IMessage[] = [{ id: 7984 }];
       jest.spyOn(messageService, 'query').mockReturnValue(of(new HttpResponse({ body: messageCollection })));
       const additionalMessages = [message];
       const expectedCollection: IMessage[] = [...additionalMessages, ...messageCollection];
@@ -75,10 +75,10 @@ describe('MessageAttachment Management Update Component', () => {
 
     it('Should call Attachment query and add missing value', () => {
       const messageAttachment: IMessageAttachment = { id: 456 };
-      const attachment: IAttachment = { id: 4967 };
+      const attachment: IAttachment = { id: 25328 };
       messageAttachment.attachment = attachment;
 
-      const attachmentCollection: IAttachment[] = [{ id: 2007 }];
+      const attachmentCollection: IAttachment[] = [{ id: 686 }];
       jest.spyOn(attachmentService, 'query').mockReturnValue(of(new HttpResponse({ body: attachmentCollection })));
       const additionalAttachments = [attachment];
       const expectedCollection: IAttachment[] = [...additionalAttachments, ...attachmentCollection];
@@ -97,9 +97,9 @@ describe('MessageAttachment Management Update Component', () => {
 
     it('Should update editForm', () => {
       const messageAttachment: IMessageAttachment = { id: 456 };
-      const message: IMessage = { id: 10581 };
+      const message: IMessage = { id: 30047 };
       messageAttachment.message = message;
-      const attachment: IAttachment = { id: 5004 };
+      const attachment: IAttachment = { id: 32151 };
       messageAttachment.attachment = attachment;
 
       activatedRoute.data = of({ messageAttachment });

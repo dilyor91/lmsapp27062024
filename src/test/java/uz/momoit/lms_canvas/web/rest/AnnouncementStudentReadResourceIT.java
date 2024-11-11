@@ -290,7 +290,7 @@ class AnnouncementStudentReadResourceIT {
         AnnouncementStudentRead partialUpdatedAnnouncementStudentRead = new AnnouncementStudentRead();
         partialUpdatedAnnouncementStudentRead.setId(announcementStudentRead.getId());
 
-        partialUpdatedAnnouncementStudentRead.readAt(UPDATED_READ_AT);
+        partialUpdatedAnnouncementStudentRead.read(UPDATED_READ);
 
         restAnnouncementStudentReadMockMvc
             .perform(
